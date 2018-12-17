@@ -17,9 +17,9 @@
 
 ;;multified functions II
 
-(deffunction colore
-	(?colore)
-	(nth (create$  blu giallo verde  rosso) ?colore)))
+;;(deffunction colore
+;;	(?colore)
+;;	(nth (create$  blu giallo verde  rosso) ?colore)))
 
 ;:first$
 (first$ (create$ blu giallo verde rosso))
@@ -34,10 +34,10 @@
 
 ;;deff function length of list
 
-(deffunction assert−length ( ?list )
-(eq (length$ ?list ) (+ (length$ (first$ ?list )) (length$ (rest$ ?list)))))
+;;(deffunction assert−length ( ?list )
+;;(eq (length$ ?list ) (+ (length$ (first$ ?list )) (length$ (rest$ ?list)))))
 
-(assert−length (create$ blu giallo verde rosso))
+;;(assert−length (create$ blu giallo verde rosso))
 
 
 ;;insert
