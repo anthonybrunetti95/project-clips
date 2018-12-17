@@ -1,7 +1,7 @@
 ;;bind
 (bind ?x 5)
 ( bind ? x (** 2 5)
-( printout t ? x c r l f )
+( printout t ?x crlf)
 
 ;; function
 ( deffunction nth−pow−of−two ( ? n) ( bind ? x (** 2 ?n ) ) ? x )
