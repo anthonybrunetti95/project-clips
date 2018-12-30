@@ -12,14 +12,13 @@
 (deftemplate board-game
         (slot label             (type SYMBOL))
         (slot board-game-name   (type STRING))
+        (slot coop-comp         (type STRING))
 )
-
 
 
 (deftemplate main-features
         (slot label             (type SYMBOL))
         (slot players           (type INTEGER))
-        (slot best              (type INTEGER))
         (slot length            (type INTEGER))
         (slot weight            (type INTEGER))
         
