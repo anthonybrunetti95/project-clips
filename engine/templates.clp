@@ -19,9 +19,9 @@
 (deftemplate main-features
         (slot label             (type SYMBOL))
         (slot players           (type INTEGER))
-        (slot best              (type FLOAT))
-        (slot length            (type FLOAT))
-        (slot weight            (type FLOAT))
+        (slot best              (type INTEGER))
+        (slot length            (type INTEGER))
+        (slot weight            (type INTEGER))
         
 ) 
 
