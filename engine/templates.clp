@@ -22,7 +22,7 @@
         (slot best              (type FLOAT))
         (slot length            (type FLOAT))
         (slot weight            (type FLOAT))
-        (slot designeres        (type STRING))
+        
 ) 
 
 
