@@ -28,7 +28,7 @@
 
 (deftemplate players
         (slot label             (type SYMBOL))
-        (slot Solo-player       (type BOOL))
+        (slot 1-player          (type BOOL))
         (slot 2-players         (type BOOL))
         (slot 3-players         (type BOOL))
         (slot 4-players         (type BOOL))
@@ -37,6 +37,16 @@
         (slot higher-6-players  (type BOOL))
 )
 
+(deftemplate best-players
+        (slot label           (type SYMBOL))
+        (slot best-1p         (type BOOL))
+        (slot best-2p         (type BOOL))
+        (slot best-3p         (type BOOL))
+        (slot best-4p         (type BOOL))
+        (slot best-5p         (type BOOL))
+        (slot best-6p         (type BOOL))
+        (slot best-6p+        (type BOOL))
+)
 (deftemplate general-kind
         (slot label             (type SYMBOL))
         (slot german            (type BOOL))
