@@ -20,7 +20,7 @@
         (slot label             (type SYMBOL))
         (slot length            (type INTEGER))
         (slot weight            (type INTEGER)  (allowed-values 1 2 3))
-        (slot coop-comp         (type STRING))
+        (slot coop-comp         (type SYMBOL)   (allowed-values cop comp))
         
 ) 
 
@@ -95,7 +95,7 @@
         (slot numbers           (type BOOL))
         (slot castles           (type BOOL))
         (slot vampyric          (type BOOL))
-        (slot renaissance court (type BOOL))
+        (slot renaissance-court (type BOOL))
         (slot pirates           (type BOOL))
         (slot witchcraft        (type BOOL))
         (slot trains            (type BOOL))
