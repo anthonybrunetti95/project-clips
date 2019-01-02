@@ -27,13 +27,13 @@
 
 (deftemplate players
         (slot label            (type SYMBOL))
-        (slot 1players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 2players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 3players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 4players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 5players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 6players         (type SYMBOL) (allowed-values TRUE FALSE))
-        (slot 6players+        (type SYMBOL) (allowed-values TRUE FALSE))
+        (slot 1players         (type SYMBOL) (allowed-values T F))
+        (slot 2players         (type SYMBOL) (allowed-values T F))
+        (slot 3players         (type SYMBOL) (allowed-values T F))
+        (slot 4players         (type SYMBOL) (allowed-values T F))
+        (slot 5players         (type SYMBOL) (allowed-values T F))
+        (slot 6players         (type SYMBOL) (allowed-values T F))
+        (slot 6players+        (type SYMBOL) (allowed-values T F))
 )
 
 (deftemplate best-players
@@ -112,3 +112,6 @@
         (slot mafia             (type SYMBOL) (allowed-values TRUE FALSE))
         (slot politics          (type SYMBOL) (allowed-values TRUE FALSE))     
 )
+
+
+

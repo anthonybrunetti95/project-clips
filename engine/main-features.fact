@@ -18,7 +18,7 @@
 (main-features (label board-game-18) (length 180) (weight medio) (coop-comp coop))
 (main-features (label board-game-19) (length 20) (weight facile) (coop-comp comp))
 (main-features (label board-game-20) (length 25) (weight facile) (coop-comp comp))
-(main-features (label board-game-21) (length 60) (weight facile) (coop-comp coop\comp)
+(main-features (label board-game-21) (length 60) (weight facile) (coop-comp coop\comp))
 (main-features (label board-game-22) (length 60) (weight facile) (coop-comp comp))
 (main-features (label board-game-23) (length 20) (weight facile) (coop-comp coop))
 (main-features (label board-game-24) (length 40) (weight facile) (coop-comp comp))   ;;offset3
