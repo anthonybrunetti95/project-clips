@@ -7,7 +7,7 @@
 
 
 ;;====================================================;;
-; TEMPLATE PER I DATI DI UN GIOCO DA TA
+; TEMPLATE PER I DATI DI UN GIOCO DA TAVOLO
 
 (deftemplate board-game
         (slot label             (type SYMBOL))
@@ -19,8 +19,8 @@
 (deftemplate main-features
         (slot label             (type SYMBOL))
         (slot length            (type INTEGER))
-        (slot weight            (type INTEGER)  (allowed-values 1 2 3))
-        (slot coop-comp         (type SYMBOL)   (allowed-values cop comp))
+        (slot weight            (type SYMBOL)  (allowed-values facile medio difficile))
+        (slot coop-comp         (type SYMBOL)   (allowed-values coop comp coop\comp null))
         
 ) 
 
