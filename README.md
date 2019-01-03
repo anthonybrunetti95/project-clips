@@ -1,4 +1,4 @@
-# GameRules&Board Expert: game:
+# GameRules&Board Expert :game:
 *"L'uomo non smette di giocare perché invecchia, ma invecchia perché smette di giocare."* (GEORGE BERNARD SHAW)
 
 ## Prerequisites
