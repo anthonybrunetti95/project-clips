@@ -98,3 +98,6 @@
 (players (label board-game-98) (2players T) (3players T) (4players T) (5players T) (6players T) (6players+ T) )
 (players (label board-game-99) (2players T) (3players T) (4players T))
 (players (label board-game-100) (2players T) (3players T) (4players T) )
+
+
+ 		

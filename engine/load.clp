@@ -5,3 +5,5 @@
 (load-facts "main-features.fact")
 (load-facts "players.fact")
 (load-facts "best-players.fact")
+(load-facts "secondary-kind.fact")
+(load-facts "general-kind.fact")
