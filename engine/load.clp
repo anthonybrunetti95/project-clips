@@ -7,3 +7,4 @@
 (load-facts "best-players.fact")
 (load-facts "secondary-kind.fact")
 (load-facts "general-kind.fact")
+(load-facts "thematic-environment.fact")

@@ -94,7 +94,7 @@
         (slot numbers           (type SYMBOL) (allowed-values T F) (default F))
         (slot castles           (type SYMBOL) (allowed-values T F) (default F))
         (slot vampyric          (type SYMBOL) (allowed-values T F) (default F))
-        (slot renaissance-court (type SYMBOL) (allowed-values T F) (default F))
+        (slot renaissance_court (type SYMBOL) (allowed-values T F) (default F))
         (slot pirates           (type SYMBOL) (allowed-values T F) (default F))
         (slot witchcraft        (type SYMBOL) (allowed-values T F) (default F))
         (slot trains            (type SYMBOL) (allowed-values T F) (default F))
