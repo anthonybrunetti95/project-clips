@@ -3,6 +3,85 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;====================================================;;
+; TEMPLATE PER LE DOMANDE CHE IL SISTEMA PONE ALL'UTENTE
+(deftemplate asking-question
+        (slot question          (type SYMBOL))
+        (multislot answers)
+)
+
+(deftemplate asked-question
+        (slot question          (type SYMBOL))
+        (slot number            (type INTEGER))
+        (multislot values)
+        (slot answer)
+)
+
+(deftemplate asked-questions
+        (multislot question     (type SYMBOL)))
+
+(deftemplate last-question
+        (slot question          (type INTEGER))
+)
+
+;;====================================================;;
+; TEMPLATE PER LE RISPOSTE ALLE DOMANDE DATE DALL'UTENTE
+(deftemplate info
+        (slot feature           (type SYMBOL))
+        (slot value             (type STRING))
+        (slot question          (type SYMBOL))
+)
+
+
+
+;;====================================================;;
+; TEMPLATE PER I FATTI CHE IL SISTEMA INFERISCE
+(deftemplate infering
+        (slot feature           (type SYMBOL))
+        (slot value             (type STRING))
+)
+
+(deftemplate inferred
+        (slot feature           (type SYMBOL))
+        (slot value             (type STRING))
+        (slot number            (type INTEGER))
+)
+
+;;====================================================;;
+; TEMPLATE PER I FATTI DI TIPO RESULT CHE IL SISTEMA INFERISCE
+(deftemplate infering-result
+        (slot feature           (type SYMBOL))
+        (slot value             (type INTEGER))
+)
+
+(deftemplate result
+        (slot feature           (type SYMBOL))
+        (slot value             (type INTEGER))
+        (slot number            (type INTEGER))
+)
+
+;;====================================================;;
+; TEMPLATE PER I FATTI CHE VENGONO UTILIZZATI PER INFERIRE IL board-game MIGLIORE PER L'UTENTE
+(deftemplate hypotetical-board-game
+        (slot label             (type SYMBOL))
+        (multislot what         (type SYMBOL))
+)
+
+(deftemplate removing-detail
+        (slot detail            (type SYMBOL))
+)
+
+(deftemplate board-game
+        (slot label             (type SYMBOL))
+)
+
+;;====================================================;;
+; TEMPLATE PER LA RITRATTAZIONE
+(deftemplate reasked-question
+        (slot question          (type INTEGER))
+)
+
+
+
 
 
 
@@ -65,7 +144,7 @@
         (slot challenging       (type SYMBOL) (allowed-values T F) (default F))
         (slot explorative       (type SYMBOL) (allowed-values T F) (default F))
         (slot wtdplacement      (type SYMBOL) (allowed-values T F) (default F))
-        (slot hmovement          (type SYMBOL) (allowed-values T F) (default F))
+        (slot hmovement         (type SYMBOL) (allowed-values T F) (default F))
         (slot investigative     (type SYMBOL) (allowed-values T F) (default F))
         (slot bidding           (type SYMBOL) (allowed-values T F) (default F))
         (slot bluff             (type SYMBOL) (allowed-values T F) (default F))
