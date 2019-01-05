@@ -31,3 +31,10 @@
         =>
         (assert (asking-question (question like-gothic) (answers s n)))
 )
+
+(defrule ask-like-lovecraft
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question like-lovecraft) (answers s n) ))
+)

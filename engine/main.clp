@@ -26,6 +26,8 @@
         (not (retraction))
         (final-board-game (label ?label))
         =>
+      
         (printout t crlf crlf (load_description ?label))
-        (printout t crlf crlf)
+        (printout t crlf  "arrivederci !!!" crlf)
+        (halt)
 )

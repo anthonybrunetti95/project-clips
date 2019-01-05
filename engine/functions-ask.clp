@@ -2,10 +2,10 @@
 ;;;;;;;;;;;;;;;                  FUNZIONI PER LE DOMANDE              ;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (deffunction ask-question (?question ?number $?allowed-values)
-        (if (and (not (eq ?question rejection)) (not (eq ?question want-to-see-hypotetical-final-board-game)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
+        (if (and (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
          then (printout t crlf "=========================================================="))
         (print-question ?question ?number)
-        (if (or  (eq ?question rejection) (eq ?question want-to-see-hypotetical-final-board-game) (eq ?question retraction)   (eq ?question retraction-number) )
+        (if (or  (eq ?question rejection) (eq ?question retraction)   (eq ?question retraction-number) )
          then (print-answers ?question $?allowed-values)
          else (print-answers ?question $?allowed-values h w))
         (foreach ?answer $?allowed-values (print-answers ?answer))
@@ -22,7 +22,7 @@
                 (if (lexemep ?answer)
                  then (bind ?answer (lowcase ?answer)))
         )
-        (if (and  (not (eq ?question rejection)) (not (eq ?question want-to-see-hypotetical-final-board-game)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
+        (if (and  (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
                 (assert (asked-question (question ?question) (number ?number) (values $?allowed-values) (answer ?answer))))
         ?answer 
 )
@@ -31,7 +31,7 @@
         (bind ?answer (ask-question ?question ?number $?allowed-values))
         (switch ?question 
 
-        ;;=========== SEZIONE UTENTE ===========;;
+       
 
                 (case like-gothic then             
                         (if (eq ?answer s) 
@@ -39,7 +39,36 @@
                               (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info:inserimento-si")) else          
                         (if (eq ?answer n) 
                          then (assert (info (feature gothic) (value "F") (question like-gothic))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> "Info:inserimento-no")) ))) )
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info:inserimento-no")) ))) 
+                (case like-lovecraft then             
+                        (if (eq ?answer s) 
+                         then (assert (info (feature lovecraft) (value "T") (question like-lovecraft))) 
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info:inserimento-si")) else          
+                        (if (eq ?answer n) 
+                         then (assert (info (feature lovecraft) (value "F") (question like-lovecraft))) 
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info:inserimento-no")) )))
+                (case rejection then
+                        (if (eq ?answer s)
+                                then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf)
+                                        (halt) else
+                        (if (eq ?answer n)
+                                then (assert (rejection)))))
+                (case retraction then 
+                        (if (eq ?answer s) 
+                                then (assert (print-qna 1)) else
+                        (if (eq ?answer n) 
+                                then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf) 
+                                        (halt) )))
+                (case retraction-number then 
+                        (assert (reasked-question (question ?answer)))
+                        (assert (pull-question ?answer)))
+
+                 (default
+                        (if (eq ?*debug-mode* TRUE) then (printout t "CLIPS-Exception!!! - Ask")))
+
+
+        )        
+
 )
 
 

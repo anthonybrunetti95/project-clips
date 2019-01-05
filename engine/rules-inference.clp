@@ -9,7 +9,7 @@
         =>
         (retract ?f1)
         (assert (inferred (feature ?feature) (value ?value) (number ?last)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature) " " (upcase ?value)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature)  (upcase ?value)))
 )
 
 (defrule not-infer-already-inferred-feature
@@ -23,8 +23,4 @@
 
 ;;====================================================;;
 
-(defrule inferred-gothic
-            (declare (salience ?*high-priority*))
-        =>
-        (assert infering (feature gothic) (value "T"))
-)     
+

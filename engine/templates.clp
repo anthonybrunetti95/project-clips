@@ -50,12 +50,12 @@
 ; TEMPLATE PER I FATTI DI TIPO RESULT CHE IL SISTEMA INFERISCE
 (deftemplate infering-result
         (slot feature           (type SYMBOL))
-        (slot value             (type INTEGER))
+        (slot value             (type STRING)) ;;mod da int
 )
 
 (deftemplate result
         (slot feature           (type SYMBOL))
-        (slot value             (type INTEGER))
+        (slot value             (type STRING))
         (slot number            (type INTEGER))
 )
 
@@ -70,7 +70,7 @@
         (slot detail            (type SYMBOL))
 )
 
-(deftemplate board-game
+(deftemplate final-board-game
         (slot label             (type SYMBOL))
 )
 

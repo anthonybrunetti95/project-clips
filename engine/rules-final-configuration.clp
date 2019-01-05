@@ -5,13 +5,13 @@
 
 (defrule find-final-board-game
         (declare (salience ?*sub-normal-priority*))
-        (info (feature gothic) (value "T"))
-        (result (feature board-game-name) (value ?game-name)) 
-        (board-game (label ?label) (board-game-name ?game-name) )
+        (result (feature board-game-name) (value ?game-name))
+        (board-game (label ?label) (board-game-name ?game-name))
         =>
         (assert (final-board-game (label ?label) )
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game: " ?label))
-        (assert (ask-rejection)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label  " " ?game-name crlf))
+        ;;(assert (ask-rejection))
+        )
 )
 
 

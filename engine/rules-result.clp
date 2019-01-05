@@ -9,7 +9,7 @@
 		=>
 		(retract ?f1)
 		(assert (result (feature ?feature) (value ?value) (number ?last)))
-		(if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Result: " (upcase ?feature) " " ?value))
+		(if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Result: "(upcase ?feature)  ?value))
 )
 
 (defrule not-infer-already-inferred-result
@@ -28,3 +28,14 @@
         =>
         (assert (infering-result (feature board-game-name) (value "Whitehall Mistery")))
 )
+
+
+(defrule result-board-lovecraft
+        (declare (salience ?*top-priority*))
+        (info (feature lovecraft) (value "T"))
+        =>
+        (assert (infering-result (feature board-game-name) (value "Eldritch Horror")))
+
+)
+
+
