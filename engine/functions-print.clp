@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;             FUNZIONI DI VISUALIZZAZIONE               ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (deffunction print-question (?question ?number)
         (printout t crlf)
         (if (and (not (eq ?question rejection))   (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
@@ -6,10 +9,98 @@
 
         ;;=========== SEZIONE UTENTE ===========;;
 
-                (case like-gothic then
-                        (printout t "ti piace il tema gothico? " crlf crlf))
-                (case like-lovecraft then
-                        (printout t "ti piacie lambientazione dei libri di lovecrat?" crlf crlf) )
+               (case user-age then
+                    (printout t "Quanti anni hai? " crlf crlf))
+                (case user-gift then
+                    (printout t "Il pc che stai per comprare e' un regalo? " crlf crlf))
+                (case user-experience then
+                    (printout t "Hai esperienza sui giochi  da tavolo ? " crlf crlf))
+                (case user-budget then
+                    (printout t "Quanto sei disposto a spendere per questo pc? " crlf crlf))
+                (case game-players then
+                    (printout t "Con quante persone giochi hai intenzione di giocare ? " crlf crlf))
+                (case game-family then 
+                    (printout t "Con quante persone giochi hai intenzione di giocare? " crlf crlf))
+                (case game-filer then 
+                    (printout t "Quanto tempo vorresti dedicare a giocarci? " crlf crlf))
+                (case game-cardgame then 
+                    (printout t "Ti piacciono i giochi con carte ?" crlf crlf))
+                (case game-wargame then 
+                    (printout t "i piacciono i giochi che simulano la guerra ?" crlf crlf))
+                (case game-thematic then 
+                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ? ?" crlf crlf))
+                (case game-comp then 
+                    (printout t "Ti piace avere degli avversari da sfidare ? ?" crlf crlf))
+                (case game-coop then 
+                    (printout t " Nel gioco ti piace  cooperare con gli altri giocatori    ?" crlf crlf))
+                (case game-challenging then 
+                    (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?   ?" crlf crlf))
+                (case game-bidding then 
+                    (printout t "Ti piace  la meccanica ad asta?" crlf crlf))
+                (case game-Investigative then 
+                    (printout t "Ti piace il tema investigativo? " crlf crlf))
+                (case game-hold-story then 
+                    (printout t "Ti piace il tema relativo all'antichità ? " crlf crlf))
+                (case game-western then 
+                    (printout t "Sei interessato  al tema Western ? " crlf crlf))
+                (case game-horror then 
+                    (printout t "Sei interessato al tema Horror  ?" crlf crlf))
+                (case game-gothic then 
+                    (printout t "Sei interessato  all'ambientazione gotica? " crlf crlf))
+                (case game-lovecraft then 
+                    (printout t "Cosa ne pensi delle opere di Lovecraft ? " crlf crlf))
+                (case game-war then 
+                    (printout t "Ti appassiona il tema della guerra ? " crlf crlf))
+                (case game-abstract then 
+                    (printout t "Ti piacciono le ambientazioni astratte? " crlf crlf))
+                (case game-fantasy then 
+                    (printout t "Ti piace il fantasy? " crlf crlf))
+                (case game-farms then 
+                    (printout t "Ti piace la vita di campagna?  " crlf crlf))
+                (case game-futuristics then 
+                    (printout t "Ti piace l'ambientazione futuristica ? " crlf crlf))
+                (case game-merchants then 
+                    (printout t "Ti potrebbe piacere un gioco con scambi commerciali ? " crlf crlf))
+                (case game-indians then 
+                    (printout t "Ti piace sull’ambientazione maya / indiani ?  " crlf crlf))
+                (case game-fireworks then 
+                    (printout t "TI piacerebbe un gioco a tema fuochi d'artificio ?" crlf crlf))
+                (case game-survival then 
+                    (printout t "Ti piace il tema della sopravvivenza ? " crlf crlf))
+                (case game-industry then 
+                    (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria ? " crlf crlf))
+                (case game-numbers then 
+                    (printout t "Ti potrebbero interessare i giochi con i numeri ? " crlf crlf))
+                (case game-castles
+                    (printout t "Sei interessato a ambientazione di castelli? " crlf crlf))
+                (case game-vampyric
+                    (printout t "Ti piace il tema dei vampiri ? " crlf crlf))
+                (case game-renaissance_court
+                    (printout t "Ti piace l’ambientazione come corti rinascimentali ? " crlf crlf))
+                (case game-pirates
+                    (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf)
+                (case game-witchcraft
+                    (printout t "Ti piace il tema sulla magia / stregoneria? " crlf crlf))
+                (case game-oriental
+                    (printout t "Ti piace la cultura orientale ? " crlf crlf))
+                (case game-glass
+                    (printout t "Ti piacerebbe avere un gioco con i mosaici ? " crlf crlf))
+                   (case game-chemistry
+                    (printout t "Ti piace il tema  alchimia / chimica ? " crlf crlf))
+                (case game-lord_of_the_rings
+                    (printout t "Ti piace il signore degli anelli ? " crlf crlf))
+                (case game-(tale)
+                    (printout t "Ti piace l’ambientazione fiabesca ? " crlf crlf))
+                (case game-crime
+                    (printout t "Ti piace l’ambientazione poliziesca ?" crlf crlf))
+                (case game-restaurants
+                    (printout t "Ti piacciono i giochi che hanno come tema  i ristoranti ?" crlf crlf))
+                (case game-mafia
+                    (printout t "Ti piacciono i giochi che hanno come tema la mafia ? " crlf crlf))
+
+                (case game-politics
+                    (printout t "Ti piacciono i giochi che hanno come tema la politica ? " crlf crlf))
+
                  (case retraction then           
                         (printout t "  Vuoi rivedere le risposte che hai dato?" crlf crlf))
 
@@ -60,13 +151,24 @@
 
                 ;;=========== SEZIONE UTENTE ===========;;
 
-                        (case like-gothic then             
-                                (if (eq ?answer s)
-                                 then (print-yes-no ?answer) else
-                                (if (eq ?answer n)
-                                 then (print-yes-no ?answer) else
-                                  (print-why-help ?answer)))
-                        )
+                        (case user-age then             
+                                (if (eq ?answer 1)
+                                 then (printout t " (1) Meno di 10 anni. " crlf) else
+                                (if (eq ?answer 2)
+                                 then (printout t " (2) Tra i 10 e i 20 anni. " crlf) else
+                                (if (eq ?answer 3)
+                                 then (printout t " (3) Tra i 20 e i 30 anni. " crlf) else
+                                (if (eq ?answer 4)
+                                 then (printout t " (4) Tra i 30 e i 40 anni. " crlf) else
+                                (if (eq ?answer 5)
+                                 then (printout t " (5) Tra i 40 e i 50 anni. " crlf) else
+                                (if (eq ?answer 6)
+                                 then (printout t " (6) Tra i 50 e i 60 anni. " crlf) else
+                                (if (eq ?answer 7)
+                                 then (printout t " (7) Tra i 60 e i 70 anni. " crlf) else
+                                (if (eq ?answer 8)
+                                 then (printout t " (8) Piu' di 70 anni. " crlf) else
+                                (print-why-help ?answer) )))))))))
                          (case rejection then
                                 (if (eq ?answer s)
                                         then (printout t " (s) Si, va bene questa qui. " crlf) else
@@ -95,8 +197,11 @@
         (if (and (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
                 (printout t crlf "  Ti faccio questa domanda perche' sto cercando di capire "))
         (switch ?question
-                        (case like-gothic  then             
-                        (printout t "per capire cosa ti interessa  "))
+
+            ;;=========== SEZIONE UTENTE ===========;;
+
+                (case user-age then             
+                        (printout t "la tua eta', in modo da comprendere meglio le tue esigenze e le successive domande da porti. "))
         (default
                 (printout t "CLIPS-Exception!!! - Why Question"))
         )
@@ -106,19 +211,19 @@
         (if (and  (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
                 (printout t crlf "  Questa domanda ti sta chiedendo "))
         (switch ?question
-                (case like-gothic  then             
-                        (printout t "https://it.wikipedia.org/wiki/Romanzo_gotico"))
+                (case user-age then             
+                    (printout t "la fascia d'eta' in cui ti trovi. ")) 
 
-                  (default  
-                        (printout t "CLIPS-Exception!!! - Help Question")
+                (default  
+                    (printout t "CLIPS-Exception!!! - Help Question")
                  )       
         )
         (printout t crlf crlf "  Inserisci un valore valido tra quelli elencati. " crlf crlf "  ")   
 )                            
 
 
-
-
+;;deffunction print-detail-missing 
+;;print-hipotetical-board-game
 
 
 

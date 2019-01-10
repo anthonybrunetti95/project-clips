@@ -25,16 +25,11 @@
 )
 
 ;;====================================================;;
-(defrule ask-like-gotic           
+(defrule ask-user-age           
         (declare (salience ?*normal-priority*))
         (not (retraction))
+        ;;(info (feature user-gift) (value "no"))
         =>
-        (assert (asking-question (question like-gothic) (answers s n)))
+        (assert (asking-question (question user-age) (answers 1 2 3 4 5 6 7 8)))
 )
 
-(defrule ask-like-lovecraft
-        (declare (salience ?*normal-priority*))
-        (not (retraction))
-        =>
-        (assert (asking-question (question like-lovecraft) (answers s n) ))
-)

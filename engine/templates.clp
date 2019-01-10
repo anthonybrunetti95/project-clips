@@ -31,6 +31,11 @@
         (slot question          (type SYMBOL))
 )
 
+(deftemplate user-budget
+        (slot min-budget        (type INTEGER))
+        (slot max-budget        (type INTEGER))
+)
+
 
 
 ;;====================================================;;
@@ -79,11 +84,6 @@
 (deftemplate reasked-question
         (slot question          (type INTEGER))
 )
-
-
-
-
-
 
 ;;====================================================;;
 ; TEMPLATE PER I DATI DI UN GIOCO DA TAVOLO
