@@ -14,7 +14,7 @@
                 (case user-gift then
                     (printout t "Il pc che stai per comprare e' un regalo? " crlf crlf))
                 (case user-experience then
-                    (printout t "Hai esperienza sui giochi  da tavolo ? " crlf crlf))
+                    (printout t "A quanti giochi da tavolo hai giocato?  " crlf crlf))
                 (case user-budget then
                     (printout t "Quanto sei disposto a spendere per questo pc? " crlf crlf))
                 (case game-players then
@@ -37,7 +37,7 @@
                     (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?   ?" crlf crlf))
                 (case game-bidding then 
                     (printout t "Ti piace  la meccanica ad asta?" crlf crlf))
-                (case game-Investigative then 
+                (case game-investigative then 
                     (printout t "Ti piace il tema investigativo? " crlf crlf))
                 (case game-hold-story then 
                     (printout t "Ti piace il tema relativo all'antichità ? " crlf crlf))
@@ -71,37 +71,37 @@
                     (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria ? " crlf crlf))
                 (case game-numbers then 
                     (printout t "Ti potrebbero interessare i giochi con i numeri ? " crlf crlf))
-                (case game-castles
+                (case game-castles then
                     (printout t "Sei interessato a ambientazione di castelli? " crlf crlf))
-                (case game-vampyric
+                (case game-vampyric then
                     (printout t "Ti piace il tema dei vampiri ? " crlf crlf))
-                (case game-renaissance_court
+                (case game-renaissance_court then
                     (printout t "Ti piace l’ambientazione come corti rinascimentali ? " crlf crlf))
-                (case game-pirates
-                    (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf)
-                (case game-witchcraft
+                (case game-pirates then
+                    (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf))
+                (case game-witchcraft then
                     (printout t "Ti piace il tema sulla magia / stregoneria? " crlf crlf))
-                (case game-oriental
+                (case game-oriental then
                     (printout t "Ti piace la cultura orientale ? " crlf crlf))
-                (case game-glass
+                (case game-glass then
                     (printout t "Ti piacerebbe avere un gioco con i mosaici ? " crlf crlf))
-                   (case game-chemistry
+                   (case game-chemistry then
                     (printout t "Ti piace il tema  alchimia / chimica ? " crlf crlf))
-                (case game-lord_of_the_rings
+                (case game-lord_of_the_rings then
                     (printout t "Ti piace il signore degli anelli ? " crlf crlf))
-                (case game-(tale)
+                (case game-tale then
                     (printout t "Ti piace l’ambientazione fiabesca ? " crlf crlf))
-                (case game-crime
+                (case game-crime then
                     (printout t "Ti piace l’ambientazione poliziesca ?" crlf crlf))
-                (case game-restaurants
+                (case game-restaurants then
                     (printout t "Ti piacciono i giochi che hanno come tema  i ristoranti ?" crlf crlf))
-                (case game-mafia
+                (case game-mafia then
                     (printout t "Ti piacciono i giochi che hanno come tema la mafia ? " crlf crlf))
 
-                (case game-politics
+                (case game-politics then
                     (printout t "Ti piacciono i giochi che hanno come tema la politica ? " crlf crlf))
 
-                 (case retraction then           
+                (case retraction then           
                         (printout t "  Vuoi rivedere le risposte che hai dato?" crlf crlf))
 
                 (default
@@ -169,7 +169,36 @@
                                 (if (eq ?answer 8)
                                  then (printout t " (8) Piu' di 70 anni. " crlf) else
                                 (print-why-help ?answer) )))))))))
-                         (case rejection then
+                        (case user-gift then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case user-experience then
+                                (if (eq ?answer 1)
+                                    then (printout t " (1) Non ho mai giocato" crlf) else
+                                (if (eq ?answer 2)
+                                    then (printout t " (2) Tra 1 a 15 giochi" crlf) else
+                                (if (eq ?answer 3)
+                                    then (printout t " (3) Da 16 a 80 giochi" crlf) else
+                                (if (eq ?answer 4)
+                                    then (printout t " (4) Da 81 giochi in sù " crlf) else
+                                (print-why-help ?answer))))))
+                          (case user-budget then          
+                                (if (eq ?answer 1)
+                                 then (printout t " (1) fino 18 euro" crlf) else
+                                (if (eq ?answer 2)
+                                 then (printout t " (2) Tra i 19 e i 33 euro. " crlf) else
+                                (if (eq ?answer 3)
+                                 then (printout t " (3) Tra i 34 e i 44 euro. " crlf) else
+                                (if (eq ?answer 4)
+                                 then (printout t " (4) Tra i 45 e i 65 euro. " crlf) else
+                                (if (eq ?answer 5)
+                                 then (printout t " (5) Tra i 66 e i 110 euro. " crlf) else
+                                (if (eq ?answer 6)
+                                 then (printout t " (6) Piu' di 110 euro. " crlf) else
+                                (print-why-help ?answer) )))))))
+
+                        (case rejection then
                                 (if (eq ?answer s)
                                         then (printout t " (s) Si, va bene questa qui. " crlf) else
                                 (if (eq ?answer n)

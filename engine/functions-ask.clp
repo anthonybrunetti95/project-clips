@@ -32,31 +32,52 @@
         (switch ?question 
 
        ;;=========== SEZIONE UTENTE ===========;;
-              (case user-age then             
-                        (if (eq ?answer 1) 
-                         then (assert (info (feature user-age) (value "0<10") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 0<10")) else          
-                        (if (eq ?answer 2) 
-                         then (assert (info (feature user-age) (value "10<20") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 10<20")) else         
-                        (if (eq ?answer 3) 
-                         then (assert (info (feature user-age) (value "20<30") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 20<30")) else         
-                        (if (eq ?answer 4) 
-                         then (assert (info (feature user-age) (value "30<40") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 30<40")) else         
-                        (if (eq ?answer 5) 
-                         then (assert (info (feature user-age) (value "40<50") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 40<50")) else 
-                        (if (eq ?answer 6) 
-                         then (assert (info (feature user-age) (value "50<60") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 50<60")) else 
-                        (if (eq ?answer 7) 
-                         then (assert (info (feature user-age) (value "60<70") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 60<70")) else 
-                        (if (eq ?answer 8) 
-                         then (assert (info (feature user-age) (value "70<") (question user-age))) 
-                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 70<")) )))))))))
+            (case user-age then             
+                (if (eq ?answer 1) 
+                    then (assert (info (feature user-age) (value "0<10") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 0<10")) else          
+                (if (eq ?answer 2) 
+                    then (assert (info (feature user-age) (value "10<20") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 10<20")) else         
+                (if (eq ?answer 3) 
+                    then (assert (info (feature user-age) (value "20<30") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 20<30")) else         
+                (if (eq ?answer 4) 
+                    then (assert (info (feature user-age) (value "30<40") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 30<40")) else         
+                (if (eq ?answer 5) 
+                    then (assert (info (feature user-age) (value "40<50") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 40<50")) else 
+                (if (eq ?answer 6) 
+                    then (assert (info (feature user-age) (value "50<60") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 50<60")) else 
+                (if (eq ?answer 7) 
+                    then (assert (info (feature user-age) (value "60<70") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 60<70")) else 
+                (if (eq ?answer 8) 
+                    then (assert (info (feature user-age) (value "70<") (question user-age))) 
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 70<")) )))))))))
+            (case user-gift then
+                (if (eq ?answer s) 
+                    then (assert (info (feature user-gift) (value "si") (question user-gift))) 
+                        (printout t crlf " Bene. " crlf crlf " D'ora in avanti il soggetto delle domande sara' la persona cui hai intenzione di regalare questo pc. " crlf crlf)
+                            (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GIFT MODE ON")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature user-gift) (value "no") (question user-gift)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GIFT MODE OFF")) )))
+            (case user-experience then 
+                (if (eq ?answer 1)
+                    then (assert (info (feature user-experience) (value "zero") (question user-experience)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-EXPERIENCE ZERO")) else
+                (if (eq ?answer 2)
+                    then (assert (info (feature user-experience) (value "litle") (question user-experience)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-EXPERIENCE LITLE")) else
+                (if (eq ?answer 3)
+                    then (assert (info (feature user-experience) (value "normal") (question user-experience)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-EXPERIENCE NORMAL")) else
+                (if (eq ?answer 4)
+                    then (assert (info (feature user-experience) (value "high") (question user-experience)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-EXPERIENCE HIGH")) )))))                
 
                 
                 (case rejection then

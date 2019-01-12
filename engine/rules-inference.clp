@@ -9,7 +9,7 @@
         =>
         (retract ?f1)
         (assert (inferred (feature ?feature) (value ?value) (number ?last)))
-        (if (eq ?*clidebug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature)  (upcase ?value)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature)  (upcase ?value)))
 )
 
 (defrule not-infer-already-inferred-feature
@@ -59,3 +59,25 @@
 )
 
 
+(defrule inferred-weight-easy
+         (declare (salience ?*high-priority*))
+         (or (info (feature user-experience) (value "zero"))
+                (info(feature user-experience) (value "litle")))
+         =>
+         (assert (infering (feature weight) (value "facile"))))
+
+
+(defrule inferred-weight-medium
+         (declare (salience ?*high-priority*))
+         (info (feature user-experience) (value "normal"))
+                
+         =>
+         (assert (infering (feature weight) (value "medio"))))
+
+
+(defrule inferred-weight-high
+        (declare (salience ?*high-priority*))
+        (info (feature user-experience) (value "high"))
+          
+        =>
+        (assert (infering (feature weight) (value "difficile"))))
