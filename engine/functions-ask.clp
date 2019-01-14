@@ -79,7 +79,96 @@
                     then (assert (info (feature user-experience) (value "high") (question user-experience)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-EXPERIENCE HIGH")) )))))                
 
-                
+               
+            (case user-budget then
+                (if (eq ?answer 1) 
+                    then (assert (info (feature user-budget) (value "<18") (question user-budget))) 
+                        (assert (user-budget (min-budget 5) (max-budget 18)))
+                    (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET <18")) else       
+                (if (eq ?answer 2) 
+                    then (assert (info (feature user-budget) (value "19<33") (question user-budget))) 
+                              (assert (user-budget (min-budget 19) (max-budget 33)))
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET 19<33")) else
+                        (if (eq ?answer 3) 
+                         then (assert (info (feature user-budget) (value "34<44") (question user-budget))) 
+                              (assert (user-budget (min-budget 34) (max-budget 44)))
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET 34<44")) else    
+                        (if (eq ?answer 4) 
+                         then (assert (info (feature user-budget) (value "45<65") (question user-budget))) 
+                              (assert (user-budget (min-budget 45) (max-budget 65)))
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET 45<65")) else   
+                        (if (eq ?answer 5) 
+                         then (assert (info (feature user-budget) (value "66<110") (question user-budget))) 
+                              (assert (user-budget (min-budget 66) (max-budget 110)))
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET 66<110")) else  
+                        (if (eq ?answer 6) 
+                         then (assert (info (feature user-budget) (value "110<") (question user-budget))) 
+                              (assert (user-budget (min-budget 110) (max-budget 1000)))
+                              (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-BUDGET 110<")) )))))))
+
+            (case game-players then
+                (if (eq ?answer 1) 
+                    then (assert (info (feature game-players) (value "1") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS ONE")) else 
+                (if (eq ?answer 2) 
+                    then (assert (info (feature game-players) (value "2") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS TWO")) else 
+                (if (eq ?answer 3) 
+                    then (assert (info (feature game-players) (value "3") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS THREE")) else 
+                (if (eq ?answer 4) 
+                    then (assert (info (feature game-players) (value "4") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS FOUR")) else 
+                (if (eq ?answer 5) 
+                    then (assert (info (feature game-players) (value "5") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS FIVE")) else 
+                                     
+                (if (eq ?answer 6) 
+                    then (assert (info (feature game-players) (value "6") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS SIX")) else 
+                 
+                (if (eq ?answer 7) 
+                    then (assert (info (feature game-players) (value "6+") (question game-players))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-PLAYERS SIX +"))))))))))
+
+
+            (case game-time then
+                 (if (eq ?answer 1) 
+                    then (assert (info (feature game-time) (value "<60") (question game-time))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME <60")) else 
+                (if (eq ?answer 2) 
+                    then (assert (info (feature game-time) (value ">60") (question game-time))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME >60")))))
+
+            (case game-family then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-family) (value "yes") (question game-family))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FAMILY YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-family) (value "no") (question game-family)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FAMILY NO")))))
+            
+            (case game-cardgame then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-cardgame) (value "yes") (question game-cardgame))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CARDGAME YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-cardgame) (value "no") (question game-cardgame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CARDGAME NO")))))
+
+            (case game-wargame  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-wargame) (value "yes") (question game-wargame))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WARGAME YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-wargame) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WARGAME NO")))))
+                                 
+              
+
+
+
+
                 (case rejection then
                         (if (eq ?answer s)
                                 then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf)
@@ -96,7 +185,7 @@
                         (assert (reasked-question (question ?answer)))
                         (assert (pull-question ?answer)))
 
-                 (default
+                (default
                         (if (eq ?*debug-mode* TRUE) then (printout t "CLIPS-Exception!!! - Ask")))
 
 

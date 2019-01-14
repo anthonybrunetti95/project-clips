@@ -20,8 +20,8 @@
                 (case game-players then
                     (printout t "Con quante persone giochi hai intenzione di giocare ? " crlf crlf))
                 (case game-family then 
-                    (printout t "Con quante persone giochi hai intenzione di giocare? " crlf crlf))
-                (case game-filer then 
+                    (printout t "Giocherai con la tua famiglia? " crlf crlf))
+                (case game-time then 
                     (printout t "Quanto tempo vorresti dedicare a giocarci? " crlf crlf))
                 (case game-cardgame then 
                     (printout t "Ti piacciono i giochi con carte ?" crlf crlf))
@@ -183,7 +183,7 @@
                                 (if (eq ?answer 4)
                                     then (printout t " (4) Da 81 giochi in sù " crlf) else
                                 (print-why-help ?answer))))))
-                          (case user-budget then          
+                        (case user-budget then          
                                 (if (eq ?answer 1)
                                  then (printout t " (1) fino 18 euro" crlf) else
                                 (if (eq ?answer 2)
@@ -197,6 +197,42 @@
                                 (if (eq ?answer 6)
                                  then (printout t " (6) Piu' di 110 euro. " crlf) else
                                 (print-why-help ?answer) )))))))
+
+                        (case game-players then
+                            (if(eq ?answer 1)
+                                then (printout t " (1) Solo io" crlf)  else
+                            (if(eq ?answer 2)
+                                then (printout t " (2) In due persone " crlf) else
+                            (if(eq ?answer 3)
+                                then (printout t " (3) In tre persone " crlf) else
+                            (if(eq ?answer 4)
+                                then (printout t " (4) In quatro persone " crlf) else
+                            (if(eq ?answer 5)
+                                then (printout t " (5) In cinque persone " crlf) else
+                            (if(eq ?answer 6)
+                                then (printout t " (6) In sei persone " crlf) else
+                            (if(eq ?answer 7)
+                                then (printout t " (7) Più di 6 persone " crlf) else
+                                  (print-why-help ?answer))))))))) 
+
+                        (case game-time then
+                            (if (eq ?answer 1)
+                                then (printout t " (1) Meno di un ora." crlf) else
+                            (if (eq ?answer 2)
+                                then (printout t " (2) Più di un ora. "crlf ) else
+                                (print-why-help ?answer))))
+
+                        (case game-family then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-cardgame then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-wargame then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
 
                         (case rejection then
                                 (if (eq ?answer s)
@@ -230,7 +266,30 @@
             ;;=========== SEZIONE UTENTE ===========;;
 
                 (case user-age then             
-                        (printout t "la tua eta', in modo da comprendere meglio le tue esigenze e le successive domande da porti. "))
+                        (printout t "la tua eta', in modo da comprendere meglio le tue esigenze e le successive domande da porti. " crlf))
+                (case user-gift then    
+                    (printout t "se comprerai il gioco per qualcun'altro e di conseguenza capire i gusti di chi avra il gioco. " crlf)) 
+
+                (case user-experience then
+                    (printout t "per capire il tuo livello di esperienza sui giochi da tavolo. " crlf))
+                
+                (case user-budget then          
+                    (printout t "il tuo budget a disposizione per questo acquisto. " crlf)) 
+                
+                (case game-players then
+                    (printout t "il gioco adatto al numero di giocatori.  "crlf))
+
+                (case game-time then
+                    (printout t "il tempo che voresti dedicare per giocare. " crlf)) 
+
+                (case game-family then
+                     (printout t "se devi giocare con la tua famiglia. " crlf))
+                
+                (case game-cardgame then
+                     (printout t "se vuoi un gioco con le carte " crlf))
+
+                (case game-wargame then
+                     (printout t "se vuoi un gico che simula la guerra " crlf))                              
         (default
                 (printout t "CLIPS-Exception!!! - Why Question"))
         )
@@ -241,11 +300,26 @@
                 (printout t crlf "  Questa domanda ti sta chiedendo "))
         (switch ?question
                 (case user-age then             
-                    (printout t "la fascia d'eta' in cui ti trovi. ")) 
+                    (printout t "la fascia d'eta' in cui ti trovi. " crlf)) 
+                (case user-gift then
+                    (printout t  "se stai comprando un gico che regalerai ad un'altra persona." crlf))
 
+                (case user-experience then
+                        (printout t "il numero di giochi che hai giocato "))
+                (case user-budget then          
+                        (printout t "la quantita' di denaro che hai a disposizione per questo acquisto. " crlf))
+                (case game-players then
+                        (printout t "il numero di giocatori "crlf))
+                (case game-time then
+                        (printout t "il tempo a disposizione per giocare." crlf))             
+                (case game-family then
+                        (printout t "gioco da tavolo per famiglia " crlf))
+                (case game-cardgame then
+                     (printout t "gioco con le carte" crlf))
+                (case game-wargame then
+                     (printout t "giochi simulativi di guerra" crlf))
                 (default  
-                    (printout t "CLIPS-Exception!!! - Help Question")
-                 )       
+                    (printout t "CLIPS-Exception!!! - Help Question"))       
         )
         (printout t crlf crlf "  Inserisci un valore valido tra quelli elencati. " crlf crlf "  ")   
 )                            
@@ -256,3 +330,36 @@
 
 
 
+(deffunction print-hypotetical-final-game-board (?game-board-name ?price ?min-budget ?max-budget $?what)
+    (printout t crlf crlf "  ")
+    (printout t "Non ho trovato nessun gico che sia perfetto per te, ma ho trovato un altro gico: " ?game-board-name crlf "  ")
+    (printout t "che soddisfa le tue richieste ")
+
+    (bind ?out-of-budget false)
+
+    (if (< ?price ?min-budget) then
+        (bind ?euro (- ?min-budget ?price))
+        (bind ?out-of-budget true)
+        (printout t "e che costa " (format nil "%5.2f" ?euro) " euro in meno rispetto al budget minimo")
+    else (if (> ?price ?max-budget) then
+        (bind ?euro (- ?price ?max-budget))
+        (bind ?out-of-budget true)
+        (printout t "e che costa " (format nil "%5.2f" ?euro) " euro in piu' rispetto al budget massimo")))
+
+    (if (> (length$ ?what) 1) then
+        (if (eq ?out-of-budget true) then
+            (printout t ", ma ")
+        else
+            (printout t "ma "))
+    )
+
+    (foreach ?detail ?what
+        (if (neq ?detail budget) then
+            (if (< ?detail-index (length$ ?what)) then
+                (printout t (print-detail-missing ?detail) " e ")
+            else
+                (printout t (print-detail-missing ?detail))))
+    )
+
+    (printout t "." crlf)
+)

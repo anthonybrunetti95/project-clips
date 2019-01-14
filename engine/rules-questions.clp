@@ -59,4 +59,63 @@
         (assert (asking-question (question user-gift) (answers s n)))
 )
 
+(defrule ask-game-players
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        =>
+        (assert (asking-question (question game-players) (answers 1 2 3 4 5 6 7))))
+
+
+(defrule ask-game-time
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        =>
+        (assert (asking-question (question game-time) (answers 1 2 ))))
+
+
+(defrule ask-game-family
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (not (info (feature game-wargame) (value "yes"))) 
+        (not (info (feature game-cardgame) (value "yes")))
+                
+
+        =>
+        (assert (asking-question (question game-family) (answers s n))))
+
+(defrule ask-game-cardgame
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (not (info (feature game-family) (value "yes")))
+        (not(info (feature game-wargame) (value "yes")))
+               
+         
+        =>
+        (assert (asking-question (question game-cardgame) (answers s n))))
+
+
+(defrule ask-game-wargame
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))  
+        (not(info (feature game-family) (value "yes"))) 
+        (not(info (feature game-cardgame) (value "yes")))
+       
+        =>
+        (assert (asking-question (question game-wargame) (answers s n))))
+
+
+
+
+
+
+
+
+
+
+
 

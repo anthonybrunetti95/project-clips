@@ -22,20 +22,9 @@
 
 ;;====================================================;;
 
-(defrule result-gotic
-        (declare (salience ?*top-priority*))
-        (info (feature gothic) (value "T"))
+(defrule infering-wargame
+        (declare (salience ?*highest-priority*))
+        (infering (feature wargame) (value "T"))
         =>
-        (assert (infering-result (feature board-game-name) (value "Whitehall Mistery")))
-)
-
-
-(defrule result-board-lovecraft
-        (declare (salience ?*top-priority*))
-        (info (feature lovecraft) (value "T"))
-        =>
-        (assert (infering-result (feature board-game-name) (value "Eldritch Horror")))
-
-)
-
-
+        (assert (infering-result (feature wargame) (value "T")))
+        (printout t "diocane" crlf))

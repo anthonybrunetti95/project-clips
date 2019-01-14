@@ -5,11 +5,23 @@
 
 (defrule find-final-board-game
         (declare (salience ?*sub-normal-priority*))
-        (result (feature board-game-name) (value ?game-name))
-        (board-game (label ?label) (board-game-name ?game-name))
+        ;;(result (feature wargame) (value ?wargame))
+        ;;(infering (feature filler) (value ?filler))
+        ;;(infering (feature cardgame) (value ?cardgame))
+        ;;(infering (feature party) (value ?party))
+        ;;(infering (feature family) (value ?family))
+        
+        ;;?fill<-(sym-cat ?filler)
+        ;;?c <- (sym-cat ?cardgame)
+        ;;?p <- (sym-cat ?party)
+        ;;?w <- (sym-cat ?wargame)
+        
+        ;;?f <- ( sym-cat ?family)
+        (general-kind (label ?label) (german F) (american F)  (filler F) (cardgame  F ) (party F) (wargame T) (family   F))
+        (board-game (label ?label) (board-game-name ?board-game-name))
         =>
         (assert (final-board-game (label ?label) )
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label  " " ?game-name crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label " " ?board-game-name   crlf))
         ;;(assert (ask-rejection))
         )
 )
