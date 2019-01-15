@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;                  FUNZIONI PER LE DOMANDE              ;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (deffunction ask-question (?question ?number $?allowed-values)
-        (if (and (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
+        (if (and (not (eq ?question rejection))  (not (eq ?question want-to-see-hypotetical-final-board-game))  (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
          then (printout t crlf "=========================================================="))
         (print-question ?question ?number)
         (if (or  (eq ?question rejection) (eq ?question retraction)   (eq ?question retraction-number) )
@@ -22,7 +22,7 @@
                 (if (lexemep ?answer)
                  then (bind ?answer (lowcase ?answer)))
         )
-        (if (and  (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
+        (if (and  (not (eq ?question rejection))  (not (eq ?question want-to-see-hypotetical-final-board-game)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
                 (assert (asked-question (question ?question) (number ?number) (values $?allowed-values) (answer ?answer))))
         ?answer 
 )
@@ -166,8 +166,7 @@
                                  
               
 
-
-
+          
 
                 (case rejection then
                         (if (eq ?answer s)
@@ -175,6 +174,13 @@
                                         (halt) else
                         (if (eq ?answer n)
                                 then (assert (rejection)))))
+
+                (case want-to-see-hypotetical-final-board-game then
+                        (if (eq ?answer s)
+                                then (assert (want-to-see yes)) else
+                        (if (eq ?answer n)
+                                then (assert (want-to-see no)))))
+                
                 (case retraction then 
                         (if (eq ?answer s) 
                                 then (assert (print-qna 1)) else

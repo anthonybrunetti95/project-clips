@@ -24,7 +24,43 @@
 
 (defrule infering-wargame
         (declare (salience ?*highest-priority*))
-        (infering (feature wargame) (value "T"))
+        (inferred (feature wargame) (value ?wargame))
+
         =>
-        (assert (infering-result (feature wargame) (value "T")))
-        (printout t "diocane" crlf))
+        (assert (infering-result (feature wargame) (value ?wargame)))
+)
+
+
+(defrule infering-filler
+        (declare (salience ?*highest-priority*))
+        (inferred (feature filler) (value ?filler))
+
+        =>
+        (assert (infering-result (feature filler) (value ?filler)))
+)
+
+
+(defrule infering-party 
+        (declare (salience ?*highest-priority*))
+        (inferred (feature pary) (value  ?party))
+
+        =>
+        (assert (infering-result (feature party) (value ?party)))
+)
+
+
+(defrule infering-family
+        (declare (salience ?*highest-priority*))
+        (inferred (feature family) (value  ?family))
+
+        =>
+        (assert (infering-result (feature family) (value ?family) ))
+)
+
+(defrule infering-cardgame
+        (declare (salience ?*highest-priority*))
+        (inferred (feature cardgame) (value  ?cardgame))
+
+        =>
+        (assert (infering-result (feature cardgame) (value ?cardgame) ))
+)

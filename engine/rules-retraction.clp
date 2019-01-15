@@ -20,7 +20,7 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
-    (refresh find-final-board-game)
+    (refresh find-hypotetical-final-board-game)
 
     (retract ?f1)
     (if (eq ?number 1)

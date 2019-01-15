@@ -42,12 +42,12 @@
 ; TEMPLATE PER I FATTI CHE IL SISTEMA INFERISCE
 (deftemplate infering
         (slot feature           (type SYMBOL))
-        (slot value             (type STRING))
+        (slot value             (type SYMBOL))
 )
 
 (deftemplate inferred
         (slot feature           (type SYMBOL))
-        (slot value             (type STRING))
+        (slot value             (type SYMBOL))
         (slot number            (type INTEGER))
 )
 
@@ -55,18 +55,18 @@
 ; TEMPLATE PER I FATTI DI TIPO RESULT CHE IL SISTEMA INFERISCE
 (deftemplate infering-result
         (slot feature           (type SYMBOL))
-        (slot value             (type STRING)) ;;mod da int
+        (slot value             (type SYMBOL)) ;;mod da int
 )
 
 (deftemplate result
         (slot feature           (type SYMBOL))
-        (slot value             (type STRING))
+        (slot value             (type SYMBOL))
         (slot number            (type INTEGER))
 )
 
 ;;====================================================;;
 ; TEMPLATE PER I FATTI CHE VENGONO UTILIZZATI PER INFERIRE IL board-game MIGLIORE PER L'UTENTE
-(deftemplate hypotetical-board-game
+(deftemplate hypotetical-final-board-game
         (slot label             (type SYMBOL))
         (multislot what         (type SYMBOL))
 )

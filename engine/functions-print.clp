@@ -3,7 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (deffunction print-question (?question ?number)
         (printout t crlf)
-        (if (and (not (eq ?question rejection))   (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
+        (if (and (not (eq ?question rejection)) (not (eq ?question want-to-see-hypotetical-final-board-game))  (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
                 (printout t "  " ?number ". "))
         (switch ?question
 
@@ -101,8 +101,15 @@
                 (case game-politics then
                     (printout t "Ti piacciono i giochi che hanno come tema la politica ? " crlf crlf))
 
+                (case rejection then
+                        (printout t "  Sei soddisfatto di questo gioco o vuoi che provi a cercarne un'altro?" crlf crlf))
+                (case want-to-see-hypotetical-final-board-game then
+                        (printout t "  Vorresti vedere i dettagli di questo gioco o vuoi che provi a cercarne un'altro?" crlf crlf))
+
                 (case retraction then           
                         (printout t "  Vuoi rivedere le risposte che hai dato?" crlf crlf))
+                 (case retraction-number then
+                        (printout t "  Inserisci il numero della domanda relativa alla risposta che vuoi cambiare: "))
 
                 (default
                         (printout t "CLIPS-Exception!!! - Print Question: " ?question crlf))
@@ -234,14 +241,21 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
+
                         (case rejection then
                                 (if (eq ?answer s)
                                         then (printout t " (s) Si, va bene questa qui. " crlf) else
                                 (if (eq ?answer n)
                                         then (printout t " (n) Non va bene, prova a cercarne un'altra. " crlf crlf "  ") else
                                 (printout t "  *CLIPS PROBLEM*" crlf) )))
-                        (case retraction-number then
-                                (printout t))
+
+
+                        (case want-to-see-hypotetical-final-pc then
+                            (if (eq ?answer s)
+                                    then (printout t " (s) Si, vediamo! " crlf) else
+                            (if (eq ?answer n)
+                                    then (printout t " (n) No, grazie, prova a cercarne un'altra. " crlf crlf "  ") else
+                            (printout t "  *CLIPS PROBLEM*" crlf) )))
 
                         (case retraction then
                                 (if (eq ?answer s)
@@ -249,6 +263,11 @@
                                 (if (eq ?answer n)
                                  then (printout t " (n) No, vanno bene. " crlf crlf "  ") else
                                 (printout t "  *CLIPS PROBLEM*" crlf) )))
+                        (case retraction-number then
+                                (printout t))
+
+                        (default
+                                (printout t "CLIPS-Exception!!! - Print Answers: " ?question crlf))
                                                 
                 )
         )        
@@ -259,7 +278,7 @@
 
 
 (deffunction print-why (?question)
-        (if (and (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
+        (if (and (not (eq ?question rejection)) (not (eq ?question want-to-see-hypotetical-final-board-game)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then
                 (printout t crlf "  Ti faccio questa domanda perche' sto cercando di capire "))
         (switch ?question
 
@@ -296,7 +315,7 @@
 )        
 
 (deffunction print-help (?question)
-        (if (and  (not (eq ?question rejection)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
+        (if (and  (not (eq ?question rejection)) (not (eq ?question want-to-see-hypotetical-final-board-game)) (not (eq ?question retraction))   (not (eq ?question retraction-number)) ) then 
                 (printout t crlf "  Questa domanda ti sta chiedendo "))
         (switch ?question
                 (case user-age then             
@@ -326,7 +345,6 @@
 
 
 ;;deffunction print-detail-missing 
-;;print-hipotetical-board-game
 
 
 
@@ -351,14 +369,6 @@
             (printout t ", ma ")
         else
             (printout t "ma "))
-    )
-
-    (foreach ?detail ?what
-        (if (neq ?detail budget) then
-            (if (< ?detail-index (length$ ?what)) then
-                (printout t (print-detail-missing ?detail) " e ")
-            else
-                (printout t (print-detail-missing ?detail))))
     )
 
     (printout t "." crlf)

@@ -26,9 +26,6 @@
 
 ;;====================================================;;
 
-
-
-
 (defrule ask-user-age           
         (declare (salience ?*normal-priority*))
         (not (retraction))
