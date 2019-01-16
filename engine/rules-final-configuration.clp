@@ -17,10 +17,7 @@
         (assert (hypotetical-final-board-game (label ?label) ))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label " " ?board-game-name    crlf))
         
-         
 )
-
-
 
 
 (defrule find-final-board-game

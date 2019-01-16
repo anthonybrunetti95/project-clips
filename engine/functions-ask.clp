@@ -164,10 +164,6 @@
                     then (assert (info (feature game-wargame) (value "no") (question game-wargame)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WARGAME NO")))))
                                  
-              
-
-          
-
                 (case rejection then
                         (if (eq ?answer s)
                                 then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf)
@@ -185,7 +181,7 @@
                         (if (eq ?answer s) 
                                 then (assert (print-qna 1)) else
                         (if (eq ?answer n) 
-                                then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf) 
+                                then  (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf) 
                                         (halt) )))
                 (case retraction-number then 
                         (assert (reasked-question (question ?answer)))
