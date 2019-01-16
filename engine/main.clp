@@ -29,5 +29,5 @@
       
         (printout t crlf crlf (load_description ?label))
         (printout t crlf  "arrivederci !!!" crlf)
-        (halt)
+        ;;(halt)
 )

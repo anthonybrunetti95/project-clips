@@ -12,11 +12,11 @@
                (case user-age then
                     (printout t "Quanti anni hai? " crlf crlf))
                 (case user-gift then
-                    (printout t "Il pc che stai per comprare e' un regalo? " crlf crlf))
+                    (printout t "Il gico  che stai per comprare e' un regalo? " crlf crlf))
                 (case user-experience then
                     (printout t "A quanti giochi da tavolo hai giocato?  " crlf crlf))
                 (case user-budget then
-                    (printout t "Quanto sei disposto a spendere per questo pc? " crlf crlf))
+                    (printout t "Quanto sei disposto a spendere per questo gioco? " crlf crlf))
                 (case game-players then
                     (printout t "Con quante persone giochi hai intenzione di giocare ? " crlf crlf))
                 (case game-family then 
@@ -250,7 +250,7 @@
                                 (printout t "  *CLIPS PROBLEM*" crlf) )))
 
 
-                        (case want-to-see-hypotetical-final-pc then
+                        (case want-to-see-hypotetical-final-board-game then
                             (if (eq ?answer s)
                                     then (printout t " (s) Si, vediamo! " crlf) else
                             (if (eq ?answer n)

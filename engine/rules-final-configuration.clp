@@ -16,10 +16,9 @@
         =>
         (assert (hypotetical-final-board-game (label ?label) ))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label " " ?board-game-name    crlf))
-        (assert (ask-rejection))
+        
          
 )
-
 
 
 
@@ -29,7 +28,7 @@
         ?hypotetical-final-board-game <- (hypotetical-final-board-game (label ?label) (what $?what))
         (test (= (length$ $?what) 1))
         (board-game (label ?label))
-        ;;(hypotetical-final-board-game (label ?label) (what $?what))
+        (hypotetical-final-board-game (label ?label) (what $?what))
         ;;(user-budget (min-budget ?min-budget) (max-budget ?max-budget)) 
         ;;(test (>= ?price ?min-budget))
         ;;(test (<= ?price ?max-budget))
