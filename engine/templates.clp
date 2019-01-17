@@ -98,9 +98,10 @@
 (deftemplate main-features
         (slot label             (type SYMBOL))
         (slot length            (type INTEGER))
-        (slot weight            (type SYMBOL)  (allowed-values facile medio difficile))
-        (slot coop-comp         (type SYMBOL)   (allowed-values coop comp coop\comp null))
-        
+        (slot weight            (type SYMBOL) (allowed-values facile medio difficile))
+        (slot coop-comp         (type SYMBOL) (allowed-values coop comp coop\comp null))
+        (slot age             (type INTEGER))
+        (slot price           (type INTEGER))        
 ) 
 
 

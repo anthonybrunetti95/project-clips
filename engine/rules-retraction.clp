@@ -70,6 +70,15 @@
         (ask ?q ?n $?v)
 )
 
+(defrule retract-user-budget
+    (declare (salience ?*top-priority*))
+    (retract-info user-budget)
+    ?f1 <- (user-budget)
+    =>
+    (retract ?f1)
+)
+
+
 (defrule retract-info
         (declare (salience ?*highest-priority*))
         ?f1 <- (retract-info ?info)

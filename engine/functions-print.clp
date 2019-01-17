@@ -26,29 +26,29 @@
                 (case game-cardgame then 
                     (printout t "Ti piacciono i giochi con carte ?" crlf crlf))
                 (case game-wargame then 
-                    (printout t "i piacciono i giochi che simulano la guerra ?" crlf crlf))
+                    (printout t "Ti piacciono i giochi che simulano la guerra ?" crlf crlf))
                 (case game-thematic then 
-                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ? ?" crlf crlf))
+                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ?" crlf crlf))
                 (case game-comp then 
-                    (printout t "Ti piace avere degli avversari da sfidare ? ?" crlf crlf))
+                    (printout t "Ti piace avere degli avversari da sfidare ?" crlf crlf))
                 (case game-coop then 
                     (printout t " Nel gioco ti piace  cooperare con gli altri giocatori    ?" crlf crlf))
                 (case game-challenging then 
-                    (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?   ?" crlf crlf))
+                    (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?" crlf crlf))
                 (case game-bidding then 
-                    (printout t "Ti piace  la meccanica ad asta?" crlf crlf))
+                    (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
                 (case game-investigative then 
-                    (printout t "Ti piace il tema investigativo? " crlf crlf))
+                    (printout t "Ti piace il tema investigativo ?" crlf crlf))
                 (case game-hold-story then 
-                    (printout t "Ti piace il tema relativo all'antichità ? " crlf crlf))
+                    (printout t "Ti piace il tema relativo all'antichità ?" crlf crlf))
                 (case game-western then 
-                    (printout t "Sei interessato  al tema Western ? " crlf crlf))
+                    (printout t "Sei interessato  al tema Western ?" crlf crlf))
                 (case game-horror then 
                     (printout t "Sei interessato al tema Horror  ?" crlf crlf))
                 (case game-gothic then 
-                    (printout t "Sei interessato  all'ambientazione gotica? " crlf crlf))
+                    (printout t "Sei interessato  all'ambientazione gotica?" crlf crlf))
                 (case game-lovecraft then 
-                    (printout t "Cosa ne pensi delle opere di Lovecraft ? " crlf crlf))
+                    (printout t "Cosa ne pensi delle opere di Lovecraft ?" crlf crlf))
                 (case game-war then 
                     (printout t "Ti appassiona il tema della guerra ? " crlf crlf))
                 (case game-abstract then 
@@ -75,7 +75,7 @@
                     (printout t "Sei interessato a ambientazione di castelli? " crlf crlf))
                 (case game-vampyric then
                     (printout t "Ti piace il tema dei vampiri ? " crlf crlf))
-                (case game-renaissance_court then
+                (case game-renaissance-court then
                     (printout t "Ti piace l’ambientazione come corti rinascimentali ? " crlf crlf))
                 (case game-pirates then
                     (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf))
@@ -87,7 +87,7 @@
                     (printout t "Ti piacerebbe avere un gioco con i mosaici ? " crlf crlf))
                    (case game-chemistry then
                     (printout t "Ti piace il tema  alchimia / chimica ? " crlf crlf))
-                (case game-lord_of_the_rings then
+                (case game-lord-of-the-rings then
                     (printout t "Ti piace il signore degli anelli ? " crlf crlf))
                 (case game-tale then
                     (printout t "Ti piace l’ambientazione fiabesca ? " crlf crlf))
@@ -240,6 +240,156 @@
                         (case game-wargame then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
+                       
+                        (case game-thematic then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-comp then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+                        
+                         (case game-coop then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-challenging then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-bidding then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-investigative then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-hold-story  then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-western then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-horror then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-gothic then  ;;QUI          
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-lovecraft then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-war then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-abstract then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-fantasy then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-farms then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-futuristics then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-merchants then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-indians then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-fireworks then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-survival then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-industry then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-numbers then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-castles then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-vampyric then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-renaissance-court then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-pirates then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-witchcraft then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-oriental then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-glass then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-chemistry then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-lord-of-the-rings then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-tale then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-crime then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+
+                        (case game-restaurants then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-mafia then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-politics then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
 
 
                         (case rejection then
@@ -255,7 +405,7 @@
                                     then (printout t " (s) Si, vediamo! " crlf) else
                             (if (eq ?answer n)
                                     then (printout t " (n) No, grazie, prova a cercarne un'altra. " crlf crlf "  ") else
-                            (printout t "  *CLIPS PROBLEM*" crlf) )))
+                            (printout t "  *  CLIPS PROBLEM* "   ?answer crlf) )))
 
                         (case retraction then
                                 (if (eq ?answer s)
@@ -348,7 +498,7 @@
 
 
 
-(deffunction print-hypotetical-final-game-board (?game-board-name ?price ?min-budget ?max-budget $?what)
+(deffunction print-hypotetical-final-board-game (?game-board-name ?price ?min-budget ?max-budget $?what)
     (printout t crlf crlf "  ")
     (printout t "Non ho trovato nessun gico che sia perfetto per te, ma ho trovato un altro gico: " ?game-board-name crlf "  ")
     (printout t "che soddisfa le tue richieste ")

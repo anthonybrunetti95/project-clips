@@ -5,7 +5,7 @@
         (if (and (not (eq ?question rejection))  (not (eq ?question want-to-see-hypotetical-final-board-game))  (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
          then (printout t crlf "=========================================================="))
         (print-question ?question ?number)
-        (if (or  (eq ?question rejection) (eq ?question retraction)   (eq ?question retraction-number) )
+        (if (or  (eq ?question rejection) (eq ?question want-to-see-hypotetical-final-pc) (eq ?question retraction)   (eq ?question retraction-number) )
          then (print-answers ?question $?allowed-values)
          else (print-answers ?question $?allowed-values h w))
         (foreach ?answer $?allowed-values (print-answers ?answer))
@@ -163,7 +163,179 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-wargame) (value "no") (question game-wargame)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WARGAME NO")))))
+
+            (case game-thematic  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-thematic) (value "yes") (question game-wargame))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-thematic) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC NO")))))
+            
+            (case game-coop  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-coop) (value "yes") (question game-coop))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COOPERATIVE YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-coop) (value "no") (question game-coop)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COOPERATIVE NO")))))
                                  
+
+            (case game-comp  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-comp) (value "yes") (question game-comp))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COMPETITIVE YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-comp) (value "no") (question game-comp)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COMPETITIVE NO")))))
+            
+
+            (case game-challenging  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-challenging) (value "yes") (question game-challenging))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CHALENGING YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-challenging) (value "no") (question game-challenging)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CHALENGING NO")))))
+
+            (case game-bidding  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-bidding) (value "yes") (question game-bidding))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-bidding) (value "no") (question game-bidding)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING NO")))))
+
+            (case game-investigative  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-investigative) (value "yes") (question game-investigative))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-investigative) (value "no") (question game-investigative)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE NO")))))
+
+            (case game-hold-story  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-hold-story) (value "yes") (question game-hold-story))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HOLD-STORY YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-hold-story) (value "no") (question game-hold-story)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HOLD-STORY NO")))))
+
+            (case game-western  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-western) (value "yes") (question game-western))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-western) (value "no") (question game-western)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN NO")))))
+
+            (case game-horror  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-western) (value "yes") (question game-western))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-western) (value "no") (question game-western)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN NO")))))
+
+            (case game-gothic  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-gothic) (value "yes") (question game-gothic))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GOTHIC YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-gothic) (value "no") (question game-gothic)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GOTHIC NO")))))
+
+            (case game-  then ;;QUI
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+            (case game-  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-) (value "yes") (question game-))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-) (value "no") (question game-wargame)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+
+
+
                 (case rejection then
                         (if (eq ?answer s)
                                 then    (printout t crlf "Grazie per aver utilizzato il sistema!" crlf crlf)
@@ -176,7 +348,7 @@
                                 then (assert (want-to-see yes)) else
                         (if (eq ?answer n)
                                 then (assert (want-to-see no)))))
-                
+            
                 (case retraction then 
                         (if (eq ?answer s) 
                                 then (assert (print-qna 1)) else

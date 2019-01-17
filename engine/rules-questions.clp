@@ -109,6 +109,292 @@
 
 
 
+(defrule ask-game-thematic
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-thematic) (answers s n)))
+)
+
+
+(defrule ask-game-comp
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-comp) (answers s n)))
+)
+
+
+(defrule ask-game-coop
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-coop) (answers s n)))
+)
+
+
+(defrule ask-game-challenging
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question ask-game-challenging) (answers s n)))
+)
+
+
+(defrule ask-game-bidding
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-bidding) (answers s n)))
+)
+
+(defrule ask-game-investigative
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question ask-game-investigative) (answers s n)))
+)
+
+
+(defrule ask-game-hold-story
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-hold-story) (answers s n)))
+)
+
+(defrule ask-game-western
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-western) (answers s n)))
+)
+
+(defrule ask-game-horror
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-horror) (answers s n)))
+)
+
+(defrule ask-game-gothic
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-gothic) (answers s n)))
+)
+
+(defrule ask-game-lovecraft
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-lovecraft) (answers s n)))
+)
+
+(defrule ask-game-war
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-war) (answers s n)))
+)
+
+(defrule ask-game-abstract
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-abstract) (answers s n)))
+)
+
+(defrule ask-game-fantasy
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+(defrule ask-game-farms
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-farms) (answers s n)))
+)
+
+(defrule ask-game-futuristics
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-futuristics) (answers s n)))
+)
+
+(defrule ask-game-merchants
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-merchants) (answers s n)))
+)
+
+(defrule ask-game-indians
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-indians) (answers s n)))
+)
+
+(defrule ask-game-fireworks
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-fireworks) (answers s n)))
+)
+
+
+(defrule ask-game-survival
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-survival) (answers s n)))
+)
+
+
+(defrule ask-game-industry
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-industry) (answers s n)))
+)
+
+
+(defrule ask-game-numbers
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-numbers) (answers s n)))
+)
+
+(defrule ask-game-castles
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-castles) (answers s n)))
+)
+
+(defrule ask-game-vampyric
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-vampyric) (answers s n)))
+)
+
+(defrule ask-game-renaissance-court
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-renaissance-court) (answers s n)))
+)
+
+
+(defrule ask-game-pirates
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-pirates) (answers s n)))
+)
+
+(defrule ask-game-witchcraft
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-witchcraft) (answers s n)))
+)
+
+(defrule ask-game-oriental
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-oriental) (answers s n)))
+)
+
+(defrule ask-game-glass
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-glass) (answers s n)))
+)
+
+(defrule ask-game-chemistry
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-chemistry) (answers s n)))
+)
+
+
+(defrule ask-game-lord-of-the-rings
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
+)
+
+(defrule ask-game-tale
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-tale) (answers s n)))
+)
+
+(defrule ask-game-crime
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-crime) (answers s n)))
+)
+
+
+(defrule ask-game-restaurants
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-restaurants) (answers s n)))
+)
+
+
+(defrule ask-game-mafia
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-mafia) (answers s n)))
+)
+
+
+(defrule ask-game-politics
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        =>
+        (assert (asking-question (question game-politics) (answers s n)))
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
