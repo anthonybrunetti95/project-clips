@@ -107,7 +107,7 @@
 
 
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule ask-game-thematic
         (declare (salience ?*normal-priority*))
@@ -137,7 +137,7 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         =>
-        (assert (asking-question (question ask-game-challenging) (answers s n)))
+        (assert (asking-question (question game-challenging) (answers s n)))
 )
 
 
@@ -152,7 +152,7 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         =>
-        (assert (asking-question (question ask-game-investigative) (answers s n)))
+        (assert (asking-question (question game-investigative) (answers s n)))
 )
 
 
