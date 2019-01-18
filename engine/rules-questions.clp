@@ -101,6 +101,7 @@
         (info (feature user-gift) (value "no"))  
         (not(info (feature game-family) (value "yes"))) 
         (not(info (feature game-cardgame) (value "yes")))
+        (info (feature user-budget) (value "45<65" | "66<110"| "110<")
        
         =>
         (assert (asking-question (question game-wargame) (answers s n))))
@@ -112,6 +113,7 @@
 (defrule ask-game-thematic
         (declare (salience ?*normal-priority*))
         (not (retraction))
+        (not(info (feature game-wargame) (value "yes")))
         =>
         (assert (asking-question (question game-thematic) (answers s n)))
 )
@@ -154,6 +156,8 @@
         =>
         (assert (asking-question (question game-investigative) (answers s n)))
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (defrule ask-game-hold-story

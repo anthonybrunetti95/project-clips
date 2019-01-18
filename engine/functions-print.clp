@@ -277,7 +277,7 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
-                        (case game-gothic then  ;;QUI          
+                        (case game-gothic then  ;;QUIc          
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
