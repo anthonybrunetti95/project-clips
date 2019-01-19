@@ -15,6 +15,10 @@
                     (printout t "Il gico  che stai per comprare e' un regalo? " crlf crlf))
                 (case user-experience then
                     (printout t "A quanti giochi da tavolo hai giocato?  " crlf crlf))
+                (case group-age then 
+                    (printout t "Qual è l'età media del tuo gruppo di gioco? " crlf crlf))
+                (case group-experience then 
+                    (printout t "A quanti giochi da tavolo tu e il gruppo di gioco avette giocatto? " crlf crlf))      
                 (case user-budget then
                     (printout t "Quanto sei disposto a spendere per questo gioco? " crlf crlf))
                 (case game-players then
@@ -176,10 +180,31 @@
                                 (if (eq ?answer 8)
                                  then (printout t " (8) Piu' di 70 anni. " crlf) else
                                 (print-why-help ?answer) )))))))))
+                    
+                        (case group-age then             
+                                (if (eq ?answer 1)
+                                 then (printout t " (1) Meno di 10 anni. " crlf) else
+                                (if (eq ?answer 2)
+                                 then (printout t " (2) Tra i 10 e i 20 anni. " crlf) else
+                                (if (eq ?answer 3)
+                                 then (printout t " (3) Tra i 20 e i 30 anni. " crlf) else
+                                (if (eq ?answer 4)
+                                 then (printout t " (4) Tra i 30 e i 40 anni. " crlf) else
+                                (if (eq ?answer 5)
+                                 then (printout t " (5) Tra i 40 e i 50 anni. " crlf) else
+                                (if (eq ?answer 6)
+                                 then (printout t " (6) Tra i 50 e i 60 anni. " crlf) else
+                                (if (eq ?answer 7)
+                                 then (printout t " (7) Tra i 60 e i 70 anni. " crlf) else
+                                (if (eq ?answer 8)
+                                 then (printout t " (8) Piu' di 70 anni. " crlf) else
+                                (print-why-help ?answer) )))))))))
+
                         (case user-gift then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
+                       
                         (case user-experience then
                                 (if (eq ?answer 1)
                                     then (printout t " (1) Non ho mai giocato" crlf) else
@@ -190,6 +215,18 @@
                                 (if (eq ?answer 4)
                                     then (printout t " (4) Da 81 giochi in sù " crlf) else
                                 (print-why-help ?answer))))))
+
+                        (case group-experience then
+                                (if (eq ?answer 1)
+                                    then (printout t " (1) Non ho mai giocato" crlf) else
+                                (if (eq ?answer 2)
+                                    then (printout t " (2) Tra 1 a 15 giochi" crlf) else
+                                (if (eq ?answer 3)
+                                    then (printout t " (3) Da 16 a 80 giochi" crlf) else
+                                (if (eq ?answer 4)
+                                    then (printout t " (4) Da 81 giochi in sù " crlf) else
+                                (print-why-help ?answer))))))
+                      
                         (case user-budget then          
                                 (if (eq ?answer 1)
                                  then (printout t " (1) fino 18 euro" crlf) else
@@ -436,11 +473,17 @@
 
                 (case user-age then             
                         (printout t "la tua eta', in modo da comprendere meglio le tue esigenze e le successive domande da porti. " crlf))
+
+                (case group-age then             
+                        (printout t "l'eta' media del tuo gruppo con cui giochi, in modo da comprendere meglio l'esigenze del gruppo e le successive domande da porti. " crlf))
                 (case user-gift then    
                     (printout t "se comprerai il gioco per qualcun'altro e di conseguenza capire i gusti di chi avra il gioco. " crlf)) 
 
                 (case user-experience then
                     (printout t "per capire il tuo livello di esperienza sui giochi da tavolo. " crlf))
+                
+                (case group-experience then
+                    (printout t "per capire il livello di esperienza tuo e del tuo gruppo sui giochi da tavolo. " crlf))
                 
                 (case user-budget then          
                     (printout t "il tuo budget a disposizione per questo acquisto. " crlf)) 
@@ -470,11 +513,14 @@
         (switch ?question
                 (case user-age then             
                     (printout t "la fascia d'eta' in cui ti trovi. " crlf)) 
+                (case group-age then 
+                    (printout t "la fascia d'età media in cui si trova il tuo gruppo " crlf))
                 (case user-gift then
                     (printout t  "se stai comprando un gico che regalerai ad un'altra persona." crlf))
-
                 (case user-experience then
-                        (printout t "il numero di giochi che hai giocato "))
+                    (printout t "il numero di giochi che hai giocato "))
+                (case gruop-experience then
+                    (printout t "il numero di giochi che hai giocato tu e il gruppo "))
                 (case user-budget then          
                         (printout t "la quantita' di denaro che hai a disposizione per questo acquisto. " crlf))
                 (case game-players then

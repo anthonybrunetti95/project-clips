@@ -30,18 +30,42 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (info (feature game-players) (value "1"))
         =>
         (assert (asking-question (question user-age) (answers 1 2 3 4 5 6 7 8)))
 )
+
+(defrule ask-group-age 
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (not(info (feature game-players) (value "1")))
+        =>
+        (assert (asking-question (question group-age) (answers 1 2 3 4 5 6 7 8)))
+)
+
+
 
 (defrule ask-user-experience
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (info (feature game-players) (value "1"))
         =>
         (assert (asking-question (question user-experience) (answers 1 2 3 4)))
 
 )
+
+(defrule ask-group-experience
+        (declare (salience ?*normal-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (not(info (feature game-players) (value "1")))
+        =>
+        (assert (asking-question (question group-experience) (answers 1 2 3 4)))
+
+)
+
 (defrule ask-user-budget        
         (declare (salience ?*normal-priority*))
         (not (retraction))
@@ -101,10 +125,11 @@
         (info (feature user-gift) (value "no"))  
         (not(info (feature game-family) (value "yes"))) 
         (not(info (feature game-cardgame) (value "yes")))
-        (info (feature user-budget) (value "45<65" | "66<110"| "110<")
+        (info (feature user-budget) (value "45<65" | "66<110"| "110<"))
        
         =>
-        (assert (asking-question (question game-wargame) (answers s n))))
+        (assert (asking-question (question game-wargame) (answers s n)))
+)
 
 
 
