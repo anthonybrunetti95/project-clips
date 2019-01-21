@@ -59,6 +59,33 @@
 )
 
 
+;; infered age-group
+;; infered-group-experince
+(defrule inferred-group-weight-easy
+         (declare (salience ?*high-priority*))
+         (or (info (feature group-experience) (value "zero"))
+                (info(feature user-experience) (value "litle")))
+         =>
+         (assert (infering (feature weight) (value facile)))
+)
+
+(defrule inferred-group-weight-medium
+         (declare (salience ?*high-priority*))
+         (info (feature group-experience) (value "normal"))     
+         =>
+         (assert (infering (feature weight) (value medio)))
+)
+
+
+(defrule inferred-group-weight-high
+        (declare (salience ?*high-priority*))
+        (info (feature group-experience) (value "high"))
+        =>
+        (assert (infering (feature weight) (value difficile)))
+)
+
+
+
 (defrule inferred-weight-easy
          (declare (salience ?*high-priority*))
          (or (info (feature user-experience) (value "zero"))

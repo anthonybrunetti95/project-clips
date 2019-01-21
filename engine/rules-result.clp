@@ -64,3 +64,47 @@
         =>
         (assert (infering-result (feature cardgame) (value ?cardgame) ))
 )
+
+
+(defrule infering-1players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 1players) (value ?players))
+        =>
+        (assert (infering-result (feature 1players)) (value ?players))
+)
+
+(defrule infering-2players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 2players) (value ?players))
+        =>
+        (assert (infering-result (feature 2players)) (value ?players))
+)
+
+
+(defrule infering-3players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 3players) (value ?players))
+        =>
+        (assert (infering-result (feature 3players)) (value ?players))
+)
+
+(defrule infering-4players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 4players) (value ?players))
+        =>
+        (assert (infering-result (feature 4players)) (value ?players))
+)
+
+(defrule infering-5players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 5players) (value ?players))
+        =>
+        (assert (infering-result (feature 5players)) (value ?players))
+)
+
+(defrule infering-6players
+        (declare (salience ?*highest-priority*))
+        (inferred (feature 6players) (value ?players))
+        =>
+        (assert (infering-result (feature 6players)) (value ?players))
+)

@@ -3,21 +3,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(defrule find-hypotetical-final-board-game-main-feautures
+(defrule find-hypotetical-final-board-game-solo-game-best
         (declare (salience ?*sub-normal-priority*))
-        (or     ( or (result (feature wargame) (value ?wargame))
-                (result (feature cardgame) (value ?cardgame)))
-                (result (feature family) (value ?family)))
-        ;;(result (feature filler) (value ?filler))
-        ;;(result (feature party) (value ?party))
-        
-        (general-kind (label ?label) (wargame ?wargame) (cardgame ?cardgame) (family ?family) (filler ?filler) (party ?party))
+        (or (result (feature cardgame) (value ?cardgame))
+          (result (feature filler) (value ?filler)))        
+        (result (feature 1players) (value ?players))
+        (general-kind (label ?label)(cardgame ?cardgame)  (filler ?filler) )
         (board-game (label ?label) (board-game-name ?board-game-name))
+        (best-players (label ?label) (best-1players  ?best-players))
+        (test(eq ?best-players  ?players) ) 
         =>
-        (assert (hypotetical-final-board-game (label ?label) ))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label " " ?board-game-name    crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-solo-best)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-best:  " ?label " " ?board-game-name    crlf))
         
 )
+(defrule find-hypotetical-final-board-game-solo-game
+        (declare (salience ?*sub-normal-priority*))
+        ;;(or (result (feature cardgame) (value ?cardgame))
+           ;;(result (feature filler) (value ?filler)))        
+        ;(result (feature 1players) (value ?players))
+        ;;(general-kind (label ?label)(cardgame ?cardgame)  (filler ?filler) )
+        (players (label ?label) (1players T))
+        ;;(board-game (label ?label) (board-game-name ?board-game-name))
+       
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-best)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo:  " ?label " "     crlf))
+        
+)
+
 
 
 (defrule find-final-board-game

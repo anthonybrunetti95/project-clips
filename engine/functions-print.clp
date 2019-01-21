@@ -185,19 +185,19 @@
                                 (if (eq ?answer 1)
                                  then (printout t " (1) Meno di 10 anni. " crlf) else
                                 (if (eq ?answer 2)
-                                 then (printout t " (2) Tra i 10 e i 20 anni. " crlf) else
+                                 then (printout t " (2) Tra i 20 anni. " crlf) else
                                 (if (eq ?answer 3)
-                                 then (printout t " (3) Tra i 20 e i 30 anni. " crlf) else
+                                 then (printout t " (3) Tra i 30 anni. " crlf) else
                                 (if (eq ?answer 4)
-                                 then (printout t " (4) Tra i 30 e i 40 anni. " crlf) else
+                                 then (printout t " (4) Tra i 40 anni. " crlf) else
                                 (if (eq ?answer 5)
-                                 then (printout t " (5) Tra i 40 e i 50 anni. " crlf) else
+                                 then (printout t " (5) Tra i 50 anni. " crlf) else
                                 (if (eq ?answer 6)
-                                 then (printout t " (6) Tra i 50 e i 60 anni. " crlf) else
+                                 then (printout t " (6) Tra i 60 anni. " crlf) else
                                 (if (eq ?answer 7)
-                                 then (printout t " (7) Tra i 60 e i 70 anni. " crlf) else
+                                 then (printout t " (7) Tra i 70 anni. " crlf) else
                                 (if (eq ?answer 8)
-                                 then (printout t " (8) Piu' di 70 anni. " crlf) else
+                                 then (printout t " (8) Piu' di 80 anni. " crlf) else
                                 (print-why-help ?answer) )))))))))
 
                         (case user-gift then            
