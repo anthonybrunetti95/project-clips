@@ -5,7 +5,7 @@
         (if (and (not (eq ?question rejection))  (not (eq ?question want-to-see-hypotetical-final-board-game))  (not (eq ?question retraction))   (not (eq ?question retraction-number)) )
          then (printout t crlf "=========================================================="))
         (print-question ?question ?number)
-        (if (or  (eq ?question rejection) (eq ?question want-to-see-hypotetical-final-pc) (eq ?question retraction)   (eq ?question retraction-number) )
+        (if (or  (eq ?question rejection) (eq ?question want-to-see-hypotetical-final-board-game) (eq ?question retraction)   (eq ?question retraction-number) )
          then (print-answers ?question $?allowed-values)
          else (print-answers ?question $?allowed-values h w))
         (foreach ?answer $?allowed-values (print-answers ?answer))
@@ -34,61 +34,77 @@
        ;;=========== SEZIONE UTENTE ===========;;
             (case user-age then             
                 (if (eq ?answer 1) 
-                    then (assert (info (feature user-age) (value "0<10") (question user-age))) 
+                    then (assert (info (feature user-age) (value "6<10") (question user-age)))
+                         (assert (user-age (min-age 6) (max-age 10))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 0<10")) else          
                 (if (eq ?answer 2) 
-                    then (assert (info (feature user-age) (value "10<20") (question user-age))) 
+                    then (assert (info (feature user-age) (value "10<17") (question user-age)))
+                        (assert (user-age (min-age 13) (max-age 18))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 10<20")) else         
                 (if (eq ?answer 3) 
-                    then (assert (info (feature user-age) (value "20<30") (question user-age))) 
+                    then (assert (info (feature user-age) (value "18<30") (question user-age)))
+                        (assert (user-age (min-age 18) (max-age 30))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 20<30")) else         
                 (if (eq ?answer 4) 
-                    then (assert (info (feature user-age) (value "30<40") (question user-age))) 
+                    then (assert (info (feature user-age) (value "30<40") (question user-age)))
+                         (assert (user-age (min-age 30) (max-age 40)))   
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 30<40")) else         
                 (if (eq ?answer 5) 
                     then (assert (info (feature user-age) (value "40<50") (question user-age))) 
+                         (assert (user-age (min-age 40) (max-age 50))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 40<50")) else 
                 (if (eq ?answer 6) 
-                    then (assert (info (feature user-age) (value "50<60") (question user-age))) 
+                    then (assert (info (feature user-age) (value "50<60") (question user-age)))
+                         (assert (user-age (min-age 50) (max-age 60)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 50<60")) else 
                 (if (eq ?answer 7) 
-                    then (assert (info (feature user-age) (value "60<70") (question user-age))) 
+                    then (assert (info (feature user-age) (value "60<70") (question user-age)))
+                         (assert (user-age (min-age 50) (max-age 60))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 60<70")) else 
                 (if (eq ?answer 8) 
                     then (assert (info (feature user-age) (value "70<") (question user-age))) 
+                        (assert (user-age (min-age 70) (max-age 99)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-AGE 70<")) )))))))))
 
               (case group-age then             
                 (if (eq ?answer 1) 
                     then (assert (info (feature group-age) (value "10") (question group-age))) 
+                         (assert (user-age (min-age 6) (max-age 10))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 10")) else          
-                (if (eq ?answer 2) 
-                    then (assert (info (feature group-age) (value "20") (question group-age))) 
+                (if (eq ?answer 2)
+                    then (assert (info (feature group-age) (value "20") (question group-age)))
+                      (assert (user-age (min-age 13) (max-age 20)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 20")) else         
                 (if (eq ?answer 3) 
-                    then (assert (info (feature group-age) (value "30") (question group-age))) 
+                    then (assert (info (feature group-age) (value "30") (question group-age)))
+                        (assert (user-age (min-age 20) (max-age 30)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 30")) else         
                 (if (eq ?answer 4) 
                     then (assert (info (feature group-age-age) (value "40") (question user-age))) 
+                         (assert (user-age (min-age 30) (max-age 40))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 40")) else         
                 (if (eq ?answer 5) 
                     then (assert (info (feature group-age) (value "50") (question group-age))) 
+                        (assert (user-age (min-age 40) (max-age 50))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 50")) else 
                 (if (eq ?answer 6) 
-                    then (assert (info (feature group-age) (value "560") (question group-age))) 
+                    then (assert (info (feature group-age) (value "60") (question group-age))) 
+                        (assert (user-age (min-age 50) (max-age 60))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 60")) else 
                 (if (eq ?answer 7) 
-                    then (assert (info (feature group-age) (value "70") (question group-age))) 
+                    then (assert (info (feature group-age) (value "70") (question group-age)))
+                        (assert (user-age (min-age 60) (max-age 70)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 70")) else 
                 (if (eq ?answer 8) 
-                    then (assert (info (feature group-age) (value "70<") (question group-age))) 
+                    then (assert (info (feature group-age) (value "70<") (question group-age)))
+                        (assert (user-age (min-age 70) (max-age 99)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 80<")) )))))))))
 
 
             (case user-gift then
                 (if (eq ?answer s) 
                     then (assert (info (feature user-gift) (value "si") (question user-gift))) 
-                        (printout t crlf " Bene. " crlf crlf " D'ora in avanti il soggetto delle domande sara' la persona cui hai intenzione di regalare questo pc. " crlf crlf)
+                        (printout t crlf " Bene. " crlf crlf " D'ora in avanti il soggetto delle domande sara' la persona cui hai intenzione di regalare questo gico . " crlf crlf)
                             (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GIFT MODE ON")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature user-gift) (value "no") (question user-gift)))
@@ -179,10 +195,12 @@
 
             (case game-time then
                  (if (eq ?answer 1) 
-                    then (assert (info (feature game-time) (value "<60") (question game-time))) 
+                    then (assert (info (feature game-time) (value "<60") (question game-time)))
+                    (assert (game-time  (time 60))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME <60")) else 
                 (if (eq ?answer 2) 
                     then (assert (info (feature game-time) (value ">60") (question game-time))) 
+                    (assert (game-time  (time 61))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME >60")))))
 
             (case game-family then

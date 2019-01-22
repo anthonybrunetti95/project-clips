@@ -20,7 +20,8 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
-    (refresh find-hypotetical-final-board-game-main-feautures)
+    (refresh find-hypotetical-final-board-game-solo-game-best)
+    (refresh cant-find-any-final-board-game)
 
     (retract ?f1)
     (if (eq ?number 1)
@@ -78,6 +79,20 @@
     (retract ?f1)
 )
 
+(defrule retract-game-time
+    (declare (salience ?*top-priority*))
+    ?f1 <- (retract-info game-time)
+    =>
+    (retract ?f1)
+)
+
+(defrule retract-user-age
+    (declare (salience ?*top-priority*))
+    ?f1 <- (retract-info user-age)
+    =>
+    (retract ?f1)
+
+)
 
 (defrule retract-info
         (declare (salience ?*highest-priority*))

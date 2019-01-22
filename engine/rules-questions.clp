@@ -39,7 +39,7 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (not(info (feature game-players) (value "1")))
+        (info (feature game-players) (value "2" | "3" | "4" | "5" | "6" |"6+"))
         =>
         (assert (asking-question (question group-age) (answers 1 2 3 4 5 6 7 8)))
 )
@@ -142,6 +142,7 @@
 (defrule ask-game-thematic
         (declare (salience ?*zero-priority*))
         (not (retraction))
+        (info (feature user-gift) (value "no"))
         (not(info (feature game-wargame) (value "yes")))
         (not(inferred (feature wargame) (value T)))
         =>
@@ -326,6 +327,16 @@
 
         =>
         (assert (asking-question (question game-survival) (answers s n)))
+)
+
+
+(defrule ask-game-forests
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+
+        =>
+        (assert (asking-question (question game-forests) (answers s n)))
 )
 
 

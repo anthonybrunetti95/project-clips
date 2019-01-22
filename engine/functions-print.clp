@@ -71,6 +71,8 @@
                     (printout t "TI piacerebbe un gioco a tema fuochi d'artificio ?" crlf crlf))
                 (case game-survival then 
                     (printout t "Ti piace il tema della sopravvivenza ? " crlf crlf))
+                (case game-forests then 
+                    (printout t "Ti paicerebbe un gico a tema ambiente e natura ? " crlf crlf))
                 (case game-industry then 
                     (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria ? " crlf crlf))
                 (case game-numbers then 
@@ -164,11 +166,11 @@
 
                         (case user-age then             
                                 (if (eq ?answer 1)
-                                 then (printout t " (1) Meno di 10 anni. " crlf) else
+                                 then (printout t " (1) Meno di 13 anni. " crlf) else
                                 (if (eq ?answer 2)
-                                 then (printout t " (2) Tra i 10 e i 20 anni. " crlf) else
+                                 then (printout t " (2) Tra i 13 e i 18 anni. " crlf) else
                                 (if (eq ?answer 3)
-                                 then (printout t " (3) Tra i 20 e i 30 anni. " crlf) else
+                                 then (printout t " (3) Tra i 18 e i 30 anni. " crlf) else
                                 (if (eq ?answer 4)
                                  then (printout t " (4) Tra i 30 e i 40 anni. " crlf) else
                                 (if (eq ?answer 5)
@@ -359,6 +361,10 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
+                        (case game-forests then 
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
                         (case game-industry then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
@@ -441,8 +447,10 @@
                             (if (eq ?answer s)
                                     then (printout t " (s) Si, vediamo! " crlf) else
                             (if (eq ?answer n)
-                                    then (printout t " (n) No, grazie, prova a cercarne un'altra. " crlf crlf "  ") else
-                            (printout t "  *  CLIPS PROBLEM* "   ?answer crlf) )))
+                                    then (printout t " (n) No, grazie, prova a cercarne un'altra. " crlf crlf "  ") 
+                                    else
+                              (printout t "  *  CLIPS PROBLEM* "   ?answer crlf) 
+                            )))
 
                         (case retraction then
                                 (if (eq ?answer s)
@@ -540,7 +548,7 @@
 )                            
 
 
-;;deffunction print-detail-missing 
+
 
 
 

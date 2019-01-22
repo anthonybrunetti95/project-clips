@@ -22,41 +22,7 @@
 
 ;;====================================================;;
 
-(defrule infering-wargame
-        (declare (salience ?*highest-priority*))
-        (inferred (feature wargame) (value ?wargame))
-
-        =>
-        (assert (infering-result (feature wargame) (value ?wargame)))
-)
-
-
-(defrule infering-filler
-        (declare (salience ?*highest-priority*))
-        (inferred (feature filler) (value ?filler))
-
-        =>
-        (assert (infering-result (feature filler) (value ?filler)))
-)
-
-
-(defrule infering-party 
-        (declare (salience ?*highest-priority*))
-        (inferred (feature pary) (value  ?party))
-
-        =>
-        (assert (infering-result (feature party) (value ?party)))
-)
-
-
-(defrule infering-family
-        (declare (salience ?*highest-priority*))
-        (inferred (feature family) (value  ?family))
-
-        =>
-        (assert (infering-result (feature family) (value ?family) ))
-)
-
+(
 (defrule infering-cardgame
         (declare (salience ?*highest-priority*))
         (inferred (feature cardgame) (value  ?cardgame))
@@ -68,9 +34,9 @@
 
 (defrule infering-1players
         (declare (salience ?*highest-priority*))
-        (inferred (feature 1players) (value ?players))
+        (inferred (feature 1players) (value T))
         =>
-        (assert (infering-result (feature 1players)) (value ?players))
+        (assert (infering-result (feature 1players) (value T)))
 )
 
 (defrule infering-2players

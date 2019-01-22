@@ -5,33 +5,42 @@
 
 (defrule find-hypotetical-final-board-game-solo-game-best
         (declare (salience ?*sub-normal-priority*))
-        (or (result (feature cardgame) (value ?cardgame))
-          (result (feature filler) (value ?filler)))        
-        (result (feature 1players) (value ?players))
-        (general-kind (label ?label)(cardgame ?cardgame)  (filler ?filler) )
-        (board-game (label ?label) (board-game-name ?board-game-name))
-        (best-players (label ?label) (best-1players  ?best-players))
-        (test(eq ?best-players  ?players) ) 
+        (result (feature cardgame) (value ?cardgame))
+               
+        (result (feature 1players) (value T))
+        (general-kind (label ?label)(cardgame ?cardgame) )
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (best-players (label ?label) (best-1players  T))
+        (main-features (label ?label) (age ?age) (length ?length))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        (test (> ?time ?length))
+
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-solo-best)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-best:  " ?label " " ?board-game-name    crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-best:  " ?label " " ?board-game-name "  "  crlf))
         
 )
-(defrule find-hypotetical-final-board-game-solo-game
-        (declare (salience ?*sub-normal-priority*))
-        ;;(or (result (feature cardgame) (value ?cardgame))
-           ;;(result (feature filler) (value ?filler)))        
-        ;(result (feature 1players) (value ?players))
-        ;;(general-kind (label ?label)(cardgame ?cardgame)  (filler ?filler) )
-        (players (label ?label) (1players T))
-        ;;(board-game (label ?label) (board-game-name ?board-game-name))
-       
-        =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-best)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo:  " ?label " "     crlf))
+;(defrule find-hypotetical-final-board-game-solo-game
+;        (declare (salience ?*sub-normal-priority*))
+;        (result (feature cardgame) (value ?cardgame))
+               
+;        (result (feature 1players) (value T))
+;        (general-kind (label ?label)(cardgame ?cardgame) )
+;        (board-game (label ?label) (board-game-name ?board-game-name) )
+;        (players (label ?label) (1players  T))
+;        (main-features (label ?label) (age ?age))
+;        (user-age (min-age ?min))
+;        (game-time (time ?time))
+;        (test (>=  ?min ?age))
+;        (test (>?time ?length))
+;        (not  (hypotetical-final-board-game (what board-game-solo-best)))
+;        =>
+;        (assert (hypotetical-final-board-game (label ?label) (what board-game-solo)))
+;        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo:  " ?label " " ?board-game-name "  "  crlf))
         
-)
-
+;)
 
 
 (defrule find-final-board-game
@@ -59,7 +68,7 @@
         (last-question (question ?last))
         =>
         (print-hypotetical-final-board-game ?board-game-name ?price ?min-budget ?max-budget ?what)
-        (ask-boolean want-to-see-hypotetical-final-board-game ?last)
+        (ask-boolean want-to-see-hypotetical-final-board-game  ?last)
         (assert (want-to-see-hypotetical-final-board-game ?label))
 )
 

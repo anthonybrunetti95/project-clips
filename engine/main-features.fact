@@ -5,7 +5,7 @@
 (main-features (label board-game-5) (length 25) (weight facile) (coop-comp comp) (age 6) (price 22))
 (main-features (label board-game-6) (length 60) (weight facile) (coop-comp coop\comp) (age 13) (price 14)) ;;problema o 15-60
 (main-features (label board-game-7) (length 120) (weight medio) (coop-comp coop) (age 13)(price 36)) 
-(main-features (label board-game-8) (length 120) (weight medio) (coop-comp coop) (age 20) (price 70))
+(main-features (label board-game-8) (length 120) (weight medio) (coop-comp coop) (age 18) (price 70))
 (main-features (label board-game-9) (length 15) (weight facile) (coop-comp coop) (age 6) (price 30))
 (main-features (label board-game-10) (length 40) (weight medio) (coop-comp coop) (age 10) (price 26))
 (main-features (label board-game-11) (length 30) (weight facile) (coop-comp comp) (age 6) (price 22))

@@ -37,7 +37,14 @@
 )
 
 
+(deftemplate game-time
+        (slot time              (type INTEGER))
+)
 
+(deftemplate user-age
+        (slot min-age               (type INTEGER))
+        (slot max-age               (type INTEGER)) 
+)
 ;;====================================================;;
 ; TEMPLATE PER I FATTI CHE IL SISTEMA INFERISCE
 (deftemplate infering

@@ -158,26 +158,6 @@
         (assert (infering (feature 6players+) (value T)))
 )
 
-(defrule inferred-party
-         (declare (salience ?*high-priority*))
-         (info (feature game-players) (value "6+"))
-        =>
-        (assert (infering (feature party) (value T))))
-
-
-(defrule inferred-filler 
-        (declare (salience ?*high-priority*))
-        (info (feature game-time) (value "<60"))
-        =>
-        (assert(infering (feature filler) (value T)))
-)
-
-(defrule inferred-family
-       (declare (salience ?*high-priority*))
-       (info (feature game-family) (value "yes"))
-       =>
-       (assert (infering (feature family) (value T)))
-)
 
 (defrule inferred-cardgame 
         (declare (salience ?*high-priority*))
@@ -185,14 +165,6 @@
         =>
         (assert (infering (feature cardgame) (value T)))
 )
-
-(defrule inferred-wargame
-         (declare (salience ?*high-priority*))
-         (info (feature game-wargame) (value "yes"))
-         =>
-         (assert (infering (feature wargame) (value T)))
-)
-
 
                                        
 
