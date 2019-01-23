@@ -42,7 +42,7 @@
                 (case game-bidding then 
                     (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
                 (case game-investigative then 
-                    (printout t "Ti piace il tema investigativo ?" crlf crlf))
+                    (printout t "Nel gioco ti piacerebbe fare l'investigatore ?" crlf crlf)) ;;rivedere
                 (case game-hold-story then 
                     (printout t "Ti piace il tema relativo all'antichità ?" crlf crlf))
                 (case game-western then 
@@ -68,7 +68,7 @@
                 (case game-indians then 
                     (printout t "Ti piace sull’ambientazione maya / indiani ?  " crlf crlf))
                 (case game-fireworks then 
-                    (printout t "TI piacerebbe un gioco a tema fuochi d'artificio ?" crlf crlf))
+                    (printout t "Ti piacerebbe un gioco a tema fuochi d'artificio ?" crlf crlf))
                 (case game-survival then 
                     (printout t "Ti piace il tema della sopravvivenza ? " crlf crlf))
                 (case game-forests then 

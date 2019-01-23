@@ -103,13 +103,13 @@
 
 
 (deftemplate main-features
-        (slot label             (type SYMBOL))
-        (slot length            (type INTEGER))
-        (slot weight            (type SYMBOL) (allowed-values facile medio difficile))
-        (slot coop-comp         (type SYMBOL) (allowed-values coop comp coop\comp null))
-        (slot age             (type INTEGER))
-        (slot price           (type INTEGER))        
-) 
+        (slot label            (type SYMBOL))
+        (slot length           (type INTEGER))
+        (slot weight           (type SYMBOL) (allowed-values facile medio difficile))
+        (slot coop-comp        (type SYMBOL) (allowed-values coop comp coop\comp null))
+        (slot age              (type INTEGER))
+        (slot price            (type INTEGER))
+)
 
 
 (deftemplate players
@@ -125,8 +125,8 @@
 
 (deftemplate best-players
         (slot label             (type SYMBOL))
-        (slot best-1players      (type SYMBOL)   (default F))
-        (slot best-2players      (type SYMBOL)   (default F))
+        (slot best-1players     (type SYMBOL)   (default F))
+        (slot best-2players     (type SYMBOL)   (default F))
         (slot best-3players      (type SYMBOL)   (default F))
         (slot best-4players      (type SYMBOL)   (default F))
         (slot best-5players      (type SYMBOL)   (default F))

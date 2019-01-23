@@ -389,6 +389,14 @@
                     then (assert (info (feature game-survival) (value "no") (question game-survival)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-SURVIVAL NO")))))
 
+              (case game-forests  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-forests) (value "yes") (question game-forests))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FORESTS YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-forests) (value "no") (question game-forests)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FORESTS NO")))))
+
             (case game-industry  then
                   (if (eq ?answer s) 
                     then (assert (info (feature game-industry) (value "yes") (question game-industry))) 

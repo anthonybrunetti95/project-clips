@@ -5,12 +5,12 @@
 
 (defrule find-hypotetical-final-board-game-solo-game-best
         (declare (salience ?*sub-normal-priority*))
-        (result (feature cardgame) (value ?cardgame))
+        ;;(result (feature cardgame) (value ?cardgame))
                
         (result (feature 1players) (value T))
-        (general-kind (label ?label)(cardgame ?cardgame) )
+        (general-kind (label ?label) (filler T))
         (board-game (label ?label) (board-game-name ?board-game-name) )
-        (best-players (label ?label) (best-1players  T))
+        ;(best-players (label ?label) (best-1players  T))
         (main-features (label ?label) (age ?age) (length ?length))
         (user-age (min-age ?min))
         (game-time (time ?time))
@@ -22,25 +22,25 @@
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-best:  " ?label " " ?board-game-name "  "  crlf))
         
 )
-;(defrule find-hypotetical-final-board-game-solo-game
-;        (declare (salience ?*sub-normal-priority*))
-;        (result (feature cardgame) (value ?cardgame))
+(defrule find-hypotetical-final-board-game-solo-game
+        (declare (salience ?*sub-normal-priority*))
+        (result (feature cardgame) (value ?cardgame))
                
-;        (result (feature 1players) (value T))
-;        (general-kind (label ?label)(cardgame ?cardgame) )
-;        (board-game (label ?label) (board-game-name ?board-game-name) )
-;        (players (label ?label) (1players  T))
-;        (main-features (label ?label) (age ?age))
-;        (user-age (min-age ?min))
-;        (game-time (time ?time))
-;        (test (>=  ?min ?age))
-;        (test (>?time ?length))
-;        (not  (hypotetical-final-board-game (what board-game-solo-best)))
-;        =>
-;        (assert (hypotetical-final-board-game (label ?label) (what board-game-solo)))
-;        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo:  " ?label " " ?board-game-name "  "  crlf))
+        (result (feature 1players) (value T))
+        (general-kind (label ?label)(cardgame ?cardgame) )
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (players (label ?label) (1players  T))
+        (main-features (label ?label) (age ?age) (length ?length))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        (test (> ?time ?length))
+        (not  (hypotetical-final-board-game (what board-game-solo-best)))
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-solo)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo:  " ?label " " ?board-game-name "  "  crlf))
         
-;)
+)
 
 
 (defrule find-final-board-game

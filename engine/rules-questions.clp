@@ -102,13 +102,13 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (not (inferred (feature weight) (value difficile)))
         (not (info (feature game-wargame) (value "yes"))) 
         (not (info (feature game-cardgame) (value "yes")))
-        (not(info (feature game-players) (value "1")))
-                
-
+        (not (info (feature game-players) (value "1")))
         =>
-        (assert (asking-question (question game-family) (answers s n))))
+        (assert (asking-question (question game-family) (answers s n)))
+)
 
 (defrule ask-game-cardgame
         (declare (salience ?*normal-priority*))
@@ -116,8 +116,7 @@
         (info (feature user-gift) (value "no"))
         (not (info (feature game-family) (value "yes")))
         (not(info (feature game-wargame) (value "yes")))
-               
-         
+                  
         =>
         (assert (asking-question (question game-cardgame) (answers s n))))
 
@@ -130,6 +129,7 @@
         (not(info (feature game-cardgame) (value "yes")))
         (not(info (feature game-filler) (value "yes")))
         (not(info (feature game-players) (value "1")))
+        (not (info (feature game-time) (value "<60")))
        
         =>
         (assert (asking-question (question game-wargame) (answers s n)))
@@ -177,6 +177,7 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
+        (not(info (feature game-bidding) (value "T")))
         =>
         (assert (asking-question (question game-challenging) (answers s n)))
 )
@@ -187,15 +188,19 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
+        (info (feature game-strategy) (value "T"))
         =>
         (assert (asking-question (question game-bidding) (answers s n)))
 )
+
+;;explorative
 
 (defrule ask-game-investigative
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
+        (info (feature game-thematic) (value "T"))
         =>
         (assert (asking-question (question game-investigative) (answers s n)))
 )
@@ -242,6 +247,7 @@
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (info (feature game-gothic) (value "yes"))
 
         =>
         (assert (asking-question (question game-lovecraft) (answers s n)))
@@ -437,6 +443,7 @@
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (info (feature game-fantasy) (value "yes"))
 
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
@@ -489,32 +496,3 @@
         =>
         (assert (asking-question (question game-politics) (answers s n)))
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

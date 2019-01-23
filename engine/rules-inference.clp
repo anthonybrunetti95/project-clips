@@ -59,8 +59,42 @@
 )
 
 
-;; infered age-group
-;; infered-group-experince
+(defrule inferred-group-age-child
+        (declare (salience ?*high-priority*))
+        (info (feature group-age) (value "0<10"))
+        =>
+        (assert (infering (feature age) (value child)))
+)
+
+(defrule inferred-group-age-boy
+        (declare (salience ?*high-priority*))
+        (info (feature group-age) (value "10<20"))
+        =>
+        (assert (infering (feature age) (value boy)))
+)
+
+(defrule inferred-group-age-young
+        (declare (salience ?*high-priority*))
+        (info (feature group-age) (value "20<30"|"30<40"))
+        =>
+        (assert (infering (feature age) (value young)))
+)
+
+(defrule inferred-group-age-adult
+        (declare (salience ?*high-priority*))
+        (info (feature group-age) (value "40<50"|"50<60"|"60<70"))
+        =>
+        (assert (infering (feature age) (value adult)))
+)
+
+(defrule inferred-group-age-elder
+        (declare (salience ?*high-priority*))
+        (info (feature group-age) (value "70<")) 
+        =>
+        (assert (infering (feature age) (value elder)))
+)
+
+
 (defrule inferred-group-weight-easy
          (declare (salience ?*high-priority*))
          (or (info (feature group-experience) (value "zero"))
@@ -76,15 +110,12 @@
          (assert (infering (feature weight) (value medio)))
 )
 
-
 (defrule inferred-group-weight-high
         (declare (salience ?*high-priority*))
         (info (feature group-experience) (value "high"))
         =>
         (assert (infering (feature weight) (value difficile)))
 )
-
-
 
 (defrule inferred-weight-easy
          (declare (salience ?*high-priority*))
@@ -159,12 +190,8 @@
 )
 
 
-(defrule inferred-cardgame 
-        (declare (salience ?*high-priority*))
-        (info (feature game-cardgame) (value "yes"))
-        =>
-        (assert (infering (feature cardgame) (value T)))
-)
 
-                                       
+
+
+                    
 

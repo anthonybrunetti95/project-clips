@@ -25,12 +25,18 @@
 (
 (defrule infering-cardgame
         (declare (salience ?*highest-priority*))
-        (inferred (feature cardgame) (value  ?cardgame))
+        (info (feature game-cardgame) (value  "yes"))
 
         =>
-        (assert (infering-result (feature cardgame) (value ?cardgame) ))
+        (assert (infering-result (feature cardgame) (value T) ))
 )
 
+(defrule inferred-wargame 
+        (declare (salience ?*high-priority*))
+        (info (feature game-wargame) (value "yes"))
+        =>
+        (assert (infering-result (feature wargame) (value T)))
+)       
 
 (defrule infering-1players
         (declare (salience ?*highest-priority*))
