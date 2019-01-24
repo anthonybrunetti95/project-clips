@@ -251,7 +251,14 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-comp) (value "no") (question game-comp)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COMPETITIVE NO")))))
-            
+
+             (case game-strategy  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-strategy) (value "yes") (question game-strategy))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-STRATEGY YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-strategy) (value "no") (question game-strategy)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-STRATEGY NO")))))
 
             (case game-challenging  then
                   (if (eq ?answer s) 
@@ -276,6 +283,16 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-investigative) (value "no") (question game-investigative)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE NO")))))
+
+            (case game-bluff then
+                  (if (eq ?answer s)
+                    then (assert (info (feature game-bluff) (value "yes") (question game-bluff)))
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BLUFF YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-bluff) (value "no") (question game-bluff)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BLUFF NO"))
+
+                    )))
 
             (case game-hold-story  then
                   (if (eq ?answer s) 

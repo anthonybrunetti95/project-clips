@@ -31,18 +31,22 @@
                     (printout t "Ti piacciono i giochi con carte ?" crlf crlf))
                 (case game-wargame then 
                     (printout t "Ti piacciono i giochi che simulano la guerra ?" crlf crlf))
-                (case game-thematic then 
-                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ?" crlf crlf))
                 (case game-comp then 
                     (printout t "Ti piace avere degli avversari da sfidare ?" crlf crlf))
                 (case game-coop then 
                     (printout t " Nel gioco ti piace  cooperare con gli altri giocatori    ?" crlf crlf))
+                 (case game-thematic then 
+                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ?" crlf crlf))
+                (case game-strategy then
+                    (printout t "Saresti interessato ad un gioco in cui per raggiungere un obiettivo dipende dalle azioni e strategie attuale? " crlf crlf))
                 (case game-challenging then 
                     (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?" crlf crlf))
                 (case game-bidding then 
                     (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
+                (case game-bluff then
+                    (printout t "Ti piace bleffare nei giochi da tavolo?" crlf crlf))
                 (case game-investigative then 
-                    (printout t "Nel gioco ti piacerebbe fare l'investigatore ?" crlf crlf)) ;;rivedere
+                    (printout t "Nel gioco ti piacerebbe investigare su un caso misterioso ?" crlf crlf)) ;;rivedere
                 (case game-hold-story then 
                     (printout t "Ti piace il tema relativo all'antichità ?" crlf crlf))
                 (case game-western then 
@@ -280,7 +284,7 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
                        
-                        (case game-thematic then            
+                        (case game-bluff then
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
@@ -289,6 +293,14 @@
                                 (print-why-help ?answer))
                         
                          (case game-coop then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-thematic then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-strategy then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
@@ -351,7 +363,6 @@
                         (case game-indians then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
-
 
                         (case game-fireworks then            
                                 (print-yes-no ?answer)

@@ -54,7 +54,6 @@
         (info (feature game-players) (value "1"))
         =>
         (assert (asking-question (question user-experience) (answers 1 2 3 4)))
-
 )
 
 (defrule ask-group-experience
@@ -178,10 +177,23 @@
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
         (not(info (feature game-bidding) (value "T")))
+        ;(not(info (feature game-wtdplacement) (value "yes")))
         =>
         (assert (asking-question (question game-challenging) (answers s n)))
 )
 
+
+(defrule ask-game-strategy
+        (declare(salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        
+        (not (info (feature game-investigative) (value "yes")))
+        (not(info (feature game-hmovement) (value "yes")))
+       
+        =>
+        (assert (asking-question (question ask-game-strategy) (answers s n)))
+)
 
 (defrule ask-game-bidding
         (declare (salience ?*zero-priority*))
@@ -193,6 +205,14 @@
         (assert (asking-question (question game-bidding) (answers s n)))
 )
 
+(defrule ask-game-bluff
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        ;(not (info (feature game-wtdplacement) (value "yes")))
+        =>
+        (assert (asking-question (question game-bluff) (answers s n)))
+)
 ;;explorative
 
 (defrule ask-game-investigative
