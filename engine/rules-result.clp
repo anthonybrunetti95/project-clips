@@ -38,11 +38,59 @@
         (assert (infering-result (feature wargame) (value T)))
 )       
 
+(defrule inferred-family 
+        (declare (salience ?*high-priority*))
+        (info (feature game-family) (value "yes"))
+        =>
+        (assert (infering-result (feature family) (value T)))
+)       
+
+(defrule inferred-party 
+        (declare (salience ?*high-priority*))
+        (info (feature game-players) (value "5" | "6" | "+6"))
+        (or     (info (feature user-experience) (value "facile" | "medio"))
+                (info (feature group-experience) (value "facile" | "medio")))
+        (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
+
+
+        =>
+        (assert (infering-result (feature party) (value T)))
+)       
+
+(defrule inferred-filler
+        (declare (salience ?*high-priority*))
+        (info (feature game-time) (value "<1"))
+        (info (feature experience) (value facile))
+        (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
+        =>
+        (assert (infer-result (feature filler) (value T)))
+)
+
+(defrule inferred-german
+        (declare (salience ?*high-priority*))
+        (info (feature game-wtdplacement) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-comp) (value "yes"))
+        =>
+        (assert (infering-result (feature german) (value T)))
+)
+
+(defrule inferred-american 
+        (declare (salience ?*high-priority*))
+        (info (feature game-time) (value ">60"))
+        (info (feature user-budget) (value "<18" | "19<33"))
+        (info (feature game-thematic) (value "yes"))
+        (not (inferred (feature weight) (value facile)))
+        =>
+        (assert (infering-result (feature american) (value T)))
+
+)
+
 (defrule infering-1players
         (declare (salience ?*highest-priority*))
-        (inferred (feature 1players) (value T))
+        (inferred (feature 1players) (value ?players))
         =>
-        (assert (infering-result (feature 1players) (value T)))
+        (assert (infering-result (feature 1players) (value ?players)))
 )
 
 (defrule infering-2players
@@ -80,3 +128,5 @@
         =>
         (assert (infering-result (feature 6players)) (value ?players))
 )
+
+

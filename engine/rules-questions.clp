@@ -105,6 +105,7 @@
         (not (info (feature game-wargame) (value "yes"))) 
         (not (info (feature game-cardgame) (value "yes")))
         (not (info (feature game-players) (value "1")))
+        (info (feature user-budget) (value "<18" | "19<33" | "34<44"| "45<65"))
         =>
         (assert (asking-question (question game-family) (answers s n)))
 )

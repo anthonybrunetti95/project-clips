@@ -3,25 +3,36 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(defrule find-hypotetical-final-board-game-solo-game-best
+(defrule find-hypotetical-final-board-game-filler-or-party-or-family
         (declare (salience ?*sub-normal-priority*))
-        ;;(result (feature cardgame) (value ?cardgame))
+        (or (result (feature filler) (value ?filler))
+            (result (feature party) (value ?party))
+            (result (feature family) (value ?family))
+        )        
                
-        (result (feature 1players) (value T))
-        (general-kind (label ?label) (filler T))
+        (or     (result (feature 1players) (value ?1p))
+                (result (feature 2players) (value ?2p))
+                (result (feature 3players) (value ?3p))
+                (result (feature 4players) (value ?4p))
+                (result (feature 5players) (value ?5p))
+                (result (feature 6players) (value ?6p))
+                (result (feature +6players) (value ?6p+)
+        )
+
+        (general-kind (label ?label) (filler ?filler) (party ?party) (?family))
         (board-game (label ?label) (board-game-name ?board-game-name) )
-        ;(best-players (label ?label) (best-1players  T))
+        (players (label ?label) (1players  ?1p) (2players ?2p) (3players ?3p) (4players ?4p) (5players ?5p) (6players ?6p) (+6players ?6p+))
         (main-features (label ?label) (age ?age) (length ?length))
         (user-age (min-age ?min))
-        (game-time (time ?time))
         (test (>=  ?min ?age))
-        (test (> ?time ?length))
 
         =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-solo-best)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-best:  " ?label " " ?board-game-name "  "  crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-or-party-or-family)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-solo-filler:  " ?label " " ?board-game-name "  "  crlf))
         
 )
+
+
 (defrule find-hypotetical-final-board-game-solo-game
         (declare (salience ?*sub-normal-priority*))
         (result (feature cardgame) (value ?cardgame))
