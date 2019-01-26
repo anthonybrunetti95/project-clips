@@ -106,7 +106,7 @@
 (defrule inferred-group-weight-medium
          (declare (salience ?*high-priority*))
          (info (feature group-experience) (value "normal"))
-         (not(info (feature age) (value  child | elder)))
+         (not(inferred (feature age) (value  child | elder)))
          =>
          (assert (infering (feature weight) (value medio)))
 )
@@ -114,7 +114,7 @@
 (defrule inferred-group-weight-high
         (declare (salience ?*high-priority*))
         (info (feature group-experience) (value "high"))
-        (not(info (feature age) (value  child | elder)))
+        (not(inferred (feature age) (value  child | elder)))
         =>
         (assert (infering (feature weight) (value difficile)))
 )
@@ -130,7 +130,7 @@
 (defrule inferred-weight-medium
          (declare (salience ?*high-priority*))
          (info (feature user-experience) (value "normal"))
-         (not(info (feature age) (value  child | elder)))     
+         (not(inferred (feature age) (value  child | elder)))     
          =>
          (assert (infering (feature weight) (value medio)))
 )
@@ -139,7 +139,7 @@
 (defrule inferred-weight-high
         (declare (salience ?*high-priority*))
         (info (feature user-experience) (value "high"))
-        (not(info (feature age) (value  child | elder)))
+        (not(inferred (feature age) (value  child | elder)))
         =>
         (assert (infering (feature weight) (value difficile)))
 )

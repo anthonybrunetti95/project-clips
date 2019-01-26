@@ -20,7 +20,7 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
-    (refresh find-hypotetical-final-board-game-solo-game-best)
+    (refresh find-hypotetical-final-board-game-filler-or-party-or-family)
     (refresh cant-find-any-final-board-game)
 
     (retract ?f1)
