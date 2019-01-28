@@ -50,8 +50,9 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (inferred (feature game-players))
         (info (feature game-players) (value "1"))
+        (info (feature user-age))
+        (not(inferred (feature age) (value child))) 
         =>
         (assert (asking-question (question user-experience) (answers 1 2 3 4)))
 )
@@ -60,8 +61,9 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (inferred (feature game-players))
-        (not (info (feature game-players) (value "1")))         
+        (info (feature game-players) (value "2" | "3" | "4" | "5" | "6" | "6+" ))
+        (info (feature group-age))
+        (not(inferred (feature age) (value child)))        
         =>
         (assert (asking-question (question group-experience) (answers 1 2 3 4)))
 
@@ -106,6 +108,7 @@
         (not (info (feature game-cardgame) (value "yes")))
         (not (info (feature game-players) (value "1")))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"| "45<65"))
+        (info (feature game-time) (value "<60"))
         =>
         (assert (asking-question (question game-family) (answers s n)))
 )
@@ -114,22 +117,28 @@
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (not (info (feature game-family) (value "yes")))
-        (not(info (feature game-wargame) (value "yes")))
+        (info (feature game-family) (value "no"))
+        (info (feature game-wargame) (value "no"))
+        (info (feature game-filler) (value "no"))
+        (not (info (feature game-players) (value "6" |"6+")))
+        (inferred (feature weight) (value leggero | medio))
                   
         =>
-        (assert (asking-question (question game-cardgame) (answers s n))))
+        (assert (asking-question (question game-cardgame) (answers s n)))
+
+)
 
 
 (defrule ask-game-wargame
         (declare (salience ?*normal-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))  
-        (not(info (feature game-family) (value "yes"))) 
-        (not(info (feature game-cardgame) (value "yes")))
-        (not(info (feature game-filler) (value "yes")))
+        (info (feature game-family) (value "no"))
+        (info (feature game-cardgame) (value "no"))
+        (info (feature game-filler) (value "no"))
         (not(info (feature game-players) (value "1")))
-        (not (info (feature game-time) (value "<60")))
+        (info (feature game-time) (value ">60"))
+        (info (feature game-players) (value "2" | "3" | "4" | "5" | "6"))
        
         =>
         (assert (asking-question (question game-wargame) (answers s n)))
@@ -193,7 +202,7 @@
         (not(info (feature game-hmovement) (value "yes")))
        
         =>
-        (assert (asking-question (question ask-game-strategy) (answers s n)))
+        (assert (asking-question (question game-strategy) (answers s n)))
 )
 
 (defrule ask-game-bidding
@@ -226,7 +235,7 @@
         (assert (asking-question (question game-investigative) (answers s n)))
 )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (defrule ask-game-hold-story

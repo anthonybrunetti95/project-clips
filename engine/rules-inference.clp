@@ -9,7 +9,7 @@
         =>
         (retract ?f1)
         (assert (inferred (feature ?feature) (value ?value) (number ?last)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature)  (upcase ?value)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Inferred: " (upcase ?feature) "  "(upcase ?value)))
 )
 
 (defrule not-infer-already-inferred-feature
@@ -61,28 +61,28 @@
 
 (defrule inferred-group-age-child
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "0<10"))
+        (info (feature group-age) (value "10"))
         =>
         (assert (infering (feature age) (value child)))
 )
 
 (defrule inferred-group-age-boy
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "10<20"))
+        (info (feature group-age) (value "20"))
         =>
         (assert (infering (feature age) (value boy)))
 )
 
 (defrule inferred-group-age-young
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "20<30"|"30<40"))
+        (info (feature group-age) (value "30"|"40"))
         =>
         (assert (infering (feature age) (value young)))
 )
 
 (defrule inferred-group-age-adult
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "40<50"|"50<60"|"60<70"))
+        (info (feature group-age) (value "50"|"60"|"70"))
         =>
         (assert (infering (feature age) (value adult)))
 )
@@ -94,43 +94,20 @@
         (assert (infering (feature age) (value elder)))
 )
 
-
-(defrule inferred-group-weight-easy
-         (declare (salience ?*high-priority*))
-         (or (info (feature group-experience) (value "zero"))
-                (info(feature user-experience) (value "litle")))
-         =>
-         (assert (infering (feature weight) (value facile)))
-)
-
-(defrule inferred-group-weight-medium
-         (declare (salience ?*high-priority*))
-         (info (feature group-experience) (value "normal"))
-         (not(inferred (feature age) (value  child | elder)))
-         =>
-         (assert (infering (feature weight) (value medio)))
-)
-
-(defrule inferred-group-weight-high
-        (declare (salience ?*high-priority*))
-        (info (feature group-experience) (value "high"))
-        (not(inferred (feature age) (value  child | elder)))
-        =>
-        (assert (infering (feature weight) (value difficile)))
-)
-
 (defrule inferred-weight-easy
          (declare (salience ?*high-priority*))
-         (or (info (feature user-experience) (value "zero"))
-                (info(feature user-experience) (value "litle")))
+         (or    (info (feature user-experience) (value "zero" | "litle"))
+                (info (feature group-experience) (value "zero" | "litle"))
+                (inferred (feature age) (value child )))
          =>
          (assert (infering (feature weight) (value facile)))
 )
 
 (defrule inferred-weight-medium
          (declare (salience ?*high-priority*))
-         (info (feature user-experience) (value "normal"))
-         (not(inferred (feature age) (value  child | elder)))     
+         (or    (info (feature user-experience) (value "normal"))
+                (info (feature group-experience) (value "normal")))
+         (not(inferred (feature age) (value  child )))     
          =>
          (assert (infering (feature weight) (value medio)))
 )
@@ -138,7 +115,9 @@
 
 (defrule inferred-weight-high
         (declare (salience ?*high-priority*))
-        (info (feature user-experience) (value "high"))
+
+        (or     (info (feature user-experience) (value "high"))
+                (info (feature group-experience) (value "high")))
         (not(inferred (feature age) (value  child | elder)))
         =>
         (assert (infering (feature weight) (value difficile)))
@@ -194,4 +173,9 @@
 )
 
 
-
+(defrule inferred-thematic
+        (declare (salience ?*high-priority*))
+        (info (feature game-thematic) (value "yes"))
+        =>
+        (assert (infering (feature thematic) (value T)))
+)

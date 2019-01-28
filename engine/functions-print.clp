@@ -41,6 +41,9 @@
                     (printout t "Saresti interessato ad un gioco in cui per raggiungere un obiettivo dipende dalle azioni e strategie attuale? " crlf crlf))
                 (case game-challenging then 
                     (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?" crlf crlf))
+                (case game-explorative then
+                    (printout t "Ti entusiasta nel gioco visitare luoghi misteriosi ? (rivedere)" crlf crlf))
+                
                 (case game-bidding then 
                     (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
                 (case game-bluff then
@@ -90,7 +93,7 @@
                 (case game-pirates then
                     (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf))
                 (case game-witchcraft then
-                    (printout t "Ti piace il tema sulla magia / stregoneria? " crlf crlf))
+                    (printout t "Ti piace il tema sulla magia / stregoneria ? " crlf crlf))
                 (case game-oriental then
                     (printout t "Ti piace la cultura orientale ? " crlf crlf))
                 (case game-glass then
@@ -112,9 +115,9 @@
                     (printout t "Ti piacciono i giochi che hanno come tema la politica ? " crlf crlf))
 
                 (case rejection then
-                        (printout t "  Sei soddisfatto di questo gioco o vuoi che provi a cercarne un'altro?" crlf crlf))
+                        (printout t "  Sei soddisfatto di questo gioco o vuoi che provi a cercarne un'altro ?" crlf crlf))
                 (case want-to-see-hypotetical-final-board-game then
-                        (printout t "  Vorresti vedere i dettagli di questo gioco o vuoi che provi a cercarne un'altro?" crlf crlf))
+                        (printout t "  Vorresti vedere i dettagli di questo gioco o vuoi che provi a cercarne un'altro ?" crlf crlf))
 
                 (case retraction then           
                         (printout t "  Vuoi rivedere le risposte che hai dato?" crlf crlf))

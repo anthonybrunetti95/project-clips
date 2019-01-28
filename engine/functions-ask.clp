@@ -80,7 +80,7 @@
                         (assert (user-age (min-age 20) (max-age 30)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 30")) else         
                 (if (eq ?answer 4) 
-                    then (assert (info (feature group-age-age) (value "40") (question user-age))) 
+                    then (assert (info (feature group-age) (value "40") (question user-age))) 
                          (assert (user-age (min-age 30) (max-age 40))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 40")) else         
                 (if (eq ?answer 5) 

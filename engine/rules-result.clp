@@ -9,7 +9,7 @@
 		=>
 		(retract ?f1)
 		(assert (result (feature ?feature) (value ?value) (number ?last)))
-		(if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Result: "(upcase ?feature)  ?value))
+		(if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Result: "(upcase ?feature) " " ?value))
 )
 
 (defrule not-infer-already-inferred-result
@@ -31,25 +31,25 @@
         (assert (infering-result (feature cardgame) (value T) ))
 )
 
-(defrule inferred-wargame 
+(defrule infering-wargame 
         (declare (salience ?*high-priority*))
         (info (feature game-wargame) (value "yes"))
         =>
         (assert (infering-result (feature wargame) (value T)))
 )       
 
-(defrule inferred-family 
+(defrule infering-family 
         (declare (salience ?*high-priority*))
         (info (feature game-family) (value "yes"))
         =>
         (assert (infering-result (feature family) (value T)))
 )       
 
-(defrule inferred-party 
+(defrule infering-party 
         (declare (salience ?*high-priority*))
-        (info (feature game-players) (value "5" | "6" | "+6"))
-        (or     (info (feature user-experience) (value "facile" | "medio"))
-                (info (feature group-experience) (value "facile" | "medio")))
+        (info (feature game-players) (value "5" | "6" | "6+"))
+        (or     (inferred (feature weight) (value facile))
+                (inferred (feature weight) (value medio)))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
 
 
@@ -57,16 +57,16 @@
         (assert (infering-result (feature party) (value T)))
 )       
 
-(defrule inferred-filler
+(defrule infering-filler
         (declare (salience ?*high-priority*))
         (info (feature game-time) (value "<60"))
-        (inferred (feature experience) (value facile))
+        (inferred (feature weight) (value facile))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
         =>
         (assert (infering-result (feature filler) (value T)))
 )
 
-(defrule inferred-german
+(defrule infering-german
         (declare (salience ?*high-priority*))
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
@@ -75,10 +75,10 @@
         (assert (infering-result (feature german) (value T)))
 )
 
-(defrule inferred-american 
+(defrule infering-american 
         (declare (salience ?*high-priority*))
         (info (feature game-time) (value ">60"))
-        (info (feature user-budget) (value "<18" | "19<33"))
+        (not(info (feature user-budget) (value "<18" | "19<33")))
         (info (feature game-thematic) (value "yes"))
         (not (inferred (feature weight) (value facile)))
         =>
@@ -97,7 +97,7 @@
         (declare (salience ?*highest-priority*))
         (inferred (feature 2players) (value T))
         =>
-        (assert (infering-result (feature 2players)) (value T))
+        (assert (infering-result (feature 2players) (value T)))
 )
 
 
@@ -105,38 +105,41 @@
         (declare (salience ?*highest-priority*))
         (inferred (feature 3players) (value T))
         =>
-        (assert (infering-result (feature 3players)) (value T))
+        (assert (infering-result (feature 3players) (value T)))
 )
 
 (defrule infering-4players
         (declare (salience ?*highest-priority*))
         (inferred (feature 4players) (value T))
         =>
-        (assert (infering-result (feature 4players)) (value T))
+        (assert (infering-result (feature 4players) (value T)))
 )
 
 (defrule infering-5players
         (declare (salience ?*highest-priority*))
         (inferred (feature 5players) (value T))
         =>
-        (assert (infering-result (feature 5players)) (value T))
+        (assert (infering-result (feature 5players) (value T)))
 )
 
 (defrule infering-6players
         (declare (salience ?*highest-priority*))
         (inferred (feature 6players) (value T))
         =>
-        (assert (infering-result (feature 6players)) (value T))
+        (assert (infering-result (feature 6players) (value T)))
 )
 
 (defrule infering-+6players
         (declare (salience ?*highest-priority*))
         (inferred (feature +6players) (value T))
         =>
-        (assert (infering-result (feature +6players)) (value T))
+        (assert (infering-result (feature +6players) (value T)))
 )
 
 
-
-
-
+(defrule infering-weight
+        (declare (salience ?*highest-priority*))
+        (inferred (feature weight) (value ?weight))
+        =>
+        (assert (infering-result (feature weight) (value ?weight)))
+)
