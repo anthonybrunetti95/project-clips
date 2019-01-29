@@ -81,6 +81,7 @@
         (not(info (feature user-budget) (value "<18" | "19<33")))
         (info (feature game-thematic) (value "yes"))
         (not (inferred (feature weight) (value facile)))
+        (not (info (feature game-wtdplacement) (value "yes")))
         =>
         (assert (infering-result (feature american) (value T)))
 
@@ -133,7 +134,7 @@
         (declare (salience ?*highest-priority*))
         (inferred (feature +6players) (value T))
         =>
-        (assert (infering-result (feature +6players) (value T)))
+        (assert (infering-result (feature 6players+) (value T)))
 )
 
 
@@ -143,3 +144,28 @@
         =>
         (assert (infering-result (feature weight) (value ?weight)))
 )
+
+(defrule infering-coop
+        (declare (salience ?*highest-priority*))
+        (info (feature game-coop) (value "yes"))
+        (info (feature game-comp) (value "no"))
+        =>
+        (assert (infering-result (feature coop-comp) (value coop)))
+)
+
+(defrule infering-comp
+        (declare (salience ?*highest-priority*))
+        (info (feature game-comp) (value "yes"))
+        (info (feature game-coop) (value "no"))
+        =>
+        (assert (infering-result (feature coop-comp) (value comp)))
+)
+
+(defrule infering-comp
+        (declare (salience ?*highest-priority*))
+        (info (feature game-coop) (value "yes"))
+        (info (feature game-comp) (value "yes"))
+        =>
+        (assert (infering-result (feature coop-comp) (value coop\comp)))
+)
+

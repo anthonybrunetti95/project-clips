@@ -34,7 +34,7 @@
                 (case game-comp then 
                     (printout t "Ti piace avere degli avversari da sfidare ?" crlf crlf))
                 (case game-coop then 
-                    (printout t " Nel gioco ti piace  cooperare con gli altri giocatori    ?" crlf crlf))
+                    (printout t " Nel gioco ti piace  cooperare con gli altri giocatori ?" crlf crlf))
                  (case game-thematic then 
                     (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ?" crlf crlf))
                 (case game-strategy then
@@ -42,14 +42,17 @@
                 (case game-challenging then 
                     (printout t "Ti piace superare delle prove molto articolate e degli ostacoli complessi nel gioco ?" crlf crlf))
                 (case game-explorative then
-                    (printout t "Ti entusiasta nel gioco visitare luoghi misteriosi ? (rivedere)" crlf crlf))
-                
+                    (printout t "Ti piacerebbe un gioco in cui bisogna esplorare luoghi sconosciuti ?" crlf crlf))
+                (case game-wtdplacement then
+                    (printout t "Saresti interessato ad un gioco in cui per raggiungere i propri obiettivi dipende dall’uso proficuo delle proprie risorse e azioni a disposizione ? " crlf crlf))
+                (case game-hmovement then
+                    (printout t "Ti piacerebbe nel gioco la presenza di un personaggio che per vincere deve tenere nascoste  i propri movimenti e azioni agli avversari. Mentre gli avversari lo cercano ? " crlf crlf))
+                (case game-investigative then 
+                    (printout t "Nel gioco ti piacerebbe investigare su un caso misterioso ?" crlf crlf)) 
                 (case game-bidding then 
                     (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
                 (case game-bluff then
                     (printout t "Ti piace bleffare nei giochi da tavolo?" crlf crlf))
-                (case game-investigative then 
-                    (printout t "Nel gioco ti piacerebbe investigare su un caso misterioso ?" crlf crlf)) ;;rivedere
                 (case game-hold-story then 
                     (printout t "Ti piace il tema relativo all'antichità ?" crlf crlf))
                 (case game-western then 
@@ -310,6 +313,18 @@
                         (case game-challenging then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
+                        
+                        (case game-explorative then
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-wtdplacement then
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                        (case game-hmovement then
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
 
                         (case game-bidding then            
                                 (print-yes-no ?answer)
@@ -331,7 +346,7 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
-                        (case game-gothic then  ;;QUIc          
+                        (case game-gothic then  ;;QUI          
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 

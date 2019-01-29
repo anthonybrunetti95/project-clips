@@ -3,12 +3,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(defrule find-hypotetical-final-board-game-filler-and-party-and-family
+(defrule find-hypotetical-final-board-game-filler-or-party-or-family
         (declare (salience ?*sub-normal-priority*))
         
-        (result (feature filler) (value ?filler))
-        (result (feature party) (value ?party))
-        (result (feature family) (value ?family))
+        
+        (or     (result (feature filler) (value ?filler))
+                (result (feature party) (value ?party))
+                (result (feature family) (value ?family))
+        )
         (or     (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -16,104 +18,29 @@
                 (result (feature 5players) (value ?players5))
                 (result (feature 6players) (value ?players6))
                 (result (feature 6players+) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
         )
 
 
         (general-kind (label ?label) (filler ?filler) (party ?party) (family ?family))
         (board-game (label ?label) (board-game-name ?board-game-name) )
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
-        (main-features (label ?label) (age ?age) (length ?length))
-        (user-age (min-age ?min))
-        (test (>=  ?min ?age))
-
-        =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-and-party-and-family)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-and-party-and-family:  " ?label " " ?board-game-name "  "  crlf))
-        
-)
-
-(defrule find-hypotetical-final-board-game-filler
-        (declare (salience ?*sub-normal-priority*))
-        (result (feature filler) (value ?filler))
-        
-
-        (or     (result (feature 1players) (value ?players1))
-                (result (feature 2players) (value ?players2))
-                (result (feature 3players) (value ?players3))
-                (result (feature 4players) (value ?players4))
-                (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
-                (result (feature 6players+) (value ?players6+))
-        )
-        (general-kind (label ?label) (filler ?filler))
-        (board-game (label ?label) (board-game-name ?board-game-name) )
-        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
-        (main-features (label ?label) (age ?age))
-        (user-age (min-age ?min))
-        (test (>=  ?min ?age))
-
-        =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label " " ?board-game-name "  "  crlf))
-        
-)
-
-(defrule find-hypotetical-final-board-game-family
-        (declare (salience ?*sub-normal-priority*))
-        (result (feature family) (value ?family))
-
-        (or     (result (feature 1players) (value ?players1))
-                (result (feature 2players) (value ?players2))
-                (result (feature 3players) (value ?players3))
-                (result (feature 4players) (value ?players4))
-                (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
-                (result (feature 6players+) (value ?players6+))
-        )
-        (general-kind (label ?label) (family ?family))
-        (board-game (label ?label) (board-game-name ?board-game-name) )
-        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
-        (main-features (label ?label) (age ?age) (length ?length))
+        (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
         (user-age (min-age ?min))
         (game-time (time ?time))
         (test (>=  ?min ?age))
         (test (>= ?length ?time))
+
         =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-family)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-family:  " ?label " " ?board-game-name "  "  crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-or-party-or-family)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-or-party-or-family:  " ?label " " ?board-game-name "  "  crlf))
         
 )
 
-
-(defrule find-hypotetical-final-board-game-party
-        (declare (salience ?*sub-normal-priority*))
-        (result (feature party) (value ?party))
-
-        (or     (result (feature 1players) (value ?players1))
-                (result (feature 2players) (value ?players2))
-                (result (feature 3players) (value ?players3))
-                (result (feature 4players) (value ?players4))
-                (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
-                (result (feature 6players+) (value ?players6+))
-        )
-        (general-kind (label ?label) (party ?party))
-        (board-game (label ?label) (board-game-name ?board-game-name) )
-        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
-        (main-features (label ?label) (age ?age) (length ?length))
-        (user-age (min-age ?min))
-        (game-time (time ?time))
-        (test (>=  ?min ?age))
-        (test (>= ?length ?time))
-        =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-party)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-party:  " ?label " " ?board-game-name "  "  crlf))
-        
-)
 
 (defrule find-hypotetical-final-board-game-wargame
         (declare (salience ?*sub-normal-priority*))
-        (result (feature party) (value ?wargame))
+        (result (feature wargame) (value ?wargame))
 
         (or     
                 (result (feature 2players) (value ?players2))
@@ -123,7 +50,7 @@
                 (result (feature 6players) (value ?players6))
                 
         )
-        (general-kind (label ?label) (party ?wargame))
+        (general-kind (label ?label) (wargame ?wargame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) )
         (main-features (label ?label) (age ?age) (length ?length))
@@ -140,7 +67,8 @@
 
 (defrule find-hypotetical-final-board-game-cardgame
         (declare (salience ?*sub-normal-priority*))
-        (result (feature party) (value ?cardgame))
+        (result (feature cardgame) (value ?cardgame))
+        
 
         (or     
                 (result (feature 1players) (value ?players1))
@@ -148,13 +76,13 @@
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
                 (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
+                (result (feature coop-comp) (value ?coop-comp))
                 
         )
-        (general-kind (label ?label) (party ?cardgame))
+        (general-kind (label ?label) (cardgame ?cardgame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )
-        (main-features (label ?label) (age ?age) (length ?length))
+        (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
 
@@ -169,6 +97,8 @@
 (defrule find-hypotetical-final-board-game-american
         (declare (salience ?*sub-normal-priority*))
         (result (feature american) (value ?american))
+        (result (feature weight) (value ?weight))
+       
 
         (or     
                 (result (feature 1players) (value ?players1))
@@ -177,12 +107,14 @@
                 (result (feature 4players) (value ?players4))
                 (result (feature 5players) (value ?players5))
                 (result (feature 6players) (value ?players6))
+                (result (feature +6players) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
                 
         )
         (general-kind (label ?label) (american ?american))
         (board-game (label ?label) (board-game-name ?board-game-name))
-        (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )
-        (main-features (label ?label) (age ?age) (length ?length))
+        (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+) )
+        (main-features (label ?label) (age ?age) (weight ?weight) (coop-comp ?coop-comp))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
 
@@ -193,16 +125,32 @@
 )
 
 
+(defrule find-hypotetical-final-board-game-german
+        (declare (salience ?*sub-normal-priority*))
+        (result (feature german) (value ?german))
 
+        (or     
+                (result (feature 1players) (value ?players1))
+                (result (feature 2players) (value ?players2))
+                (result (feature 3players) (value ?players3))
+                (result (feature 4players) (value ?players4))
+                (result (feature 5players) (value ?players5))
+                (result (feature 6players) (value ?players6))
+                (result (feature +6players) (value ?players6+))
+                
+        )
+        (general-kind (label ?label) (german ?german))
+        (board-game (label ?label) (board-game-name ?board-game-name))
+        (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+) )
+        (main-features (label ?label) (age ?age) (length ?length))
+        (user-age (min-age ?min)) 
+        (test (>=  ?min ?age))
 
-
-
-
-
-
-
-
-
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-german)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-german:  " ?label " " ?board-game-name "  "  crlf))
+        
+)
 
 
 (defrule find-final-board-game

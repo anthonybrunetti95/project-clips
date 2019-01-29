@@ -268,13 +268,30 @@
                     then (assert (info (feature game-challenging) (value "no") (question game-challenging)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CHALENGING NO")))))
 
-            (case game-bidding  then
+            (case game-explorative  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-bidding) (value "yes") (question game-bidding))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING YES")) else
+                    then (assert (info (feature game-explorative) (value "yes") (question game-explorative))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-EXPLORATIVE YES")) else
                 (if (eq ?answer n) 
-                    then (assert (info (feature game-bidding) (value "no") (question game-bidding)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING NO")))))
+                    then (assert (info (feature game-explorative) (value "no") (question game-explorative)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-EXPLORATIVE NO")))))
+
+            (case game-wtdplacement  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-wtdplacement) (value "yes") (question game-wtdplacement))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WTDPLACEMENT YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-wtdplacement) (value "no") (question game-wtdplacement)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WTDPLACEMENT NO")))))
+
+            (case game-hmovement  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-hmovement) (value "yes") (question game-hmovement))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HMOVEMENT YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-hmovement) (value "no") (question game-hmovement)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HMOVEMENT NO")))))
+
 
             (case game-investigative  then
                   (if (eq ?answer s) 
@@ -283,6 +300,14 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-investigative) (value "no") (question game-investigative)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE NO")))))
+
+            (case game-bidding  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-bidding) (value "yes") (question game-bidding))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-bidding) (value "no") (question game-bidding)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING NO")))))
 
             (case game-bluff then
                   (if (eq ?answer s)
