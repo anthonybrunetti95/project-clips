@@ -215,7 +215,8 @@
         (not (info (feature game-bluff) (value "yes")))
         (not(info (feature game-bidding) (value "yes")))
         (info (feature user-gift) (value "no"))
-        (info (feature game-thematic) (value "yes"))  
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-comp) (value "no"))  
         =>
         (assert (asking-question (question game-explorative) (answers s n)))
 )
@@ -231,6 +232,7 @@
         (not (info (feature game-challenging) (value "yes")))
         (not (info (feature game-bluff) (value "yes")))
         (not (info (feature game-thematic) (value "yes")))
+        (result (feature coop-comp) (value comp))
         =>
         (assert (asking-question (question game-wtdplacement) (answers s n)))
 )
@@ -246,6 +248,7 @@
         (not(info (feature game-explorative) (value "yes")))
         (not (info (feature game-strategy) (value "yes")))
         (not (info (feature game-bidding) (value "yes")))
+        (result (feature coop-comp) (value coop\comp))
         =>
         (assert (asking-question (question game-hmovement) (answers s n)))
 )
@@ -272,6 +275,8 @@
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
         (info (feature game-strategy) (value "T"))
+        (info (feature game-coop) (value "no"))
+        (result (feature coop-comp) (value comp))
         =>
         (assert (asking-question (question game-bidding) (answers s n)))
 )
@@ -282,7 +287,8 @@
         (info (feature user-gift) (value "no"))
         (not (info (feature game-wtdplacement) (value "yes")))
         (not (info (feature game-explorative) (value "yes")))
-        ;(not (info (feature )))
+        (info (feature game-coop) (value "no"))
+        (result  (feature coop-comp) (value coop\comp | comp))
         =>
         (assert (asking-question (question game-bluff) (answers s n)))
 )
@@ -294,243 +300,538 @@
 
 
 
-(defrule ask-game-hold-story
+(defrule ask-game-greece-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature german) (value T))
-                (result (feature filler) (value T))
-                (result (feature family) (value T)))
-
+        (result (feature german) (value T))
+        (not(info (feature game-players) (value "6" | ">6")))
+        (not (info (feature game-greece)))
         =>
-        (assert (asking-question (question game-hold-story) (answers s n)))
+        (assert (asking-question (question game-greece) (answers s n)))
 )
 
-(defrule ask-game-western
+(defrule ask-game-greece-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature american) (value T))
-                        (info (feature game-bluff) (value "yes")))
+        (result (feature filler) (value T))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (result (feature coop-comp) (value comp))
+        (not (info (feature game-greece)))
 
-                (and   (result (feature party) (value T))
-                        (info (feature game-bluff) (value "yes")))
+        =>
+        (assert (asking-question (question game-greece) (answers s n)))
+)
 
-                (and    (result (feature family) (value T))
-                        (result (feature coop-comp) (value comp))
-                )        
+(defrule ask-game-greece-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature family) (value T))
+        (info (feature game-strategy) (value "yes"))
+        (result (feature coop-comp) (value comp))
+        (not (info (feature game-greece)))
+        =>
+        (assert (asking-question (question game-greece) (answers s n)))
+)
 
-        )  
+(defrule ask-game-roman 
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature wargame)  (value T))
+        (result (feature weight) (value difficile))
+        =>
+        (assert (asking-question (question game-roman) (answers s n)))
+)
+
+(defrule ask-game-western-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (info (feature game-bluff) (value "yes"))
+        (not(info (feature game-western))) 
+        =>
+        (assert (asking-question (question game-western) (answers s n)))
+)
+(defrule ask-game-western-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature party) (value T))
+        (info (feature game-bluff) (value "yes"))
+        (not(info (feature game-western)))
+
         =>
         (assert (asking-question (question game-western) (answers s n)))
 )
 
-(defrule ask-game-horror
+(defrule ask-game-western-3
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature filler) (value T))
-                        (info (feature game-thematic) (value "yes"))
-                        (result (feature coop-comp) (value comp)))
-                (and    (result (feature party) (value T))
-                        (info (feature game-challenging) (value "yes"))
-                        (result (feature coop-comp) (value coop\comp)))
-        )        
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (not(info (feature game-western)))
+        =>
+        (assert (asking-question (question game-western) (answers s n)))
+)
+
+
+(defrule ask-game-horror-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (result (feature coop-comp) (value comp))
+        (not(info (feature game-horror)))     
         =>
         (assert (asking-question (question game-horror) (answers s n)))
 )
 
-(defrule ask-game-gothic
+(defrule ask-game-horror-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature american) (value T))
-                        (info (feature game-challenging) (value "yes")))
-                (and    (result (feature german) (value T))
-                        (info (feature game-thematic) (value "yes")))
-                (and    (result (feature filler) (value T))
-                        (or     (info (feature game-thematic) (value "yes"))
-                                (info (feature game-strategy) (value "yes")))
-                )
-                (and    (result (feature cardgame) (value T))
-                        (info (feature game-challenging) (value T)))
+        (result (feature party) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (result (feature coop-comp) (value coop\comp))
+        (not(info (feature game-horror)))       
+        =>
+        (assert (asking-question (question game-horror) (answers s n)))
+)
 
-                (and    (result (feature family) (value T)) 
-                        (info (feature game-thematic) (value T)))
-        )         
+
+
+(defrule ask-game-gothic-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (not(info (feature game-gothic)))
         =>
         (assert (asking-question (question game-gothic) (answers s n)))
 )
 
-(defrule ask-game-lovecraft
+
+(defrule ask-game-gothic-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature german) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not(info (feature game-gothic))) 
+               
+        =>
+        (assert (asking-question (question game-gothic) (answers s n)))
+)
+(defrule ask-game-gothic-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (or     (info (feature game-thematic) (value "yes"))
+                (info (feature game-strategy) (value "yes")))
+        (not(info (feature game-gothic)))         
+                
+        =>
+        (assert (asking-question (question game-gothic) (answers s n)))
+)
+(defrule ask-game-gothic-4
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature cardgame) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (not(info (feature game-gothic)))        
+        =>
+        (assert (asking-question (question game-gothic) (answers s n)))
+)
+
+(defrule ask-game-gothic-5
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature family) (value T)) 
+        (info (feature game-thematic) (value "yes"))
+        
+        (not(info (feature game-gothic)))        
+        =>
+        (assert (asking-question (question game-gothic) (answers s n)))
+)
+
+(defrule ask-game-lovecraft-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (info (feature game-gothic) (value "yes"))
-        (or     (and    (result (feature german) (value T))
-                        (info (feature game-thematic) (value "yes")))
-                (and    (result (feature american) (value T))
-                        (info (feature game-challenging) (value "yes")))
-                (and    (result (feature filler) (value T))
-                        (info (feature game-thematic) (value "yes")))
-                (and    (result (feature cardgame) (value T))
-                        (info (feature game-thematic) (value "yes"))
-                        (info (feature game-challenging) (value "yes"))
-                        (info (feature game-investigative) (value "yes")))
-
-                (and    (result (feature family) (value T))
-                        (info (feature game-thematic) (value T)))
-        )
-
+        (result (feature german) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-lovecraft)))
 
         =>
         (assert (asking-question (question game-lovecraft) (answers s n)))
 )
 
-(defrule ask-game-war
+(defrule ask-game-lovecraft-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature american) (value T))
-                        (info (feature game-challenging) (value "yes"))
-                )
-                
-                (and    (result (feature german) (value T))
-                        (info (feature game-thematic) (value "yes"))
-                )
-        )
+        (info (feature game-gothic) (value "yes"))
+         (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-lovecraft)))
+
+        =>
+        (assert (asking-question (question game-lovecraft) (answers s n)))
+)
+
+(defrule ask-game-lovecraft-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (info (feature game-gothic) (value "yes"))
+        (result (feature filler) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-lovecraft)))
+
+        =>
+        (assert (asking-question (question game-lovecraft) (answers s n)))
+)
+
+(defrule ask-game-lovecraft-4
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (info (feature game-gothic) (value "yes"))
+        (result (feature cardgame) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (not (info (feature game-lovecraft)))
+        =>
+        (assert (asking-question (question game-lovecraft) (answers s n)))
+)
+
+(defrule ask-game-lovecraft-5
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (info (feature game-gothic) (value "yes"))
+        (result (feature family) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-lovecraft)))
+        =>
+        (assert (asking-question (question game-lovecraft) (answers s n)))
+)
+
+
+
+(defrule ask-game-war-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-war)))    
         =>
         (assert (asking-question (question game-war) (answers s n)))
 )
 
-(defrule ask-game-abstract
+
+(defrule ask-game-war-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     
-                (and    (result (feature filler) (value T))
-                        (info  (game-thematic) (value "yes"))
-                        (info (game-challenging) (value "yes")))
+        (result (feature german) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-war)))         
+        =>
+        (assert (asking-question (question game-war) (answers s n)))
+)
 
-                (and    (result (feature cardgame) (value T))
-                        (result (feature coop-comp) (value coop))
-                        (info (feature game-thematic) (value "yes"))
-                        (info (feature game-strategy) (value "yes"))
-                        (info (feature game-challenging) (value "yes"))
-                )
-                (and    (result (feature family) (value T))
-                        (result (feature coop-comp) (value comp)))
-        )        
+
+
+
+
+(defrule ask-game-abstract-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (info  (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-abstract)))
         =>
         (assert (asking-question (question game-abstract) (answers s n)))
 )
 
-(defrule ask-game-fantasy
+(defrule ask-game-abstract-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature german) (value T))
-                        (info (feature game-strategy) (value "yes")))
-                (and    (result (feature american) (value T))
-                        (info (feature game-challenging) (value "yes")))
-                (and    (result (feature filler) (value T))
-                        (or     (result (feature game-thematic) (value "yes"))     
-                                (result (feature game-strategy) (value "yes"))
-                        )
-                (and    (result (feature cardgame) (value T))
-                        (info (feature game-challenging) (value "yes")))
-
-                (and    (result (feature party) (value T))
-                        (or     (result (feature coop-comp) (value comp))
-                                (result (feature coop-comp) (value coop-comp)))
-
-                (and    (result (feature family) (value T))
-                        (info (feature game-thematic) (value "yes"))
-                )
-
-
+        (result (feature cardgame) (value T))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-abstract)))
+        
         =>
+        (assert (asking-question (question game-abstract) (answers s n)))
+)
+
+(defrule ask-game-abstract-1
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (not (info (feature game-abstract)))        
+        =>
+        (assert (asking-question (question game-abstract) (answers s n)))
+)
+
+
+
+
+(defrule ask-game-fantasy-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature german) (value T))
+        (info (feature game-strategy) (value "yes"))
+        (not (info (feature game-fantasy)))
+           =>
         (assert (asking-question (question game-fantasy) (answers s n)))
 )
+
+(defrule ask-game-fantasy-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-fantasy)))
+           =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+(defrule ask-game-fantasy-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (or     (info (feature game-thematic) (value "yes"))     
+                (info (feature game-strategy) (value "yes"))
+        )
+        (not (info (feature game-fantasy)))
+           =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+(defrule ask-game-fantasy-4
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature cardgame) (value T))
+        (info (feature game-challenging) (value "yes"))
+         (not (info (feature game-fantasy)))
+
+           =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+(defrule ask-game-fantasy-5
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature party) (value T))
+         (or    (result (feature coop-comp) (value comp))
+                (result (feature coop-comp) (value coop-comp)))
+          (not (info (feature game-fantasy)))
+
+           =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+(defrule ask-game-fantasy-6
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature family) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-fantasy)))
+
+           =>
+        (assert (asking-question (question game-fantasy) (answers s n)))
+)
+
+
 
 (defrule ask-game-farms
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or      (result (feature german) (value T))
+        (or     (result (feature german) (value T))
                 (result (feature filler) (value T))
                 (result (feature family) (value T))
         )
-        (info (feature "game-wtdplacement") (value "yes"))
+        (info (feature game-wtdplacement) (value "yes"))
         (result (feature coop-comp) (value comp))
 
         =>
         (assert (asking-question (question game-farms) (answers s n)))
 )
 
-(defrule ask-game-futuristics
+
+(defrule ask-game-futuristics-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (and    (result (feature american) (value "yes"))
-                        (info (feature game-thematic) (value "yes"))
-                        (info (feature game-explorative) (value "yes"))
-                        (result (feature coop-comp) (value coop\comp))
-                )        
-                (and    (result (feature filler) (value T))
-                        (result (feature coop-comp) (value comp))
-                        (result (feature game-bluff) (value "yes")))
-                (or     (result (feature party) (value T))
-                        (result (feature family) (value T)))
-                        (and    (info (feature game-challenging) (value "yes"))
-                                (info (feature game-bluff) (value "yes"))
-                        )
-                )
-        )
+        (result (feature american) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-explorative) (value "yes"))
+        (result (feature coop-comp) (value coop\comp))
+        (not(info (feature game-futuristics)))              
+               
         =>
         (assert (asking-question (question game-futuristics) (answers s n)))
 )
 
-(defrule ask-game-merchants
+(defrule ask-game-futuristics-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or    (result (feature german) (value T))
-                (result (feature filler) (value T))
-        )
+        (result (feature filler) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-bluff) (value "yes"))
+        (not(info (feature game-futuristics)))
+        =>
+        (assert (asking-question (question game-futuristics) (answers s n)))
+)
 
+(defrule ask-game-futuristics-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (or     (result (feature party) (value T))
+                (result (feature family) (value T)))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-bluff) (value "yes"))        
+        (not(info (feature game-futuristics)))
+        =>
+        (assert (asking-question (question game-futuristics) (answers s n)))
+)
+
+
+(defrule ask-game-merchants-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (result (feature coop-comp) (value comp))
+        (not(info (feature game-merchants)))
         =>
         (assert (asking-question (question game-merchants) (answers s n)))
 )
 
-(defrule ask-game-indians
+
+(defrule ask-game-merchants-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature german) (value T))
-                (result (feature filler) (value T))
-                (result (feature family) (value T)))
+        (result (feature german) (value T))
+        (not(info (feature game-merchants)))
+        =>
+        (assert (asking-question (question game-merchants) (answers s n)))
+)
+
+
+(defrule ask-game-indians-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature german) (value T))
+        (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
 )
+
+(defrule ask-game-indians-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (result (feature coop-comp) (value T))
+        (not(info (feature game-indians)))
+        =>
+        (assert (asking-question (question game-indians) (answers s n)))
+)
+
+(defrule ask-game-indians-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (not(info (feature game-indians)))
+        =>
+        (assert (asking-question (question game-indians) (answers s n)))
+)
+
+(defrule ask-game-indians-4
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-wtdplacement) (value "yes"))
+        (not(info (feature game-indians)))
+        =>
+        (assert (asking-question (question game-indians) (answers s n)))
+)
+
+
+
 
 (defrule ask-game-fireworks
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature party) (value T))
+        (result (feature coop-comp) (value coop))
  
         =>
         (assert (asking-question (question game-fireworks) (answers s n)))
 )
 
 
-(defrule ask-game-survival
+(defrule ask-game-survival-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or (result (feature american) (value T))
-                (result (feature filler) (value T)))
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-indians ) (value  "yes"))
+        (not (info (feature game-survival)))
+        =>
+        (assert (asking-question (question game-survival) (answers s n)))
+)
+
+(defrule ask-game-survival-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-indians ) (value  "yes"))
+        (not (info (feature game-survival)))
         =>
         (assert (asking-question (question game-survival) (answers s n)))
 )
@@ -541,7 +842,11 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature cardgame) (value T))
-
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-abstract) (value "yes"))
         =>
         (assert (asking-question (question game-forests) (answers s n)))
 )
@@ -562,20 +867,63 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature family) (value T))
+        (result (feature coop-comp) (value coop))
 
         =>
         (assert (asking-question (question game-numbers) (answers s n)))
 )
 
-(defrule ask-game-castles
+(defrule ask-game-castles-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature german) (value T))
-                (result (feature filler) (value T))
-                (result (feature party) (value T))
-                (result (feature family) (value T)))
+        (result (feature german) (value T))
+        (result (feature weight) (value medio))
+        (info (feature user-budget) (value "34<44"))
+        (not (feature game-castles))       
 
+    
+        =>
+        (assert (asking-question (question game-castles) (answers s n)))
+)
+
+(defrule ask-game-castles-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (info (feature user-budget) (value  "<18" |"19<33")) 
+        (result (feature weight) (value leggero))
+        (not (feature game-castles))    
+        =>
+        (assert (asking-question (question game-castles) (answers s n)))
+)
+
+(defrule ask-game-castles-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature party) (value T))
+        (info (feature  game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (not (feature game-castles))       
+
+    
+        =>
+        (assert (asking-question (question game-castles) (answers s n)))
+)
+(defrule ask-game-castles-4
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature family) (value T))
+        (info (feature  game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (not (feature game-castles))
     
         =>
         (assert (asking-question (question game-castles) (answers s n)))
@@ -586,34 +934,66 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature american) (value T))
-
-
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-hmovement) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (info (feature game-gothic) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
         =>
         (assert (asking-question (question game-vampyric) (answers s n)))
 )
 
-(defrule ask-game-renaissance-court
+(defrule ask-game-renaissance-court-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature german) (value T))                
-                (result (feature filler) (value T))
-                (result (feature party) (value T))
-                (result (feature family) (value T)))
+        (result (feature german) (value T))
+        (result (feature weight) (value medio | difficile))
+        (info (feature user-budget) (value "34<44" | "45<65"))                
+        (not (info (feature game-renaissance-court)))    
+        =>
+        (assert (asking-question (question game-renaissance-court) (answers s n)))
+)
+
+(defrule ask-game-renaissance-court-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (result (feature party) (value T))
+        (result (feature family) (value T))
+        (not (info (feature game-renaissance-court))) 
         =>
         (assert (asking-question (question game-renaissance-court) (answers s n)))
 )
 
 
-(defrule ask-game-pirates
+
+(defrule ask-game-pirates-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature american) (value T))
-                (result (feature filler) (value T))
-                (result (feature party) (value T)))
+        (result (feature american) (value T))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-explorative) (value "yes"))
+        (not(info (feature game-pirates)))
 
+        =>
+        (assert (asking-question (question game-pirates) (answers s n)))
+)
 
+(defrule ask-game-pirates-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature party) (value T))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-bluff) (value "yes")) 
+        (not(info (feature game-pirates)))
         =>
         (assert (asking-question (question game-pirates) (answers s n)))
 )
@@ -623,8 +1003,9 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature party) (value T))
-
-
+        (not (info (feature game-players) (value "1"| "2")))
+        (or     (result (feature coop-comp) (value comp))
+                (result (feature coop-comp) (value coop\comp)))
         =>
         (assert (asking-question (question game-witchcraft) (answers s n)))
 )
@@ -634,7 +1015,8 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature family) (value T))
-
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
         =>
         (assert (asking-question (question game-oriental) (answers s n)))
 )
@@ -644,7 +1026,9 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature family) (value T))
- 
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-abstract) (value "yes"))
         =>
         (assert (asking-question (question game-glass) (answers s n)))
 )
@@ -654,45 +1038,127 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature german) (value T))
-
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-wtdplacement) (value "yes"))
+        (info (feature game-renaissance-court) (value "yes"))
         =>
         (assert (asking-question (question game-chemistry) (answers s n)))
 )
 
 
-(defrule ask-game-lord-of-the-rings
+(defrule ask-game-lord-of-the-rings-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (info (feature game-fantasy) (value "yes"))
-        (or     (result (feature american) (value T))
-                (result (feature filler) (value T))
-                (result (feature cardgame) (value T)))        
+        (result (feature american) (value T))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
+        (info (feature game-gothic) (value "yes"))
+        (not (info (feature game-lord-of-the-rings)))
+
+        =>
+        (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
+)
+(defrule ask-game-lord-of-the-rings-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (info (feature game-fantasy) (value "yes"))
+        (result (feature filler) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
+        (info (feature game-gothic) (value "yes"))
+        (not (info (feature game-lord-of-the-rings)))                 
 
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
 )
 
-(defrule ask-game-tale
+(defrule ask-game-lord-of-the-rings-3
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature filler) (value T))
-                (result (feature party) (value T))
-                (result (feature family) (value T)))
+        (result (feature cardgame) (value T))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
+        (info (feature game-gothic) (value "yes"))       
+        (not (info (feature game-lord-of-the-rings)))
+        =>
+        (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
+)
 
+
+(defrule ask-game-tale-1
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature american) (value T))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-explorative) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
+        (not(info (feature game-tale)))
+        =>
+        (assert (asking-question (question game-tale) (answers s n)))
+)
+(defrule ask-game-tale-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (result (feature party) (value T))
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-fantasy) (value "yes"))
+        (not(info (feature game-tale)))
+        =>
+        (assert (asking-question (question game-tale) (answers s n)))
+)
+(defrule ask-game-tale-3
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature party) (value T))
+        (info (feature game-bluff) (value "yes"))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-fantasy) (value "yes"))
+        (not(info (feature game-tale)))
         =>
         (assert (asking-question (question game-tale) (answers s n)))
 )
 
-(defrule ask-game-crime
+(defrule ask-game-crime-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature american) (value T))
-                (result (feature filler) (value T)))
-
-
+        (result (feature american) (value T))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (not (info (feature game-crime)))
+        =>
+        (assert (asking-question (question game-crime) (answers s n)))
+)
+(defrule ask-game-crime-2
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-investigative) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (not(info (feature game-crime)))
         =>
         (assert (asking-question (question game-crime) (answers s n)))
 )
@@ -703,6 +1169,9 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature german) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (result (feature weight) (value medio))
+        (info (feature user-budget) (value "45<65"))
 
         =>
         (assert (asking-question (question game-restaurants) (answers s n)))
@@ -714,7 +1183,10 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature party) (value T))
-        
+        (result (feature coop-comp) (value comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-bluff) (value "yes"))        
 
         =>
         (assert (asking-question (question game-mafia) (answers s n)))
@@ -725,9 +1197,12 @@
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
-        (or     (result (feature filler) (value T))
-                (result (feature filler) (value T))
-                (result (feature family) (value T)))
+        (result (feature filler) (value T))
+        (result (feature party) (value T))
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
 
         =>
         (assert (asking-question (question game-politics) (answers s n)))

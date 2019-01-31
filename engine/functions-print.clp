@@ -53,8 +53,10 @@
                     (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
                 (case game-bluff then
                     (printout t "Ti piace bleffare nei giochi da tavolo?" crlf crlf))
-                (case game-hold-story then 
-                    (printout t "Ti piace il tema relativo all'antichità ?" crlf crlf))
+                (case game-greece then 
+                    (printout t "Ti piace il periodo storico della civilta greca ?" crlf crlf))
+                (case game-roman then 
+                    (printout t "Ti piace il periodo storico della civilta romana?"))
                 (case game-western then 
                     (printout t "Sei interessato  al tema Western ?" crlf crlf))
                 (case game-horror then 
@@ -334,7 +336,11 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
-                        (case game-hold-story  then            
+                        (case game-roman  then            
+                                (print-yes-no ?answer)
+                                (print-why-help ?answer))
+
+                         (case game-greece   then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 

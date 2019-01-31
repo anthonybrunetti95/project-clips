@@ -79,6 +79,7 @@
                 (result (feature coop-comp) (value ?coop-comp))
                 
         )
+        
         (general-kind (label ?label) (cardgame ?cardgame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )

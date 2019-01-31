@@ -319,13 +319,21 @@
 
                     )))
 
-            (case game-hold-story  then
+            (case game-greece  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-hold-story) (value "yes") (question game-hold-story))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HOLD-STORY YES")) else
+                    then (assert (info (feature game-greece) (value "yes") (question game-greece))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GREECE YES")) else
                 (if (eq ?answer n) 
-                    then (assert (info (feature game-hold-story) (value "no") (question game-hold-story)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HOLD-STORY NO")))))
+                    then (assert (info (feature game-greece) (value "no") (question game-greece)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GREECE NO")))))
+
+            (case game-roman  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-roman) (value "yes") (question game-roman))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-ROMAN YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-roman) (value "no") (question game-roman)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-ROMAN NO")))))
 
             (case game-western  then
                   (if (eq ?answer s) 
