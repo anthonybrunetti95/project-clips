@@ -71,6 +71,7 @@
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (info (feature game-comp) (value "yes"))
+        (info (feature game-coop) (value "no"))
         =>
         (assert (infering-result (feature german) (value T)))
 )
@@ -161,7 +162,7 @@
         (assert (infering-result (feature coop-comp) (value comp)))
 )
 
-(defrule infering-comp
+(defrule infering-coop-comp
         (declare (salience ?*highest-priority*))
         (info (feature game-coop) (value "yes"))
         (info (feature game-comp) (value "yes"))

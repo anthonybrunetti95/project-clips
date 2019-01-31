@@ -46,14 +46,14 @@
 
 (defrule inferred-age-adult
         (declare (salience ?*high-priority*))
-        (info (feature user-age) (value "40<50"|"50<60"|"60<70"))
+        (info (feature user-age) (value "40<50"|"50<60"))
         =>
         (assert (infering (feature age) (value adult)))
 )
 
 (defrule inferred-age-elder
         (declare (salience ?*high-priority*))
-        (info (feature user-age) (value "70<")) 
+        (info (feature user-age) (value "60<70" | "70<")) 
         =>
         (assert (infering (feature age) (value elder)))
 )
@@ -82,14 +82,14 @@
 
 (defrule inferred-group-age-adult
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "50"|"60"|"70"))
+        (info (feature group-age) (value "50"|"60"))
         =>
         (assert (infering (feature age) (value adult)))
 )
 
 (defrule inferred-group-age-elder
         (declare (salience ?*high-priority*))
-        (info (feature group-age) (value "70<")) 
+        (info (feature group-age) (value  "60" | "70" | "70<")) 
         =>
         (assert (infering (feature age) (value elder)))
 )
