@@ -3,14 +3,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(defrule find-hypotetical-final-board-game-filler-or-party-or-family
+(defrule find-hypotetical-final-board-game-filler-and-party-and-family
         (declare (salience ?*sub-normal-priority*))
         
         
-        (or     (result (feature filler) (value ?filler))
-                (result (feature party) (value ?party))
-                (result (feature family) (value ?family))
-        )
+                (result (feature filler) (value T))
+                (result (feature party) (value T))
+                (result (feature family) (value T))
+        
         (or     (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -19,24 +19,235 @@
                 (result (feature 6players) (value ?players6))
                 (result (feature 6players+) (value ?players6+))
                 (result (feature coop-comp) (value ?coop-comp))
+                (result (feature thematic) (value ?thematic))
+                (result (feature challenging) (value ?challenging))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
+                (result (feature castles) (value ?castles))
+                (result (feature renaissance-court) (value ?renaissance-court))
+                (result (feature tale) (value ?tale))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature futuristic) (value ?futuristic))
+                (result (feature politics) (value ?politics))
         )
 
 
-        (general-kind (label ?label) (filler ?filler) (party ?party) (family ?family))
+        (general-kind (label ?label) (filler T) (party T) (family T))
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
+        (main-features (label ?label) (age ?age) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (challenging ?challenging) (investigative ?investigative) (bluff ?bluff))
+        (thematic-environment (label ?label) (castles ?castles) (renaissance-court ?renaissance-court) (tale ?tale) (fantasy ?fantasy) (futuristic ?futuristic) (politics ?politics))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-and-party-and-family)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-and-party-and-family:  " ?label " " ?board-game-name "  "  crlf))
+        
+)
+
+(defrule find-hypotetical-final-board-game-filler-and-family
+        (declare (salience ?*sub-normal-priority*))
+        
+        
+                (result (feature filler) (value T))
+                (result (feature family) (value T))
+                (not (result (feature party) (value T)))
+        
+        (or     (result (feature 1players) (value ?players1))
+                (result (feature 2players) (value ?players2))
+                (result (feature 3players) (value ?players3))
+                (result (feature 4players) (value ?players4))
+                (result (feature 5players) (value ?players5))
+                (result (feature 6players) (value ?players6))
+                (result (feature 6players+) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
+                (result (feature thematic) (value ?thematic))
+                (result (feature challenging) (value ?challenging))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
+                (result (feature castles) (value ?castles))
+                (result (feature renaissance-court) (value ?renaissance-court))
+                (result (feature tale) (value ?tale))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature futuristic) (value ?futuristic))
+                (result (feature politics) (value ?politics))
+        )
+
+
+        (general-kind (label ?label) (filler T) (party F) (family T))
         (board-game (label ?label) (board-game-name ?board-game-name) )
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (challenging ?challenging) (investigative ?investigative) (bluff ?bluff))
+        (thematic-environment (label ?label) (castles ?castles) (renaissance-court ?renaissance-court) (tale ?tale) (fantasy ?fantasy) (futuristic ?futuristic) (politics ?politics))
         (user-age (min-age ?min))
         (game-time (time ?time))
         (test (>=  ?min ?age))
         (test (>= ?length ?time))
-
         =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-or-party-or-family)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-or-party-or-family:  " ?label " " ?board-game-name "  "  crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-and-family)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-and-family:  " ?label " " ?board-game-name "  "  crlf))
         
 )
 
+(defrule find-hypotetical-final-board-game-filler
+        (declare (salience ?*sub-normal-priority*))
+        
+        
+                (result (feature filler) (value T))
+                (not (result (feature party) (value T)))
+                (result (feature family) (value T))
+        
+        (or     (result (feature 1players) (value ?players1))
+                (result (feature 2players) (value ?players2))
+                (result (feature 3players) (value ?players3))
+                (result (feature 4players) (value ?players4))
+                (result (feature 5players) (value ?players5))
+                (result (feature 6players) (value ?players6))
+                (result (feature 6players+) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
+
+                (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature hmovement) (value ?hmovement))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bidding) (value ?bidding))
+                (result (feature bluff) (value ?bluff))
+        )        
+
+        (or     (result (feature greece) (value ?greece))
+                (result (feature abstract) (value ?abstract))
+                (result (feature lovecraft) (value ?lovecraft))
+                (result (feature gothic) (value ?gothic))
+                (result (feature merchants) (value ?merchants))
+                (result (feature survival) (value ?survival))
+                (result (feature indians) (value ?indians))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature castles) (value ?castles))
+                (result (feature futuristic) (value ?futuristic))
+                (result (feature jewelry) (value ?jewelry))
+                (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
+                (result (feature crime) (value ?crime))
+
+        )
+
+
+        (general-kind (label ?label) (filler ?filler)(family ?family))
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
+        (main-features (label ?label) (age ?age) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (investigative ?investigative) (bidding ?bidding) (bluff ?bluff))
+        (thematic-environment (label ?label) (greece ?greece) (lovecraft ?lovecraft) (gothic ?gothic) (merchants ?merchants) (survival ?survival) (indians ?indians) (fantasy ?fantasy) 
+                (castles ?castles)(futuristic ?futuristic) (jewelry ?jewelry)  (lord-of-the-rings ?lord-of-the-rings) (crime ?crime))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label " " ?board-game-name "  "  crlf))
+        
+)
+(defrule find-hypotetical-final-board-game-party
+        (declare (salience ?*sub-normal-priority*))
+        
+        
+                (not (result (feature filler) (value T)))
+                (result (feature party) (value T))
+                (not (result (feature family) (value T)))
+        
+        (or    
+                (result (feature 2players) (value ?players2))
+                (result (feature 3players) (value ?players3))
+                (result (feature 4players) (value ?players4))
+                (result (feature 5players) (value ?players5))
+                (result (feature 6players) (value ?players6))
+                (result (feature 6players+) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
+
+                (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
+        )
+
+        (or
+                (result (feature withcraft) (value ?withcraft))
+                (result (feature horror) (value ?horror))
+                (result (feature fireworks) (value ?fireworks))
+                (result (feature western) (value ?western))
+                (result (feature pirates) (value ?pirates))
+                (result (feature tale) (value ?tale))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature mafia) (value ?mafia))
+
+        )
+
+
+        (general-kind (label ?label) (party T))
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (players (label ?label) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
+        (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (investigative ?investigative)(bluff ?bluff))
+        (thematic-environment (label ?label) (withcraft ?withcraft) (horror ?horror) (fireworks ?fireworks) (western ?western) (pirates ?pirates) (tale ?tale) (fantasy ?fantasy) (mafia ?fmafia))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        (test (>= ?length ?time))
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-party)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-party:  " ?label " " ?board-game-name "  "  crlf))
+        
+)
+(defrule find-hypotetical-final-board-game-family
+        (declare (salience ?*sub-normal-priority*))
+        
+        
+                (not (result (feature filler) (value T)))
+                (not (result (feature party) (value T)))
+                (result (feature family) (value T))
+        
+        (or     (result (feature 1players) (value ?players1))
+                (result (feature 2players) (value ?players2))
+                (result (feature 3players) (value ?players3))
+                (result (feature 4players) (value ?players4))
+                (result (feature 5players) (value ?players5))
+                (result (feature 6players) (value ?players6))
+                (result (feature 6players+) (value ?players6+))
+                (result (feature coop-comp) (value ?coop-comp))
+                (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+        )
+
+         (or    (result (feature greece) (value ?greece))
+                (result (feature western) (value ?western))
+                (result (feature tailoring) (value ?tailoring))
+                (result (feature abstract) (value ?abstract))
+                (result (feature numbers) (value ?numbers))
+                (result (feature trains) (value ?trains))
+                (result (feature oriental) (value ?oriental))
+                (result (feature glass) (value ?glass))
+        )
+
+        (general-kind (label ?label) (family T))
+        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
+        (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy))
+        (thematic-environment (label ?label) (greece ?greece) (western ?western) (tailoring ?tailoring) (abstract ?abstract) (numbers ?numbers) (trains ?trains) (oriental ?oriental) (glass ?glass))
+        (user-age (min-age ?min))
+        (game-time (time ?time))
+        (test (>=  ?min ?age))
+        (test (>= ?length ?time))
+        =>
+        (assert (hypotetical-final-board-game (label ?label) (what board-game-filler-and-party-and-family)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler-or-party-or-family:  " ?label " " ?board-game-name "  "  crlf))
+        
+)
 
 (defrule find-hypotetical-final-board-game-wargame
         (declare (salience ?*sub-normal-priority*))
@@ -48,15 +259,18 @@
                 (result (feature 4players) (value ?players4))
                 (result (feature 5players) (value ?players5))
                 (result (feature 6players) (value ?players6))
+                (result (feature roman ) (value ?roman))
                 
         )
         (general-kind (label ?label) (wargame ?wargame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) )
         (main-features (label ?label) (age ?age) (length ?length))
+        (thematic-environment (label ?label) (roman ?roman))
         (user-age (min-age ?min)) 
+        (game-time (time ?time))
         (test (>=  ?min ?age))
-
+        (test (>= ?length ?time))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-wargame)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-wargame:  " ?label " " ?board-game-name "  "  crlf))
@@ -77,16 +291,42 @@
                 (result (feature 4players) (value ?players4))
                 (result (feature 5players) (value ?players5))
                 (result (feature coop-comp) (value ?coop-comp))
-                
+                (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature explorative) (value ?explorative))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
         )
-        
+
+        (or
+                (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature explorative) (value ?explorative))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
+
+        )
+        (or     
+                (result (feature abstract) (value ?abstract))
+                (result (feature lovecraft) (value ?lovecraft))
+                (result (feature gothic) (value ?gothic))
+                (result (feature abstract) (value ?abstract))
+                (result (feature forests) (value ?forests))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
+        )
         (general-kind (label ?label) (cardgame ?cardgame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (investigative ?investigative) (bluff ?bluff)) 
+        (thematic-environment (label ?label) (abstract ?abstract) (lovecraft ?lovecraft) (gothic ?gothic) (abstract ?abstract) (forests ?forests) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
+        (game-time (time ?time))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
-
+        (test (>= ?length ?time))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-cardgame)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-cardgame:  " ?label " " ?board-game-name "  "  crlf))
@@ -118,7 +358,7 @@
         (main-features (label ?label) (age ?age) (weight ?weight) (coop-comp ?coop-comp))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
-
+        (test (>= ?length ?time))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-american)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name "  "  crlf))

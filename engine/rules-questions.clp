@@ -216,7 +216,7 @@
         (not(info (feature game-bidding) (value "yes")))
         (info (feature user-gift) (value "no"))
         (info (feature game-thematic) (value "yes"))
-        (info (feature game-comp) (value "no"))  
+        (result (feature coop-comp) (value coop\comp | comp )) 
         =>
         (assert (asking-question (question game-explorative) (answers s n)))
 )
@@ -777,6 +777,7 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature filler) (value T))
+        (result (feature coop-comp) (value comp))
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -786,7 +787,22 @@
         (declare (salience ?*zero-priority*))
         (not (retraction))
         (info (feature user-gift) (value "no"))
+        (result (feature filler) (value T))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (not(info (feature game-indians)))
+        =>
+        (assert (asking-question (question game-indians) (answers s n)))
+)
+
+
+(defrule ask-game-indians-5
+        (declare (salience ?*zero-priority*))
+        (not (retraction))
+        (info (feature user-gift) (value "no"))
         (result (feature family) (value T))
+        (result (feature filler) (value T))
         (result (feature coop-comp) (value comp))
         (info (feature game-wtdplacement) (value "yes"))
         (not(info (feature game-indians)))
