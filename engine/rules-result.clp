@@ -295,13 +295,6 @@
         (assert (infering-result(feature numbers )(value T)))
 
 )
-(defrule infering-
-        (declare (salience ?*highest-priority*))
-        (info (feature game-) (value "yes"))
-         =>
-        (assert (infering-result(feature roman )(value T)))
-
-)
 
 (defrule infering-castles
         (declare (salience ?*highest-priority*))

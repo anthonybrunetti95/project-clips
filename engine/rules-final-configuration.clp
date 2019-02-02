@@ -67,7 +67,9 @@
                 (result (feature challenging) (value ?challenging))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-                (result (feature castles) (value ?castles))
+        )
+                
+        (or     (result (feature castles) (value ?castles))
                 (result (feature renaissance-court) (value ?renaissance-court))
                 (result (feature tale) (value ?tale))
                 (result (feature fantasy) (value ?fantasy))
@@ -98,7 +100,7 @@
         
                 (result (feature filler) (value T))
                 (not (result (feature party) (value T)))
-                (result (feature family) (value T))
+                (not (result (feature family) (value T)))
         
         (or     (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
@@ -112,6 +114,7 @@
                 (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
                 (result (feature challenging) (value ?challenging))
+                (result (feature wtdplacement) (value ?wtdplacement))
                 (result (feature hmovement) (value ?hmovement))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bidding) (value ?bidding))
@@ -135,13 +138,13 @@
         )
 
 
-        (general-kind (label ?label) (filler ?filler)(family ?family))
-        (board-game (label ?label) (board-game-name ?board-game-name) )
+        (general-kind (label ?label) (filler T) (party F) (family F))
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
         (main-features (label ?label) (age ?age) (coop-comp ?coop-comp))
-        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (investigative ?investigative) (bidding ?bidding) (bluff ?bluff))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (wtdplacement ?wtdplacement) (hmovement ?hmovement) (investigative ?investigative) (bidding ?bidding) (bluff ?bluff))
         (thematic-environment (label ?label) (greece ?greece) (lovecraft ?lovecraft) (gothic ?gothic) (merchants ?merchants) (survival ?survival) (indians ?indians) (fantasy ?fantasy) 
                 (castles ?castles)(futuristic ?futuristic) (jewelry ?jewelry)  (lord-of-the-rings ?lord-of-the-rings) (crime ?crime))
+        (board-game (label ?label) (board-game-name ?board-game-name) )
         (user-age (min-age ?min))
         (game-time (time ?time))
         (test (>=  ?min ?age))
@@ -176,7 +179,7 @@
         )
 
         (or
-                (result (feature withcraft) (value ?withcraft))
+                (result (feature witchcraft) (value ?witchcraft))
                 (result (feature horror) (value ?horror))
                 (result (feature fireworks) (value ?fireworks))
                 (result (feature western) (value ?western))
@@ -193,7 +196,7 @@
         (players (label ?label) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
         (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (investigative ?investigative)(bluff ?bluff))
-        (thematic-environment (label ?label) (withcraft ?withcraft) (horror ?horror) (fireworks ?fireworks) (western ?western) (pirates ?pirates) (tale ?tale) (fantasy ?fantasy) (mafia ?fmafia))
+        (thematic-environment (label ?label) (witchcraft ?witchcraft) (horror ?horror) (fireworks ?fireworks) (western ?western) (pirates ?pirates) (tale ?tale) (fantasy ?fantasy) (mafia ?mafia))
         (user-age (min-age ?min))
         (game-time (time ?time))
         (test (>=  ?min ?age))
@@ -221,6 +224,10 @@
                 (result (feature coop-comp) (value ?coop-comp))
                 (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature wtdplacement) (value ?wtdplacement))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
         )
 
          (or    (result (feature greece) (value ?greece))
@@ -237,7 +244,7 @@
         (board-game (label ?label) (board-game-name ?board-game-name) )
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
-        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (wtdplacement ?wtdplacement) (investigative ?investigative) (bluff ?bluff))
         (thematic-environment (label ?label) (greece ?greece) (western ?western) (tailoring ?tailoring) (abstract ?abstract) (numbers ?numbers) (trains ?trains) (oriental ?oriental) (glass ?glass))
         (user-age (min-age ?min))
         (game-time (time ?time))
@@ -309,7 +316,7 @@
 
         )
         (or     
-                (result (feature abstract) (value ?abstract))
+              
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
                 (result (feature abstract) (value ?abstract))
@@ -322,7 +329,7 @@
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
         (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (investigative ?investigative) (bluff ?bluff)) 
-        (thematic-environment (label ?label) (abstract ?abstract) (lovecraft ?lovecraft) (gothic ?gothic) (abstract ?abstract) (forests ?forests) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
+        (thematic-environment (label ?label) (abstract ?abstract) (lovecraft ?lovecraft) (gothic ?gothic)  (forests ?forests) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
         (game-time (time ?time))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
@@ -352,13 +359,39 @@
                 (result (feature coop-comp) (value ?coop-comp))
                 
         )
+
+        (or     (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature challenging) (value ?challenging))
+                (result (feature explorative) (value ?explorative))
+                (result (feature hmovement) (value ?hmovement))
+                (result (feature investigative) (value ?investigative))
+                (result (feature bluff) (value ?bluff))
+        )
+
+        (or  
+                (result (feature war) (value ?war))
+                (result (feature lovecraft) (value ?lovecraft))
+                (result (feature gothic) (value ?gothic))
+                (result (feature vampyric) (value ?vampyric))
+                (result (feature pirates) (value ?pirates))
+                (result (feature indians) (value ?indians))
+                (result (feature western) (value ?western))
+                (result (feature crime) (value ?crime))
+                (result (feature survival) (value ?survival))
+                (result (feature tale) (value ?tale))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
+        )
+
         (general-kind (label ?label) (american ?american))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+) )
-        (main-features (label ?label) (age ?age) (weight ?weight) (coop-comp ?coop-comp))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (hmovement ?hmovement) (investigative ?investigative) (bluff ?bluff))
+        (thematic-environment (label ?label) (war ?war) (lovecraft ?lovecraft) (gothic ?gothic)  (vampyric ?vampyric) (pirates ?pirates) (indians ?indians) (western ?western) (crime ?crime) (survival ?survival) (tale ?tale) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
+        (main-features (label ?label) (age ?age) (length ?length) (weight ?weight) (coop-comp ?coop-comp))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
-        (test (>= ?length ?time))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-american)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name "  "  crlf))
@@ -369,7 +402,6 @@
 (defrule find-hypotetical-final-board-game-german
         (declare (salience ?*sub-normal-priority*))
         (result (feature german) (value ?german))
-
         (or     
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
@@ -380,13 +412,41 @@
                 (result (feature +6players) (value ?players6+))
                 
         )
+        (or     (result (feature thematic) (value ?thematic))
+                (result (feature strategy) (value ?strategy))
+                (result (feature wtdplacement) (value ?wtdplacement))
+                (result (feature bidding) (value ?bidding))
+        )
+
+        (or   
+                (result (feature farms) (value ?farms))
+                (result (feature industry) (value ?industry))
+                (result (feature merchants) (value ?merchants))
+                (result (feature greece) (value ?greece))
+                (result (feature castles) (value ?castles))
+                (result (feature war) (value ?war))
+                (result (feature fantasy) (value ?fantasy))
+                (result (feature castles) (value ?castles))
+                (result (feature gothic) (value ?gothic))
+                (result (feature chemistry) (value ?chemistry))
+                (result (feature gala-hotel) (value ?gala-hotel))
+                (result (feature indians) (value ?indians))
+                (result (feature lovecraft) (value ?lovecraft))
+                (result (feature restaurants) (value ?restaurants))
+                (result (feature trains) (value ?trains))   
+        )
+
         (general-kind (label ?label) (german ?german))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+) )
+        (secondary-kind  (label ?label) (thematic ?thematic) (strategy ?strategy) (wtdplacement ?wtdplacement) (bidding ?bidding))
+        (thematic-environment (label ?label) (farms ?farms) (merchants ?merchants) (greece ?greece) (castles ?castles) (war ?war) (fantasy ?fantasy) (gothic ?gothic) 
+                (chemistry ?chemistry) (gala-hotel ?gala-hotel) (indians ?indians) (lovecraft ?lovecraft) (restaurants ?restaurants) (trains ?trains)) 
         (main-features (label ?label) (age ?age) (length ?length))
-        (user-age (min-age ?min)) 
+        (user-age (min-age ?min))
+        (game-time (time ?time)) 
         (test (>=  ?min ?age))
-
+        (test (>= ?length ?time))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-german)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-german:  " ?label " " ?board-game-name "  "  crlf))

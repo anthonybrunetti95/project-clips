@@ -326,7 +326,6 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-greece) (value "no") (question game-greece)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GREECE NO")))))
-
             (case game-roman  then
                   (if (eq ?answer s) 
                     then (assert (info (feature game-roman) (value "yes") (question game-roman))) 
@@ -359,13 +358,13 @@
                     then (assert (info (feature game-gothic) (value "no") (question game-gothic)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-GOTHIC NO")))))
 
-            (case game-lovecraft  then ;;QUI
+            (case game-lovecraft  then 
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-) (value "yes") (question game-))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- YES")) else
+                    then (assert (info (feature game-lovecraft) (value "yes") (question game-lovecraft))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-LOVECRAFT YES")) else
                 (if (eq ?answer n) 
-                    then (assert (info (feature game-) (value "no") (question game-wargame)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME- NO")))))
+                    then (assert (info (feature game-lovecraft) (value "no") (question game-lovecraft)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-LOVECRAFT NO")))))
 
             (case game-war  then
                   (if (eq ?answer s) 

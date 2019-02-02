@@ -36,7 +36,7 @@
                 (case game-coop then 
                     (printout t " Nel gioco ti piace  cooperare con gli altri giocatori ?" crlf crlf))
                  (case game-thematic then 
-                    (printout t "Quanto è per te importante l’ambientazione e i dettagli nei giochi ?" crlf crlf))
+                    (printout t "Presti molta atenzione verso l’ambientazione e i dettagli nei giochi ?" crlf crlf))
                 (case game-strategy then
                     (printout t "Saresti interessato ad un gioco in cui per raggiungere un obiettivo dipende dalle azioni e strategie attuale? " crlf crlf))
                 (case game-challenging then 

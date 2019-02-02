@@ -108,6 +108,7 @@
         (not (info (feature game-cardgame) (value "yes")))
         (not (info (feature game-players) (value "1")))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"| "45<65"))
+        (info (feature game-players) (value "2" | "3" | "4" | "5" | "6" | "6+"))
         (info (feature game-time) (value "<60"))
         =>
         (assert (asking-question (question game-family) (answers s n)))
@@ -231,8 +232,7 @@
         (not (info (feature game-investigative) (value "yes")))
         (not (info (feature game-challenging) (value "yes")))
         (not (info (feature game-bluff) (value "yes")))
-        (not (info (feature game-thematic) (value "yes")))
-        (result (feature coop-comp) (value comp))
+        (not (result (feature coop-comp) (value coop | coop\comp)))
         =>
         (assert (asking-question (question game-wtdplacement) (answers s n)))
 )
@@ -603,6 +603,7 @@
         (info (feature user-gift) (value "no"))
         (result (feature german) (value T))
         (info (feature game-strategy) (value "yes"))
+        (not (info (feature game-indians) (value "yes")))
         (not (info (feature game-fantasy)))
            =>
         (assert (asking-question (question game-fantasy) (answers s n)))
@@ -614,6 +615,7 @@
         (info (feature user-gift) (value "no"))
         (result (feature american) (value T))
         (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-indians) (value "yes")))
         (not (info (feature game-fantasy)))
            =>
         (assert (asking-question (question game-fantasy) (answers s n)))
@@ -627,6 +629,7 @@
         (or     (info (feature game-thematic) (value "yes"))     
                 (info (feature game-strategy) (value "yes"))
         )
+        (not (info (feature game-indians) (value "yes")))
         (not (info (feature game-fantasy)))
            =>
         (assert (asking-question (question game-fantasy) (answers s n)))
@@ -638,6 +641,7 @@
         (info (feature user-gift) (value "no"))
         (result (feature cardgame) (value T))
         (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-indians) (value "yes")))
          (not (info (feature game-fantasy)))
 
            =>
@@ -651,6 +655,7 @@
         (result (feature party) (value T))
          (or    (result (feature coop-comp) (value comp))
                 (result (feature coop-comp) (value coop-comp)))
+         (not (info (feature game-indians) (value "yes")))
           (not (info (feature game-fantasy)))
 
            =>
@@ -663,6 +668,7 @@
         (info (feature user-gift) (value "no"))
         (result (feature family) (value T))
         (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-indians) (value "yes")))
         (not (info (feature game-fantasy)))
 
            =>
@@ -755,6 +761,8 @@
         (not (retraction))
         (info (feature user-gift) (value "no"))
         (result (feature german) (value T))
+        (not (info (feature game-fantasy) (value "yes")))
+        (not (info (feature game-gothic) (value "yes")))        
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -767,6 +775,8 @@
         (result (feature american) (value T))
         (info (feature game-challenging) (value "yes"))
         (result (feature coop-comp) (value T))
+        (not (info (feature game-fantasy) (value "yes")))
+        (not (info (feature game-gothic) (value "yes")))
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -778,6 +788,8 @@
         (info (feature user-gift) (value "no"))
         (result (feature filler) (value T))
         (result (feature coop-comp) (value comp))
+        (not (info (feature game-fantasy) (value "yes")))
+        (not (info (feature game-gothic) (value "yes")))
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -791,6 +803,8 @@
         (info (feature game-thematic) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-fantasy) (value "yes")))
+        (not (info (feature game-gothic) (value "yes")))
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -805,6 +819,8 @@
         (result (feature filler) (value T))
         (result (feature coop-comp) (value comp))
         (info (feature game-wtdplacement) (value "yes"))
+        (not (info (feature game-fantasy) (value "yes")))
+        (not (info (feature game-gothic) (value "yes")))
         (not(info (feature game-indians)))
         =>
         (assert (asking-question (question game-indians) (answers s n)))
@@ -1073,6 +1089,7 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
         (info (feature game-gothic) (value "yes"))
+        (not (info (feature game-lovecraft) (value "yes")))
         (not (info (feature game-lord-of-the-rings)))
 
         =>
@@ -1089,6 +1106,7 @@
         (info (feature game-strategy) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
         (info (feature game-gothic) (value "yes"))
+        (not (info (feature game-lovecraft) (value "yes")))
         (not (info (feature game-lord-of-the-rings)))                 
 
         =>
@@ -1104,7 +1122,8 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
-        (info (feature game-gothic) (value "yes"))       
+        (info (feature game-gothic) (value "yes"))
+        (not (info (feature game-lovecraft) (value "yes")))       
         (not (info (feature game-lord-of-the-rings)))
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
