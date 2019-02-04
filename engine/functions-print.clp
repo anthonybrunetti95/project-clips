@@ -12,13 +12,13 @@
                (case user-age then
                     (printout t "Quanti anni hai? " crlf crlf))
                 (case user-gift then
-                    (printout t "Il gico  che stai per comprare e' un regalo? " crlf crlf))
+                    (printout t "Il gioco  che stai per comprare e' un regalo? " crlf crlf))
                 (case user-experience then
                     (printout t "A quanti giochi da tavolo hai giocato?  " crlf crlf))
                 (case group-age then 
                     (printout t "Qual è l'età media del tuo gruppo di gioco? " crlf crlf))
                 (case group-experience then 
-                    (printout t "A quanti giochi da tavolo tu e il gruppo di gioco avette giocatto? " crlf crlf))      
+                    (printout t "A quanti giochi da tavolo tu e il gruppo di gioco avete giocato? " crlf crlf))      
                 (case user-budget then
                     (printout t "Quanto sei disposto a spendere per questo gioco? " crlf crlf))
                 (case game-players then
@@ -34,7 +34,7 @@
                 (case game-comp then 
                     (printout t "Ti piace avere degli avversari da sfidare ?" crlf crlf))
                 (case game-coop then 
-                    (printout t " Nel gioco ti piace  cooperare con gli altri giocatori ?" crlf crlf))
+                    (printout t " Nel gioco ti piace cooperare con gli altri giocatori ?" crlf crlf))
                  (case game-thematic then 
                     (printout t "Presti molta atenzione verso l’ambientazione e i dettagli nei giochi ?" crlf crlf))
                 (case game-strategy then
@@ -50,23 +50,23 @@
                 (case game-investigative then 
                     (printout t "Nel gioco ti piacerebbe investigare su un caso misterioso ?" crlf crlf)) 
                 (case game-bidding then 
-                    (printout t "Ti piace  la meccanica ad asta ?" crlf crlf))
+                    (printout t "Ti piace la meccanica ad asta ?" crlf crlf))
                 (case game-bluff then
                     (printout t "Ti piace bleffare nei giochi da tavolo?" crlf crlf))
                 (case game-greece then 
-                    (printout t "Ti piace il periodo storico della civilta greca ?" crlf crlf))
+                    (printout t "Ti piace il periodo storico della civiltà greca ?" crlf crlf))
                 (case game-roman then 
-                    (printout t "Ti piace il periodo storico della civilta romana?"))
+                    (printout t "Ti piace il periodo storico della civiltà romana?"))
                 (case game-western then 
-                    (printout t "Sei interessato  al tema Western ?" crlf crlf))
+                    (printout t "Sei interessato al tema Western?" crlf crlf))
                 (case game-horror then 
-                    (printout t "Sei interessato al tema Horror  ?" crlf crlf))
+                    (printout t "Sei interessato al tema Horror?" crlf crlf))
                 (case game-gothic then 
-                    (printout t "Sei interessato  all'ambientazione gotica?" crlf crlf))
+                    (printout t "Sei interessato all'ambientazione gotica?" crlf crlf))
                 (case game-lovecraft then 
-                    (printout t "Cosa ne pensi delle opere di Lovecraft ?" crlf crlf))
+                    (printout t "Ti piacciono le opere letterarie di Lovecraft?" crlf crlf))
                 (case game-war then 
-                    (printout t "Ti appassiona il tema della guerra ? " crlf crlf))
+                    (printout t "Ti appassiona il tema della guerra? " crlf crlf))
                 (case game-abstract then 
                     (printout t "Ti piacciono le ambientazioni astratte? " crlf crlf))
                 (case game-fantasy then 
@@ -74,50 +74,50 @@
                 (case game-farms then 
                     (printout t "Ti piace la vita di campagna?  " crlf crlf))
                 (case game-futuristics then 
-                    (printout t "Ti piace l'ambientazione futuristica ? " crlf crlf))
+                    (printout t "Ti piace l'ambientazione futuristica? " crlf crlf))
                 (case game-merchants then 
-                    (printout t "Ti potrebbe piacere un gioco con scambi commerciali ? " crlf crlf))
+                    (printout t "Ti potrebbe piacere un gioco con scambi commerciali? " crlf crlf))
                 (case game-indians then 
-                    (printout t "Ti piace sull’ambientazione maya / indiani ?  " crlf crlf))
+                    (printout t "Ti piace sull’ambientazione maya / indiani?  " crlf crlf))
                 (case game-fireworks then 
-                    (printout t "Ti piacerebbe un gioco a tema fuochi d'artificio ?" crlf crlf))
+                    (printout t "Ti piacerebbe un gioco a tema fuochi d'artificio?" crlf crlf))
                 (case game-survival then 
-                    (printout t "Ti piace il tema della sopravvivenza ? " crlf crlf))
+                    (printout t "Ti piace il tema della sopravvivenza? " crlf crlf))
                 (case game-forests then 
-                    (printout t "Ti paicerebbe un gico a tema ambiente e natura ? " crlf crlf))
+                    (printout t "Ti paicerebbe un gioco a tema ambiente e natura? " crlf crlf))
                 (case game-industry then 
-                    (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria ? " crlf crlf))
+                    (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria? " crlf crlf))
                 (case game-numbers then 
-                    (printout t "Ti potrebbero interessare i giochi con i numeri ? " crlf crlf))
+                    (printout t "Ti potrebbero interessare i giochi con i numeri? " crlf crlf))
                 (case game-castles then
                     (printout t "Sei interessato a ambientazione di castelli? " crlf crlf))
                 (case game-vampyric then
-                    (printout t "Ti piace il tema dei vampiri ? " crlf crlf))
+                    (printout t "Ti piace il tema dei vampiri? " crlf crlf))
                 (case game-renaissance-court then
                     (printout t "Ti piace l’ambientazione come corti rinascimentali ? " crlf crlf))
                 (case game-pirates then
-                    (printout t "Ti piace un gioco ad ambientazione  piratesca ? " crlf crlf))
+                    (printout t "Ti piace un gioco ad ambientazione piratesca? " crlf crlf))
                 (case game-witchcraft then
-                    (printout t "Ti piace il tema sulla magia / stregoneria ? " crlf crlf))
+                    (printout t "Ti piace il tema sulla magia / stregoneria? " crlf crlf))
                 (case game-oriental then
-                    (printout t "Ti piace la cultura orientale ? " crlf crlf))
+                    (printout t "Ti piace la cultura orientale? " crlf crlf))
                 (case game-glass then
                     (printout t "Ti piacerebbe avere un gioco con i mosaici ? " crlf crlf))
                    (case game-chemistry then
-                    (printout t "Ti piace il tema  alchimia / chimica ? " crlf crlf))
+                    (printout t "Ti piace il tema  alchimia / chimica? " crlf crlf))
                 (case game-lord-of-the-rings then
-                    (printout t "Ti piace il signore degli anelli ? " crlf crlf))
+                    (printout t "Ti piace "Il Signore degli Anelli"? " crlf crlf))
                 (case game-tale then
-                    (printout t "Ti piace l’ambientazione fiabesca ? " crlf crlf))
+                    (printout t "Ti piace l’ambientazione fiabesca? " crlf crlf))
                 (case game-crime then
-                    (printout t "Ti piace l’ambientazione poliziesca ?" crlf crlf))
+                    (printout t "Ti piace l’ambientazione poliziesca?" crlf crlf))
                 (case game-restaurants then
-                    (printout t "Ti piacciono i giochi che hanno come tema  i ristoranti ?" crlf crlf))
+                    (printout t "Ti piacciono i giochi che hanno come tema i ristoranti?" crlf crlf))
                 (case game-mafia then
-                    (printout t "Ti piacciono i giochi che hanno come tema la mafia ? " crlf crlf))
+                    (printout t "Ti piacciono i giochi che hanno come tema la mafia? " crlf crlf))
 
                 (case game-politics then
-                    (printout t "Ti piacciono i giochi che hanno come tema la politica ? " crlf crlf))
+                    (printout t "Ti piacciono i giochi che hanno come tema la politica? " crlf crlf))
 
                 (case rejection then
                         (printout t "  Sei soddisfatto di questo gioco o vuoi che provi a cercarne un'altro ?" crlf crlf))
@@ -544,7 +544,7 @@
                      (printout t "se vuoi un gioco con le carte " crlf))
 
                 (case game-wargame then
-                     (printout t "se vuoi un gico che simula la guerra " crlf))                              
+                     (printout t "se vuoi un gioco che simula la guerra " crlf))                              
         (default
                 (printout t "CLIPS-Exception!!! - Why Question"))
         )
@@ -559,7 +559,7 @@
                 (case group-age then 
                     (printout t "la fascia d'età media in cui si trova il tuo gruppo " crlf))
                 (case user-gift then
-                    (printout t  "se stai comprando un gico che regalerai ad un'altra persona." crlf))
+                    (printout t  "se stai comprando un gioco che regalerai ad un'altra persona." crlf))
                 (case user-experience then
                     (printout t "il numero di giochi che hai giocato "))
                 (case gruop-experience then
@@ -589,7 +589,7 @@
 
 (deffunction print-hypotetical-final-board-game (?game-board-name ?price ?min-budget ?max-budget $?what)
     (printout t crlf crlf "  ")
-    (printout t "Non ho trovato nessun gico che sia perfetto per te, ma ho trovato un altro gico: " ?game-board-name crlf "  ")
+    (printout t "Non ho trovato nessun gioco che sia perfetto per te, ma ho trovato un altro gioco: " ?game-board-name crlf "  ")
     (printout t "che soddisfa le tue richieste ")
 
     (bind ?out-of-budget false)

@@ -149,9 +149,9 @@
 
 
 (defrule ask-game-comp
-        (declare (salience ?*zero-priority*))
+        (declare (salience ?*normal-priority*))
         (not (retraction))
-        (not(info (feature game-players) (value "1")))
+        (info (feature game-players) (value  "2" | "3" | "4" | "5" | "6" | "6+"))
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
         =>
@@ -160,9 +160,9 @@
 
 
 (defrule ask-game-coop
-        (declare (salience ?*zero-priority*))
+        (declare (salience ?*normal-priority*))
         (not (retraction))
-        (not(info (feature game-players) (value "1")))
+        (info (feature game-players) (value  "2" | "3" | "4" | "5" | "6" | "6+"))
         (info (feature user-gift) (value "no"))
         (not(inferred (feature wargame) (value T)))
         =>
