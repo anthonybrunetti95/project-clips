@@ -20,7 +20,16 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
+    (refresh result-american )
     (refresh find-hypotetical-final-board-game-filler-and-party-and-family)
+    (refresh find-hypotetical-final-board-game-filler-and-family)
+    (refresh find-hypotetical-final-board-game-filler)
+    (refresh find-hypotetical-final-board-game-party)
+    (refresh find-hypotetical-final-board-game-family)
+    (refresh find-hypotetical-final-board-game-wargame)
+    (refresh find-hypotetical-final-board-game-cardgame)
+    (refresh find-hypotetical-final-board-game-american)
+    (refresh find-hypotetical-final-board-game-german)
     (refresh cant-find-any-final-board-game)
 
     (retract ?f1)

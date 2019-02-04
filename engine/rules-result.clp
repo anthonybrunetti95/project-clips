@@ -22,8 +22,8 @@
 
 ;;====================================================;;
 
-(
-(defrule infering-cardgame
+
+(defrule result-cardgame
         (declare (salience ?*highest-priority*))
         (info (feature game-cardgame) (value  "yes"))
 
@@ -31,21 +31,21 @@
         (assert (infering-result (feature cardgame) (value T) ))
 )
 
-(defrule infering-wargame 
+(defrule result-wargame 
         (declare (salience ?*high-priority*))
         (info (feature game-wargame) (value "yes"))
         =>
         (assert (infering-result (feature wargame) (value T)))
 )       
 
-(defrule infering-family 
+(defrule result-family 
         (declare (salience ?*high-priority*))
         (info (feature game-family) (value "yes"))
         =>
         (assert (infering-result (feature family) (value T)))
 )       
 
-(defrule infering-party 
+(defrule result-party 
         (declare (salience ?*high-priority*))
         (info (feature game-players) (value "5" | "6" | "6+"))
         (or     (inferred (feature weight) (value facile))
@@ -55,9 +55,11 @@
 
         =>
         (assert (infering-result (feature party) (value T)))
-)       
+)    
 
-(defrule infering-filler
+
+
+(defrule result-filler
         (declare (salience ?*high-priority*))
         (info (feature game-time) (value "<60"))
         (inferred (feature weight) (value facile))
@@ -66,7 +68,7 @@
         (assert (infering-result (feature filler) (value T)))
 )
 
-(defrule infering-german
+(defrule result-german
         (declare (salience ?*high-priority*))
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
@@ -75,26 +77,92 @@
         (assert (infering-result (feature german) (value T)))
 )
 
-(defrule infering-american 
+(defrule result-american 
         (declare (salience ?*high-priority*))
         (info (feature game-time) (value ">60"))
         (not(info (feature user-budget) (value "<18" | "19<33")))
         (info (feature game-thematic) (value "yes"))
-        (not (inferred (feature weight) (value facile)))
+        ;(not (inferred (feature weight) (value facile)))
         (not (info (feature game-wtdplacement) (value "yes")))
+        (not(info (feature game-bidding) (value "yes")))
         =>
         (assert (infering-result (feature american) (value T)))
 
 )
 
-(defrule infering-1players
+(defrule result-thematic
+        (declare (salience ?*high-priority*))
+        (info (feature  game-thematic) (value "yes"))
+        =>
+        (assert (infering-result (feature game-thematic) (value T)))
+)
+
+(defrule result-strategy
+        (declare (salience ?*high-priority*))
+        (info (feature  game-strategy) (value "yes"))
+        =>
+        (assert (infering-result (feature strategy) (value T)))
+)
+
+
+(defrule result-challenging
+        (declare (salience ?*high-priority*))
+        (info (feature  game-challenging) (value "yes"))
+        =>
+        (assert (infering-result (feature challenging) (value T)))
+)
+
+
+(defrule result-explorative
+        (declare (salience ?*high-priority*))
+         (info (feature  game-explorative) (value "yes"))
+        =>
+        (assert (infering-result (feature explorative) (value T)))
+)
+
+(defrule result-wtdplacement
+        (declare (salience ?*high-priority*))
+         (info (feature  game-wtdplacement) (value "yes"))
+        =>
+        (assert (infering-result (feature wtdplacement) (value T)))
+)
+
+(defrule result-hmovement
+        (declare (salience ?*high-priority*))
+         (info (feature  game-hmovement) (value "yes"))
+        =>
+        (assert (infering-result (feature hmovement) (value T)))
+)
+
+(defrule result-investigative
+        (declare (salience ?*high-priority*))
+         (info (feature  game-investigative) (value "yes"))
+        =>
+        (assert (infering-result (feature investigative) (value T)))
+)
+
+(defrule result-bidding
+        (declare (salience ?*high-priority*))
+         (info (feature  game-bidding) (value "yes"))
+        =>
+        (assert (infering-result (feature bidding) (value T)))
+)
+
+(defrule result-bluff
+        (declare (salience ?*high-priority*))
+         (info (feature  game-bluff) (value "yes"))
+        =>
+        (assert (infering-result (feature bluff) (value T)))
+)
+
+(defrule result-1players
         (declare (salience ?*highest-priority*))
         (inferred (feature 1players) (value T))
         =>
         (assert (infering-result (feature 1players) (value T)))
 )
 
-(defrule infering-2players
+(defrule result-2players
         (declare (salience ?*highest-priority*))
         (inferred (feature 2players) (value T))
         =>
@@ -102,35 +170,35 @@
 )
 
 
-(defrule infering-3players
+(defrule result-3players
         (declare (salience ?*highest-priority*))
         (inferred (feature 3players) (value T))
         =>
         (assert (infering-result (feature 3players) (value T)))
 )
 
-(defrule infering-4players
+(defrule result-4players
         (declare (salience ?*highest-priority*))
         (inferred (feature 4players) (value T))
         =>
         (assert (infering-result (feature 4players) (value T)))
 )
 
-(defrule infering-5players
+(defrule result-5players
         (declare (salience ?*highest-priority*))
         (inferred (feature 5players) (value T))
         =>
         (assert (infering-result (feature 5players) (value T)))
 )
 
-(defrule infering-6players
+(defrule result-6players
         (declare (salience ?*highest-priority*))
         (inferred (feature 6players) (value T))
         =>
         (assert (infering-result (feature 6players) (value T)))
 )
 
-(defrule infering-+6players
+(defrule result-+6players
         (declare (salience ?*highest-priority*))
         (inferred (feature +6players) (value T))
         =>
@@ -138,14 +206,14 @@
 )
 
 
-(defrule infering-weight
+(defrule result-weight
         (declare (salience ?*highest-priority*))
         (inferred (feature weight) (value ?weight))
         =>
         (assert (infering-result (feature weight) (value ?weight)))
 )
 
-(defrule infering-coop
+(defrule result-coop
         (declare (salience ?*highest-priority*))
         (info (feature game-coop) (value "yes"))
         (info (feature game-comp) (value "no"))
@@ -153,7 +221,7 @@
         (assert (infering-result (feature coop-comp) (value coop)))
 )
 
-(defrule infering-comp
+(defrule result-comp
         (declare (salience ?*highest-priority*))
         (info (feature game-comp) (value "yes"))
         (info (feature game-coop) (value "no"))
@@ -161,7 +229,7 @@
         (assert (infering-result (feature coop-comp) (value comp)))
 )
 
-(defrule infering-coop-comp
+(defrule result-coop-comp
         (declare (salience ?*highest-priority*))
         (info (feature game-coop) (value "yes"))
         (info (feature game-comp) (value "yes"))
@@ -170,7 +238,7 @@
 )
 
 
-(defrule infering-greece
+(defrule result-greece
         (declare (salience ?*highest-priority*))
         (info (feature game-greece) (value "yes"))
         =>
@@ -178,28 +246,28 @@
 
 )
 
-(defrule infering-roman
+(defrule result-roman
         (declare (salience ?*highest-priority*))
         (info (feature game-roman) (value "yes"))
         =>
         (assert (infering-result (feature roman )(value T)))
 
 )
-(defrule infering-western
+(defrule result-western
         (declare (salience ?*highest-priority*))
         (info (feature game-western) (value "yes"))
          =>
         (assert (infering-result (feature western )(value T)))
 
 )
-(defrule infering-horror
+(defrule result-horror
         (declare (salience ?*highest-priority*))
         (info (feature game-horror) (value "yes"))
          =>
         (assert (infering-result (feature horror )(value T)))
 
 )
-(defrule infering-gothic
+(defrule result-gothic
         (declare (salience ?*highest-priority*))
         (info (feature game-gothic) (value "yes"))
          =>
@@ -207,88 +275,88 @@
 
 )
 
-(defrule infering-lovecraft
+(defrule result-lovecraft
         (declare (salience ?*highest-priority*))
         (info (feature game-lovecraft) (value "yes"))
          =>
         (assert (infering-result (feature lovecraft )(value T)))
 
 )
-(defrule infering-war
+(defrule result-war
         (declare (salience ?*highest-priority*))
         (info (feature game-war) (value "yes"))
          =>
         (assert (infering-result (feature war )(value T)))
 
 )
-(defrule infering-abstract
+(defrule result-abstract
         (declare (salience ?*highest-priority*))
         (info (feature game-abstract) (value "yes"))
          =>
         (assert (infering-result (feature abstract )(value T)))
 )
-(defrule infering-fantasy
+(defrule result-fantasy
         (declare (salience ?*highest-priority*))
         (info (feature game-fantasy) (value "yes"))
          =>
         (assert (infering-result (feature fantasy )(value T)))
 
 )
-(defrule infering-farms
+(defrule result-farms
         (declare (salience ?*highest-priority*))
         (info (feature game-farms) (value "yes"))
          =>
         (assert (infering-result(feature farms )(value T)))
 )
 
-(defrule infering-futuristics
+(defrule result-futuristics
         (declare (salience ?*highest-priority*))
         (info (feature game-futuristics) (value "yes"))
          =>
         (assert (infering-result(feature futuristics )(value T)))
 )
-(defrule infering-merchants
+(defrule result-merchants
         (declare (salience ?*highest-priority*))
         (info (feature game-merchants) (value "yes"))
          =>
         (assert (infering-result(feature merchants )(value T)))
 
 )
-(defrule infering-indians
+(defrule result-indians
         (declare (salience ?*highest-priority*))
         (info (feature game-indians) (value "yes"))
          =>
         (assert (infering-result (feature indians )(value T)))
 
 )
-(defrule infering-fireworks
+(defrule result-fireworks
         (declare (salience ?*highest-priority*))
         (info (feature game-fireworks) (value "yes"))
          =>
         (assert (infering-result (feature fireworks )(value T)))
 
 )
-(defrule infering-survival
+(defrule result-survival
         (declare (salience ?*highest-priority*))
         (info (feature game-survival) (value "yes"))
          =>
         (assert (infering-result(feature survival )(value T)))
 )
-(defrule infering-forests
+(defrule result-forests
         (declare (salience ?*highest-priority*))
         (info (feature game-forests) (value "yes"))
          =>
         (assert (infering-result(feature forests )(value T)))
 
 )
-(defrule infering-industry
+(defrule result-industry
         (declare (salience ?*highest-priority*))
         (info (feature game-industry) (value "yes"))
          =>
         (assert (infering-result(feature industry )(value T)))
 
 )
-(defrule infering-numbers
+(defrule result-numbers
         (declare (salience ?*highest-priority*))
         (info (feature game-numbers) (value "yes"))
          =>
@@ -296,14 +364,14 @@
 
 )
 
-(defrule infering-castles
+(defrule result-castles
         (declare (salience ?*highest-priority*))
         (info (feature game-castles) (value "yes"))
          =>
         (assert (infering-result(feature castles )(value T)))
 
 )
-(defrule infering-vampyric
+(defrule result-vampyric
         (declare (salience ?*highest-priority*))
         (info (feature game-vampyric) (value "yes"))
          =>
@@ -311,14 +379,14 @@
 
 )
 
-(defrule infering-renaissance-court
+(defrule result-renaissance-court
         (declare (salience ?*highest-priority*))
         (info (feature game-renaissance-court) (value "yes"))
           =>
         (assert (infering-result(feature renaissance-court )(value T)))
 
 )
-(defrule infering-pirates
+(defrule result-pirates
         (declare (salience ?*highest-priority*))
         (info (feature game-pirates) (value "yes"))
           =>
@@ -326,7 +394,7 @@
 
 )
 
-(defrule infering-witchcraft
+(defrule result-witchcraft
         (declare (salience ?*highest-priority*))
         (info (feature game-witchcraft) (value "yes"))
           =>

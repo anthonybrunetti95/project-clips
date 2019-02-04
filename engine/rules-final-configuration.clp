@@ -344,8 +344,8 @@
 
 (defrule find-hypotetical-final-board-game-american
         (declare (salience ?*sub-normal-priority*))
-        (result (feature american) (value ?american))
-        (result (feature weight) (value ?weight))
+        (result (feature american) (value T))
+        
        
 
         (or     
@@ -357,6 +357,7 @@
                 (result (feature 6players) (value ?players6))
                 (result (feature +6players) (value ?players6+))
                 (result (feature coop-comp) (value ?coop-comp))
+                (result (feature weight) (value ?weight))
                 
         )
 
@@ -369,7 +370,7 @@
                 (result (feature bluff) (value ?bluff))
         )
 
-        (or  
+        (or 
                 (result (feature war) (value ?war))
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
@@ -384,7 +385,7 @@
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
         )
 
-        (general-kind (label ?label) (american ?american))
+        (general-kind (label ?label) (american T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+) )
         (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (hmovement ?hmovement) (investigative ?investigative) (bluff ?bluff))
@@ -394,7 +395,7 @@
         (test (>=  ?min ?age))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-american)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name "  "  crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name " (what find-hypotetical-game-american) "  crlf))
         
 )
 
