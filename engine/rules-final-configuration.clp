@@ -101,8 +101,8 @@
                 (result (feature filler) (value T))
                 (not (result (feature party) (value T)))
                 (not (result (feature family) (value T)))
-        
-        (or     (result (feature 1players) (value ?players1))
+(or   
+                (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
@@ -119,9 +119,11 @@
                 (result (feature investigative) (value ?investigative))
                 (result (feature bidding) (value ?bidding))
                 (result (feature bluff) (value ?bluff))
-        )        
+)     
 
-        (or     (result (feature greece) (value ?greece))
+
+
+ (or     (result (feature greece) (value ?greece))
                 (result (feature abstract) (value ?abstract))
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
@@ -134,8 +136,9 @@
                 (result (feature jewelry) (value ?jewelry))
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
                 (result (feature crime) (value ?crime))
+)
 
-        )
+    
 
 
         (general-kind (label ?label) (filler T) (party F) (family F))

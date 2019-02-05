@@ -171,11 +171,3 @@
         =>
         (assert (infering (feature 6players+) (value T)))
 )
-
-
-(defrule inferred-thematic
-        (declare (salience ?*high-priority*))
-        (info (feature game-thematic) (value "yes"))
-        =>
-        (assert (infering (feature thematic) (value T)))
-)
