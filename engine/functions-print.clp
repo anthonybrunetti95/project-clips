@@ -11,8 +11,6 @@
 
                (case user-age then
                     (printout t "Quanti anni hai? " crlf crlf))
-                (case user-gift then
-                    (printout t "Il gioco  che stai per comprare e' un regalo? " crlf crlf))
                 (case user-experience then
                     (printout t "A quanti giochi da tavolo hai giocato?  " crlf crlf))
                 (case group-age then 
@@ -50,7 +48,7 @@
                 (case game-investigative then 
                     (printout t "Nel gioco ti piacerebbe investigare su un caso misterioso ?" crlf crlf)) 
                 (case game-bidding then 
-                    (printout t "Ti piace la meccanica ad asta ?" crlf crlf))
+                    (printout t "Ti piacerebbe un gioco incentrato sulla vendidata all'asta ?" crlf crlf))
                 (case game-bluff then
                     (printout t "Ti piace bleffare nei giochi da tavolo?" crlf crlf))
                 (case game-greece then 
@@ -94,7 +92,7 @@
                 (case game-vampyric then
                     (printout t "Ti piace il tema dei vampiri? " crlf crlf))
                 (case game-renaissance-court then
-                    (printout t "Ti piace l’ambientazione come corti rinascimentali ? " crlf crlf))
+                    (printout t "Ti piace l’ambientazione come corti rinascimentali? " crlf crlf))
                 (case game-pirates then
                     (printout t "Ti piace un gioco ad ambientazione piratesca? " crlf crlf))
                 (case game-witchcraft then
@@ -102,11 +100,11 @@
                 (case game-oriental then
                     (printout t "Ti piace la cultura orientale? " crlf crlf))
                 (case game-glass then
-                    (printout t "Ti piacerebbe avere un gioco con i mosaici ? " crlf crlf))
+                    (printout t "Ti piacerebbe avere un gioco con i mosaici? " crlf crlf))
                    (case game-chemistry then
                     (printout t "Ti piace il tema  alchimia / chimica? " crlf crlf))
                 (case game-lord-of-the-rings then
-                    (printout t "Ti piace "Il Signore degli Anelli"? " crlf crlf))
+                    (printout t "Ti piace 'Il Signore degli Anelli'? " crlf crlf))
                 (case game-tale then
                     (printout t "Ti piace l’ambientazione fiabesca? " crlf crlf))
                 (case game-crime then
@@ -213,10 +211,6 @@
                                 (if (eq ?answer 8)
                                  then (printout t " (8) Piu' di 80 anni. " crlf) else
                                 (print-why-help ?answer) )))))))))
-
-                        (case user-gift then            
-                                (print-yes-no ?answer)
-                                (print-why-help ?answer))
 
                        
                         (case user-experience then
@@ -519,8 +513,7 @@
 
                 (case group-age then             
                         (printout t "l'eta' media del tuo gruppo con cui giochi, in modo da comprendere meglio l'esigenze del gruppo e le successive domande da porti. " crlf))
-                (case user-gift then    
-                    (printout t "se comprerai il gioco per qualcun'altro e di conseguenza capire i gusti di chi avra il gioco. " crlf)) 
+              
 
                 (case user-experience then
                     (printout t "per capire il tuo livello di esperienza sui giochi da tavolo. " crlf))
@@ -558,8 +551,6 @@
                     (printout t "la fascia d'eta' in cui ti trovi. " crlf)) 
                 (case group-age then 
                     (printout t "la fascia d'età media in cui si trova il tuo gruppo " crlf))
-                (case user-gift then
-                    (printout t  "se stai comprando un gioco che regalerai ad un'altra persona." crlf))
                 (case user-experience then
                     (printout t "il numero di giochi che hai giocato "))
                 (case gruop-experience then

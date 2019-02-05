@@ -100,17 +100,6 @@
                         (assert (user-age (min-age 70) (max-age 99)))  
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GROUP-AGE 80<")) )))))))))
 
-
-            (case user-gift then
-                (if (eq ?answer s) 
-                    then (assert (info (feature user-gift) (value "si") (question user-gift))) 
-                        (printout t crlf " Bene. " crlf crlf " D'ora in avanti il soggetto delle domande sara' la persona cui hai intenzione di regalare questo gico . " crlf crlf)
-                            (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GIFT MODE ON")) else
-                (if (eq ?answer n) 
-                    then (assert (info (feature user-gift) (value "no") (question user-gift)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GIFT MODE OFF")) )))
-            
-
             (case user-experience then 
                 (if (eq ?answer 1)
                     then (assert (info (feature user-experience) (value "zero") (question user-experience)))
@@ -344,10 +333,10 @@
 
             (case game-horror  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-western) (value "yes") (question game-western))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN YES")) else
+                    then (assert (info (feature game-horror) (value "yes") (question game-horror))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HORROR YES")) else
                 (if (eq ?answer n) 
-                    then (assert (info (feature game-western) (value "no") (question game-western)))
+                    then (assert (info (feature game-horror) (value "no") (question game-HORROR)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN NO")))))
 
             (case game-gothic  then

@@ -144,14 +144,13 @@
         (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (wtdplacement ?wtdplacement) (hmovement ?hmovement) (investigative ?investigative) (bidding ?bidding) (bluff ?bluff))
         (thematic-environment (label ?label) (greece ?greece) (lovecraft ?lovecraft) (gothic ?gothic) (merchants ?merchants) (survival ?survival) (indians ?indians) (fantasy ?fantasy) 
                 (castles ?castles)(futuristic ?futuristic) (jewelry ?jewelry)  (lord-of-the-rings ?lord-of-the-rings) (crime ?crime))
-        (board-game (label ?label) (board-game-name ?board-game-name) )
         (user-age (min-age ?min))
-        (game-time (time ?time))
         (test (>=  ?min ?age))
         
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label " " ?board-game-name "  "  crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler) "  crlf)
+            (printout t crlf " ->  Final board-game-filler:  " ?label "  players " ?players3   crlf))
         
 )
 (defrule find-hypotetical-final-board-game-party

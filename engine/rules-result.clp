@@ -64,6 +64,8 @@
         (info (feature game-time) (value "<60"))
         (inferred (feature weight) (value facile))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
+        (not (result (feature german) (value T)))
+        (not (info (feature game-explorative) (value "yes")))
         =>
         (assert (infering-result (feature filler) (value T)))
 )
@@ -73,18 +75,36 @@
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (result (feature coop-comp) (value comp))
+        (not (result (feature filler) (value T)))
         =>
         (assert (infering-result (feature german) (value T)))
 )
 
-(defrule result-american 
+(defrule result-american-1 
         (declare (salience ?*high-priority*))
         (info (feature game-time) (value ">60"))
         (not(info (feature user-budget) (value "<18" | "19<33")))
         (info (feature game-thematic) (value "yes"))
-        ;(not (inferred (feature weight) (value facile)))
-        (not (info (feature game-wtdplacement) (value "yes")))
-        (not(info (feature game-bidding) (value "yes")))
+        (not (inferred (feature weight) (value facile)))
+        (info(feature strategy) (value "no"))
+        (not (info (feature   game-wtdplacement | game-bidding | game-strategy) (value "yes")))
+        (not (result (feature american)))
+        =>
+        (assert (infering-result (feature american) (value T)))
+
+)
+(defrule result-american-2
+        (declare (salience ?*high-priority*))
+        (info (feature game-time) (value ">60"))
+        (info (feature user-budget) (value "<18" | "19<33"))
+        (info (feature game-thematic) (value "yes"))
+        (inferred (feature weight) (value facile))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-explorative) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (not (info (feature game-wtdplacement | game-bidding | game-strategy) (value "yes")))
+        (result (feature coop-comp) (value coop\comp))
+        (not (result (feature american)))
         =>
         (assert (infering-result (feature american) (value T)))
 
