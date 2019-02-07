@@ -215,14 +215,6 @@
                 (if (eq ?answer n) 
                     then (assert (info (feature game-wargame) (value "no") (question game-wargame)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WARGAME NO")))))
-
-            (case game-thematic  then
-                  (if (eq ?answer s) 
-                    then (assert (info (feature game-thematic) (value "yes") (question game-wargame))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC YES")) else
-                (if (eq ?answer n) 
-                    then (assert (info (feature game-thematic) (value "no") (question game-wargame)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC NO")))))
             
             (case game-coop  then
                   (if (eq ?answer s) 
@@ -241,69 +233,95 @@
                     then (assert (info (feature game-comp) (value "no") (question game-comp)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-COMPETITIVE NO")))))
 
+            (case game-thematic  then
+                  (if (eq ?answer s) 
+                    then (assert (info (feature game-thematic) (value "yes") (question game-wargame)))
+                          (assert (result-secondary-kind (label p1) (thematic T)))  
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC YES")) else
+                (if (eq ?answer n) 
+                    then (assert (info (feature game-thematic) (value "no") (question game-wargame)))
+                            (assert (result-secondary-kind (label p1) (thematic F)))  
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-THEMATIC NO")))))
+
              (case game-strategy  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-strategy) (value "yes") (question game-strategy))) 
+                    then (assert (info (feature game-strategy) (value "yes") (question game-strategy)))
+                         (assert (result-secondary-kind (label p1) (strategy T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-STRATEGY YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-strategy) (value "no") (question game-strategy)))
+                          (assert (result-secondary-kind (label p1) (strategy F)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-STRATEGY NO")))))
 
             (case game-challenging  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-challenging) (value "yes") (question game-challenging))) 
+                    then (assert (info (feature game-challenging) (value "yes") (question game-challenging)))
+                        (assert (result-secondary-kind (label p1) ( challenging T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CHALENGING YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-challenging) (value "no") (question game-challenging)))
+                         (assert (result-secondary-kind (label p1) (challenging F)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-CHALENGING NO")))))
 
             (case game-explorative  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-explorative) (value "yes") (question game-explorative))) 
+                    then (assert (info (feature game-explorative) (value "yes") (question game-explorative)))
+                         (assert (result-secondary-kind (label p1) (explorative T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-EXPLORATIVE YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-explorative) (value "no") (question game-explorative)))
+                          (assert (result-secondary-kind (label p1) (explorative F)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-EXPLORATIVE NO")))))
 
             (case game-wtdplacement  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-wtdplacement) (value "yes") (question game-wtdplacement))) 
+                    then (assert (info (feature game-wtdplacement) (value "yes") (question game-wtdplacement)))
+                          (assert (result-secondary-kind (label p1) (wtdplacement T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WTDPLACEMENT YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-wtdplacement) (value "no") (question game-wtdplacement)))
+                          (assert (result-secondary-kind (label p1) (wtdplacement F))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WTDPLACEMENT NO")))))
 
             (case game-hmovement  then
                   (if (eq ?answer s) 
                     then (assert (info (feature game-hmovement) (value "yes") (question game-hmovement))) 
+                          (assert (result-secondary-kind (label p1) ( hmovement T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HMOVEMENT YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-hmovement) (value "no") (question game-hmovement)))
+                          (assert (result-secondary-kind (label p1) ( hmovement F))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HMOVEMENT NO")))))
 
 
             (case game-investigative  then
                   (if (eq ?answer s) 
                     then (assert (info (feature game-investigative) (value "yes") (question game-investigative))) 
+                          (modify (result-secondary-kind (label p1) ( investigative T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-investigative) (value "no") (question game-investigative)))
+                          (assert (result-secondary-kind (label p1) ( investigative F))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-INVESTIGATIVE NO")))))
 
             (case game-bidding  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-bidding) (value "yes") (question game-bidding))) 
+                    then (assert (info (feature game-bidding) (value "yes") (question game-bidding)))
+                          (assert (result-secondary-kind (label p1) ( bidding T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-bidding) (value "no") (question game-bidding)))
+                          (assert (result-secondary-kind (label p1) ( bidding F))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BIDDING NO")))))
 
             (case game-bluff then
                   (if (eq ?answer s)
                     then (assert (info (feature game-bluff) (value "yes") (question game-bluff)))
+                          (assert (result-secondary-kind (label p1) ( bluff T))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BLUFF YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-bluff) (value "no") (question game-bluff)))
+                        (assert (result-secondary-kind (label p1) ( bluff F))) 
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-BLUFF NO"))
 
                     )))

@@ -42,8 +42,8 @@
 )
 
 (deftemplate user-age
-        (slot min-age               (type INTEGER))
-        (slot max-age               (type INTEGER)) 
+        (slot min-age           (type INTEGER))
+        (slot max-age           (type INTEGER)) 
 )
 ;;====================================================;;
 ; TEMPLATE PER I FATTI CHE IL SISTEMA INFERISCE
@@ -70,6 +70,10 @@
         (slot value             (type SYMBOL))
         (slot number            (type INTEGER))
 )
+
+
+
+
 
 ;;====================================================;;
 ; TEMPLATE PER I FATTI CHE VENGONO UTILIZZATI PER INFERIRE IL board-game MIGLIORE PER L'UTENTE

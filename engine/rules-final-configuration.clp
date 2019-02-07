@@ -96,12 +96,10 @@
 
 (defrule find-hypotetical-final-board-game-filler
         (declare (salience ?*sub-normal-priority*))
-        
-        
-                (result (feature filler) (value T))
-                (not (result (feature party) (value T)))
-                (not (result (feature family) (value T)))
-(or   
+        (result (feature filler) (value T))
+        (not (result (feature party) (value T)))
+        (not (result (feature family) (value T)))
+                (or   
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -119,11 +117,9 @@
                 (result (feature investigative) (value ?investigative))
                 (result (feature bidding) (value ?bidding))
                 (result (feature bluff) (value ?bluff))
-)     
+        )     
 
-
-
- (or     (result (feature greece) (value ?greece))
+        (or     (result (feature greece) (value ?greece))
                 (result (feature abstract) (value ?abstract))
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
@@ -136,11 +132,8 @@
                 (result (feature jewelry) (value ?jewelry))
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
                 (result (feature crime) (value ?crime))
-)
-
-    
-
-
+        )
+        
         (general-kind (label ?label) (filler T) (party F) (family F))
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
         (main-features (label ?label) (age ?age) (coop-comp ?coop-comp))
@@ -149,11 +142,11 @@
                 (castles ?castles)(futuristic ?futuristic) (jewelry ?jewelry)  (lord-of-the-rings ?lord-of-the-rings) (crime ?crime))
         (user-age (min-age ?min))
         (test (>=  ?min ?age))
-        
+
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
         (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler) "  crlf)
-            (printout t crlf " ->  Final board-game-filler:  " ?label "  players " ?players3   crlf))
+            (printout t crlf " ->  Final board-game-filler:  " ?label "  players " ?feature   crlf))
         
 )
 (defrule find-hypotetical-final-board-game-party
