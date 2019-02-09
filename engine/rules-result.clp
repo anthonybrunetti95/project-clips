@@ -259,73 +259,374 @@
         (assert (infering-result (feature bluff) (value T)))
 )
 
-(defrule result-no-thematic
+(defrule result-no-thematic-1
         (declare (salience ?*high-priority*))
-        (info (feature  game-thematic) (value "no"))
+        (or (info (feature  game-thematic) (value "no"))
+            (info (feature game-wargame) (value "yes")))
+        (not(result (feature thematic)))
         =>
         (assert (infering-result (feature thematic) (value F)))
 )
 
-(defrule result-no-strategy
+
+(defrule result-no-thematic-2
+        (declare (salience ?*high-priority*))
+        (info (feature game-players) (value "1"))
+        (or(info (feature game-wargame) (value "yes"))
+        (info (feature game-wtdplacement | game-bidding ) (value "yes")))
+        (not(result (feature thematic)))
+        =>
+        (assert (infering-result (feature thematic) (value F)))
+)
+
+(defrule result-no-thematic-3
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-explorative | game-hmovement ) (value "yes"))
+        (not(result (feature thematic)))
+        =>
+        (assert (infering-result (feature thematic) (value F)))
+)
+
+(defrule result-no-thematic-4
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-wtdplacement | game-hmovement  | game-bidding | game-bluff ) (value "yes"))
+        (not(result (feature thematic)))
+        =>
+        (assert (infering-result (feature thematic) (value F)))
+)
+
+
+(defrule result-no-thematic-5
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop\comp ))
+        (info (feature game-wtdplacement |  game-bidding ) (value "yes"))
+        (not(result (feature thematic)))
+        =>
+        (assert (infering-result (feature thematic) (value F)))
+)
+
+(defrule result-no-strategy-1
         (declare (salience ?*high-priority*))
         (info (feature  game-strategy) (value "no"))
+        (not (result (feature strategy)))
+        =>
+        (assert (infering-result (feature strategy) (value F)))
+)
+
+(defrule result-no-strategy-2
+        (declare (salience ?*high-priority*))
+        (info (feature game-players) (value "1"))
+        (info (feature game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes") )
+        (not (result (feature strategy)))
+              =>
+        (assert (infering-result (feature strategy) (value F)))
+)
+
+(defrule result-no-strategy-3
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-explorative | game-hmovement | game-investigative ) (value "yes"))
+        (not (result (feature strategy)))
+        =>
+        (assert (infering-result (feature strategy) (value F)))
+)
+
+(defrule result-no-strategy-4
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
+        (not (result (feature strategy)))
+        =>
+        (assert (infering-result (feature strategy) (value F)))
+)
+
+(defrule result-no-strategy-5
+        (declare (salience ?*high-priority*)) 
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-explorative) (value "yes"))
+        (info (feature game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
+        (not (result (feature strategy)))
         =>
         (assert (infering-result (feature strategy) (value F)))
 )
 
 
-(defrule result-no-challenging
+
+(defrule result-no-challenging-1
+        (declare (salience ?*high-priority*))
+        (or (info (feature  game-challenging) (value "no"))
+            (inferred (feature wargame) (value T)))
+        (not (result (feature challenging)))
+        (not (result (feature challenging)))
+        =>
+        (assert (infering-result (feature challenging) (value F)))
+)
+
+(defrule result-no-challenging-2
+        (declare (salience ?*high-priority*))
+        (info (feature game-players) (value "1"))
+        (inferred (feature wargame) (value T))
+        (info (feature game-wtdplacement |game-bidding | game-hmovement ) (value "yes"))
+        (not (result (feature challenging)))
+        =>
+        (assert (infering-result (feature challenging) (value F)))
+)
+
+(defrule result-no-challenging-3
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-explorative | game-wtdplacement |game-bidding | game-hmovement ) (value "yes"))
+        (not (result (feature challenging)))
+        =>
+        (assert (infering-result (feature challenging) (value F)))
+)
+
+(defrule result-no-challenging-4
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-wtdplacement | game-hmovement |  game-bidding | game-bluff ) (value "yes"))
+        (not (result (feature challenging)))
+        =>
+        (assert (infering-result (feature challenging) (value F)))
+)
+
+(defrule result-no-challenging-5
         (declare (salience ?*high-priority*))
         (info (feature  game-challenging) (value "no"))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-wtdplacement |  game-bidding ) (value "yes"))
+        (not (result (feature challenging)))
         =>
         (assert (infering-result (feature challenging) (value F)))
 )
 
 
-(defrule result-no-explorative
+(defrule result-no-explorative-1
         (declare (salience ?*high-priority*))
-         (info (feature  game-explorative) (value "no"))
+        (info (feature  game-explorative) (value "no"))
+        (not (result (feature explorative)))
         =>
-        (assert (infering-result   (feature explorative) (value F)))
+        (assert (infering-result (feature explorative) (value F)))
 )
 
-(defrule result-no-wtdplacement
+(defrule result-no-explorative-2
         (declare (salience ?*high-priority*))
-         (info (feature  game-wtdplacement) (value "no"))
+        (info (feature game-players) (value "1"))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes"))
+        (not (result (feature explorative)))
+        =>
+        (assert (infering-result (feature explorative) (value F)))
+)
+
+(defrule result-no-explorative-3
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes"))
+        (not (result (feature explorative)))
+        =>
+        (assert (infering-result (feature explorative) (value F)))
+)
+
+(defrule result-no-explorative-4
+        (declare (salience ?*high-priority*))
+        (result (feature coop-comp) (value coop\comp))
+        
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes"))
+        
+        (not (result (feature explorative)))
+        =>
+        (assert (infering-result (feature explorative) (value F)))
+)
+
+(defrule result-no-explorative-5
+        (declare (salience ?*high-priority*))
+        (result (feature filler | family | party) (value T))
+        (not (result (feature explorative)))
+        =>
+        (assert (infering-result (feature explorative) (value F)))
+)
+
+
+(defrule result-no-wtdplacement-1
+        (declare (salience ?*high-priority*))
+        (info (feature  game-wtdplacement) (value "no"))
+        (not (result (feature wtdplacement)))
         =>
         (assert (infering-result (feature wtdplacement) (value F)))
 )
 
-(defrule result-no-hmovement
+(defrule result-no-wtdplacement-2
         (declare (salience ?*high-priority*))
-         (info (feature  game-hmovement) (value "no"))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bluff) (value "yes"))
+        (not (result (feature wtdplacement)))
+        =>
+        (assert (infering-result (feature wtdplacement) (value F)))
+)
+
+(defrule result-no-hmovement-1
+        (declare (salience ?*high-priority*))
+        (info (feature  game-hmovement) (value "no"))
+        (not (result (feature hmovement)))
         =>
         (assert (infering-result   (feature hmovement) (value F)))
 )
 
-(defrule result-no-investigative
+(defrule result-no-hmovement-2
         (declare (salience ?*high-priority*))
-         (info (feature  game-investigative) (value "no"))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-bluff) (value "yes"))
+        (info (feature game-explorative | game-wtdplacement | game-bidding) (value "yes"))
+        (not (result (feature hmovement)))
+        =>
+        (assert (infering-result   (feature hmovement) (value F)))
+)
+
+
+(defrule result-no-investigative-1
+        (declare (salience ?*high-priority*))
+        (or (info (feature  game-investigative) (value "no"))
+            (inferred (feature wargame) (value T)))
+        (not (result (feature investigative)))
         =>
         (assert (infering-result (feature investigative) (value F)))
 )
 
-(defrule result-no-bidding
+(defrule result-no-investigative-2
         (declare (salience ?*high-priority*))
-         (info (feature  game-bidding) (value "no"))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (info (feature game-players) (value "1"))
+        (info (feature game-strategy | game-wtdplacement | game-hmovement | game-bidding) (value "yes"))
+        (not (result (feature investigative)))
+        =>
+        (assert (infering-result (feature investigative) (value F)))
+)
+
+(defrule result-no-investigative-3
+        (declare (salience ?*high-priority*))
+        (info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-players) (value "1")))
+        (info (feature game-strategy | game-explorative | game-wtdplacement | game-hmovement | game-bidding) (value "yes"))
+        (result (feature coop-comp) (value comp))
+        (not (result (feature investigative)))
+        =>
+        (assert (infering-result (feature investigative) (value F)))
+)
+
+(defrule result-no-investigative-4
+        (declare (salience ?*high-priority*))
+        info (feature game-thematic) (value "yes"))
+        (info (feature game-challenging) (value "yes"))
+        (not (info (feature game-players) (value "1")))
+        (info (feature game-strategy |  game-wtdplacement | game-hmovement | game-bidding | game-bluff) (value "yes"))
+        (result (feature coop-comp) (value coop))
+        (not (result (feature investigative)))
+        =>
+        (assert (infering-result (feature investigative) (value F)))
+)
+
+(defrule result-no-investigative-5
+        (declare (salience ?*high-priority*))
+        (info (feature game-thematic) (value "yes"))
+        (not (info (feature game-players) (value "1")))
+        (info (feature game-strategy |  game-wtdplacement | game-bidding ) (value "yes"))
+        (result (feature coop-comp) (value coop\comp))
+        (not (result (feature investigative)))
+        =>
+        (assert (infering-result (feature investigative) (value F)))
+)
+
+
+(defrule result-no-bidding-1
+        (declare (salience ?*high-priority*))
+        (or (info (feature  game-bidding) (value "no"))
+            (inferred (feature wargame) (value T)))
+        (not (result (feature bidding)))
         =>
         (assert (infering-result (feature bidding) (value F)))
 )
 
-(defrule result-no-bluff
+(defrule result-no-bidding-2
         (declare (salience ?*high-priority*))
-         (info (feature  game-bluff) (value "no"))
+        (info (feature game-challenging | game-explorative  | game-hmovement) (value "yes"))
+        (not (result (feature bidding)))
+        =>
+        (assert (infering-result (feature bidding) (value F)))
+)
+
+(defrule result-no-bidding-3
+        (declare (salience ?*high-priority*))
+        (info (feature game-players) (value "1"))
+        (not (result (feature bidding)))
+        =>
+        (assert (infering-result (feature bidding) (value F)))
+)
+
+(defrule result-no-bidding-4
+        (declare (salience ?*high-priority*))
+        (info (feature game-strategy) (value "T"))
+        (not (info (feature game-players) (value "1")))
+        (info (feature game-challenging | game-explorative  | game-hmovement) (value "yes"))
+        (result (feature coop-comp) (value comp))
+        (not (result (feature bidding)))
+        =>
+        (assert (infering-result (feature bidding) (value F)))
+)
+
+(defrule result-no-bluff-1
+        (declare (salience ?*high-priority*))
+        (or (info (feature  game-bluff) (value "no"))
+            (result (feature wargame) (value T)))
+
+        (not (result (feature bluff)))
         =>
         (assert (infering-result (feature bluff) (value F)))
 )
 
+(defrule result-no-bluff-2
+        (declare (salience ?*high-priority*))
+        (info (feature  game-bluff) (value "no"))
+        (result (feature coop-comp) (value coop))
+        (not (result (feature bluff)))
+        =>
+        (assert (infering-result (feature bluff) (value F)))
+)
 
+(defrule result-no-bluff-3
+        (declare (salience ?*high-priority*))
+        (info (feature  game-bluff) (value "no"))
+        (info (feature game-explorative | game-wtdplacement | game-hmovement) (value "yes")
+        (result (feature coop-comp) (value comp))
+        (not (result (feature bluff)))
+        =>
+        (assert (infering-result (feature bluff) (value F)))
+)
 
+(defrule result-no-bluff-4
+        (declare (salience ?*high-priority*))
+        (info (feature  game-bluff) (value "no"))
+        (result (feature coop-comp) (value coop\comp))
+        (info (feature game-strategy | game-explorative | game-wtdplacement | game-bidding) (value "yes"))
+        (not (result (feature bluff)))
+        =>
+        (assert (infering-result (feature bluff) (value F)))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defrule result-greece
         (declare (salience ?*highest-priority*))
         (info (feature game-greece) (value "yes"))
@@ -567,84 +868,594 @@
 
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule  result-no-greece
+(defrule  result-no-greece-1
         (declare (salience ?*highest-priority*))
-        (info (feature game-greece) (value "no"))
+        (or 
+            (info (feature game-greece) (value "no"))
+            (result (feature german) (value F))
+            (result (feature challenging | explorative | hmovement | investigative | bluff) (value T))
+            (info (feature  game-indians))) 
+            (info (feature game-industry | game-renaissance-court | game-merchants | game-indians | game-war | game-fantasy | game-chemistry | game-gala-hotel | game-gothic | game-lovecraft | game-trains) (value "yes")))
+        (not (result(feature greece)))
         =>
-        (assert (infering-result   (feature greece) (value F)))
+        (assert (infering-result (feature greece) (value F)))
 
 )
+(defrule  result-no-greece-2
+        (declare (salience ?*highest-priority*))
+        (or
+            (result (feature filler) (value F))
+            (result (feature family) (value F))
+            (info (feature game-strategy) (value "no"))
+            (info (feature game-thematic) (value "no"))
+            (result (feature coop-comp) (value coop | coop-comp))
+
+        )            
+        (not (result(feature greece)))
+        =>
+        (assert (infering-result (feature greece) (value F)))
+
+)
+
 
 (defrule result-no-roman
         (declare (salience ?*highest-priority*))
         (info (feature game-roman) (value "no"))
+        (or (feature wargame) (value F)
+            (feature weight) (value facile | medio))        
         =>
         (assert (infering-result   (feature roman )(value F)))
 
 )
-(defrule result-no-western
+(defrule result-no-western-1
         (declare (salience ?*highest-priority*))
-        (info (feature game-western) (value "no"))
+        (or (info (feature game-western) (value "no"))
+            (result (feature coop-comp) (value coop))
+            (result (feature wargame) (value T))
+            (result (feature filler) (value T))
+            (result (feature cardgame) (value T))
+            (result (feature strategy | challenging | explorative | wtdplacement | hmovement | investigative | bidding) (value T))
+            (info (feature game-players) (value "1"))
+        )
+        (not (feature western))   
          =>
         (assert (infering-result   (feature western )(value F)))
 
 )
-(defrule result-no-horror
+
+(defrule result-no-western-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-horror) (value "no"))
+        (or (result (feature american) (value T))
+            (result (feature party) (value T)))   
+        (info (feature game-bluff) (value "no"))
+        (not (feature western)) 
+         =>
+        (assert (infering-result (feature western )(value F)))
+
+)
+
+(defrule result-no-western-3
+        (declare (salience ?*highest-priority*))
+        (result (feature family) (value T))
+        (result (feature coop-comp) (value comp))
+        (info (feature game-players) (value "2" | "3" | "4"))
+        (not (feature western)) 
+         =>
+        (assert (infering-result (feature western )(value F)))
+
+)
+
+
+(defrule result-no-horror-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-horror) (value "no"))
+            (result (feature explorative | wtdplacement | hmovement | investigative | bidding | bluff) (value T))
+            (result (feature german | american | cardgame | wargame | family) (value T))
+            (result (feature coop-comp) (value coop))
+        )    
+        (not (result (feature horror)))
          =>
         (assert (infering-result   (feature horror )(value F)))
 
 )
-(defrule  result-no-gothic
+
+(defrule result-no-horror-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-gothic) (value "no"))
+        (result (feature filler) (value T))
+        (or (info (feature game-thematic) (value "no"))
+             (result (feature coop-comp) (value coop | coop-comp)))
+        (not (result (feature horror)))    
+         =>
+        (assert (infering-result   (feature horror )(value F)))
+
+)
+
+(defrule result-no-horror-3 
+        (declare (salience ?*highest-priority*))  
+        result (feature party) (value T))
+        (or (info (feature game-challenging) (value "yes"))
+            (info(feature game-players) (value "4" | "5"| "6"| "6+")
+             (result (feature coop-comp) (value coop | comp)))
+        )
+        (not (result (feature horror))) 
+        =>
+        (assert (infering-result   (feature horror )(value F)))
+)
+
+
+
+(defrule  result-no-gothic-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-gothic) (value "no"))
+            (result (feature party | wargame) (value T))
+            (info (feature game-bidding (value "yes")))
+        )
+        (not (result (feature gothic)))
          =>
         (assert (infering-result   (feature gothic )(value F)))
 
 )
 
-(defrule  result-no-lovecraft
+(defrule  result-no-gothic-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-lovecraft) (value "no"))
+        (result (feature american) (value T))
+        (or (result (feature game-strategy | game-wtdplacement | game-bidding) (value T))
+            (info (feature  game-pirates | game-gothic | game-survival | game-indians | game-tale | game-western) (value "yes")))
+        =>
+        (assert (infering-result   (feature gothic )(value F)))
+
+)
+
+(defrule  result-no-gothic-3
+        (declare (salience ?*highest-priority*))
+        (result (feature german) (value T))
+        (or (info (feature game-thematic) (value "no"))
+            (info (feature game-strategy) (value "no"))
+            (info (feature game-wtdplacement) (value "no"))
+            (info (feature game-greece | game-renaissance-court | game-merchants | game-indians | game-war | game-fantasy |game-castles |  game-chemistry | game-gala-hotel | game-trains) (value "yes")))
+            (result (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value T ))
+            (info (feature game-gothic))) 
+         )
+        (not (result (feature gothic)))      
+         =>
+        (assert (infering-result   (feature gothic )(value F)))
+
+)
+
+(defrule  result-no-gothic-4
+        (declare (salience ?*highest-priority*))
+        (result (feature filler) (value T))
+
+        (or 
+            (info (feature game-explorative | game-wtdplacement | game-hmovement | game-bidding | game-bluff) (value "yes")))
+            (info (feature game-greece | game-abstract | game-merchants | game-indians | game-castles | game-futuristics | game-jewelry| game-tale | game-renaissance-court | game-politics) (value "yes"))
+        )
+        (not (result (feature gothic)))  
+         =>
+        (assert (infering-result   (feature gothic )(value F)))
+
+)
+
+
+
+
+(defrule  result-no-gothic-5
+        (declare (salience ?*highest-priority*))
+        (result (feature game-cardgame) (value T))
+        (or 
+            (result (feature gexplorative| hmovement | bidding | bluff) (value "yes"))
+            (info (feature game-abstract| game-forests) (value "yes"))
+        )
+        (not (result (feature gothic)))  
+         =>
+        (assert (infering-result (feature gothic )(value F)))
+
+)
+
+(defrule  result-no-gothic-6
+        (declare (salience ?*highest-priority*))
+        (result (feature family) (value T)) 
+        (or     (info (feature game-thematic) (value "yes"))
+                (result (feature explorative| hmovement | bidding | bluff) (value T))
+                (info (feature game-greece | game-abstract | game-merchants | game-indians | game-survival | game-castles | game-jewelry | game-renaissance-court | game-tale | game-politics | game-futuristics) (value "yes"))
+        )
+        (not (result (feature gothic)))  
+         =>
+        (assert (infering-result (feature gothic )(value F)))
+
+)
+
+
+
+
+
+(defrule  result-no-lovecraft-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-lovecraft) (value "no"))
+            (result (feature party | wargame) (value T))
+            (result (feature hmovement | bidding) (value T))
+            (info (feature gothic) (value "yes"))
+            (info (feature game-gothic) (value "no"))
+        )
+        (not (result (feature lovecraft)))
          =>
         (assert (infering-result   (feature lovecraft )(value F)))
 
 )
-(defrule  result-no-war
+
+(defrule  result-no-lovecraft-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-war) (value "no"))
+         (info (feature game-gothic) (value "yes"))
+        (result (feature german) (value T))
+        (or (info (feature game-thematic) (value "no"))
+            (info (feature game-players) (value "5" | "6" | "6+")))
+            (info (feature  game-greece | game-farms |game-industry | game-renaissance-court | game-merchants | game-indians | game-war | game-fantasy | game-chemistry | game-gala-hotel | game-trains) (value "yes")))
+            (result (feature challenging | explorative| hmovement | bidding | bluff) (value T))
+        )
+        (result (feature coop-comp) (value comp))
+        (not (result (feature lovecraft)))
+         =>
+        (assert (infering-result   (feature lovecraft )(value F)))
+
+)
+(defrule  result-no-lovecraft-3
+        (declare (salience ?*highest-priority*))
+        (result (feature american) (value T))
+        (or 
+            (result (feature strategy | wtdplacement | hmovement | bidding) (value T))
+            (info (feature game-investigative) (value "no"))
+            (info (feature game-challenging) (value "no"))
+            (info (feature game-fantasy) (value "no"))
+            (info (feature game-lovecraft) (value "no"))
+            (info (feature game-war | game-vampyric | game-pirates | game-lord-of-the-rings | game-western | game-tale | game-gothic) (value "yes"))
+            
+        )
+        (not (result (feature lovecraft)))
+         =>
+        (assert (infering-result   (feature lovecraft )(value F)))
+
+)
+
+(defrule  result-no-lovecraft-4
+        (declare (salience ?*highest-priority*))        
+        (result (feature filler) (value T))
+        (or 
+            (info (feature game-thematic) (value "no"))
+            (info (feature game-strategy) (value "no"))
+            (info (feature game-challenging) (value "no"))
+            (result (feature explorative | wtdplacement | hmovement | investigative  | bidding | bluff) (value "T))
+            (info (feature game-greece | game-abstract | game-merchants | game-indians | game-horror | game-survival | game-castles | game-jewelry | game-lord-of-the-rings | game-politics | game-crime) (value "yes"))
+        )
+        (not (result (feature lovecraft)))
+         =>
+        (assert (infering-result   (feature lovecraft )(value F)))
+
+)
+
+(defrule  result-no-lovecraft-5
+        (declare (salience ?*highest-priority*))
+        (info (feature game-lovecraft) (value "no"))
+        (result (feature cardgame) (value T))
+        (or
+                    
+                    (info (feature game-thematic) (value "no"))
+                    (info (feature game-challenging) (value "no"))
+                    (info (feature game-investigative) (value "no"))
+                    (info (feature game-gothic) (value "no"))
+                    (info (feature game-fantasy) (value "no"))
+                    (result (feature strategy | explorative | wtdplacement | hmovement | bidding | bluff) (value T))
+                    (info (feature game-dream | game-abstract | game-lord-of-the-rings) (value "yes"))
+        )
+
+        (not (result (feature lovecraft)))
+         =>
+        (assert (infering-result   (feature lovecraft )(value F)))
+
+)
+
+(defrule  result-no-lovecraft-6
+        (declare (salience ?*highest-priority*))
+        (result (feature family) (value T))
+        (result (feature filler) (value T))
+        (or
+            (info (feature game-thematic) (value "no"))
+            (result (feature strategy | explorative | wtdplacement | hmovement | bidding | bluff) (value T))) 
+            (info (feature game-greece | game-abstract | game-merchants | game-indians | game-survival | game-castles | game-lord-of-the-rings | game-jewelry | game-tale | game-crime) (value "yes"))
+        )
+        (not (result (feature lovecraft)))
+         =>
+        (assert (infering-result   (feature lovecraft )(value F)))
+)
+
+(defrule  result-no-war-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-war) (value "no"))
+            (result (feature filler | cardgame | party | family) (value T))
+            (info (feature game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes"))
+        )
+        (not(result (war)))    
          =>
         (assert (infering-result   (feature war )(value F)))
 
 )
-(defrule  result-no-abstract
+
+(defrule  result-no-war-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-abstract) (value "no"))
+        (result (feature american) (value T))
+        (or (info (feature game-challenging) (value "no"))
+            (result (feature strategy | explorative | wtdplacement | hmovement | investigative | bidding | bluff) (value T))
+            (info (feature game-players) (value "1" | "2" | "3" | "4" | "5" ))
+        )
+        (not(result (war)))
+         =>
+        (assert (infering-result   (feature war )(value F)))
+
+)
+
+(defrule  result-no-war-3
+        (declare (salience ?*highest-priority*))
+        (result (feature german) (value T))
+        (or 
+        (info (feature game-thematic) (value "yes"))
+         (info (feature  game-greece |game-industry | game-renaissance-court | game-merchants | game-indians | game-castles| game-chemistry | game-gala-hotel | game-trains) (value "yes"))
+         (result (feature explorative | hmovement | investigative | bidding | bluff) (value T))
+        )
+        (not (result (war)))    
+         =>
+        (assert (infering-result   (feature war )(value F)))
+
+)
+(defrule  result-no-abstract-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-abstract) (value "no"))
+            (result (feature explorative | hmovement | investigative | investigative | bidding | bluff) (value T))
+            (result (feature german | american | party | wargame) (value T))
+        )
+        (not (result (feature abstract)))
          =>
         (assert (infering-result   (feature abstract )(value F)))
 )
-(defrule  result-no-fantasy
+
+(defrule  result-no-abstract-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-fantasy) (value "no"))
+        (result (feature filler) (value T))
+        (or (info  (feature game-thematic) (value "no"))
+            (info (feature game-challenging) (value "no"))
+            (info (feature game-players) (value  "3" | "4" | "5" | "6" | "6+"))
+            (info (feature game-greece | game-lovecraft | game-fantasy | game-merchants | game-indians | game-survival | game-gothic | game-horror | game-castles | game-jewelry | game-lord-of-the-rings | game-renaissance-court | game-tale | game-futuristics | game-politics | game-crime) (value "yes"))
+            (result (feature  explorative | wtdplacement | hmovement | investigative | bidding | bluff) (value T))
+        )        
+
+        (not (result (feature abstract)))
+         =>
+        (assert (infering-result   (feature abstract )(value F)))
+)
+
+(defrule  result-no-abstract-3
+        (declare (salience ?*highest-priority*))
+        
+        (result (feature cardgame) (value T))
+        (or (result (feature coop-comp) (value comp | coop\comp))
+            (info (feature game-thematic) (value "no"))
+            (info (feature game-strategy) (value "no"))
+            (info (feature game-challenging) (value "no"))
+            (info (feature game-players) (value  "3" | "4" | "5" | "6" | "6+"))
+            (info (feature game-gothic | game-lovecraft | game-gothic | game-lord-of-the-rings ) (value "yes"))
+            (info (feature))
+          
+        )
+
+        (not (result (feature abstract)))
+         =>
+        (assert (infering-result   (feature abstract )(value F)))
+)
+
+(defrule  result-no-abstract-4
+        (declare (salience ?*highest-priority*))
+        (result (feature family) (value T))
+        (or 
+            (result (feature coop-comp) (value coop | coop\comp))
+            (info (feature game-players) (value  "5" | "6" | "6+" ))
+            (info (feature game-strategy | game-challenging |game-explorative | game-wtdplacement | game-hmovement | game-investigative |game-bidding | game-bluff) (value "yes"))
+         )
+        (not (result (feature abstract)))
+         =>
+        (assert (infering-result   (feature abstract )(value F)))
+)
+
+(defrule  result-no-fantasy-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-fantasy) (value "no"))
+            (result (feature wargame) (value T)))
+        (not (result (feature fantasy)))
          =>
         (assert (infering-result   (feature fantasy )(value F)))
 
 )
-(defrule  result-no-farms
+
+(defrule  result-no-fantasy-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-farms) (value "no"))
+        (result (feature german) (value T))
+        (or (info (feature game-strategy) (value "no"))
+            (info (feature game-indians) (value "yes"))
+            (info (feature game-players) (value  "6" | "6+"))
+            (result (feature lovecraft  | gothic | greece  | industry | renaissance-court | castles | merchants | indians | chemistry | gala-hotel | trains) (value T))
+            (result (feature challenging | explorative | hmovement | investigative | bidding | bluff) (value T))
+        )    
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+(defrule  result-no-fantasy-3
+        (declare (salience ?*highest-priority*))
+        (result (feature american) (value T))
+        (or 
+            (info (feature game-challenging) (value "no"))
+            (result (feature strategy |  wtdplacement  | bidding) (value T))
+            (info (featur game-indians | game-pirates | game-western | game-crime ) (value "yes"))
+        )
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+(defrule  result-no-fantasy-4
+        (declare (salience ?*highest-priority*))
+        (result (feature filler) (value T))
+        (or (result (feature explorative | wtdplacement | hmovement | bidding ) (value T))
+            (info (feature game-greece | game-abstract | game-merchants | game-indians | game-survival |  game-futuristics | game-jewelry | game-farms | game-renaissance-court | game-futuristics | game-politics | game-crime ) (value "yes"))
+        )
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+(defrule  result-no-fantasy-5
+        (declare (salience ?*highest-priority*))
+        (result (feature cardgame) (value T))
+
+        (or (info (feature game-challenging) (value "no"))
+            (result (feature  wtdplacement | hmovement |bidding ) (value T))
+            (info (feature game-indians | game-abstract| game-forests ) (value "yes"))
+        )
+       
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+(defrule  result-no-fantasy-6
+        (declare (salience ?*highest-priority*))
+        result (feature party) (value T))
+        (or 
+            (info (feature game-players) (value "3" | "4" | "5" | "6" | "6+"))
+            (result (feature strategy | challenging | explorative | wtdplacement | hmovement | bidding ) (value "yes"))
+            (info (feature game-witchcraft | game-horror | game-fireworks | game-castles | game-western | game-pirates | game-renaissance-court | game-futuristics | game-politics) (value "yes"))
+        )
+
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+(defrule  result-no-fantasy-7
+        (declare (salience ?*highest-priority*))
+        (result (feature family) (value T))
+        (or
+            (info (feature game-thematic) (value "no"))
+            (result (feature strategy  | explorative | wtdplacement | hmovement |bidding | bluff ) (value T))
+            (info (feature game-witchcraft | game-horror | game-fireworks | game-castles | game-western | game-pirates | game-renaissance-court | game-mafia |  game-futuristics | game-politics) (value "yes"))
+        )
+        (not (result (feature fantasy)))
+         =>
+        (assert (infering-result   (feature fantasy )(value F)))
+
+)
+
+
+(defrule  result-no-farms-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-farms) (value "no"))
+            (result (feature challenging | explorative | hmovement | investigative | bluff) (value T)
+            (result (feature american | cardgame | party | wargame) (value T))
+            (result (feature filler | family) (value F))
+        )
+        (not (result (feature farms)))    
          =>
         (assert (infering-result  (feature farms )(value F)))
 )
 
-(defrule  result-no-futuristics
+(defrule  result-no-farms-2
         (declare (salience ?*highest-priority*))
-        (info (feature game-futuristics) (value "no"))
+        (result (feature german) (value T))
+        (or (result (feature challenging | explorative | hmovement | investigative | bidding ) (value T)))
+            (info (feature game-wtdplacement) (value "no"))
+            (result (feature coop-comp) (value coop | coop\comp))
+        )    
+        (not (result (feature farms)))
+         =>
+        (assert (infering-result  (feature farms )(value F)))
+)
+
+(defrule  result-no-farms-3
+        (declare (salience ?*highest-priority*))
+        (result (feature filler) (value T))
+        (result (feature family) (value T))
+        (or 
+            (result (feature coop-comp) (value coop\comp | coop))
+            (result (feature challenging | explorative | hmovement | investigative | bidding | bluff ) (value T))
+            (info (feature game-castles | game-renaissance-court | game-tale | game-futuristics | game-politics | game-fantasy | game-indians | game-lovecraft | game-gothic ) (value "yes"))
+            (info (feature game-wtdplacement) (value "no"))   
+        )
+        (not (result (feature farms)))
+         =>
+        (assert (infering-result  (feature farms )(value F)))
+)
+
+(defrule  result-no-futuristics-1
+        (declare (salience ?*highest-priority*))
+        (or (info (feature game-futuristics) (value "no"))
+            (result (feature german | cardgame | wargame) (value T))
+            (result (feature wtdplacement | hmovement | investigative) (value T))
+            (info (feature game-players) (value "6+"))
+
+        )    
+        (not (feature futuristics))
          =>
         (assert (infering-result  (feature futuristics )(value F)))
 )
+
+(defrule  result-no-futuristics-2
+        (declare (salience ?*highest-priority*))
+        (result (feature american (feature T)))
+        (or
+           (info (feature game-thematic) (value "no"))
+           (info (feature game-explorative) (value "no"))
+           (result (feature strategy | challenging) (value F)) 
+        )
+        (not (feature futuristics))
+         =>
+        (assert (infering-result  (feature futuristics )(value F)))
+)
+
+(defrule  result-no-futuristics-3
+        (declare (salience ?*highest-priority*))
+        (result (feature filler) (value T))
+        (or (result (feature thematic | strategy) (value T))
+            (info (feature game-strategy) (value "no")
+            (info (feature game-greece | game-abstract | game-lovecraft | game-gothic | game-fantasy | game-merchants | game-indians | game-survival | game-gothic | game-castles | game-jewelry | game-farms | game-renaissance-court | game-tale | game-politics | game-indians | game-crime ) (value "yes"))
+            (result (feature bluff |bidding )  (value F))
+            
+        )
+        (not (feature futuristics))
+         =>
+        (assert (infering-result  (feature futuristics )(value F)))
+)
+
+(defrule  result-no-futuristics-4
+        (declare (salience ?*highest-priority*))
+        (result (feature filler) (value T))
+        (result (feature party) (value T))
+        (result (feature family) (value T))
+        (or (info (feature thematic) (value "yes"))
+            (info (feature strategy) (value "yes"))
+            (result (feature challenging | bluff ) (value F))
+        )
+        (not (feature futuristics))
+         =>
+        (assert (infering-result  (feature futuristics )(value F)))
+)
+
+
+
 (defrule  result-no-merchants
         (declare (salience ?*highest-priority*))
         (info (feature game-merchants) (value " no"))
