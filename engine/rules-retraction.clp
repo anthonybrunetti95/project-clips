@@ -20,7 +20,7 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
-    (refresh result-american )
+
     (refresh find-hypotetical-final-board-game-filler-and-party-and-family)
     (refresh find-hypotetical-final-board-game-filler-and-family)
     (refresh find-hypotetical-final-board-game-filler)

@@ -11,7 +11,7 @@
                 (result (feature party) (value T))
                 (result (feature family) (value T))
         
-        (or     (result (feature 1players) (value ?players1))
+                (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
@@ -29,7 +29,7 @@
                 (result (feature fantasy) (value ?fantasy))
                 (result (feature futuristic) (value ?futuristic))
                 (result (feature politics) (value ?politics))
-        )
+        
 
 
         (general-kind (label ?label) (filler T) (party T) (family T))
@@ -54,8 +54,7 @@
                 (result (feature filler) (value T))
                 (result (feature family) (value T))
                 (not (result (feature party) (value T)))
-        
-        (or     (result (feature 1players) (value ?players1))
+                (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
@@ -67,15 +66,13 @@
                 (result (feature challenging) (value ?challenging))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-        )
-                
-        (or     (result (feature castles) (value ?castles))
+                (result (feature castles) (value ?castles))
                 (result (feature renaissance-court) (value ?renaissance-court))
                 (result (feature tale) (value ?tale))
                 (result (feature fantasy) (value ?fantasy))
                 (result (feature futuristic) (value ?futuristic))
                 (result (feature politics) (value ?politics))
-        )
+        
 
 
         (general-kind (label ?label) (filler T) (party F) (family T))
@@ -99,7 +96,7 @@
         (result (feature filler) (value T))
         (not (result (feature party) (value T)))
         (not (result (feature family) (value T)))
-                (or   
+                 
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -108,7 +105,7 @@
                 (result (feature 6players) (value ?players6))
                 (result (feature 6players+) (value ?players6+))
                 (result (feature coop-comp) (value ?coop-comp))
-
+                (result (feature weight) (value ?weight))
                 (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
                 (result (feature challenging) (value ?challenging))
@@ -117,36 +114,36 @@
                 (result (feature investigative) (value ?investigative))
                 (result (feature bidding) (value ?bidding))
                 (result (feature bluff) (value ?bluff))
-        )     
+            
 
-        (or     (result (feature greece) (value ?greece))
+                (result (feature greece) (value ?greece))
                 (result (feature abstract) (value ?abstract))
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
                 (result (feature merchants) (value ?merchants))
-                (result (feature survival) (value ?survival))
-                (result (feature indians) (value ?indians))
-                (result (feature fantasy) (value ?fantasy))
-                (result (feature castles) (value ?castles))
-                (result (feature futuristic) (value ?futuristic))
-                (result (feature jewelry) (value ?jewelry))
-                (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
-                (result (feature crime) (value ?crime))
-        )
+                (result (feature horror) (value ?horror))
+                ;(result (feature survival) (value ?survival))
+                ;(result (feature indians) (value ?indians))
+                ;(result (feature fantasy) (value ?fantasy))
+                ;(result (feature castles) (value ?castles))
+                ;(result (feature futuristic) (value ?futuristic))
+                ;(result (feature jewelry) (value ?jewelry))
+                ;(result (feature lord-of-the-rings) (value ?lord-of-the-rings))
+                ;(result (feature crime) (value ?crime))
+        
         
         (general-kind (label ?label) (filler T) (party F) (family F))
         (players (label ?label) (1players  ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) (6players+ ?players6+))
-        (main-features (label ?label) (age ?age) (coop-comp ?coop-comp))
+        (main-features (label ?label) (weight ?weight) (age ?age) (coop-comp ?coop-comp))
         (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (wtdplacement ?wtdplacement) (hmovement ?hmovement) (investigative ?investigative) (bidding ?bidding) (bluff ?bluff))
-        (thematic-environment (label ?label) (greece ?greece) (lovecraft ?lovecraft) (gothic ?gothic) (merchants ?merchants) (survival ?survival) (indians ?indians) (fantasy ?fantasy) 
+        (thematic-environment (label ?label) (greece ?greece) (horror ?horror) (lovecraft ?lovecraft) (gothic ?gothic) (merchants ?merchants) (survival ?survival) (indians ?indians) (fantasy ?fantasy) 
                 (castles ?castles)(futuristic ?futuristic) (jewelry ?jewelry)  (lord-of-the-rings ?lord-of-the-rings) (crime ?crime))
         (user-age (min-age ?min))
         (test (>=  ?min ?age))
 
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler) "  crlf)
-            (printout t crlf " ->  Final board-game-filler:  " ?label "  players " ?feature   crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler) "  crlf))
         
 )
 (defrule find-hypotetical-final-board-game-party
@@ -157,7 +154,7 @@
                 (result (feature party) (value T))
                 (not (result (feature family) (value T)))
         
-        (or    
+     
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
@@ -171,9 +168,7 @@
                 (result (feature challenging) (value ?challenging))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-        )
-
-        (or
+      
                 (result (feature witchcraft) (value ?witchcraft))
                 (result (feature horror) (value ?horror))
                 (result (feature fireworks) (value ?fireworks))
@@ -183,7 +178,7 @@
                 (result (feature fantasy) (value ?fantasy))
                 (result (feature mafia) (value ?mafia))
 
-        )
+        
 
 
         (general-kind (label ?label) (party T))
@@ -209,7 +204,7 @@
                 (not (result (feature party) (value T)))
                 (result (feature family) (value T))
         
-        (or     (result (feature 1players) (value ?players1))
+                (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
                 (result (feature 4players) (value ?players4))
@@ -223,9 +218,9 @@
                 (result (feature wtdplacement) (value ?wtdplacement))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-        )
+        
 
-         (or    (result (feature greece) (value ?greece))
+                (result (feature greece) (value ?greece))
                 (result (feature western) (value ?western))
                 (result (feature tailoring) (value ?tailoring))
                 (result (feature abstract) (value ?abstract))
@@ -233,7 +228,7 @@
                 (result (feature trains) (value ?trains))
                 (result (feature oriental) (value ?oriental))
                 (result (feature glass) (value ?glass))
-        )
+        
 
         (general-kind (label ?label) (family T))
         (board-game (label ?label) (board-game-name ?board-game-name) )
@@ -254,16 +249,14 @@
 (defrule find-hypotetical-final-board-game-wargame
         (declare (salience ?*sub-normal-priority*))
         (result (feature wargame) (value ?wargame))
-
-        (or     
-                (result (feature 2players) (value ?players2))
-                (result (feature 3players) (value ?players3))
-                (result (feature 4players) (value ?players4))
-                (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
-                (result (feature roman ) (value ?roman))
+        (result (feature 2players) (value ?players2))
+        (result (feature 3players) (value ?players3))
+        (result (feature 4players) (value ?players4))
+        (result (feature 5players) (value ?players5))
+        (result (feature 6players) (value ?players6))
+        (result (feature roman ) (value ?roman))
                 
-        )
+        
         (general-kind (label ?label) (wargame ?wargame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) (6players ?players6) )
@@ -286,7 +279,7 @@
         (result (feature cardgame) (value ?cardgame))
         
 
-        (or     
+         
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -299,9 +292,9 @@
                 (result (feature explorative) (value ?explorative))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-        )
+        
 
-        (or
+        
                 (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
                 (result (feature challenging) (value ?challenging))
@@ -309,8 +302,8 @@
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
 
-        )
-        (or     
+        
+            
               
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
@@ -318,7 +311,7 @@
                 (result (feature forests) (value ?forests))
                 (result (feature fantasy) (value ?fantasy))
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
-        )
+        
         (general-kind (label ?label) (cardgame ?cardgame))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (1players ?players1) (2players ?players2) (3players ?players3) (4players ?players4) (5players ?players5) )
@@ -343,7 +336,7 @@
         
        
 
-        (or     
+            
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -354,18 +347,18 @@
                 (result (feature coop-comp) (value ?coop-comp))
                 (result (feature weight) (value ?weight))
                 
-        )
+        
 
-        (or     (result (feature thematic) (value ?thematic))
+                (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
                 (result (feature challenging) (value ?challenging))
                 (result (feature explorative) (value ?explorative))
                 (result (feature hmovement) (value ?hmovement))
                 (result (feature investigative) (value ?investigative))
                 (result (feature bluff) (value ?bluff))
-        )
+        
 
-        (or 
+        
                 (result (feature war) (value ?war))
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature gothic) (value ?gothic))
@@ -378,7 +371,7 @@
                 (result (feature tale) (value ?tale))
                 (result (feature fantasy) (value ?fantasy))
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
-        )
+        
 
         (general-kind (label ?label) (american T))
         (board-game (label ?label) (board-game-name ?board-game-name))
@@ -398,7 +391,7 @@
 (defrule find-hypotetical-final-board-game-german
         (declare (salience ?*sub-normal-priority*))
         (result (feature german) (value ?german))
-        (or     
+          
                 (result (feature 1players) (value ?players1))
                 (result (feature 2players) (value ?players2))
                 (result (feature 3players) (value ?players3))
@@ -407,14 +400,14 @@
                 (result (feature 6players) (value ?players6))
                 (result (feature +6players) (value ?players6+))
                 
-        )
-        (or     (result (feature thematic) (value ?thematic))
+        
+                (result (feature thematic) (value ?thematic))
                 (result (feature strategy) (value ?strategy))
                 (result (feature wtdplacement) (value ?wtdplacement))
                 (result (feature bidding) (value ?bidding))
-        )
+        
 
-        (or   
+         
                 (result (feature farms) (value ?farms))
                 (result (feature industry) (value ?industry))
                 (result (feature merchants) (value ?merchants))
@@ -430,7 +423,7 @@
                 (result (feature lovecraft) (value ?lovecraft))
                 (result (feature restaurants) (value ?restaurants))
                 (result (feature trains) (value ?trains))   
-        )
+        
 
         (general-kind (label ?label) (german ?german))
         (board-game (label ?label) (board-game-name ?board-game-name))
