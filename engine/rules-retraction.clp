@@ -103,6 +103,14 @@
 
 )
 
+(defrule retract-game-players
+    (declare (salience ?*top-priority*))
+    ?f1 <- (retract-info game-players)
+    =>
+    (retract ?f1)
+
+)
+
 (defrule retract-info
         (declare (salience ?*highest-priority*))
         ?f1 <- (retract-info ?info)

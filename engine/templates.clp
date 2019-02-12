@@ -36,6 +36,9 @@
         (slot max-budget        (type INTEGER))
 )
 
+(deftemplate game-players
+        (slot player            (type INTEGER))
+)
 
 (deftemplate game-time
         (slot time              (type INTEGER))
@@ -116,15 +119,10 @@
 )
 
 
+
 (deftemplate players
-        (slot label            (type SYMBOL))
-        (slot 1players         (type SYMBOL) (default F))
-        (slot 2players         (type SYMBOL) (default F))
-        (slot 3players         (type SYMBOL) (default F))
-        (slot 4players         (type SYMBOL) (default F))
-        (slot 5players         (type SYMBOL) (default F))
-        (slot 6players         (type SYMBOL) (default F))
-        (slot 6players+        (type SYMBOL) (default F))
+         (slot label             (type SYMBOL))
+         (multislot player            (type INTEGER))
 )
 
 (deftemplate best-players

@@ -3,7 +3,7 @@
 (main-features (label board-game-3) (length 30) (weight facile) (coop-comp coop) (age 10) (price 23))
 (main-features (label board-game-4) (length 30) (weight facile) (coop-comp comp) (age 6) (price 17))
 (main-features (label board-game-5) (length 25) (weight facile) (coop-comp comp) (age 6) (price 22))
-(main-features (label board-game-6) (length 60) (weight facile) (coop-comp coop\comp) (age 13) (price 14)) ;;problema o 15-60
+(main-features (label board-game-6) (length 60) (weight facile) (coop-comp coop\comp) (age 13) (price 14)) 
 (main-features (label board-game-7) (length 120) (weight medio) (coop-comp coop) (age 13)(price 36)) 
 (main-features (label board-game-8) (length 120) (weight medio) (coop-comp coop) (age 18) (price 70))
 (main-features (label board-game-9) (length 15) (weight facile) (coop-comp coop) (age 6) (price 30))
@@ -21,7 +21,7 @@
 (main-features (label board-game-21) (length 60) (weight facile) (coop-comp coop\comp) (age 13) (price 30))
 (main-features (label board-game-22) (length 60) (weight facile) (coop-comp comp) (age 13) (price 32))
 (main-features (label board-game-23) (length 20) (weight facile) (coop-comp coop) (age 6) (price 11))
-(main-features (label board-game-24) (length 40) (weight facile) (coop-comp comp) (age 13) (price 25))   ;;offset3
+(main-features (label board-game-24) (length 40) (weight facile) (coop-comp comp) (age 13) (price 25))  
 (main-features (label board-game-25) (length 45) (weight facile) (coop-comp comp) (age 13) (price 21))
 (main-features (label board-game-26) (length 45) (weight facile) (coop-comp comp) (age 10) (price 18))
 (main-features (label board-game-27) (length 20) (weight facile) (coop-comp comp) (age 13) (price 14))
@@ -83,7 +83,7 @@
 (main-features (label board-game-83) (length 90) (weight medio) (coop-comp coop) (age 6) (price 70))
 (main-features (label board-game-84) (length 90) (weight medio) (coop-comp comp) (age 13) (price 40))
 (main-features (label board-game-85) (length 30) (weight facile) (coop-comp comp) (age 13) (price 40))
-(main-features (label board-game-86) (length 180) (weight medio) (coop-comp coop\comp) (age 13) (price 70) ) ;; 1280
+(main-features (label board-game-86) (length 180) (weight medio) (coop-comp coop\comp) (age 13) (price 70) ) 
 (main-features (label board-game-87) (length 120) (weight medio) (coop-comp coop\comp) (age 13) (price 42))
 (main-features (label board-game-88) (length 60) (weight facile) (coop-comp comp) (age 10) (price 25))
 (main-features (label board-game-89) (length 120) (weight medio) (coop-comp coop\comp) (age 13) (price 42))
