@@ -74,7 +74,7 @@
 (general-kind (label board-game-74) (german T))
 (general-kind (label board-game-75) (american T))
 (general-kind (label board-game-76) (filler T) (family T))
-(general-kind (label board-game-77) (filler T) (family T))
+(general-kind (label board-game-77) (german T) (filler T) (family T))
 (general-kind (label board-game-78) (cardgame T))
 (general-kind (label board-game-79) (party T))
 (general-kind (label board-game-80) (filler T))
