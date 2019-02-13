@@ -1219,6 +1219,7 @@
         (info (feature user-budget) (value "34<44"))
         (not (info (feature  game-greece  | game-indians | game-renaissance-court | game-war | game-merchants | game-gothic | game-lovecraft| game-fantasy | game-indians | game-chemistry | game-gala-hotel | game-trains) (value "yes")))        
         (not (info (feature  game-thematic | game-challenging | game-explorative |  game-hmovement | game-investigative  |  game-bluff ) (value "yes"))) 
+        (not (result (feature castles) (value F)))
         (not (info(feature game-castles)))       
         =>
         (assert (asking-question (question game-castles) (answers s n)))
@@ -1235,6 +1236,7 @@
         (not (info (feature game-greece | game-abstract | game-lovecraft | game-gothic | game-fantasy | game-merchants | game-indians | game-survival | game-horror | game-futuristics | game-jewelry | game-lord-of-the-rings | game-renaissance-court | game-tale | game-politics | game-crime | game-farms) (value "yes")))
         (info (feature user-budget) (value  "<18" |"19<33")) 
         (result (feature weight) (value leggero))
+        (not (result(feature castles) (value F)))
         (not (info (feature game-castles)))    
         =>
         (assert (asking-question (question game-castles) (answers s n)))
@@ -1250,6 +1252,7 @@
         (not (info (feature game-strategy | game-explorative | game-hmovement | game-bidding  ) (value "yes"))) 
         (info (feature user-budget) (value  "<18" |"19<33")) 
         (result (feature weight) (value leggero))
+        (not (result(feature castles) (value F)))
         (not (info (feature game-castles)))    
         =>
         (assert (asking-question (question game-castles) (answers s n)))
@@ -1268,6 +1271,7 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-investigative) (value "yes"))
         (info (feature game-bluff) (value "yes"))
+        (not (result(feature castles) (value F)))
         (not (info(feature game-castles)))       
 
         =>
@@ -1286,7 +1290,9 @@
         (info (feature game-bluff) (value "yes"))
         (info (feature game-gothic) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
-        (not (info (feature  game-strategy  | game-explorative | game-wtdplacement | game-hmovement | game-bidding  ) (value "yes")))
+        (not (result (feature  strategy  | explorative | wtdplacement | hmovement | bidding  ) (value T)))
+        (not (result (feature  futrstics |  pirates | lord-of-the-rings | war | western ) (value T)))
+        (not (result (feature vampyric) (value F)))
         =>
         (assert (asking-question (question game-vampyric) (answers s n)))
 )
@@ -1298,7 +1304,10 @@
         (result (feature german) (value T))
         (result (feature weight) (value medio | difficile))
         (info (feature user-budget) (value "34<44" | "45<65")) 
-        (not (info (feature  game-challenging  | game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes")))               
+        (not (result (feature  challenging  | explorative | hmovement | investigative | bidding | bluff ) (value T)))
+        (not (info (feature game-farms | game-industry | game-merchants | game-greece | game-indians | game-castles | game-war | game-fantasy | game-gala-hotel | game-lovecraft | game-restaurants | game-trains) (value "yes"))) 
+        (not (info (feature game-players) (value "6" | "6+")))
+        (not (result (feature renaissance-court) (value F)))              
         (not (info (feature game-renaissance-court)))    
         =>
         (assert (asking-question (question game-renaissance-court) (answers s n)))
@@ -1312,7 +1321,9 @@
         (result (feature party) (value T))
         (result (feature family) (value T))
         (info (feature game-bluff) (value "yes"))
-        (not (info (feature game-thematic | game-strategy | game-challenging | game-explorative | game-wtdplacement |game-hmovement | game-investigative | game-bidding ) (value "yes")))
+        (not (info (feature game-castles | game-tale | game-fantasy | game-futuristics | game-politics) (value "yes")))
+        (not (result (feature thematic | strategy | challenging | explorative | wtdplacement | hmovement | investigative | bidding ) (value T)))
+        (not (result (feature renaissance-court) (value F)))
         (not (info (feature game-renaissance-court))) 
         =>
         (assert (asking-question (question game-renaissance-court) (answers s n)))
@@ -1330,6 +1341,8 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
         (not (info (feature  game-wtdplacement |game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes")))
+        (not (info (feature game-war | game-fantasy | game-gothic | game-futuristics | game-lovecraft | game-fantasy | game-vampyric | game-lord-of-the-rings | game-war | game-survival | game-indians | game-western | game-tale | game-lovecraft | game-crime) (value "yes")))
+        (not (result (feature pirates) (value F)))
         (not(info (feature game-pirates)))
 
         =>
@@ -1344,7 +1357,9 @@
         (result (feature coop-comp) (value coop\comp))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-bluff) (value "yes"))
-        (not (info (feature  game-strategy | game-challenging | game-explorative | game-wtdplacement |game-hmovement | game-investigative | game-bidding ) (value "yes"))) 
+        (not (result (feature  strategy | challenging | explorative | wtdplacement | hmovement | investigative | bidding ) (value T))) 
+        (not (info (feature game-witchcraft | game-horror | game-fireworks | game-castles | game-western | game-western | game-tale | game-fantasy | game-renaissance-court | game-mafia | game-futuristics | game-politics) (value "yes")))
+        (not (result (feature pirates) (value F)))
         (not(info (feature game-pirates)))
         =>
         (assert (asking-question (question game-pirates) (answers s n)))
@@ -1358,7 +1373,9 @@
         (not (info (feature game-players) (value "1"| "2")))
         (or     (result (feature coop-comp) (value comp))
                 (result (feature coop-comp) (value coop\comp)))
-        (not (info (feature game-strategy | game-challenging | game-explorative | game-wtdplacement |game-hmovement ) (value "yes")))
+        (not (result (feature strategy | challenging | explorative | wtdplacement | hmovement ) (value T)))
+        (not (info (feature game-horror | game-fireworks | game-castles | game-western | game-pirates | game-tale | game-fantasy | game-renaissance-court | game-mafia | game-futuristics | game-politics ) (value "yes")))
+
         =>
         (assert (asking-question (question game-witchcraft) (answers s n)))
 )
@@ -1371,7 +1388,9 @@
         (result (feature coop-comp) (value comp))
         (info (feature game-thematic) (value "yes"))
         (not (info (feature game-players) (value "5" | "6" | "6+") ))
-        (not (info (feature game-strategy | game-challenging | game-explorative | game-wtdplacement |game-hmovement | game-investigative | game-bidding ) (value "yes")))
+        (not (result (feature strategy | challenging | explorative | wtdplacement | hmovement | investigative | bidding ) (value T)))
+        (not (info (feature game-greece | game-western |  game-tailoring | game-abstract | game-numbers | game-castles | game-oriental | game-glass | game-farms | game-gothic | game-lovecraft | game-renaissance-court | game-futuristics | game-politics | game-indians | game-fantasy | game-indians ) (value "yes")))
+        (not (result (feature oriental) (value F)))
         =>
         (assert (asking-question (question game-oriental) (answers s n)))
 )
@@ -1386,6 +1405,7 @@
         (info (feature game-abstract) (value "yes"))
         (not (info (feature game-players) (value "5" | "6" | "6+")))
         (not (info (feature game-strategy | game-challenging | game-explorative | game-wtdplacement |game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (result (feature glass) (value F)))
         =>
         (assert (asking-question (question game-glass) (answers s n)))
 )
@@ -1403,6 +1423,7 @@
         (not (info (feature  game-challenging | game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
         (not (info (feature  game-greece  |game-industry | game-castles | game-merchants | game-gothic | game-lovecraft| game-fantasy | game-chemistry | game-gala-hotel | game-trains) (value "yes")))  
         (info (feature game-players) (value "2" | "3" | "4"))
+        (not (result (feature chemistry) (value F)))
         =>
         (assert (asking-question (question game-chemistry) (answers s n)))
 )
@@ -1417,10 +1438,13 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
         (info (feature game-gothic) (value "yes"))
-        (not (info (feature game-lovecraft) (value "yes")))
-        (not (info (feature game-lord-of-the-rings)))
+        
         (not (info (feature game-strategy | game-explorative | game-wtdplacement | game-investigative | game-bidding) (value "yes")))
+        (info (feature  game-futuristics | game-lovecraft | game-pirates | game-survival | game-indians | game-western | game-tale | game-crime) (value "yes"))
         (info (feature game-players) (value "2" | "3" | "4" | "5"))
+
+        (not (result (feature game-lord-of-the-rings) (value F)))
+        (not (info (feature game-lord-of-the-rings)))
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
 )
@@ -1436,8 +1460,9 @@
         (info (feature game-fantasy) (value "yes"))
         (info (feature game-gothic) (value "yes"))
         (not (info (feature game-thematic | game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (info (feature game-greece | game-abstract | game-lovecraft | game-merchants | game-indians | game-horror | game-futuristics | game-castles | game-jewelry | game-farms | game-tale | game-politics | game-indians | game-crime ) (value "yes")))
         (info (feature game-players) (value "2"))
-        (not (info (feature game-lovecraft) (value "yes")))
+        (not (result (feature game-lovecraft) (value F)))
         (not (info (feature game-lord-of-the-rings)))                 
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
@@ -1454,8 +1479,9 @@
         (info (feature game-fantasy) (value "yes"))
         (info (feature game-gothic) (value "yes"))
         (not (info (feature game-strategy | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (info (feature game-lovecraft | game-dream | game-abstract | game-forests ) (value "yes")))
         (info (feature game-players) (value "1" | "2"))
-        (not (info (feature game-lovecraft) (value "yes")))       
+        (not (result (feature game-lovecraft) (value F)))       
         (not (info (feature game-lord-of-the-rings)))
         =>
         (assert (asking-question (question game-lord-of-the-rings) (answers s n)))
@@ -1473,6 +1499,9 @@
         (info (feature game-fantasy) (value "yes"))
         (not (info (feature game-players) (value "5" | "6" | "6+")))
         (not (info (feature game-strategy | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (info (feature game-war | game-gothic | game-futuristics | game-lovecraft | game-vampyric | game-pirates | game-lord-of-the-rings | game-survival | game-indians | game-western | game-crime) (value "yes")))
+        (not (result (feature tale) (value F)))
+
         (not(info (feature game-tale)))
         =>
         (assert (asking-question (question game-tale) (answers s n)))
@@ -1489,6 +1518,8 @@
         (info (feature game-fantasy) (value "yes"))
         (not (info (feature game-players) (value "1" | "2" | "6+")))
         (not (info (feature game-strategy | game-challenging | game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (info (feature game-castles | game-renaissance-court | game-futuristics | game-politics) (value "yes")))
+        (not (result (feature tale) (value F)))
         (not(info (feature game-tale)))
         =>
         (assert (asking-question (question game-tale) (answers s n)))
@@ -1504,6 +1535,8 @@
         (info (feature game-fantasy) (value "yes"))
         (not (info (feature game-players) (value "1" | "2")))
         (not (info (feature game-thematic | game-strategy | game-challenging | game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding ) (value "yes")))
+        (not (info (feature game-witchcraft | game-horror |game-fireworks | game-castles | game-western | game-pirates | game-witchcraft | game-renaissance-court | game-mafia | game-futuristics | game-politics) (value "yes")))
+        (not (result (feature tale) (value F)))
         (not(info (feature game-tale)))
         =>
         (assert (asking-question (question game-tale) (answers s n)))
@@ -1518,6 +1551,8 @@
         (info (feature game-investigative) (value "yes"))
         (info (feature game-bluff) (value "yes"))
         (not (info (feature game-strategy |  game-explorative | game-wtdplacement | game-hmovement | game-bidding ) (value "yes")))
+        (not (info (feature game-war | game-fantasy | game-futuristics | game-lovecraft | game-vampyric | game-pirates | game-lord-of-the-rings | game-survival | game-indians | game-western ) (value "yes")))
+        (not (result (feature game-crime ) (value F)))
         (not (info (feature game-crime)))
         =>
         (assert (asking-question (question game-crime) (answers s n)))
@@ -1532,7 +1567,9 @@
         (info (feature game-investigative) (value "yes"))
         (info (feature game-bluff) (value "yes"))
         (not (info (feature game-strategy |  game-explorative | game-wtdplacement | game-hmovement | game-bidding ) (value "yes")))
+        (not (info (feature game-greece | game-abstract | game-lovecraft | game-fantasy | game-merchants | game-indians | game-survival | game-horror | game-futuristics | game-castles | game-jewelry | game-farms | game-lovecraft | game-renaissance-court | game-tale | game-politics | game-indians | game-fantasy) (value "yes")))
         (not (info (feature game-players) (value "1")))
+        (not (result (feature game-crime ) (value F)))
         (not(info (feature game-crime)))
         =>
         (assert (asking-question (question game-crime) (answers s n)))

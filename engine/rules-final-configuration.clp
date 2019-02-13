@@ -108,14 +108,14 @@
                 (result (feature merchants) (value ?merchants))
                 (result (feature horror) (value ?horror))
                 
-                ;(result (feature survival) (value ?survival))
-                ;(result (feature indians) (value ?indians))
+                (result (feature survival) (value ?survival))
+                (result (feature indians) (value ?indians))
                 (result (feature fantasy) (value ?fantasy))
-                ;(result (feature castles) (value ?castles))
-                ;(result (feature futuristic) (value ?futuristic))
-                ;(result (feature jewelry) (value ?jewelry))
-                ;(result (feature lord-of-the-rings) (value ?lord-of-the-rings))
-                ;(result (feature crime) (value ?crime))
+                (result (feature castles) (value ?castles))
+                (result (feature futuristic) (value ?futuristic))
+                (result (feature jewelry) (value ?jewelry))
+                (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
+                (result (feature crime) (value ?crime))
                 (game-players (player ?player))
         
         (general-kind (label ?label) (filler T) (party F) (family F))
@@ -303,13 +303,7 @@
        
 
             
-                (result (feature 1players) (value ?players1))
-                (result (feature 2players) (value ?players2))
-                (result (feature 3players) (value ?players3))
-                (result (feature 4players) (value ?players4))
-                (result (feature 5players) (value ?players5))
-                (result (feature 6players) (value ?players6))
-                (result (feature +6players) (value ?players6+))
+           
                 (result (feature coop-comp) (value ?coop-comp))
                 (result (feature weight) (value ?weight))
                 
@@ -377,11 +371,9 @@
                 (result (feature castles) (value ?castles))
                 (result (feature gothic) (value ?gothic))
                 (result (feature chemistry) (value ?chemistry))
-                (result (feature gala-hotel) (value ?gala-hotel))
                 (result (feature indians) (value ?indians))
                 (result (feature lovecraft) (value ?lovecraft))
-                (result (feature restaurants) (value ?restaurants))
-                (result (feature trains) (value ?trains))   
+                (result (feature restaurants) (value ?restaurants))   
                 (game-players (player ?player))
 
         (general-kind (label ?label) (german ?german))
