@@ -21,6 +21,15 @@
     (test (>= ?last ?number))
     =>
 
+      (refresh find-hypotetical-final-board-game-filler-and-party-and-family-1players)
+    (refresh find-hypotetical-final-board-game-filler-and-family-1players)
+    (refresh find-hypotetical-final-board-game-filler-1players)
+    (refresh find-hypotetical-final-board-game-party-1players)
+    (refresh find-hypotetical-final-board-game-family-1players)
+    (refresh find-hypotetical-final-board-game-wargame-1players)
+    (refresh find-hypotetical-final-board-game-cardgame-1players)
+    (refresh find-hypotetical-final-board-game-american-1players)
+    (refresh find-hypotetical-final-board-game-german-1players)
     (refresh find-hypotetical-final-board-game-filler-and-party-and-family)
     (refresh find-hypotetical-final-board-game-filler-and-family)
     (refresh find-hypotetical-final-board-game-filler)

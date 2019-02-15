@@ -98,11 +98,12 @@
         (not (inferred (feature weight) (value difficile)))
         (not (info (feature game-wargame) (value "yes"))) 
         (not (info (feature game-cardgame) (value "yes")))
-        (not (info (feature game-players) (value "1")))
         (not (info (feature game-explorative | game-hmovement | game-bidding) (value "yes")))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"| "45<65"))
         (info (feature game-players) (value "2" | "3" | "4" | "5" | "6" | "6+"))
         (info (feature game-time) (value "<60"))
+        (result (feature coop-comp) (value comp | coop))
+        (not (result (feature family) (value F)))
         =>
         (assert (asking-question (question game-family) (answers s n)))
 )
