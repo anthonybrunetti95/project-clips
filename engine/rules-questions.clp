@@ -742,7 +742,7 @@
         (info (feature game-gothic) (value "yes"))
         (result (feature american) (value T))
         (not (info (feature game-strategy | game-wtdplacement | game-hmovement | game-bidding) (value "yes")))
-        (not (info (feature game-war | game-vampyric | game-pirates | game-lord-of-the-rings | game-western | game-tale | game-gothic) (value "yes")))
+        (not (info (feature game-war | game-vampyric | game-pirates | game-lord-of-the-rings | game-western | game-tale ) (value "yes")))
         (info (feature game-investigative) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-fantasy) (value "yes"))
@@ -1380,7 +1380,7 @@
         (info (feature game-strategy) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
-        (not (info (feature  game-wtdplacement |game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes")))
+        (not (result (feature  game-wtdplacement |game-hmovement | game-investigative | game-bidding | game-bluff ) (value T)))
         (not (info (feature game-war | game-fantasy | game-gothic | game-futuristics | game-lovecraft | game-fantasy | game-vampyric | game-lord-of-the-rings | game-war | game-survival | game-indians | game-western | game-tale | game-lovecraft | game-crime) (value "yes")))
         (not (result (feature pirates) (value F)))
         (not(info (feature game-pirates)))
@@ -1480,7 +1480,7 @@
         (info (feature game-gothic) (value "yes"))
         
         (not (info (feature game-strategy | game-explorative | game-wtdplacement | game-investigative | game-bidding) (value "yes")))
-        (info (feature  game-futuristics | game-lovecraft | game-pirates | game-survival | game-indians | game-western | game-tale | game-crime) (value "yes"))
+        (not (info (feature  game-futuristics | game-lovecraft | game-pirates | game-survival | game-indians | game-western | game-tale | game-crime) (value "yes")))
         (info (feature game-players) (value "2" | "3" | "4" | "5"))
 
         (not (result (feature game-lord-of-the-rings) (value F)))

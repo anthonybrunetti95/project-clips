@@ -401,11 +401,11 @@
 
 (defrule find-hypotetical-final-board-game-wargame-1players
         (declare (salience ?*sub-normal-priority*))
-        (result (feature wargame) (value ?wargame))
+        (result (feature wargame) (value T))
         (result (feature roman ) (value ?roman))
         (game-players (player ?player))     
         (result (feature 1players) (value T))
-        (general-kind (label ?label) (wargame ?wargame))
+        (general-kind (label ?label) (wargame T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (main-features (label ?label) (age ?age) (length ?length))
@@ -425,11 +425,11 @@
 
 (defrule find-hypotetical-final-board-game-wargame
         (declare (salience ?*sub-normal-priority*))
-        (result (feature wargame) (value ?wargame))
+        (result (feature wargame) (value T))
         (result (feature roman ) (value ?roman))
         (game-players (player ?player))     
         (not (result (feature 1players) (value T)))
-        (general-kind (label ?label) (wargame ?wargame))
+        (general-kind (label ?label) (wargame T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (main-features (label ?label) (age ?age) (length ?length))
@@ -448,7 +448,7 @@
 
 (defrule find-hypotetical-final-board-game-cardgame-1players
         (declare (salience ?*sub-normal-priority*))
-        (result (feature cardgame) (value ?cardgame))
+        (result (feature cardgame) (value T))
         
 
          
@@ -478,7 +478,7 @@
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
                 (game-players (player ?player))
         
-        (general-kind (label ?label) (cardgame ?cardgame))
+        (general-kind (label ?label) (cardgame T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (main-features (label ?label) (age ?age) (length ?length))
@@ -498,7 +498,7 @@
 
 (defrule find-hypotetical-final-board-game-cardgame
         (declare (salience ?*sub-normal-priority*))
-        (result (feature cardgame) (value ?cardgame))
+        (result (feature cardgame) (value T))
         (not(result (feature 1players) (value T)))
 
          
@@ -528,7 +528,7 @@
                 (result (feature lord-of-the-rings) (value ?lord-of-the-rings))
                 (game-players (player ?player))
         
-        (general-kind (label ?label) (cardgame ?cardgame))
+        (general-kind (label ?label) (cardgame T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (main-features (label ?label) (age ?age) (length ?length) (coop-comp ?coop-comp))
@@ -632,25 +632,29 @@
                 (game-players (player ?player))
         
 
+        
+        
+        
+        (thematic-environment (label ?label) (war ?war) (lovecraft ?lovecraft) (gothic ?gothic)  (vampyric ?vampyric) (pirates ?pirates) (futuristic ?futuristic) (western ?western) (indians ?indians) (crime ?crime) (survival ?survival) (tale ?tale) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
+        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (hmovement ?hmovement) (investigative ?investigative) (bluff ?bluff))
+        (main-features (label ?label) (age ?age) (weight ?weight) (coop-comp ?coop-comp))
         (general-kind (label ?label) (american T))
         (board-game (label ?label) (board-game-name ?board-game-name))
+
         (players (label ?label) (player $?players) )
-        (secondary-kind (label ?label) (thematic ?thematic) (strategy ?strategy) (challenging ?challenging) (explorative ?explorative) (hmovement ?hmovement) (investigative ?investigative) (bluff ?bluff))
-        (thematic-environment (label ?label) (war ?war) (lovecraft ?lovecraft) (gothic ?gothic)  (vampyric ?vampyric) (pirates ?pirates) (futuristic ?futuristic) (western ?western) (indians ?indians) (crime ?crime) (survival ?survival) (tale ?tale) (fantasy ?fantasy) (lord-of-the-rings ?lord-of-the-rings))
-        (main-features (label ?label) (age ?age) (length ?length) (weight ?weight) (coop-comp ?coop-comp))
         (test  (member$ ?player $?players))
         (user-age (min-age ?min)) 
         (test (>=  ?min ?age))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what find-hypotetical-game-american)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name " (what find-hypotetical-game-american) "  crlf))
-        
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-american:  " ?label " " ?board-game-name " (what find-hypotetical-game-american) "  crlf)
+        (printout t crlf ?board-game-name ?war ?lovecraft ?gothic ?vampyric ?pirates ?futuristic ?western ?indians ?crime ?survival ?tale ?fantasy ?lord-of-the-rings  " " crlf))
 )
 
 
 (defrule find-hypotetical-final-board-game-german-1players
         (declare (salience ?*sub-normal-priority*))
-        (result (feature german) (value ?german))
+        (result (feature german) (value T))
         (result (feature 1players) (value T))  
             
                 
@@ -674,7 +678,7 @@
                 (result (feature restaurants) (value ?restaurants))   
                 (game-players (player ?player))
 
-        (general-kind (label ?label) (german ?german))
+        (general-kind (label ?label) (german T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (secondary-kind  (label ?label) (thematic ?thematic) (strategy ?strategy) (wtdplacement ?wtdplacement) (bidding ?bidding))
@@ -694,7 +698,7 @@
 
 (defrule find-hypotetical-final-board-game-german
         (declare (salience ?*sub-normal-priority*))
-        (result (feature german) (value ?german))
+        (result (feature german) (value T))
         (not(result (feature 1players) (value T)))  
             
                 
@@ -718,7 +722,7 @@
                 (result (feature restaurants) (value ?restaurants))   
                 (game-players (player ?player))
 
-        (general-kind (label ?label) (german ?german))
+        (general-kind (label ?label) (german T))
         (board-game (label ?label) (board-game-name ?board-game-name))
         (players (label ?label) (player $?players))
         (secondary-kind  (label ?label) (thematic ?thematic) (strategy ?strategy) (wtdplacement ?wtdplacement) (bidding ?bidding))

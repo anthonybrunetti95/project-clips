@@ -1,3 +1,5 @@
+#!/usr/bin/python2
+# -*- coding: iso-8859-15 -*-
 import sys
 import time
 import traceback
@@ -9,7 +11,6 @@ from .datamanager import get_bot_data
 
 
 def run (bot, token=None):
-	os_check()
 
 	chats = {}
 
@@ -47,3 +48,4 @@ def run (bot, token=None):
 				
 		if first_run:
 			first_run = False
+
