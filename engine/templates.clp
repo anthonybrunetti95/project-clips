@@ -41,15 +41,15 @@
 )
 
 (deftemplate game-general-kind
-        (slot general-kind      (type SYMBOL))
+        (multislot general-kind      (type SYMBOL))
 )
 
 (deftemplate game-secondary-kind
-        (slot secondary-kind    (type SYMBOL))
+        (multislot secondary-kind    (type SYMBOL))
 )
 
 (deftemplate game-thematic-environment
-        (slot thematic-environment (type SYMBOL))
+        (multislot thematic-environment (type SYMBOL))
 )
 
 (deftemplate game-time
@@ -116,16 +116,25 @@
 
 
 (deftemplate board-game
-        (slot label             (type SYMBOL))
-        (slot board-game-name   (type STRING))
-        (slot length            (type INTEGER))
-        (slot weight            (type SYMBOL) (allowed-values facile medio difficile))
-        (slot coop-comp         (type SYMBOL) (allowed-values coop comp coop\comp null))
-        (slot age               (type INTEGER))
-        (slot price             (type INTEGER))
+        (slot label              (type SYMBOL))
+        (slot name               (type STRING))
+        (slot length             (type INTEGER))
+        (slot weight             (type SYMBOL) (allowed-values facile medio difficile))
+        (slot coop-comp          (type SYMBOL) (allowed-values coop comp coop\comp null))
+        (slot age                (type INTEGER))
+        (slot price              (type INTEGER))
         (multislot players       (type INTEGER))
         (multislot best-players  (type INTEGER))
-        (multislot general-kind (type SYMBOL))
-        (multislot secondary-kind (type SYMBOL))
-        (multislot thematic-environment (type SYMBOL))
+        (multislot general-kind  (type SYMBOL))    
 )
+
+(deftemplate secondary-kind
+     (slot label               (type SYMBOL))
+     (multislot secondary-kind (type SYMBOL))
+)
+
+(deftemplate thematic-environment
+    (slot label              (type SYMBOL))
+    (multislot thematic-environment (type SYMBOL))
+)
+
