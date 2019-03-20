@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;                DEFINIZIONI DEI TEMPLATE               ;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -38,6 +38,18 @@
 
 (deftemplate game-players
         (slot player            (type INTEGER))
+)
+
+(deftemplate game-general-kind
+        (slot general-kind      (type SYMBOL))
+)
+
+(deftemplate game-secondary-kind
+        (slot secondary-kind    (type SYMBOL))
+)
+
+(deftemplate game-thematic-environment
+        (slot thematic-environment (type SYMBOL))
 )
 
 (deftemplate game-time
@@ -102,102 +114,18 @@
 ;;====================================================;;
 ; TEMPLATE PER I DATI DI UN GIOCO DA TAVOLO
 
+
 (deftemplate board-game
         (slot label             (type SYMBOL))
         (slot board-game-name   (type STRING))
-        
-)
-
-
-(deftemplate main-features
-        (slot label            (type SYMBOL))
-        (slot length           (type INTEGER))
-        (slot weight           (type SYMBOL) (allowed-values facile medio difficile))
-        (slot coop-comp        (type SYMBOL) (allowed-values coop comp coop\comp null))
-        (slot age              (type INTEGER))
-        (slot price            (type INTEGER))
-)
-
-
-
-(deftemplate players
-         (slot label             (type SYMBOL))
-         (multislot player            (type INTEGER))
-)
-
-(deftemplate best-players
-        (slot label             (type SYMBOL))
-        (slot best-1players     (type SYMBOL)   (default F))
-        (slot best-2players     (type SYMBOL)   (default F))
-        (slot best-3players     (type SYMBOL)   (default F))
-        (slot best-4players     (type SYMBOL)   (default F))
-        (slot best-5players     (type SYMBOL)   (default F))
-        (slot best-6players     (type SYMBOL)   (default F))
-        (slot best-6players+    (type SYMBOL)   (default F))
-)
-(deftemplate general-kind
-        (slot label             (type SYMBOL))
-        (slot german            (type SYMBOL)  (default F))
-        (slot american          (type SYMBOL)  (default F))
-        (slot filler            (type SYMBOL)  (default F))
-        (slot cardgame          (type SYMBOL)  (default F))
-        (slot party             (type SYMBOL)  (default F))
-        (slot wargame           (type SYMBOL)  (default F))
-        (slot family            (type SYMBOL)  (default F))
-)
-
- 
-(deftemplate secondary-kind
-        (slot label             (type SYMBOL))
-        (slot thematic          (type SYMBOL)  (default F))
-        (slot strategy          (type SYMBOL)  (default F))
-        (slot challenging       (type SYMBOL)  (default F))
-        (slot explorative       (type SYMBOL)  (default F))
-        (slot wtdplacement      (type SYMBOL)  (default F))
-        (slot hmovement         (type SYMBOL)  (default F))
-        (slot investigative     (type SYMBOL)  (default F))
-        (slot bidding           (type SYMBOL)  (default F))
-        (slot bluff             (type SYMBOL)  (default F))
-)
-
-
-(deftemplate thematic-environment
-        (slot label             (type SYMBOL))
-        (slot greece            (type SYMBOL)  (default F))
-        (slot abstract          (type SYMBOL)  (default F))
-        (slot western           (type SYMBOL)  (default F))
-        (slot horror            (type SYMBOL)  (default F))
-        (slot gothic            (type SYMBOL)  (default F))
-        (slot lovecraft         (type SYMBOL)  (default F))
-        (slot war               (type SYMBOL)  (default F))
-        (slot dream             (type SYMBOL)  (default F))
-        (slot fantasy           (type SYMBOL)  (default F))
-        (slot farms             (type SYMBOL)  (default F))
-        (slot tailoring         (type SYMBOL)  (default F))
-        (slot futuristic        (type SYMBOL)  (default F))
-        (slot merchants         (type SYMBOL)  (default F))
-        (slot indians           (type SYMBOL)  (default F))
-        (slot fireworks         (type SYMBOL)  (default F))
-        (slot survival          (type SYMBOL)  (default F))
-        (slot industry          (type SYMBOL)  (default F))
-        (slot numbers           (type SYMBOL)  (default F))
-        (slot castles           (type SYMBOL)  (default F))
-        (slot vampyric          (type SYMBOL)  (default F))
-        (slot renaissance-court (type SYMBOL)  (default F))
-        (slot pirates           (type SYMBOL)  (default F))
-        (slot witchcraft        (type SYMBOL)  (default F))
-        (slot trains            (type SYMBOL)  (default F))
-        (slot jewelry           (type SYMBOL)  (default F))
-        (slot oriental          (type SYMBOL)  (default F))
-        (slot forests           (type SYMBOL)  (default F))
-        (slot roman             (type SYMBOL)  (default F))
-        (slot glass             (type SYMBOL)  (default F))
-        (slot chemistry         (type SYMBOL)  (default F))
-        (slot gala-hotel        (type SYMBOL)  (default F)) 
-        (slot lord-of-the-rings (type SYMBOL)  (default F))
-        (slot tale              (type SYMBOL)  (default F))
-        (slot crime             (type SYMBOL)  (default F))
-        (slot restaurants       (type SYMBOL)  (default F))
-        (slot mafia             (type SYMBOL)  (default F))
-        (slot politics          (type SYMBOL)  (default F))     
+        (slot length            (type INTEGER))
+        (slot weight            (type SYMBOL) (allowed-values facile medio difficile))
+        (slot coop-comp         (type SYMBOL) (allowed-values coop comp coop\comp null))
+        (slot age               (type INTEGER))
+        (slot price             (type INTEGER))
+        (multislot players       (type INTEGER))
+        (multislot best-players  (type INTEGER))
+        (multislot general-kind (type SYMBOL))
+        (multislot secondary-kind (type SYMBOL))
+        (multislot thematic-environment (type SYMBOL))
 )
