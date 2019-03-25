@@ -22,6 +22,43 @@
 
 ;;====================================================;;
 
+(defrule result-1players
+         (declare (salience ?*highest-priority*))
+         (inferred (feature 1players) (value T))
+         =>
+         (assert (infering-result (feature 1players) (value T)))
+)
 
+(defrule result-weight
+        (declare (salience ?*highest-priority*))
+        (inferred (feature weight) (value ?weight))
+        =>
+        (assert (infering-result (feature weight) (value ?weight)))
+)
+
+(defrule result-coop
+        (declare (salience ?*highest-priority*))
+        (info (feature game-coop) (value "yes"))
+        (info (feature game-comp) (value "no"))
+        =>
+        (assert (infering-result (feature coop-comp) (value coop)))
+)
+
+(defrule result-comp
+        (declare (salience ?*highest-priority*))
+        (info (feature game-comp) (value "yes"))
+        (info (feature game-coop) (value "no"))
+        =>
+        (assert (infering-result (feature coop-comp) (value comp)))
+)
+
+
+(defrule result-coop-comp
+        (declare (salience ?*highest-priority*))
+        (info (feature game-coop) (value "yes"))
+        (info (feature game-comp) (value "yes"))
+        =>
+        (assert (infering-result (feature coop-comp) (value coop\comp)))
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

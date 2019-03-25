@@ -124,8 +124,12 @@
         (slot age                (type INTEGER))
         (slot price              (type INTEGER))
         (multislot players       (type INTEGER))
-        (multislot best-players  (type INTEGER))
-        (multislot general-kind  (type SYMBOL))    
+        (multislot best-players  (type INTEGER))   
+)
+
+(deftemplate general-kind
+    (slot label         (type SYMBOL))
+    (multislot general-kind (type SYMBOL))
 )
 
 (deftemplate secondary-kind

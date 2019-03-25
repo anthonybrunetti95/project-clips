@@ -131,7 +131,7 @@
         (info (feature game-cardgame) (value  "yes"))
         (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind cardgame)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature cardgame) (value T)) (bind $?game-general-kind (create$ $?game-general-kind cardgame)) (game-general-kind (general-kind $?game-general-kind)))
 )
 
 (defrule inferred-wargame 
@@ -139,7 +139,7 @@
         (info (feature game-wargame) (value "yes"))
         (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind wargame)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature wargame) (value T)) (bind $?game-general-kind (create$ $?game-general-kind wargame)) (game-general-kind (general-kind $?game-general-kind)))
 )       
 
 (defrule inferred-family 
@@ -147,7 +147,7 @@
         (info (feature game-family) (value "yes"))
         (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind family)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature family) (value T)) (bind $?game-general-kind (create$ $?game-general-kind family)) (game-general-kind (general-kind $?game-general-kind)))
 )       
 
 (defrule inferred-party 
@@ -156,11 +156,11 @@
         (or     (inferred (feature weight) (value facile))
                 (inferred (feature weight) (value medio)))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
-        (result (feature  explorative |wtdplacement | hmovement | bidding) (value F))
+        (inferred (feature  explorative |wtdplacement | hmovement | bidding) (value F))
         (game-general-kind (general-kind $?game-general-kind))
 
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind party)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature party) (value T)) (bind $?game-general-kind (create$ $?game-general-kind party)) (game-general-kind (general-kind $?game-general-kind)))
 )    
 
 
@@ -170,11 +170,11 @@
         (info (feature game-time) (value "<60"))
         (inferred (feature weight) (value facile))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
-        (result (feature german) (value F))
+        (inferred (feature german) (value F))
         (not (info (feature game-explorative) (value "yes")))
         (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind filler)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature filler) (value T))  (bind $?game-general-kind (create$ $?game-general-kind filler)) (game-general-kind (general-kind $?game-general-kind)))
 )
 
 (defrule inferred-german
@@ -185,54 +185,55 @@
         (not (result (feature filler) (value T)))
         (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (bind $?game-general-kind (create$ $?game-general-kind german)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature german) (value T))  (bind $?game-general-kind (create$ $?game-general-kind german)) (game-general-kind (general-kind $?game-general-kind)))
 )
 
-(defrule result-no-german
+(defrule inferred-no-german
         (declare (salience ?*highest-priority*))
-        (or (result (feature wtdplacement | strategy) (value F))
+        (or (inferred (feature wtdplacement | strategy) (value F))
             (result (feature coop-comp) (value coop | coop-comp))
         )
         
         =>
-        (assert (infering-result (feature german) (value F)))
+        (assert (infering (feature german) (value F)))
 )
 
 
-(defrule result-no-family 
+(defrule inferred-no-family 
         (declare (salience ?*highest-priority*))
         (or
             (inferred (feature weight) (value difficile))
             (info (feature game-wargame) (value "yes"))
             (info (feature game-cardgame) (value "yes"))
             (info (feature game-players) (value "1"))
-            (result (feature explorative | hmovement | bidding) (value T))
+            (inferred (feature explorative | hmovement | bidding) (value T))
             (info (feature user-budget) (value "66<110" | "110<"))
             (info (feature game-time) (value ">60"))
             (result (feature coop-comp) (value coop\comp))
         )
         =>
-        (assert (infering-result (feature family) (value F)))
+        (assert (infering (feature family) (value F)))
 
 )
 
 
-(defrule result-american-1
+(defrule inferred-american-1
         (declare (salience ?*highest-priority*))
         (info (feature game-time) (value ">60"))
         (info (feature user-budget) (value "34<44" | "45<65" | "66<110" | "110<"))
         (info (feature game-thematic) (value "yes"))
         (not (inferred (feature weight) (value facile)))
         (not (info(feature strategy) (value "yes")))
-        (result (feature   wtdplacement) (value F))
-        (result (feature bidding) (value F))
-        (result (feature strategy) (value F))
-        (not (result (feature american)))
+        (inferred (feature   wtdplacement) (value F))
+        (inferred (feature bidding) (value F))
+        (inferred (feature strategy) (value F))
+        (not (inferred (feature american)))
+        (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (infering-result (feature american) (value T)))
+        (assert (infering (feature american) (value T)) (bind $?game-general-kind (create$ $?game-general-kind american)) (game-general-kind (general-kind $?game-general-kind)))
 
 )
-(defrule result-american-2
+(defrule inferred-american-2
         (declare (salience ?*highest-priority*))
         (info (feature game-time) (value ">60"))
         (info (feature user-budget) (value "34<44" | "45<65" | "66<110" | "110<"))
@@ -241,170 +242,140 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
         (info (feature game-strategy) (value "yes"))
-
-        (result (feature wtdplacement) (value F))
-        (result (feature bidding) (value F))
-        (result (feature strategy) (value F))
+        (inferred (feature wtdplacement) (value F))
+        (inferred (feature bidding) (value F))
+        (inferred (feature strategy) (value F))
         (result (feature coop-comp) (value coop\comp))
-        (not (result (feature american)))
+        (not (inferred (feature american)))
+        (game-general-kind (general-kind $?game-general-kind))
         =>
-        (assert (infering-result (feature american) (value T)))
+        (assert (infering (feature american) (value T)) (bind $?game-general-kind (create$ $?game-general-kind american)) (game-general-kind (general-kind $?game-general-kind)))
 
 )
 
-(defrule result-1players
-         (declare (salience ?*highest-priority*))
-         (inferred (feature 1players) (value T))
-         =>
-         (assert (infering-result (feature 1players) (value T)))
-)
-
-(defrule result-weight
-        (declare (salience ?*highest-priority*))
-        (inferred (feature weight) (value ?weight))
-        =>
-        (assert (infering-result (feature weight) (value ?weight)))
-)
-
-(defrule result-coop
-        (declare (salience ?*highest-priority*))
-        (info (feature game-coop) (value "yes"))
-        (info (feature game-comp) (value "no"))
-        =>
-        (assert (infering-result (feature coop-comp) (value coop)))
-)
-
-(defrule result-comp
-        (declare (salience ?*highest-priority*))
-        (info (feature game-comp) (value "yes"))
-        (info (feature game-coop) (value "no"))
-        =>
-        (assert (infering-result (feature coop-comp) (value comp)))
-)
-
-
-(defrule result-coop-comp
-        (declare (salience ?*highest-priority*))
-        (info (feature game-coop) (value "yes"))
-        (info (feature game-comp) (value "yes"))
-        =>
-        (assert (infering-result (feature coop-comp) (value coop\comp)))
-)
-
-
-(defrule result-thematic
+(defrule inferred-thematic
         (declare (salience ?*high-priority*))
         (info (feature  game-thematic) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature thematic) (value T)))
+        (assert (infering (feature thematic) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind thematic)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-strategy
+(defrule inferred-strategy
         (declare (salience ?*high-priority*))
         (info (feature  game-strategy) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature strategy) (value T)))
+        (assert (infering (feature strategy) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind strategy)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
 
-(defrule result-challenging
+(defrule inferred-challenging
         (declare (salience ?*high-priority*))
         (info (feature  game-challenging) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature challenging) (value T)))
+        (assert (infering (feature challenging) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind challenging)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
 
-(defrule result-explorative
+(defrule inferred-explorative
         (declare (salience ?*high-priority*))
-         (info (feature  game-explorative) (value "yes"))
+        (info (feature  game-explorative) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind)) 
         =>
-        (assert (infering-result (feature explorative) (value T)))
+        (assert (infering (feature explorative) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind explorative)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-wtdplacement
+(defrule inferred-wtdplacement
         (declare (salience ?*high-priority*))
-         (info (feature  game-wtdplacement) (value "yes"))
+        (info (feature  game-wtdplacement) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature wtdplacement) (value T)))
+        (assert (infering (feature wtdplacement) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind wtdplacement)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-hmovement
+(defrule inferred-hmovement
         (declare (salience ?*high-priority*))
-         (info (feature  game-hmovement) (value "yes"))
+        (info (feature  game-hmovement) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature hmovement) (value T)))
+        (assert (infering (feature hmovement) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind hmovement)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-investigative
+(defrule inferred-investigative
         (declare (salience ?*high-priority*))
-         (info (feature  game-investigative) (value "yes"))
+        (info (feature  game-investigative) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature investigative) (value T)))
+        (assert (infering (feature investigative) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind investigative)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-bidding
+(defrule inferred-bidding
         (declare (salience ?*high-priority*))
-         (info (feature  game-bidding) (value "yes"))
+        (info (feature  game-bidding) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature bidding) (value T)))
+        (assert (infering (feature bidding) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind bidding)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-bluff
+(defrule inferred-bluff
         (declare (salience ?*high-priority*))
-         (info (feature  game-bluff) (value "yes"))
+        (info (feature  game-bluff) (value "yes"))
+        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering-result (feature bluff) (value T)))
+        (assert (infering (feature bluff) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind bluff)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
 )
 
-(defrule result-no-thematic
+
+(defrule inferred-no-thematic
         (declare (salience ?*high-priority*))
         (or (info (feature  game-thematic) (value "no"))
             (info (feature game-wargame) (value "yes")))
         
         =>
-        (assert (infering-result (feature thematic) (value F)))
+        (assert (infering (feature thematic) (value F)))
 )
 
-(defrule result-no-strategy-1
+(defrule inferred-no-strategy-1
         (declare (salience ?*high-priority*))
         (info (feature  game-strategy) (value "no"))
 
-        (not (result (feature strategy)))
+        (not (inferred (feature strategy)))
         =>
-        (assert (infering-result (feature strategy) (value F)))
+        (assert (infering (feature strategy) (value F)))
 )
 
-(defrule result-no-strategy-2
+(defrule inferred-no-strategy-2
         (declare (salience ?*high-priority*))
         (info (feature game-players) (value "1"))
         (info (feature game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes") )
-        (not (result (feature strategy)))
+        (not (inferred (feature strategy)))
               =>
-        (assert (infering-result (feature strategy) (value F)))
+        (assert (infering (feature strategy) (value F)))
 )
 
-(defrule result-no-strategy-3
+(defrule inferred-no-strategy-3
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value comp))
         (info (feature game-explorative | game-hmovement | game-investigative ) (value "yes"))
-        (not (result (feature strategy)))
+        (not (inferred (feature strategy)))
         =>
-        (assert (infering-result (feature strategy) (value F)))
+        (assert (infering (feature strategy) (value F)))
 )
 
-(defrule result-no-strategy-4
+(defrule inferred-no-strategy-4
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value coop))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
-        (not (result (feature strategy)))
+        (not (inferred (feature strategy)))
         =>
-        (assert (infering-result (feature strategy) (value F)))
+        (assert (infering (feature strategy) (value F)))
 )
 
-(defrule result-no-strategy-5
+(defrule inferred-no-strategy-5
         (declare (salience ?*high-priority*)) 
         (result (feature coop-comp) (value coop\comp))
             (or    (info (feature game-thematic) (value "no"))
@@ -412,15 +383,15 @@
                 (info (feature game-explorative) (value "no"))
                 (info (feature game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
             )
-        (not (result (feature strategy)))
+        (not (inferred (feature strategy)))
         =>
         (assert (infering-result (feature strategy) (value F)))
 )
 
-(defrule result-no-strategy-6
+(defrule inferred-no-strategy-6
         (declare (salience ?*high-priority*)) 
         (result (feature coop-comp) (value comp))
-        (result (feature filler) (value T))
+        (inferred (feature filler) (value T))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (not (result (feature strategy)))
@@ -428,114 +399,114 @@
         (assert (infering-result (feature strategy) (value F)))
 )
 
-(defrule result-no-challenging-1
+(defrule inferred-no-challenging-1
         (declare (salience ?*high-priority*))
         (or (info (feature  game-challenging) (value "no"))
             (inferred (feature wargame) (value T))
             (info (feature game-wtdplacement | game-bidding) (value "yes"))
         )
-        (not (result (feature challenging)))
+        (not (inferred (feature challenging)))
 
         =>
         (assert (infering-result (feature challenging) (value F)))
 )
 
-(defrule result-no-challenging-2
+(defrule inferred-no-challenging-2
         (declare (salience ?*high-priority*))
         (info (feature game-players) (value "1"))
         (info (feature  game-hmovement ) (value "yes"))
-        (not (result (feature challenging)))
+        (not (inferred (feature challenging)))
         =>
-        (assert (infering-result (feature challenging) (value F)))
+        (assert (infering (feature challenging) (value F)))
 )
 
-(defrule result-no-challenging-3
+(defrule inferred-no-challenging-3
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value comp))
         (info (feature game-explorative | game-hmovement) (value "yes"))
-        (not (result (feature challenging)))
+        (not (inferred (feature challenging)))
         =>
-        (assert (infering-result (feature challenging) (value F)))
+        (assert (infering (feature challenging) (value F)))
 )
 
-(defrule result-no-challenging-4
+(defrule inferred-no-challenging-4
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value coop))
         (info (feature game-hmovement | game-bluff) (value "yes"))
-        (not (result (feature challenging)))
+        (not (inferred (feature challenging)))
         =>
-        (assert (infering-result (feature challenging) (value F)))
+        (assert (infering (feature challenging) (value F)))
 )
 
-(defrule result-no-challenging-5
+(defrule inferred-no-challenging-5
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value comp))
-        (result (feature filler) (value T))
+        (inferred (feature filler) (value T))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-strategy) (value "yes"))
-        (not (result (feature challenging)))
+        (not (inferred (feature challenging)))
         =>
-        (assert (infering-result (feature challenging) (value F)))
+        (assert (infering (feature challenging) (value F)))
 )
 
 
-(defrule result-no-explorative-1
+(defrule inferred-no-explorative-1
         (declare (salience ?*high-priority*))
         (or     (info (feature  game-explorative) (value "no"))
                 (info (feature game-wtdplacement | game-hmovement | game-bidding | game-bluff) (value "yes"))
-                (result (feature german | filler | family | party) (value T)))
-        (not (result (feature explorative)))
+                (inferred (feature german | filler | family | party) (value T)))
+        (not (inferred (feature explorative)))
         =>
         (assert (infering-result (feature explorative) (value F)))
 )
 
-(defrule result-no-explorative-2
+(defrule inferred-no-explorative-2
         (declare (salience ?*high-priority*))
         (info (feature game-players) (value "1"))
         (or
             (info (feature game-thematic) (value "no"))
             (info (feature game-challenging) (value "no"))
         )
-        (not (result (feature explorative)))
+        (not (inferred (feature explorative)))
         =>
-        (assert (infering-result (feature explorative) (value F)))
+        (assert (infering (feature explorative) (value F)))
 )
 
-(defrule result-no-explorative-3
+(defrule inferred-no-explorative-3
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value coop))
         (or (info (feature game-thematic | game-challenging ) (value "no"))
             (info (feature game-strategy) (value "yes"))
         )
-        (not (result (feature explorative)))
+        (not (inferred (feature explorative)))
         =>
-        (assert (infering-result (feature explorative) (value F)))
+        (assert (infering (feature explorative) (value F)))
 )
 
-(defrule result-no-explorative-4
+(defrule inferred-no-explorative-4
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value coop\comp))
         (info (feature game-thematic) (value "no"))
-        (not (result (feature explorative)))
+        (not (inferred (feature explorative)))
         =>
-        (assert (infering-result (feature explorative) (value F)))
+        (assert (infering (feature explorative) (value F)))
 )
 
 
-(defrule result-no-wtdplacement-1
+(defrule inferred-no-wtdplacement-1
         (declare (salience ?*high-priority*))
         (or (info (feature  game-wtdplacement) (value "no"))
             (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bluff) (value "yes"))
             (result (feature coop-comp) (value coop | coop\comp))
         )
-        (not (result (feature wtdplacement)))
+        (not (inferred (feature wtdplacement)))
         =>
-        (assert (infering-result (feature wtdplacement) (value F)))
+        (assert (infering (feature wtdplacement) (value F)))
 )
 
 
 
-(defrule result-no-hmovement-1
+(defrule inferred-no-hmovement-1
         (declare (salience ?*high-priority*))
         (or (info (feature  game-hmovement) (value "no"))
             (info (feature game-thematic) (value "no"))
@@ -543,24 +514,24 @@
             (info (feature game-bluff) (value "no"))
             (info (feature game-strategy | game-explorative | game-wtdplacement | game-bidding) (value "yes"))
         )    
-        (not (result (feature hmovement)))
+        (not (inferred (feature hmovement)))
         =>
-        (assert (infering-result   (feature hmovement) (value F)))
+        (assert (infering (feature hmovement) (value F)))
 )
 
-(defrule result-no-investigative-1
+(defrule inferred-no-investigative-1
         (declare (salience ?*high-priority*))
         (or (info (feature  game-investigative) (value "no"))
             (inferred (feature wargame) (value T))
             (info (feature game-strategy | game-wtdplacement | game-bidding) (value "yes"))
         
         )
-        (not (result (feature investigative)))
+        (not (inferred (feature investigative)))
         =>
-        (assert (infering-result (feature investigative) (value F)))
+        (assert (infering (feature investigative) (value F)))
 )
 
-(defrule result-no-investigative-2
+(defrule inferred-no-investigative-2
         (declare (salience ?*high-priority*))
         (info (feature game-players) (value "1"))
         (or 
@@ -568,12 +539,12 @@
             (info (feature game-challenging) (value "no"))
 
         )    
-        (not (result (feature investigative)))
+        (not (inferred (feature investigative)))
         =>
-        (assert (infering-result (feature investigative) (value F)))
+        (assert (infering (feature investigative) (value F)))
 )
 
-(defrule result-no-investigative-3
+(defrule inferred-no-investigative-3
         (declare (salience ?*high-priority*))
         (or
             (info (feature game-thematic) (value "no"))
@@ -582,12 +553,12 @@
             (info (feature game-explorative  | game-hmovement ) (value "yes"))
         )
         (result (feature coop-comp) (value comp))
-        (not (result (feature investigative)))
+        (not (inferred (feature investigative)))
         =>
-        (assert (infering-result (feature investigative) (value F)))
+        (assert (infering (feature investigative) (value F)))
 )
 
-(defrule result-no-investigative-4
+(defrule inferred-no-investigative-4
         (declare (salience ?*high-priority*))
         (or
             (info (feature game-thematic) (value "no"))
@@ -595,306 +566,339 @@
             (info (feature  game-hmovement | game-bluff) (value "yes"))
         )
         (result (feature coop-comp) (value coop))
-        (not (result (feature investigative)))
+        (not (inferred (feature investigative)))
         =>
-        (assert (infering-result (feature investigative) (value F)))
+        (assert (infering (feature investigative) (value F)))
 )
 
-(defrule result-no-investigative-5
+(defrule inferred-no-investigative-5
         (declare (salience ?*high-priority*))
         (or
             (info (feature game-thematic) (value "no"))
             (info (feature   game-wtdplacement | game-bidding ) (value "yes"))
         )
         (result (feature coop-comp) (value coop\comp))
-        (not (result (feature investigative)))
+        (not (inferred (feature investigative)))
         =>
-        (assert (infering-result (feature investigative) (value F)))
+        (assert (infering (feature investigative) (value F)))
 )
 
 
-(defrule result-no-bidding
+(defrule inferred-no-bidding
         (declare (salience ?*high-priority*))
         (or (info (feature  game-bidding) (value "no"))
             (inferred (feature wargame) (value T))
             (info (feature game-strategy) (value "no"))
-            (result (feature challenging | explorative | hmovement | investigative ) (value T))
+            (inferred (feature challenging | explorative | hmovement | investigative ) (value T))
             (result (feature coop-comp) (value coop | coop\comp))
             (info (feature game-players)  (value "1"| "6+"))
         )
         
         =>
-        (assert (infering-result (feature bidding) (value F)))
+        (assert (infering (feature bidding) (value F)))
 )
 
-(defrule result-no-bluff-1
+(defrule inferred-no-bluff-1
         (declare (salience ?*high-priority*))
         (or (info (feature  game-bluff) (value "no"))
-            (result (feature wargame) (value T))
+            (inferred (feature wargame) (value T))
             (info (feature game-explorative | game-wtdplacement ) (value "yes"))
             (result (feature coop-comp) (value coop))
         )
 
-        (not (result (feature bluff)))
+        (not (inferred (feature bluff)))
         =>
-        (assert (infering-result (feature bluff) (value F)))
+        (assert (infering (feature bluff) (value F)))
 )
 
-(defrule result-no-bluff-2
+(defrule inferred-no-bluff-2
         (declare (salience ?*high-priority*))
         (info (feature  game-hmovement) (value "yes"))
         (result (feature coop-comp) (value comp))
-        (not (result (feature bluff)))
+        (not (inferred (feature bluff)))
         =>
-        (assert (infering-result (feature bluff) (value F)))
+        (assert (infering (feature bluff) (value F)))
 )
 
-(defrule result-no-bluff-3
+(defrule inferred-no-bluff-3
         (declare (salience ?*high-priority*))
         (result (feature coop-comp) (value coop\comp))
         (info (feature game-strategy | game-bidding) (value "yes"))
-        (not (result (feature bluff)))
+        (not (inferred (feature bluff)))
         =>
-        (assert (infering-result (feature bluff) (value F)))
+        (assert (infering (feature bluff) (value F)))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defrule result-greece
+
+(defrule inferred-greece
         (declare (salience ?*highest-priority*))
         (info (feature game-greece) (value "yes"))
-        =>
-        (assert (infering-result (feature greece) (value T)))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+          =>
+        (assert (infering(feature greece) (value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment greece)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule result-roman
+(defrule inferred-roman
         (declare (salience ?*highest-priority*))
         (info (feature game-roman) (value "yes"))
-        =>
-        (assert (infering-result (feature roman )(value T)))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+          =>
+        (assert (infering(feature roman )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment roman)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-western
+(defrule  inferred-western
         (declare (salience ?*highest-priority*))
         (info (feature game-western) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature western )(value T)))
+        (assert (infering(feature western )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment western)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-horror
+(defrule  inferred-horror
         (declare (salience ?*highest-priority*))
         (info (feature game-horror) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature horror )(value T)))
+        (assert (infering(feature horror )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment horror)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-gothic
+(defrule  inferred-gothic
         (declare (salience ?*highest-priority*))
         (info (feature game-gothic) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature gothic )(value T)))
+        (assert (infering(feature gothic )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment gothic)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule  result-lovecraft
+(defrule  inferred-lovecraft
         (declare (salience ?*highest-priority*))
         (info (feature game-lovecraft) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature lovecraft )(value T)))
+        (assert (infering(feature lovecraft )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment lovecraft)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-war
+(defrule  inferred-war
         (declare (salience ?*highest-priority*))
         (info (feature game-war) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature war )(value T)))
+        (assert (infering(feature war )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment war)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-abstract
+(defrule  inferred-abstract
         (declare (salience ?*highest-priority*))
         (info (feature game-abstract) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature abstract )(value T)))
+        (assert (infering(feature abstract )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment abstract)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 )
-(defrule  result-fantasy
+(defrule  inferred-fantasy
         (declare (salience ?*highest-priority*))
         (info (feature game-fantasy) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature fantasy )(value T)))
+        (assert (infering(feature fantasy )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment fantasy)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-farms
+(defrule  inferred-farms
         (declare (salience ?*highest-priority*))
         (info (feature game-farms) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature farms )(value T)))
+        (assert (infering(feature farms )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment farms)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 )
 
-(defrule  result-futuristics
+(defrule  inferred-futuristics
         (declare (salience ?*highest-priority*))
         (info (feature game-futuristics) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature futuristics )(value T)))
+        (assert (infering(feature futuristics )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment futuristics)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 )
-(defrule  result-merchants
+(defrule  inferred-merchants
         (declare (salience ?*highest-priority*))
         (info (feature game-merchants) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature merchants )(value T)))
+        (assert (infering(feature merchants )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment merchants)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-indians
+(defrule  inferred-indians
         (declare (salience ?*highest-priority*))
         (info (feature game-indians) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature indians )(value T)))
+        (assert (infering(feature indians )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment indians))(game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-fireworks
+(defrule  inferred-fireworks
         (declare (salience ?*highest-priority*))
         (info (feature game-fireworks) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result (feature fireworks )(value T)))
+        (assert (infering(feature fireworks )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment fireworks)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-survival
+(defrule  inferred-survival
         (declare (salience ?*highest-priority*))
         (info (feature game-survival) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature survival )(value T)))
+        (assert (infering (feature survival )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment survival)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 )
-(defrule  result-forests
+(defrule  inferred-forests
         (declare (salience ?*highest-priority*))
         (info (feature game-forests) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature forests )(value T)))
+        (assert (infering (feature forests )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment forests)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-industry
+(defrule  inferred-industry
         (declare (salience ?*highest-priority*))
         (info (feature game-industry) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature industry )(value T)))
+        (assert (infering (feature industry )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment industry)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-numbers
+(defrule  inferred-numbers
         (declare (salience ?*highest-priority*))
         (info (feature game-numbers) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature numbers )(value T)))
+        (assert (infering (feature numbers )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment numbers)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule  result-castles
+(defrule  inferred-castles
         (declare (salience ?*highest-priority*))
         (info (feature game-castles) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature castles )(value T)))
+        (assert (infering (feature castles )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment castles)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-vampyric
+(defrule  inferred-vampyric
         (declare (salience ?*highest-priority*))
         (info (feature game-vampyric) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering-result  (feature vampyric )(value T)))
+        (assert (infering (feature vampyric )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment vampyric)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule  result-renaissance-court
+(defrule  inferred-renaissance-court
         (declare (salience ?*highest-priority*))
         (info (feature game-renaissance-court) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature renaissance-court )(value T)))
+        (assert (infering (feature renaissance-court )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment greece)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
-(defrule  result-pirates
+(defrule  inferred-pirates
         (declare (salience ?*highest-priority*))
         (info (feature game-pirates) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  pirates)(value T)))
+        (assert (infering (feature  pirates)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment pirates)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule  result-witchcraft
+(defrule  inferred-witchcraft
         (declare (salience ?*highest-priority*))
         (info (feature game-witchcraft) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  witchcraft)(value T)))
+        (assert (infering (feature  witchcraft)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment witchcraft)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
 
-(defrule result-oriental
+(defrule inferred-oriental
         (declare (salience ?*highest-priority*))
         (info (feature game-oriental) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  oriental)(value T)))
+        (assert (infering (feature  oriental)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment oriental)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
 
-(defrule infering-result-glass
+(defrule infering-inferred-glass
         (declare (salience ?*highest-priority*))
         (info (feature game-glass) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  glass)(value T)))
+        (assert (infering (feature  glass)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment glass)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
 
-(defrule infering-result-chemistry
+(defrule infering-inferred-chemistry
         (declare (salience ?*highest-priority*))
         (info (feature game-chemistry) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  chemistry)(value T)))
+        (assert (infering (feature  chemistry)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment chemistry)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule result-lord-of-the-rings
+(defrule inferred-lord-of-the-rings
         (declare (salience ?*highest-priority*))
         (info (feature game-lord-of-the-rings) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  lord-of-the-rings)(value T)))
+        (assert (infering (feature  lord-of-the-rings)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment lord-of-the-rings)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
 
-(defrule result-tale
+(defrule inferred-tale
         (declare (salience ?*highest-priority*))
         (info (feature game-tale) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  tale)(value T)))
+        (assert (infering (feature  tale)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment tale)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule result-crime
+(defrule inferred-crime
         (declare (salience ?*highest-priority*))
         (info (feature game-crime) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  crime)(value T)))
+        (assert (infering (feature  crime)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment crime)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule result-restaurants
+(defrule inferred-restaurants
         (declare (salience ?*highest-priority*))
         (info (feature game-restaurants) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  restaurants)(value T)))
+        (assert (infering (feature  restaurants)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment restaurants)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
-(defrule result-mafia
+(defrule inferred-mafia
         (declare (salience ?*highest-priority*))
         (info (feature game-mafia) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  mafia)(value T)))
+        (assert (infering (feature  mafia)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment mafia)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 
 )
 
 
-(defrule result-politics
+(defrule inferred-politics
         (declare (salience ?*highest-priority*))
         (info (feature game-politics) (value "yes"))
+        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering-result  (feature  politics)(value T)))
+        (assert (infering (feature  politics)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment politics)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
 )
