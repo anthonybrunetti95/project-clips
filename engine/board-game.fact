@@ -1,4 +1,4 @@
-(board-game (label board-game-1) (name "7 Wonders Duel") (length 30) (weight facile) (coop-comp comp) (age 10) (price 20) (playerss 2) (best-playerss 2) (secondary-kind strategy challenging) (thematic-enviroment greece)) 
+(board-game (label board-game-1) (name "7 Wonders Duel") (length 30) (weight facile) (coop-comp comp) (age 10) (price 20) (players 2) (best-players 2)) 
 (board-game (label board-game-2) (name "7 Wonders") (length 30) (weight facile) (coop-comp comp) (age 10) (price 35) (players 2 3 4 5 6 7  ) (best-players 4))
 (board-game (label board-game-3) (name "Castellion") (length 30) (weight facile) (coop-comp coop) (age 10) (price 23) (players 1 2  ) (best-players 1) )
 (board-game (label board-game-4) (length 30) (name "Vudù" ) (weight facile) (coop-comp comp) (age 6) (price 17)  (players 3 4 5 6  ) (best-players  4 5) )

@@ -7,25 +7,27 @@
         (declare (salience ?*sub-normal-priority*))
         (result (feature weight) (value ?weight))
         
-        (game-general-kind (general-kind $?general-kind))
+        (board-game (label ?label) (name ?name) (length ?length) (weight ?weight) (age ?age) (players $?players))
+        
         (general-kind (label ?label) (general-kind $?general-kind-feature))
-        (test (is_member $?general-kind $?general-kind-feature))
+        (test  (is_member  $?general-kind-feature (send [ggk] get-general-kind)))
         
-        (game-secondary-kind (secondary-kind ?secondary-kind))
+        
         (secondary-kind (label ?label) (secondary-kind ?secondary-kind-feature))
-        (test (is_member $?secondary-kind $?secondary-kind-feature))
+        ;;(test (is_member $?secondary-kind-feature  (send [gsk] get-secondary-kind) ))
         
-        (game-thematic-environment (thematic-environment ?thematic-environment))
-        (thematic-environment (label ?label) (thematic-environment ?thematic-environment-feature))
-        (test (is_member $?thematic-environment $?thematic-environment-feature))
-        (main-features (label ?label) (name ?name) (length ?length) (weight ?weight) (age ?age) (player $?player))
+     
+        (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
+        ;;(test (is_member $?thematic-environment-feature (send [gte] get-thematic-environment) ) )
+        
 
+        (game-players (player ?player))
         (user-age (min-age ?min))
         (game-time (time ?time))
         (test  (member$ ?player $?players))
         (user-age (min-age ?min))
-        (test (>=  ?min ?age))
-        (test (>= ?length ?time))
+        ;;(test (>=  ?min ?age))
+        ;;(test (>= ?length ?time))
 
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
@@ -37,7 +39,7 @@
         (declare (salience ?*low-priority*))
         ?hypotetical-final-board-game <- (hypotetical-final-board-game (label ?label) (what $?what))
         (test (= (length$ $?what) 1))
-        (main-features (label ?label) (price ?price))
+        (board-game (label ?label) (price ?price))
         (hypotetical-final-board-game (label ?label) (what $?what))
         (user-budget (min-budget ?min-budget) (max-budget ?max-budget)) 
         (test (>= ?price ?min-budget))
@@ -53,11 +55,11 @@
         (declare (salience ?*lowest-priority*))
         (hypotetical-final-board-game (label ?label) (what $?what))
         (user-budget (min-budget ?min-budget) (max-budget ?max-budget))
-        (main-features (label ?label) (price ?price))
-        (board-game (label ?label) (board-game-name ?board-game-name))
+        (board-game (label ?label) (price ?price))
+        (board-game (label ?label) (name ?name))
         (last-question (question ?last))
         =>
-        (print-hypotetical-final-board-game ?board-game-name ?price ?min-budget ?max-budget ?what)
+        (print-hypotetical-final-board-game ?name ?price ?min-budget ?max-budget ?what)
         (ask-boolean want-to-see-hypotetical-final-board-game  ?last)
         (assert (want-to-see-hypotetical-final-board-game ?label))
 )

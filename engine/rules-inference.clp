@@ -23,6 +23,14 @@
 
 ;;====================================================;;
 
+(defrule inferred-create-list
+    (declare (salience ?*high-priority*))
+    =>
+    (make-instance gte of game-thematic-environment)
+    (make-instance gsk of game-secondary-kind)       
+    (make-instance ggk of game-general-kind)
+)
+
 (defrule inferred-age-child
         (declare (salience ?*high-priority*))
         (info (feature user-age) (value "0<10"))
@@ -129,26 +137,32 @@
 (defrule inferred-cardgame
         (declare (salience ?*highest-priority*))
         (info (feature game-cardgame) (value  "yes"))
-        (game-general-kind (general-kind $?game-general-kind))
+       
+       
         =>
-        (assert (infering(feature cardgame) (value T)) (bind $?game-general-kind (create$ $?game-general-kind cardgame)) (game-general-kind (general-kind $?game-general-kind)))
-)
+        (assert (infering(feature cardgame) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) cardgame)
+)       
 
 (defrule inferred-wargame 
         (declare (salience ?*highest-priority*))
         (info (feature game-wargame) (value "yes"))
-        (game-general-kind (general-kind $?game-general-kind))
+     
         =>
-        (assert (infering(feature wargame) (value T)) (bind $?game-general-kind (create$ $?game-general-kind wargame)) (game-general-kind (general-kind $?game-general-kind)))
-)       
+        (assert (infering(feature wargame) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) wargame)
+)
 
 (defrule inferred-family 
         (declare (salience ?*highest-priority*))
         (info (feature game-family) (value "yes"))
-        (game-general-kind (general-kind $?game-general-kind))
+        
+       
         =>
-        (assert (infering(feature family) (value T)) (bind $?game-general-kind (create$ $?game-general-kind family)) (game-general-kind (general-kind $?game-general-kind)))
-)       
+        (assert (infering(feature family) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) family)
+)
+
 
 (defrule inferred-party 
         (declare (salience ?*highest-priority*))
@@ -157,10 +171,10 @@
                 (inferred (feature weight) (value medio)))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
         (inferred (feature  explorative |wtdplacement | hmovement | bidding) (value F))
-        (game-general-kind (general-kind $?game-general-kind))
-
+        
         =>
-        (assert (infering(feature party) (value T)) (bind $?game-general-kind (create$ $?game-general-kind party)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature party) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) party)
 )    
 
 
@@ -172,22 +186,23 @@
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
         (inferred (feature german) (value F))
         (not (info (feature game-explorative) (value "yes")))
-        (game-general-kind (general-kind $?game-general-kind))
+        
         =>
-        (assert (infering(feature filler) (value T))  (bind $?game-general-kind (create$ $?game-general-kind filler)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering(feature filler) (value T))) 
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) filler)
 )
-
 (defrule inferred-german
         (declare (salience ?*highest-priority*))
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (result (feature coop-comp) (value comp))
         (not (result (feature filler) (value T)))
-        (game-general-kind (general-kind $?game-general-kind))
+       
         =>
-        (assert (infering(feature german) (value T))  (bind $?game-general-kind (create$ $?game-general-kind german)) (game-general-kind (general-kind $?game-general-kind)))
-)
+        (assert (infering(feature german) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) german)
 
+)
 (defrule inferred-no-german
         (declare (salience ?*highest-priority*))
         (or (inferred (feature wtdplacement | strategy) (value F))
@@ -228,10 +243,11 @@
         (inferred (feature bidding) (value F))
         (inferred (feature strategy) (value F))
         (not (inferred (feature american)))
-        (game-general-kind (general-kind $?game-general-kind))
-        =>
-        (assert (infering (feature american) (value T)) (bind $?game-general-kind (create$ $?game-general-kind american)) (game-general-kind (general-kind $?game-general-kind)))
+ 
 
+        =>
+        (assert (infering (feature american) (value T)))
+       (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) american)
 )
 (defrule inferred-american-2
         (declare (salience ?*highest-priority*))
@@ -247,84 +263,89 @@
         (inferred (feature strategy) (value F))
         (result (feature coop-comp) (value coop\comp))
         (not (inferred (feature american)))
-        (game-general-kind (general-kind $?game-general-kind))
+
         =>
-        (assert (infering (feature american) (value T)) (bind $?game-general-kind (create$ $?game-general-kind american)) (game-general-kind (general-kind $?game-general-kind)))
+        (assert (infering (feature american) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) american)
 
 )
 
 (defrule inferred-thematic
         (declare (salience ?*high-priority*))
         (info (feature  game-thematic) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering (feature thematic) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind thematic)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature thematic) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) thematic)
 )
 
-(defrule inferred-strategy
+(defrule inferred-strategys
         (declare (salience ?*high-priority*))
         (info (feature  game-strategy) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
+     
         =>
-        (assert (infering (feature strategy) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind strategy)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature strategy) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) strategy)
 )
 
 
 (defrule inferred-challenging
         (declare (salience ?*high-priority*))
         (info (feature  game-challenging) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
+        
         =>
-        (assert (infering (feature challenging) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind challenging)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature challenging) (value T)))
+         (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) challenging)
 )
 
 
 (defrule inferred-explorative
         (declare (salience ?*high-priority*))
         (info (feature  game-explorative) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind)) 
         =>
-        (assert (infering (feature explorative) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind explorative)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature explorative) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) explorative)
 )
 
 (defrule inferred-wtdplacement
         (declare (salience ?*high-priority*))
         (info (feature  game-wtdplacement) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering (feature wtdplacement) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind wtdplacement)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature wtdplacement) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) wtdplacement)
 )
 
 (defrule inferred-hmovement
         (declare (salience ?*high-priority*))
         (info (feature  game-hmovement) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering (feature hmovement) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind hmovement)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature hmovement) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) hmovement)
 )
 
 (defrule inferred-investigative
         (declare (salience ?*high-priority*))
         (info (feature  game-investigative) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
         =>
-        (assert (infering (feature investigative) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind investigative)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature investigative) (value T)))
+         (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) investigative)
 )
 
 (defrule inferred-bidding
         (declare (salience ?*high-priority*))
         (info (feature  game-bidding) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
+       
         =>
-        (assert (infering (feature bidding) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind bidding)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature bidding) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) bidding)
 )
 
 (defrule inferred-bluff
         (declare (salience ?*high-priority*))
         (info (feature  game-bluff) (value "yes"))
-        (game-secondary-kind (secondary-kind $?game-secondary-kind))
+        
         =>
-        (assert (infering (feature bluff) (value T)) (bind $?game-secondary-kind (create$ $?game-secondary-kind bluff)) (game-secondary-kind (secondary-kind $?game-secondary-kind)))
+        (assert (infering (feature bluff) (value T)))
+        (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) bluff)
 )
 
 
@@ -634,226 +655,226 @@
 (defrule inferred-greece
         (declare (salience ?*highest-priority*))
         (info (feature game-greece) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering(feature greece) (value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment greece)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature greece) (value T)))
+         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) greece)
 )
 
 (defrule inferred-roman
         (declare (salience ?*highest-priority*))
         (info (feature game-roman) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
-          =>
-        (assert (infering(feature roman )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment roman)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        =>
+        (assert (infering (feature roman) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) roman)
 
 )
 (defrule  inferred-western
         (declare (salience ?*highest-priority*))
         (info (feature game-western) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+        
          =>
-        (assert (infering(feature western )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment western)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature greece) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) western)
 )
 (defrule  inferred-horror
         (declare (salience ?*highest-priority*))
         (info (feature game-horror) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+        
          =>
-        (assert (infering(feature horror )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment horror)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature horror) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) horror)
 
 )
 (defrule  inferred-gothic
         (declare (salience ?*highest-priority*))
         (info (feature game-gothic) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+        
          =>
-        (assert (infering(feature gothic )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment gothic)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature gothic) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) gothic)
 
 )
 
-(defrule  inferred-lovecraft
+(defrule   inferred-lovecraft
         (declare (salience ?*highest-priority*))
         (info (feature game-lovecraft) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature lovecraft )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment lovecraft)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature lovecraft) (value T))) 
+       (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) lovecraft)
 )
 (defrule  inferred-war
         (declare (salience ?*highest-priority*))
         (info (feature game-war) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature war )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment war)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature war) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) war)
 
 )
 (defrule  inferred-abstract
         (declare (salience ?*highest-priority*))
         (info (feature game-abstract) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature abstract )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment abstract)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature abstract) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) abstract)
 )
 (defrule  inferred-fantasy
         (declare (salience ?*highest-priority*))
         (info (feature game-fantasy) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature fantasy )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment fantasy)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature fantasy) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) fantasy)
 
 )
 (defrule  inferred-farms
         (declare (salience ?*highest-priority*))
         (info (feature game-farms) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+     
          =>
-        (assert (infering(feature farms )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment farms)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature farms) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) famrs)
 )
 
 (defrule  inferred-futuristics
         (declare (salience ?*highest-priority*))
         (info (feature game-futuristics) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature futuristics )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment futuristics)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature futuristics) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) futuristics)
 )
 (defrule  inferred-merchants
         (declare (salience ?*highest-priority*))
         (info (feature game-merchants) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature merchants )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment merchants)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature merchants) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) merchants)
 
 )
 (defrule  inferred-indians
         (declare (salience ?*highest-priority*))
         (info (feature game-indians) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering(feature indians )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment indians))(game-thematic-environment (thematic-environment $?game-thematic-environment)))
+           (assert (infering (feature indians) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) indians)
 
 )
 (defrule  inferred-fireworks
         (declare (salience ?*highest-priority*))
         (info (feature game-fireworks) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+       
          =>
-        (assert (infering(feature fireworks )(value T)) (bind $?game-thematic-environment (create$ $?game-thematic-environment fireworks)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature fireworks) (value T)))        
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) fireworks)        
 
 )
 (defrule  inferred-survival
         (declare (salience ?*highest-priority*))
         (info (feature game-survival) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature survival )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment survival)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature survival) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) survival)
 )
 (defrule  inferred-forests
         (declare (salience ?*highest-priority*))
         (info (feature game-forests) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature forests )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment forests)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature forests) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) forests)
 
 )
 (defrule  inferred-industry
         (declare (salience ?*highest-priority*))
         (info (feature game-industry) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature industry )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment industry)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature industry) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) industry)
 
 )
 (defrule  inferred-numbers
         (declare (salience ?*highest-priority*))
         (info (feature game-numbers) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature numbers )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment numbers)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature numbers) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) numbers)
 
 )
 
 (defrule  inferred-castles
         (declare (salience ?*highest-priority*))
         (info (feature game-castles) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature castles )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment castles)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature castles) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) castles)
 
 )
+
 (defrule  inferred-vampyric
         (declare (salience ?*highest-priority*))
         (info (feature game-vampyric) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
          =>
-        (assert (infering (feature vampyric )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment vampyric)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature vampyric) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) vampyric)
 )
 
 (defrule  inferred-renaissance-court
         (declare (salience ?*highest-priority*))
         (info (feature game-renaissance-court) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature renaissance-court )(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment greece)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature renaissance-court) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) renaissance-court)
 
 )
 (defrule  inferred-pirates
         (declare (salience ?*highest-priority*))
-        (info (feature game-pirates) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
+        (info (feature game-pirates) (value "yes"))    
           =>
-        (assert (infering (feature  pirates)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment pirates)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature pirates) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) pirates)
 )
 
 (defrule  inferred-witchcraft
         (declare (salience ?*highest-priority*))
         (info (feature game-witchcraft) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  witchcraft)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment witchcraft)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature witchcraft) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) witchcraft)
 )
 
 
 (defrule inferred-oriental
         (declare (salience ?*highest-priority*))
         (info (feature game-oriental) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
-          =>
-        (assert (infering (feature  oriental)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment oriental)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        =>
+        (assert (infering (feature oriental) (value T)))   
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) oriental)
 
 )
 
 
-(defrule infering-inferred-glass
+(defrule inferred-glass
         (declare (salience ?*highest-priority*))
         (info (feature game-glass) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  glass)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment glass)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature glass) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) glass)
 
 )
 
 
-(defrule infering-inferred-chemistry
+(defrule inferred-chemistry
         (declare (salience ?*highest-priority*))
         (info (feature game-chemistry) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  chemistry)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment chemistry)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature chemistry) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) chemistry)
 
 )
 
 (defrule inferred-lord-of-the-rings
         (declare (salience ?*highest-priority*))
         (info (feature game-lord-of-the-rings) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  lord-of-the-rings)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment lord-of-the-rings)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature lord-of-the-rings) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) lord-of-the-rings)
 
 )
 
@@ -861,44 +882,42 @@
 (defrule inferred-tale
         (declare (salience ?*highest-priority*))
         (info (feature game-tale) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  tale)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment tale)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature tale) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) tale)
 
 )
 
 (defrule inferred-crime
         (declare (salience ?*highest-priority*))
         (info (feature game-crime) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  crime)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment crime)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
-
+        (assert (infering (feature crime) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) crime)
 )
 
 (defrule inferred-restaurants
         (declare (salience ?*highest-priority*))
         (info (feature game-restaurants) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  restaurants)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment restaurants)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature restaurants) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) restaurants)
 
 )
 
 (defrule inferred-mafia
         (declare (salience ?*highest-priority*))
         (info (feature game-mafia) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
           =>
-        (assert (infering (feature  mafia)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment mafia)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        (assert (infering (feature mafia) (value T)))  
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) mafia)
 
 )
-
 
 (defrule inferred-politics
         (declare (salience ?*highest-priority*))
         (info (feature game-politics) (value "yes"))
-        (game-thematic-environment (thematic-environment $?game-thematic-environment))
-          =>
-        (assert (infering (feature  politics)(value T))(bind $?game-thematic-environment (create$ $?game-thematic-environment politics)) (game-thematic-environment (thematic-environment $?game-thematic-environment)))
+        =>
+        (assert (infering (feature politics) (value T)))
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) politics)
 )

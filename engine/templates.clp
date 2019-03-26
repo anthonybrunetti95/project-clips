@@ -40,15 +40,15 @@
         (slot player            (type INTEGER))
 )
 
-(deftemplate game-general-kind
+(defclass game-general-kind (is-a USER)
         (multislot general-kind      (type SYMBOL))
 )
 
-(deftemplate game-secondary-kind
+(defclass game-secondary-kind (is-a USER)
         (multislot secondary-kind    (type SYMBOL))
 )
 
-(deftemplate game-thematic-environment
+(defclass game-thematic-environment (is-a USER)
         (multislot thematic-environment (type SYMBOL))
 )
 
