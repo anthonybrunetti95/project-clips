@@ -1,4 +1,10 @@
-(deffunction is_member (?list ?feautere )
-        (foreach ?value $?list  (if (member$ ?value $?feautere) then (printout t ?value " si " ?feautere crlf crlf)  else (printout t $?value " no " ?feautere crlf crlf) (return false) ))
-        (return true)      
+(deffunction is_member (?feautere-user ?feautere-game )
+        (printout t "ok" crlf crlf)
+                (if(eq (length$ ?feautere-user) (length$ ?feautere-game))
+                        then
+                                (printout t "true" crlf crlf)
+                                (return (subsetp ?feautere-user ?feautere-game))
+                )
+        (return false)
 )
+

@@ -26,6 +26,7 @@
 (defrule inferred-create-list
     (declare (salience ?*high-priority*))
     =>
+    (assert (infering (feature instance) (value T)))
     (make-instance gte of game-thematic-environment)
     (make-instance gsk of game-secondary-kind)       
     (make-instance ggk of game-general-kind)
@@ -658,6 +659,7 @@
           =>
         (assert (infering (feature greece) (value T)))
          (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) greece)
+         
 )
 
 (defrule inferred-roman

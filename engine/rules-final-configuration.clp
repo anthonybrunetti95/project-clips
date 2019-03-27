@@ -6,28 +6,28 @@
 (defrule find-hypotetical-final-board-game
         (declare (salience ?*sub-normal-priority*))
         (result (feature weight) (value ?weight))
-        
-        (board-game (label ?label) (name ?name) (length ?length) (weight ?weight) (age ?age) (players $?players))
-        
-        (general-kind (label ?label) (general-kind $?general-kind-feature))
-        (test  (is_member  $?general-kind-feature (send [ggk] get-general-kind)))
-        
-        
-        (secondary-kind (label ?label) (secondary-kind ?secondary-kind-feature))
-        ;;(test (is_member $?secondary-kind-feature  (send [gsk] get-secondary-kind) ))
-        
-     
-        (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
-        ;;(test (is_member $?thematic-environment-feature (send [gte] get-thematic-environment) ) )
-        
-
+        (result (feature coop-comp) (value ?coop-comp))
+        (board-game (label ?label) (name ?name) (length ?length) (weight ?weight) (coop-comp ?coop-comp) (age ?age) (players $?players))
         (game-players (player ?player))
         (user-age (min-age ?min))
         (game-time (time ?time))
+        (test (printout t "si1" crlf crlf))
         (test  (member$ ?player $?players))
         (user-age (min-age ?min))
-        ;;(test (>=  ?min ?age))
-        ;;(test (>= ?length ?time))
+        (test (>=  ?min ?age))
+        (test (printout t "si2" crlf crlf))
+        (test (>= ?time ?length))
+        (test (printout t "si3" crlf crlf))
+
+        (general-kind (label ?label) (general-kind ?general-kind-feature))
+        (test (eq (is_member (send [ggk] get-general-kind) $?general-kind-feature) true))
+
+        (secondary-kind (label ?label) (secondary-kind ?secondary-kind-feature))
+        (test (eq (is_member (send [gsk] get-secondary-kind)  $?secondary-kind-feature ) true))
+        (test (printout t "si4"))
+             
+        (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
+        (test (eq (is_member (send [gte] get-thematic-environment) $?thematic-environment-feature ) true))
 
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))

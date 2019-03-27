@@ -52,7 +52,6 @@
         (assert (infering-result (feature coop-comp) (value comp)))
 )
 
-
 (defrule result-coop-comp
         (declare (salience ?*highest-priority*))
         (info (feature game-coop) (value "yes"))
@@ -62,3 +61,14 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(defrule result-thematic-environment 
+    (declare (salience ?*highest-priority*))
+    (inferred (feature instance) (value T))
+    (object (is-a game-general-kind) (general-kind $?x&:(printout t ?x crlf crlf) ))
+    ;(> (length$ ?x)1)
+      =>
+    (assert (infering-result (feature thematic-environment) (value T)))
+)    
