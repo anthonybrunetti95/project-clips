@@ -194,7 +194,7 @@
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME <60")) else 
                 (if (eq ?answer 2) 
                     then (assert (info (feature game-time) (value ">60") (question game-time))) 
-                    (assert (game-time  (time 61))) 
+                    (assert (game-time  (time 9000))) 
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: USER-GAME-TIME >60")))))
 
             (case game-family then

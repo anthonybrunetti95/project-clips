@@ -19,19 +19,25 @@
         (test (>= ?time ?length))
         (test (printout t "si3" crlf crlf))
 
-        (general-kind (label ?label) (general-kind ?general-kind-feature))
-        (test (eq (is_member (send [ggk] get-general-kind) $?general-kind-feature) true))
-
-        (secondary-kind (label ?label) (secondary-kind ?secondary-kind-feature))
-        (test (eq (is_member (send [gsk] get-secondary-kind)  $?secondary-kind-feature ) true))
-        (test (printout t "si4"))
-             
+        (general-kind (label ?label) (general-kind $?general-kind-feature))
+        (object (general-kind $?general-kind&:(> (length$ ?general-kind) 0)))
+        (object (general-kind $?general-kind&:(subsetp ?general-kind  ?general-kind-feature)))
+        ;(test (eq (is_member (send [ggk] get-general-kind) $?general-kind-feature) true))
+        (test (printout t "si4 " ?label crlf))
+        (secondary-kind (label ?label) (secondary-kind $?secondary-kind-feature))
+        (object (secondary-kind $?secondary-kind&:(>(length$ ?secondary-kind) 0)))
+        (object (secondary-kind $?secondary-kind&:(subsetp ?secondary-kind-feature ?secondary-kind )))
+        ;(test (eq (is_member (send [gsk] get-secondary-kind)  $?secondary-kind-feature ) true))
+        (test (printout t "si5 " ?label crlf))     
         (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
-        (test (eq (is_member (send [gte] get-thematic-environment) $?thematic-environment-feature ) true))
-
+        (object (thematic-environment $?thematic-environment&:(> (length$ ?thematic-environment) 0)))
+        (test (printout t "si6 " ?label  ?thematic-environment crlf))
+        (object (thematic-environment $?thematic-environment&:(subsetp ?thematic-environment-feature ?thematic-environment)))
+        ;(test (eq (is_member (send [gte] get-thematic-environment) $?thematic-environment-feature ) true))
+        (test (printout t "si6 " ?label  ?thematic-environment crlf))
         =>
         (assert (hypotetical-final-board-game (label ?label) (what board-game-filler)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler-1players) "  crlf))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game-filler:  " ?label" (what board-game-filler) "  crlf))
         
 )
 

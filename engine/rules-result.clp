@@ -67,8 +67,10 @@
 (defrule result-thematic-environment 
     (declare (salience ?*highest-priority*))
     (inferred (feature instance) (value T))
-    (object (is-a game-general-kind) (general-kind $?x&:(printout t ?x crlf crlf) ))
-    ;(> (length$ ?x)1)
+    (object (thematic-environment ?x)) ; &:(member grece $?x)))
+    
       =>
     (assert (infering-result (feature thematic-environment) (value T)))
-)    
+    (printout  t ?x crlf)
+)
+

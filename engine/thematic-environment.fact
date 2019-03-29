@@ -19,7 +19,7 @@
 (thematic-environment (label board-game-19) (thematic-environment industry ))
 (thematic-environment (label board-game-20) (thematic-environment industry ))
 (thematic-environment (label board-game-21) (thematic-environment gothic ))
-(thematic-environment (label board-game-22) (thematic-environment gothic horror ))
+(thematic-environment (label board-game-22) (thematic-environment horror gothic ))
 (thematic-environment (label board-game-23) (thematic-environment numbers ))
 (thematic-environment (label board-game-24) (thematic-environment gothic horror fantasy ))
 (thematic-environment (label board-game-25) (thematic-environment fantasy castles ))

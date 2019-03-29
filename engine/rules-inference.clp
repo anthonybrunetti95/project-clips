@@ -658,8 +658,8 @@
         (info (feature game-greece) (value "yes"))
           =>
         (assert (infering (feature greece) (value T)))
-         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) greece)
-         
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) greece)
+
 )
 
 (defrule inferred-roman
