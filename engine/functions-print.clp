@@ -71,7 +71,7 @@
                     (printout t "Ti piace il fantasy? " crlf crlf))
                 (case game-farms then 
                     (printout t "Ti piace la vita di campagna?  " crlf crlf))
-                (case game-futuristics then 
+                (case game-futuristic then 
                     (printout t "Ti piace l'ambientazione futuristica? " crlf crlf))
                 (case game-merchants then 
                     (printout t "Ti potrebbe piacere un gioco con scambi commerciali? " crlf crlf))
@@ -370,7 +370,7 @@
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 
-                        (case game-futuristics then            
+                        (case game-futuristic then            
                                 (print-yes-no ?answer)
                                 (print-why-help ?answer))
 

@@ -137,9 +137,7 @@
 
 (defrule inferred-cardgame
         (declare (salience ?*highest-priority*))
-        (info (feature game-cardgame) (value  "yes"))
-       
-       
+        (info (feature game-cardgame) (value  "yes")) 
         =>
         (assert (infering(feature cardgame) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) cardgame)
@@ -168,10 +166,9 @@
 (defrule inferred-party 
         (declare (salience ?*highest-priority*))
         (info (feature game-players) (value "5" | "6" | "6+"))
-        (or     (inferred (feature weight) (value facile))
-                (inferred (feature weight) (value medio)))
+        (inferred (feature weight) (value facile | medio))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
-        (inferred (feature  explorative |wtdplacement | hmovement | bidding) (value F))
+        (not (info (feature  game-explorative | game-wtdplacement | game-hmovement | game-bidding) (value "yes")))
         
         =>
         (assert (infering(feature party) (value T)))
@@ -204,46 +201,18 @@
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) german)
 
 )
-(defrule inferred-no-german
-        (declare (salience ?*highest-priority*))
-        (or (inferred (feature wtdplacement | strategy) (value F))
-            (result (feature coop-comp) (value coop | coop-comp))
-        )
-        
-        =>
-        (assert (infering (feature german) (value F)))
-)
-
-
-(defrule inferred-no-family 
-        (declare (salience ?*highest-priority*))
-        (or
-            (inferred (feature weight) (value difficile))
-            (info (feature game-wargame) (value "yes"))
-            (info (feature game-cardgame) (value "yes"))
-            (info (feature game-players) (value "1"))
-            (inferred (feature explorative | hmovement | bidding) (value T))
-            (info (feature user-budget) (value "66<110" | "110<"))
-            (info (feature game-time) (value ">60"))
-            (result (feature coop-comp) (value coop\comp))
-        )
-        =>
-        (assert (infering (feature family) (value F)))
-
-)
-
 
 (defrule inferred-american-1
         (declare (salience ?*highest-priority*))
         (info (feature game-time) (value ">60"))
-        (info (feature user-budget) (value "34<44" | "45<65" | "66<110" | "110<"))
+        (not (info (feature user-budget) (value "<18" | "19<33" )))
         (info (feature game-thematic) (value "yes"))
         (not (inferred (feature weight) (value facile)))
         (not (info(feature strategy) (value "yes")))
-        (inferred (feature   wtdplacement) (value F))
-        (inferred (feature bidding) (value F))
-        (inferred (feature strategy) (value F))
-        (not (inferred (feature american)))
+        (not(inferred (feature wtdplacement) (value T)))
+        (not (inferred (feature bidding) (value T)))
+        (not (inferred (feature strategy) (value T)))
+ 
  
 
         =>
@@ -253,17 +222,16 @@
 (defrule inferred-american-2
         (declare (salience ?*highest-priority*))
         (info (feature game-time) (value ">60"))
-        (info (feature user-budget) (value "34<44" | "45<65" | "66<110" | "110<"))
+        (not (info (feature user-budget) (value "<18" | "19<33")))
         (info (feature game-thematic) (value "yes"))
         (inferred (feature weight) (value facile))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
         (info (feature game-strategy) (value "yes"))
-        (inferred (feature wtdplacement) (value F))
-        (inferred (feature bidding) (value F))
-        (inferred (feature strategy) (value F))
+        (not (inferred (feature wtdplacement) (value T)))
+        (not (inferred (feature bidding) (value T)))
+        (not (inferred (feature strategy) (value T)))
         (result (feature coop-comp) (value coop\comp))
-        (not (inferred (feature american)))
 
         =>
         (assert (infering (feature american) (value T)))
@@ -349,309 +317,8 @@
         (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) bluff)
 )
 
-
-(defrule inferred-no-thematic
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-thematic) (value "no"))
-            (info (feature game-wargame) (value "yes")))
-        
-        =>
-        (assert (infering (feature thematic) (value F)))
-)
-
-(defrule inferred-no-strategy-1
-        (declare (salience ?*high-priority*))
-        (info (feature  game-strategy) (value "no"))
-
-        (not (inferred (feature strategy)))
-        =>
-        (assert (infering (feature strategy) (value F)))
-)
-
-(defrule inferred-no-strategy-2
-        (declare (salience ?*high-priority*))
-        (info (feature game-players) (value "1"))
-        (info (feature game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes") )
-        (not (inferred (feature strategy)))
-              =>
-        (assert (infering (feature strategy) (value F)))
-)
-
-(defrule inferred-no-strategy-3
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value comp))
-        (info (feature game-explorative | game-hmovement | game-investigative ) (value "yes"))
-        (not (inferred (feature strategy)))
-        =>
-        (assert (infering (feature strategy) (value F)))
-)
-
-(defrule inferred-no-strategy-4
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value coop))
-        (info (feature game-thematic) (value "yes"))
-        (info (feature game-challenging) (value "yes"))
-        (info (feature game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
-        (not (inferred (feature strategy)))
-        =>
-        (assert (infering (feature strategy) (value F)))
-)
-
-(defrule inferred-no-strategy-5
-        (declare (salience ?*high-priority*)) 
-        (result (feature coop-comp) (value coop\comp))
-            (or    (info (feature game-thematic) (value "no"))
-                (info (feature game-challenging) (value "no"))
-                (info (feature game-explorative) (value "no"))
-                (info (feature game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes"))
-            )
-        (not (inferred (feature strategy)))
-        =>
-        (assert (infering-result (feature strategy) (value F)))
-)
-
-(defrule inferred-no-strategy-6
-        (declare (salience ?*high-priority*)) 
-        (result (feature coop-comp) (value comp))
-        (inferred (feature filler) (value T))
-        (info (feature game-thematic) (value "yes"))
-        (info (feature game-challenging) (value "yes"))
-        (not (result (feature strategy)))
-        =>
-        (assert (infering-result (feature strategy) (value F)))
-)
-
-(defrule inferred-no-challenging-1
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-challenging) (value "no"))
-            (inferred (feature wargame) (value T))
-            (info (feature game-wtdplacement | game-bidding) (value "yes"))
-        )
-        (not (inferred (feature challenging)))
-
-        =>
-        (assert (infering-result (feature challenging) (value F)))
-)
-
-(defrule inferred-no-challenging-2
-        (declare (salience ?*high-priority*))
-        (info (feature game-players) (value "1"))
-        (info (feature  game-hmovement ) (value "yes"))
-        (not (inferred (feature challenging)))
-        =>
-        (assert (infering (feature challenging) (value F)))
-)
-
-(defrule inferred-no-challenging-3
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value comp))
-        (info (feature game-explorative | game-hmovement) (value "yes"))
-        (not (inferred (feature challenging)))
-        =>
-        (assert (infering (feature challenging) (value F)))
-)
-
-(defrule inferred-no-challenging-4
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value coop))
-        (info (feature game-hmovement | game-bluff) (value "yes"))
-        (not (inferred (feature challenging)))
-        =>
-        (assert (infering (feature challenging) (value F)))
-)
-
-(defrule inferred-no-challenging-5
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value comp))
-        (inferred (feature filler) (value T))
-        (info (feature game-thematic) (value "yes"))
-        (info (feature game-strategy) (value "yes"))
-        (not (inferred (feature challenging)))
-        =>
-        (assert (infering (feature challenging) (value F)))
-)
-
-
-(defrule inferred-no-explorative-1
-        (declare (salience ?*high-priority*))
-        (or     (info (feature  game-explorative) (value "no"))
-                (info (feature game-wtdplacement | game-hmovement | game-bidding | game-bluff) (value "yes"))
-                (inferred (feature german | filler | family | party) (value T)))
-        (not (inferred (feature explorative)))
-        =>
-        (assert (infering-result (feature explorative) (value F)))
-)
-
-(defrule inferred-no-explorative-2
-        (declare (salience ?*high-priority*))
-        (info (feature game-players) (value "1"))
-        (or
-            (info (feature game-thematic) (value "no"))
-            (info (feature game-challenging) (value "no"))
-        )
-        (not (inferred (feature explorative)))
-        =>
-        (assert (infering (feature explorative) (value F)))
-)
-
-(defrule inferred-no-explorative-3
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value coop))
-        (or (info (feature game-thematic | game-challenging ) (value "no"))
-            (info (feature game-strategy) (value "yes"))
-        )
-        (not (inferred (feature explorative)))
-        =>
-        (assert (infering (feature explorative) (value F)))
-)
-
-(defrule inferred-no-explorative-4
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value coop\comp))
-        (info (feature game-thematic) (value "no"))
-        (not (inferred (feature explorative)))
-        =>
-        (assert (infering (feature explorative) (value F)))
-)
-
-
-(defrule inferred-no-wtdplacement-1
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-wtdplacement) (value "no"))
-            (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bluff) (value "yes"))
-            (result (feature coop-comp) (value coop | coop\comp))
-        )
-        (not (inferred (feature wtdplacement)))
-        =>
-        (assert (infering (feature wtdplacement) (value F)))
-)
-
-
-
-(defrule inferred-no-hmovement-1
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-hmovement) (value "no"))
-            (info (feature game-thematic) (value "no"))
-            (info (feature game-challenging) (value "no"))
-            (info (feature game-bluff) (value "no"))
-            (info (feature game-strategy | game-explorative | game-wtdplacement | game-bidding) (value "yes"))
-        )    
-        (not (inferred (feature hmovement)))
-        =>
-        (assert (infering (feature hmovement) (value F)))
-)
-
-(defrule inferred-no-investigative-1
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-investigative) (value "no"))
-            (inferred (feature wargame) (value T))
-            (info (feature game-strategy | game-wtdplacement | game-bidding) (value "yes"))
-        
-        )
-        (not (inferred (feature investigative)))
-        =>
-        (assert (infering (feature investigative) (value F)))
-)
-
-(defrule inferred-no-investigative-2
-        (declare (salience ?*high-priority*))
-        (info (feature game-players) (value "1"))
-        (or 
-            (info (feature game-thematic) (value "no"))
-            (info (feature game-challenging) (value "no"))
-
-        )    
-        (not (inferred (feature investigative)))
-        =>
-        (assert (infering (feature investigative) (value F)))
-)
-
-(defrule inferred-no-investigative-3
-        (declare (salience ?*high-priority*))
-        (or
-            (info (feature game-thematic) (value "no"))
-            (info (feature game-challenging) (value "no"))
-            (info (feature game-bluff) (value "no"))
-            (info (feature game-explorative  | game-hmovement ) (value "yes"))
-        )
-        (result (feature coop-comp) (value comp))
-        (not (inferred (feature investigative)))
-        =>
-        (assert (infering (feature investigative) (value F)))
-)
-
-(defrule inferred-no-investigative-4
-        (declare (salience ?*high-priority*))
-        (or
-            (info (feature game-thematic) (value "no"))
-            (info (feature game-challenging) (value "no"))
-            (info (feature  game-hmovement | game-bluff) (value "yes"))
-        )
-        (result (feature coop-comp) (value coop))
-        (not (inferred (feature investigative)))
-        =>
-        (assert (infering (feature investigative) (value F)))
-)
-
-(defrule inferred-no-investigative-5
-        (declare (salience ?*high-priority*))
-        (or
-            (info (feature game-thematic) (value "no"))
-            (info (feature   game-wtdplacement | game-bidding ) (value "yes"))
-        )
-        (result (feature coop-comp) (value coop\comp))
-        (not (inferred (feature investigative)))
-        =>
-        (assert (infering (feature investigative) (value F)))
-)
-
-
-(defrule inferred-no-bidding
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-bidding) (value "no"))
-            (inferred (feature wargame) (value T))
-            (info (feature game-strategy) (value "no"))
-            (inferred (feature challenging | explorative | hmovement | investigative ) (value T))
-            (result (feature coop-comp) (value coop | coop\comp))
-            (info (feature game-players)  (value "1"| "6+"))
-        )
-        
-        =>
-        (assert (infering (feature bidding) (value F)))
-)
-
-(defrule inferred-no-bluff-1
-        (declare (salience ?*high-priority*))
-        (or (info (feature  game-bluff) (value "no"))
-            (inferred (feature wargame) (value T))
-            (info (feature game-explorative | game-wtdplacement ) (value "yes"))
-            (result (feature coop-comp) (value coop))
-        )
-
-        (not (inferred (feature bluff)))
-        =>
-        (assert (infering (feature bluff) (value F)))
-)
-
-(defrule inferred-no-bluff-2
-        (declare (salience ?*high-priority*))
-        (info (feature  game-hmovement) (value "yes"))
-        (result (feature coop-comp) (value comp))
-        (not (inferred (feature bluff)))
-        =>
-        (assert (infering (feature bluff) (value F)))
-)
-
-(defrule inferred-no-bluff-3
-        (declare (salience ?*high-priority*))
-        (result (feature coop-comp) (value coop\comp))
-        (info (feature game-strategy | game-bidding) (value "yes"))
-        (not (inferred (feature bluff)))
-        =>
-        (assert (infering (feature bluff) (value F)))
-)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (defrule inferred-greece
         (declare (salience ?*highest-priority*))
@@ -736,12 +403,12 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) famrs)
 )
 
-(defrule  inferred-futuristics
+(defrule  inferred-futuristic
         (declare (salience ?*highest-priority*))
-        (info (feature game-futuristics) (value "yes"))
+        (info (feature game-futuristic) (value "yes"))
          =>
-        (assert (infering (feature futuristics) (value T))) 
-        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) futuristics)
+        (assert (infering (feature futuristic) (value T))) 
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) futuristic)
 )
 (defrule  inferred-merchants
         (declare (salience ?*highest-priority*))

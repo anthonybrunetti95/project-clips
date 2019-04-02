@@ -404,13 +404,13 @@
                     then (assert (info (feature game-farms) (value "no") (question game-farms)))
                         (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FARM NO")))))
 
-            (case game-futuristics  then
+            (case game-futuristic  then
                   (if (eq ?answer s) 
-                    then (assert (info (feature game-futuristics) (value "yes") (question game-futuristics))) 
-                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FUTURISTICS YES")) else
+                    then (assert (info (feature game-futuristic) (value "yes") (question game-futuristic))) 
+                     (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-futuristic YES")) else
                 (if (eq ?answer n) 
-                    then (assert (info (feature game-futuristics) (value "no") (question game-futuristics)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-FUTURISTICS NO")))))
+                    then (assert (info (feature game-futuristic) (value "no") (question game-futuristic)))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-futuristic NO")))))
 
             (case game-merchants  then
                   (if (eq ?answer s) 

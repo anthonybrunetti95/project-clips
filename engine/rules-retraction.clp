@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;                 REGOLE PER LA RITRATTAZIONE           ;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defglobal ?*flag_retract_inference* = FALSE)
 (defrule retraction
 	(declare (salience ?*highest-priority*))
 	(last-question (question ?last))
@@ -20,11 +21,10 @@
     (test (eq ?number ?num)) 
     (test (>= ?last ?number))
     =>
-
     (refresh find-hypotetical-final-board-game)
-   
     (refresh cant-find-any-final-board-game)
-
+    (refresh find-hypotetical-final-board-game-1-player)
+    
     (retract ?f1)
     (if (eq ?number 1)
      then (printout t crlf "  *****************   DOMANDE   *****************  " crlf))
@@ -32,6 +32,7 @@
     (print-answers ?question ?answer)
     (if (eq ?number ?last)
      then (printout t crlf "  ***********************************************    " crlf crlf)
+          (bind ?*flag_retract_inference*  TRUE)
           (bind $?list-values (subseq$ (create$ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50) 1 ?last))
           (ask retraction-number ?last $?list-values)
      else (printout t crlf)
@@ -113,15 +114,70 @@
         (retract ?f1 ?f2)
 )
 
-(defrule retract-inferred
-        (declare (salience ?*top-priority*))
+(defrule retract-instance
+      (declare (salience ?*top-priority*))
         (retract-configuration)
-        ?f1 <- (inferred (number ?n))
+        ?f1 <- (inferred (feature ?value) (number ?n))
         (reasked-question (question ?q))
         (test (or (> ?n ?q) (eq ?n ?q)))
+       
+        
         =>
+
+        (bind ?ggk (send [ggk] get-general-kind))
+        (if(and (>(length$ ?ggk) 0)  (eq ?*flag_retract_inference* TRUE))
+            then
+            (bind ?gsk (send [gsk] get-secondary-kind))
+            (bind ?gte (send [gte] get-thematic-environment))
+            
+            (if(not (eq (member$ ?value $?ggk) FALSE))
+                then
+                    (slot-delete$ [ggk] general-kind (member$ ?value $?ggk) (length$ ?ggk))
+                    (send [ggk] print)
+                    (if (> (length$ ?gsk) 0) then (slot-delete$ [gsk] secondary-kind 1 (length$ ?gsk)))
+                    (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
+                    (bind ?*flag_retract_inference*  FALSE)
+                (printout t "eliminato ggk" crlf crlf)
+                else  
+                (if (not (eq (member$ ?value $?gsk) FALSE))
+                    then 
+                        (slot-delete$ [gsk] secondary-kind (member$ ?value $?gsk) (length$ ?gsk))
+                        (send [gsk] print)
+                        (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
+                        (bind ?*flag_retract_inference*  FALSE)
+                    (printout t "eliminato gsk" crlf crlf)
+                    else
+                        (if (not (eq (member$ ?value $?gte) FALSE))
+                        then
+                            (slot-delete$ [gte] thematic-environment (member$ ?value $?gte) (length$ ?gte))
+                            (send [gte] print)
+                            (bind ?*flag_retract_inference*  FALSE)
+                            (printout t "eliminato gte" crlf crlf)
+                        else
+                            (if (> (length$ ?ggk) 0) then (slot-delete$ [ggk] general-kind 1  (length$ ?ggk)))
+                            (if (> (length$ ?gsk) 0) then (slot-delete$ [gsk] secondary-kind 1 (length$ ?gsk)))
+                            (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
+                            (bind ?*flag_retract_inference*  FALSE)
+                            (printout t "tutti e tre " crlf crlf)
+                )
+            )
+        )
+    )      
+)
+
+(defrule retract-inferred
+    (declare (salience ?*highest-priority*))
+    (retract-configuration)
+    ?f1 <- (inferred (feature ?value) (number ?n))
+    (reasked-question (question ?q))
+    (test (or (> ?n ?q) (eq ?n ?q)))
+    =>
         (retract ?f1)
 )
+
+
+
+
 
 (defrule retract-result
         (declare (salience ?*top-priority*))

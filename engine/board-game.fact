@@ -62,7 +62,7 @@
 (board-game (label board-game-62) (name "Festa per Odino" ) (length 120) (weight difficile) (coop-comp comp) (age 13) (price 64) (players 1 2 3 4 ) (best-players 3) ) 
 (board-game (label board-game-63) (name "Azul" ) (length 45) (weight facile) (coop-comp comp) (age 6) (price 50) (players 2 3 4) (best-players 2))
 (board-game (label board-game-64) (name "Sagrada" ) (length 45) (weight facile) (coop-comp comp) (age 6)(price 44) (players 1 2 3 4) (best-players 2)  )
-(board-game (label board-game-65) (name "Robinson Crusoe" ) (length 120) (weight difficile) (coop-comp comp) (age 13) (price 65) (players 1 2 3 4) (best-players 1 2 3 4) )
+(board-game (label board-game-65) (name "Robinson Crusoe" ) (length 120) (weight difficile) (coop-comp coop) (age 13) (price 65) (players 1 2 3 4) (best-players 1 2 3 4) )
 (board-game (label board-game-66) (name "Eldritch Horror" ) (length 240) (weight medio) (coop-comp comp) (age 13) (price 62)  (players 1 2 3 4 5 6 7) (best-players 4) )
 (board-game (label board-game-67) (name "Dead of Winter" ) (length 120) (weight medio) (coop-comp coop\comp) (age 13) (price 46)  (players 2 3 4  5 ) (best-players 4))
 (board-game (label board-game-68) (name "Santotini" ) (length 20) (weight facile) (coop-comp comp) (age 6) (price 33)  (players 2 3 4 ) (best-players 2) )
