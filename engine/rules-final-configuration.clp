@@ -5,7 +5,7 @@
 
 (defrule find-hypotetical-final-board-game
         (declare (salience ?*sub-normal-priority*))
-        (not result (feature 1players) (value T)))
+        (not (result (feature 1players) (value T)))
         (result (feature weight) (value ?weight))
         (result (feature coop-comp) (value ?coop-comp))
         (board-game (label ?label) (name ?name) (length ?length) (weight ?weight) (coop-comp ?coop-comp) (age ?age) (players $?players))
@@ -42,8 +42,7 @@
         (declare (salience ?*sub-normal-priority*))
         (result (feature 1players) (value T))
         (result (feature weight) (value ?weight))
-        (result (feature coop-comp) (value ?coop-comp))
-        (board-game (label ?label) (name ?name) (length ?length) (weight ?weight) (age ?age) (players $?players))
+        (board-game (label ?label) (name ?name) (length ?length)  (age ?age) (players $?players))
         (game-players (player ?player))
         (user-age (min-age ?min))
         (game-time (time ?time))
