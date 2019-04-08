@@ -170,7 +170,6 @@
         (declare (salience ?*highest-priority*))
         (info (feature game-players) (value "5" | "6" | "6+"))
         (result (feature weight) (value facile | medio))
-        (inferred (feature age) (value child | elder ))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
         (not (info (feature  game-explorative | game-wtdplacement | game-hmovement | game-bidding) (value "yes")))
         

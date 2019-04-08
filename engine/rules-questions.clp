@@ -150,6 +150,7 @@
 )
 
 
+
 (defrule ask-game-thematic-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
@@ -241,6 +242,7 @@
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
         (not (info (feature game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes")))
+       
         (not (info (feature game-strategy)))
         =>
         (assert (asking-question (question game-strategy) (answers s n)))
