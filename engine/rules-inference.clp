@@ -149,7 +149,10 @@
      
         =>
         (assert (infering(feature wargame) (value T)))
+        (assert (infering (feature war) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) wargame)
+        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) war)
+
 )
 
 (defrule inferred-family 

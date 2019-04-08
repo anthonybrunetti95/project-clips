@@ -10,7 +10,7 @@
 (board-game (label board-game-10) (name "Caverna - Cave vs Cave" ) (length 40) (weight medio) (coop-comp coop) (age 10) (price 26) (players 1 2) (best-players  2))
 (board-game (label board-game-11) (name "Patchwork" ) (length 30) (weight facile) (coop-comp comp) (age 6) (price 22) (players 2) (best-players 2))
 (board-game (label board-game-12) (name "Doom" ) (length 180) (weight medio) (coop-comp coop\comp) (age 13) (price 70) (players 2 3 4) (best-players 4) )
-(board-game (label board-game-13) (name "Pandemic - Regno fi Cthulhu" ) (length 40) (weight facile) (coop-comp coop) (age 13) (price 41) (players 2 3 4) (best-players 4) )
+(board-game (label board-game-13) (name "Pandemic - Regno di Cthulhu" ) (length 40) (weight facile) (coop-comp coop) (age 13) (price 41) (players 2 3 4) (best-players 4) )
 (board-game (label board-game-14) (name "Jaupur" ) (length 30) (weight facile) (coop-comp comp) (age 13) (price 17) (players 2) (best-players 2))
 (board-game (label board-game-15) (name "Hanabi" ) (length 25) (weight facile) (coop-comp coop) (age 6) (price 8) (players 2 3 4 5) (best-players 4))
 (board-game (label board-game-16) (name "Venerdì" ) (length 25) (weight facile) (coop-comp null) (age 6) (price 25) (players 1) (best-players 1))

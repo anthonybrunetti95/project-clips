@@ -141,6 +141,7 @@
 (defrule ask-game-wargame
         (declare (salience ?*normal-priority*))
         (not (retraction))
+        (result (feature coop-comp)(value comp))
         (not (inferred (feature family | cardgame | filler | american | german ) (value T)))
         (info (feature game-time) (value ">60"))
         (info (feature game-players) (value "2" | "3" | "4" | "5" | "6"))
@@ -187,7 +188,9 @@
         (not (retraction))
         (info (feature game-players) (value "1"))
         (not (info (feature game-wargame) (value "yes")))
+        (not (info (feature game-wargame) (value "yes")))
         (not (inferred (feature hmovement | bidding) (value T)))
+        (not(info (feature game-thematic)))
         =>
         (assert (asking-question (question game-thematic) (answers s n)))
 )
@@ -196,6 +199,7 @@
         (declare(salience ?*zero-priority*))
         (not (retraction))
         (info (feature game-players) (value "1"))
+        (not (info (feature game-wargame) (value "yes")))
         (not (info (feature game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes") ))
         (not (info (feature game-strategy)))
         =>
@@ -206,17 +210,18 @@
 (defrule ask-game-strategy-2
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (result (feature coop-comp) (value comp))
         (not (info (feature game-explorative | game-hmovement | game-investigative ) (value "yes")))
         (not (info (feature game-strategy)))
         =>
         (assert (asking-question (question game-strategy) (answers s n)))
 )
+
 (defrule ask-game-strategy-3
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (result (feature coop-comp) (value coop))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
@@ -230,13 +235,12 @@
 (defrule ask-game-strategy-4
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (result (feature coop-comp) (value coop\comp))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-explorative) (value "yes"))
         (not (info (feature game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff ) (value "yes")))
-        (not (result (feature strategy) (value F)))
         (not (info (feature game-strategy)))
         =>
         (assert (asking-question (question game-strategy) (answers s n)))
@@ -259,8 +263,6 @@
 (defrule ask-game-challenging-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        
-        (not (inferred (feature wargame) (value T)))
         (result (feature coop-comp) (value comp))
         (not (info (feature game-explorative | game-wtdplacement |game-bidding | game-hmovement ) (value "yes")))
         (not (info (feature game-challenging)))
@@ -297,7 +299,7 @@
         (declare(salience ?*zero-priority*))
         (not (retraction))
         (info (feature game-players) (value "1"))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (not (info (feature game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes")))
@@ -310,7 +312,7 @@
         (declare(salience ?*zero-priority*))
         (not (retraction))
         (result (feature coop-comp) (value coop))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (not (info (feature game-strategy |game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes")))
@@ -323,7 +325,7 @@
         (declare(salience ?*zero-priority*))
         (not (retraction))
         (result (feature coop-comp) (value coop\comp))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (info (feature game-thematic) (value "yes"))
         (not (info (feature game-wtdplacement |game-bidding | game-hmovement | game-bluff) (value "yes")))
         (not (inferred (feature filler | family) (value T)))
@@ -335,6 +337,7 @@
 (defrule ask-game-wtdplacement-1
         (declare(salience ?*zero-priority*))
         (not (retraction))
+        (not (info (feature game-wargame) (value "yes")))
         (info (feature game-players) (value "1"))
         (not (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
         (not (info (feature game-wtdplacement)))
@@ -344,6 +347,7 @@
 (defrule ask-game-wtdplacement-2
         (declare(salience ?*zero-priority*))
         (not (retraction))
+        (not (info (feature game-wargame) (value "yes")))
         (result (feature coop-comp) (value comp))
         (not (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bluff) (value "yes")))
         (not (info (feature game-wtdplacement)))
@@ -356,7 +360,7 @@
 (defrule ask-game-hmvoment
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        
+        (not (info (feature game-wargame) (value "yes")))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-bluff) (value "yes"))
@@ -371,13 +375,11 @@
 (defrule ask-game-investigative-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        
         (not(inferred (feature wargame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-players) (value "1"))
         (not (info (feature game-strategy | game-wtdplacement | game-hmovement | game-bidding) (value "yes")))
-     
         (not (info (feature game-investigative)))
         =>
         (assert (asking-question (question game-investigative) (answers s n)))
@@ -386,7 +388,6 @@
 (defrule ask-game-investigative-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        
         (not(inferred (feature wargame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
@@ -447,6 +448,7 @@
 (defrule ask-game-bluff-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
+        (not (info (feature game-wargame) (value "yes")))
         (not (info (feature game-explorative | game-wtdplacement | game-hmovement) (value "yes")))
         (result  (feature coop-comp) (value comp))
         (not (info (feature game-bluff)))
@@ -457,6 +459,7 @@
 (defrule ask-game-bluff-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
+        
         (result  (feature coop-comp) (value coop\comp))
         (not (info (feature game-strategy | game-explorative | game-wtdplacement | game-bidding) (value "yes")))
         (not (info (feature game-bluff)))

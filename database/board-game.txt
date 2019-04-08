@@ -1,0 +1,1100 @@
+#board-game-1
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			7 Wonders Duel
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	strategy challenging
+Ambientazione:	        greece 
+età consigliata:	10
+Prezzo: 		20 € 
++================================================================+
+#board-game-2
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			7 Wonders
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	strategy
+Ambientazione:	        greece 
+età consigliata:	10
+Prezzo: 		35 € 
++================================================================+
+#board-game-3
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Castellion
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic strategy challenging
+Ambientazione:	        abstract 
+età consigliata:	10
+Prezzo: 		23 € 
++================================================================+
+#board-game-4
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Vudù
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler party
+Meccanica gioco:	 
+Ambientazione:	        witchcraft 
+età consigliata:	6
+Prezzo: 		17 € 
++================================================================+
+#board-game-5
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Desperados of Dice Town
+Durata: 		25 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	 
+Ambientazione:	        western 
+età consigliata:	6
+Prezzo: 		22 € 
++================================================================+
+#board-game-6
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Stay Away
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	challenging
+Ambientazione:	        horror 
+età consigliata:	13
+Prezzo: 		14 € 
++================================================================+
+#board-game-7
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Arkham Horror LCG
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic challenging explorative investigative
+Ambientazione:	        gothic lovecraft 
+età consigliata:	13
+Prezzo: 		36 € 
++================================================================+
+#board-game-8
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			This War of Mine
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging
+Ambientazione:	        war 
+età consigliata:	18
+Prezzo: 		70 € 
++================================================================+
+#board-game-9
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Onirim
+Durata: 		15 minuti 
+difficoltà:		facile
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic strategy challenging
+Ambientazione:	        dream fantasy abstract 
+età consigliata:	6
+Prezzo: 		30 € 
++================================================================+
+#board-game-10
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Caverna - Cave vs Cave
+Durata: 		40 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy
+Ambientazione:	        farms 
+età consigliata:	10
+Prezzo: 		26 € 
++================================================================+
+#board-game-11
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Patchwork
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	 
+Ambientazione:	        tailoring abstract 
+età consigliata:	6
+Prezzo: 		22 € 
++================================================================+
+#board-game-12
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Doom
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	 
+Ambientazione:	        fantasy gothic futuristic 
+età consigliata:	13
+Prezzo: 		70 € 
++================================================================+
+#board-game-13
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Pandemic - Regno di Cthulhu
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic explorative
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		41 € 
++================================================================+
+#board-game-14
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Jaupur
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic strategy challenging
+Ambientazione:	        merchants indians 
+età consigliata:	13
+Prezzo: 		17 € 
++================================================================+
+#board-game-15
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Hanabi
+Durata: 		25 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	 
+Ambientazione:	        fireworks 
+età consigliata:	6
+Prezzo: 		8 € 
++================================================================+
+#board-game-16
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Venerdì
+Durata: 		25 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic strategy challenging
+Ambientazione:	        survival indians 
+età consigliata:	6
+Prezzo: 		25 € 
++================================================================+
+#board-game-17
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Arkham Noir
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic challenging investigative
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		13 € 
++================================================================+
+#board-game-18
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Case della Follia, 2 Ed.
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging explorative investigative
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		78 € 
++================================================================+
+#board-game-19
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Mint Works
+Durata: 		20 minuti 
+difficoltà:		facile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        industry 
+età consigliata:	13
+Prezzo: 		20 € 
++================================================================+
+#board-game-20
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Mint Delivery
+Durata: 		25 minuti 
+difficoltà:		facile
+Tipo di gioco: 		german
+Meccanica gioco:	 
+Ambientazione:	        industry 
+età consigliata:	13
+Prezzo: 		20 € 
++================================================================+
+#board-game-21
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Whitehall Mistery
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic challenging hmovement investigative bluff
+Ambientazione:	        gothic 
+età consigliata:	13
+Prezzo: 		30 € 
++================================================================+
+#board-game-22
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			The Bloody Inn
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic strategy
+Ambientazione:	        horror gothic 
+età consigliata:	13
+Prezzo: 		32 € 
++================================================================+
+#board-game-23
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			The Game
+Durata: 		20 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	 
+Ambientazione:	        numbers 
+età consigliata:	6
+Prezzo: 		11 € 
++================================================================+
+#board-game-24
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Inbetween
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic
+Ambientazione:	        gothic horror fantasy 
+età consigliata:	13
+Prezzo: 		25 € 
++================================================================+
+#board-game-25
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Intrigo a Palazzo
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	strategy bluff
+Ambientazione:	        fantasy castles 
+età consigliata:	13
+Prezzo: 		21 € 
++================================================================+
+#board-game-26
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Warehouse 51
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic strategy bidding bluff
+Ambientazione:	        futuristic 
+età consigliata:	1
+Prezzo: 		18 € 
++================================================================+
+#board-game-27
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			La Truffa
+Durata: 		20 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler party family
+Meccanica gioco:	thematic challenging investigative bluff
+Ambientazione:	        castles 
+età consigliata:	13
+Prezzo: 		14 € 
++================================================================+
+#board-game-28
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			La Furia di Dracula
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging hmovement investigative bluff
+Ambientazione:	        gothic fantasy vampyric 
+età consigliata:	13
+Prezzo: 		55 € 
++================================================================+
+#board-game-29
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Lorenzo il Magnifico
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	13
+Prezzo: 		44 € 
++================================================================+
+#board-game-30
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Il club degli Spendaccioni
+Durata: 		100 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
+#board-game-31
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Le Havre
+Durata: 		150 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        merchants 
+età consigliata:	13
+Prezzo: 		55 € 
++================================================================+
+#board-game-32
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Deadwood 1876
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	thematic bluff
+Ambientazione:	        western 
+età consigliata:	13
+Prezzo: 		25 € 
++================================================================+
+#board-game-33
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Tortuga 1667
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	thematic bluff
+Ambientazione:	        pirates 
+età consigliata:	6
+Prezzo: 		25 € 
++================================================================+
+#board-game-34
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Salem 1692
+Durata: 		35 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	thematic investigative bluff
+Ambientazione:	        witchcraft 
+età consigliata:	13
+Prezzo: 		25 € 
++================================================================+
+#board-game-35
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Dead Men Tell No Tales
+Durata: 		75 minuti 
+difficoltà:		facile
+Tipo di gioco: 		american
+Meccanica gioco:	thematic strategy challenging explorative
+Ambientazione:	        pirates 
+età consigliata:	13
+Prezzo: 		42 € 
++================================================================+
+#board-game-36
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Futurisiko
+Durata: 		180 minuti 
+difficoltà:		facile
+Tipo di gioco: 		wargame
+Meccanica gioco:	 
+Ambientazione:	        war 
+età consigliata:	13
+Prezzo: 		15 € 
++================================================================+
+#board-game-37
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Cyclades
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement bidding
+Ambientazione:	        greece 
+età consigliata:	13
+Prezzo: 		55 € 
++================================================================+
+#board-game-38
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Caverna
+Durata: 		210 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        farms 
+età consigliata:	13
+Prezzo: 		78 € 
++================================================================+
+#board-game-39
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Deus
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        greece 
+età consigliata:	13
+Prezzo: 		27 € 
++================================================================+
+#board-game-40
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Bruges
+Durata: 		60 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	10
+Prezzo: 		45 € 
++================================================================+
+#board-game-41
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Tzokh'in
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        indians farms 
+età consigliata:	13
+Prezzo: 		50 € 
++================================================================+
+#board-game-42
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Ticket to Ride
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	 
+Ambientazione:	        trains 
+età consigliata:	6
+Prezzo: 		35 € 
++================================================================+
+#board-game-43
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Rokokò
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	13
+Prezzo: 		45 € 
++================================================================+
+#board-game-44
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Caccia all'Anello
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging hmovement bluff
+Ambientazione:	        lord-of-the-rings fantasy gothic 
+età consigliata:	13
+Prezzo: 		45 € 
++================================================================+
+#board-game-45
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Queendomino
+Durata: 		25 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	wtdplacement
+Ambientazione:	        castles 
+età consigliata:	6
+Prezzo: 		30 € 
++================================================================+
+#board-game-46
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Colt Express
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	thematic bluff
+Ambientazione:	        western 
+età consigliata:	10
+Prezzo: 		35 € 
++================================================================+
+#board-game-47
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Splendor
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	 
+Ambientazione:	        jewelry 
+età consigliata:	10
+Prezzo: 		32 € 
++================================================================+
+#board-game-48
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Catan
+Durata: 		120 minuti 
+difficoltà:		facile
+Tipo di gioco: 		german
+Meccanica gioco:	challenging wtdplacement
+Ambientazione:	        farms 
+età consigliata:	10
+Prezzo: 		29 € 
++================================================================+
+#board-game-49
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Leggende di Andor
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging explorative
+Ambientazione:	        fantasy 
+età consigliata:	13
+Prezzo: 		35 € 
++================================================================+
+#board-game-50
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Takenoko
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	thematic
+Ambientazione:	        oriental 
+età consigliata:	6
+Prezzo: 		34 € 
++================================================================+
+#board-game-51
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Sylvion
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic strategy challenging
+Ambientazione:	        abstract forests 
+età consigliata:	10
+Prezzo: 		30 € 
++================================================================+
+#board-game-52
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Bloodborne: The Card Game
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic challenging
+Ambientazione:	        fantasy gothic 
+età consigliata:	13
+Prezzo: 		45 € 
++================================================================+
+#board-game-53
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			 Castelli della Borgonga
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy
+Ambientazione:	        castles farms 
+età consigliata:	13
+Prezzo: 		38 € 
++================================================================+
+#board-game-54
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Annibale e Amilcare
+Durata: 		200 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		wargame
+Meccanica gioco:	challenging
+Ambientazione:	        roman war 
+età consigliata:	13
+Prezzo: 		80 € 
++================================================================+
+#board-game-55
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Lewis and Clark
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        indians 
+età consigliata:	13
+Prezzo: 		39 € 
++================================================================+
+#board-game-56
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Bang
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	bluff
+Ambientazione:	        western 
+età consigliata:	6
+Prezzo: 		55 € 
++================================================================+
+#board-game-57
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Scythe
+Durata: 		115 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        farms war fantasy 
+età consigliata:	13
+Prezzo: 		72 € 
++================================================================+
+#board-game-58
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Terra Mystoca
+Durata: 		150 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        fantasy farms 
+età consigliata:	13
+Prezzo: 		55 € 
++================================================================+
+#board-game-59
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Guerra dell'Anello
+Durata: 		180 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging
+Ambientazione:	        lord-of-the-rings fantasy gothic war 
+età consigliata:	13
+Prezzo: 		95 € 
++================================================================+
+#board-game-60
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Keyflower
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		filler
+Meccanica gioco:	strategy wtdplacement investigative
+Ambientazione:	        castles farms industry 
+età consigliata:	6
+Prezzo: 		40 € 
++================================================================+
+#board-game-61
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Brass: Lancashire
+Durata: 		120 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        industry gothic 
+età consigliata:	6
+Prezzo: 		65 € 
++================================================================+
+#board-game-62
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Festa per Odino
+Durata: 		120 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        greece farms 
+età consigliata:	13
+Prezzo: 		64 € 
++================================================================+
+#board-game-63
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Azul
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	thematic
+Ambientazione:	        abstract glass 
+età consigliata:	6
+Prezzo: 		50 € 
++================================================================+
+#board-game-64
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Sagrada
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		family
+Meccanica gioco:	thematic
+Ambientazione:	        abstract glass 
+età consigliata:	6
+Prezzo: 		44 € 
++================================================================+
+#board-game-65
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Robinson Crusoe
+Durata: 		120 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging
+Ambientazione:	        survival indians 
+età consigliata:	13
+Prezzo: 		65 € 
++================================================================+
+#board-game-66
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Eldritch Horror
+Durata: 		240 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging investigative
+Ambientazione:	        gothic fantasy lovecraft 
+età consigliata:	13
+Prezzo: 		62 € 
++================================================================+
+#board-game-67
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Dead of Winter
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging bluff
+Ambientazione:	        fantasy gothic 
+età consigliata:	13
+Prezzo: 		46 € 
++================================================================+
+#board-game-68
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Santotini
+Durata: 		20 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	 
+Ambientazione:	        castles 
+età consigliata:	6
+Prezzo: 		33 € 
++================================================================+
+#board-game-69
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Alchimisti
+Durata: 		120 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        chemistry renaissance-court 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
+#board-game-70
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Architetti del Regno Occidente
+Durata: 		80 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	13
+Prezzo: 		46 € 
++================================================================+
+#board-game-71
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Grand Austria Hotel
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        gala-hotel 
+età consigliata:	13
+Prezzo: 		43 € 
++================================================================+
+#board-game-72
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Lord of the Rings LCG
+Durata: 		60 minuti 
+difficoltà:		medio
+Tipo di gioco: 		cardgame
+Meccanica gioco:	thematic challenging explorative
+Ambientazione:	        lord-of-the-rings fantasy gothic 
+età consigliata:	6
+Prezzo: 		39 € 
++================================================================+
+#board-game-73
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Western Legends
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	thematic bluff
+Ambientazione:	        western 
+età consigliata:	13
+Prezzo: 		113 € 
++================================================================+
+#board-game-74
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Teotihuacan
+Durata: 		120 minuti 
+difficoltà:		difficile
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        indians farms 
+età consigliata:	13
+Prezzo: 		73 € 
++================================================================+
+#board-game-75
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Zombicide: Black Plauge
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging explorative
+Ambientazione:	        fantasy gothic 
+età consigliata:	10
+Prezzo: 		78 € 
++================================================================+
+#board-game-76
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Carcassonne
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	wtdplacement
+Ambientazione:	        farms 
+età consigliata:	6
+Prezzo: 		21 € 
++================================================================+
+#board-game-77
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Carcosa
+Durata: 		60 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german filler family
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        farms gothic lovecraft 
+età consigliata:	3
+Prezzo: 		45 € 
++================================================================+
+#board-game-78
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Magic: The Gathering
+Durata: 		20 minuti 
+difficoltà:		medio
+Tipo di gioco: 		cardgame
+Meccanica gioco:	challenging bluff
+Ambientazione:	        fantasy gothic 
+età consigliata:	13
+Prezzo: 		23 € 
++================================================================+
+#board-game-79
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Lupus in Tabula
+Durata: 		40 minuti 
+difficoltà:		facile
+Tipo di gioco: 		party
+Meccanica gioco:	bluff
+Ambientazione:	        tale fantasy 
+età consigliata:	6
+Prezzo: 		17 € 
++================================================================+
+#board-game-80
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Onitama
+Durata: 		20 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	challenging
+Ambientazione:	        abstract 
+età consigliata:	10
+Prezzo: 		26 € 
++================================================================+
+#board-game-81
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Tikal
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	thematic strategy wtdplacement
+Ambientazione:	        indians 
+età consigliata:	10
+Prezzo: 		55 € 
++================================================================+
+#board-game-82
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Notre Dame
+Durata: 		75 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	10
+Prezzo: 		36 € 
++================================================================+
+#board-game-83
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Mice and Mystics
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging explorative
+Ambientazione:	        tale fantasy 
+età consigliata:	6
+Prezzo: 		70 € 
++================================================================+
+#board-game-84
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Santa Maria
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        merchants 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
+#board-game-85
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Lord of the Rings Confrotation
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	strategy challenging
+Ambientazione:	        lord-of-the-rings fantasy gothic 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
+#board-game-86
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Case della Follia, 1, Ed
+Durata: 		180 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging explorative investigative
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		70 € 
++================================================================+
+#board-game-87
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Sherlock Holmes Consulente Investigativo
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging investigative bluff
+Ambientazione:	        gothic crime 
+età consigliata:	13
+Prezzo: 		42 € 
++================================================================+
+#board-game-88
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Citadels
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler party family
+Meccanica gioco:	bluff
+Ambientazione:	        renaissance-court 
+età consigliata:	10
+Prezzo: 		25 € 
++================================================================+
+#board-game-89
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Mythos Tales
+Durata: 		120 minuti 
+difficoltà:		medio
+Tipo di gioco: 		american
+Meccanica gioco:	thematic challenging investigative bluff
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		42 € 
++================================================================+
+#board-game-90
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Papa Paolo
+Durata: 		75 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	thematic wtdplacement
+Ambientazione:	        restaurants 
+età consigliata:	10
+Prezzo: 		55 € 
++================================================================+
+#board-game-91
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			La Cosa Nostra
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		party
+Meccanica gioco:	thematic strategy bluff
+Ambientazione:	        mafia 
+età consigliata:	16
+Prezzo: 		40 € 
++================================================================+
+#board-game-92
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Dixit
+Durata: 		30 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler party family
+Meccanica gioco:	thematic
+Ambientazione:	        tale fantasy 
+età consigliata:	6
+Prezzo: 		27 € 
++================================================================+
+#board-game-93
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Coup
+Durata: 		15 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler party family
+Meccanica gioco:	challenging bluff
+Ambientazione:	        futuristic politics 
+età consigliata:	6
+Prezzo: 		15 € 
++================================================================+
+#board-game-94
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Jamaica
+Durata: 		60 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	thematic wtdplacement
+Ambientazione:	        indians 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
+#board-game-95
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			orleans
+Durata: 		90 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        renaissance-court 
+età consigliata:	13
+Prezzo: 		50 € 
++================================================================+
+#board-game-96
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Il Segno degli Antichi
+Durata: 		90 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	thematic challenging investigative
+Ambientazione:	        lovecraft gothic fantasy 
+età consigliata:	13
+Prezzo: 		35 € 
++================================================================+
+#board-game-97
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Il Crocevia del Carbone
+Durata: 		75 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy
+Ambientazione:	        trains 
+età consigliata:	10
+Prezzo: 		18 € 
++================================================================+
+#board-game-98
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Watson & Holmes
+Durata: 		75 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler
+Meccanica gioco:	thematic challenging investigative
+Ambientazione:	        crime gothic 
+età consigliata:	13
+Prezzo: 		35 € 
++================================================================+
+#board-game-99
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			Cacao
+Durata: 		45 minuti 
+difficoltà:		facile
+Tipo di gioco: 		filler family
+Meccanica gioco:	wtdplacement
+Ambientazione:	        farms 
+età consigliata:	8
+Prezzo: 		25 € 
++================================================================+
+#board-game-100
++===<  Gioco da tavolo   >=======================================+ 
+Nome:			L'oracolo di Delfi
+Durata: 		100 minuti 
+difficoltà:		medio
+Tipo di gioco: 		german
+Meccanica gioco:	strategy wtdplacement
+Ambientazione:	        greece 
+età consigliata:	13
+Prezzo: 		40 € 
++================================================================+
