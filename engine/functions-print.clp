@@ -34,7 +34,7 @@
                 (case game-coop then 
                     (printout t " Nel gioco ti piace cooperare con gli altri giocatori ?" crlf crlf))
                  (case game-thematic then 
-                    (printout t "Presti molta atenzione verso l’ambientazione e i dettagli nei giochi ?" crlf crlf))
+                    (printout t " Ti piacciono i giochi che hanno un tema altamente sviluppato su dei personaggi, eroi o fazioni  ?" crlf crlf))
                 (case game-strategy then
                     (printout t "Saresti interessato ad un gioco in cui per raggiungere un obiettivo dipende dalle azioni e strategie attuale? " crlf crlf))
                 (case game-challenging then 
@@ -113,7 +113,6 @@
                     (printout t "Ti piacciono i giochi che hanno come tema i ristoranti?" crlf crlf))
                 (case game-mafia then
                     (printout t "Ti piacciono i giochi che hanno come tema la mafia? " crlf crlf))
-
                 (case game-politics then
                     (printout t "Ti piacciono i giochi che hanno come tema la politica? " crlf crlf))
 
@@ -514,7 +513,6 @@
                 (case group-age then             
                         (printout t "l'eta' media del tuo gruppo con cui giochi, in modo da comprendere meglio l'esigenze del gruppo e le successive domande da porti. " crlf))
               
-
                 (case user-experience then
                     (printout t "per capire il tuo livello di esperienza sui giochi da tavolo. " crlf))
                 
@@ -537,7 +535,105 @@
                      (printout t "se vuoi un gioco con le carte " crlf))
 
                 (case game-wargame then
-                     (printout t "se vuoi un gioco che simula la guerra " crlf))                              
+                     (printout t "se vuoi un gioco che simula la guerra " crlf))   
+                
+                (case game-comp then
+                    (printout t "se ti interessa questa tipologia del gioco" crlf))
+                
+                (case game-coop then
+                    (printout t "se ti interessa questa tipologia del gioco" crlf))
+                
+                (case game-thematic then
+                    (printout t "se ti interessa un gioco tematico " crlf) )
+
+                (case game-strategy then
+                    (printout t  "se ti interessa questa meccanica di gioco" crlf))
+                
+                (case game-challenging then 
+                    (printout t "se ti interessa questa meccanica di gioco" crlf))
+                
+                (case game-explorative then
+                    (printout t "se ti interessa questa meccanica di gioco" crlf ))
+                
+                (case game-wtdplacement then
+                    (printout t "se ti interessa questa meccanica di gioco" crlf ))
+                
+                (case game-hmovement then
+                    (printout t "se ti interessa questa meccanica di gioco" crlf ))
+                
+                (case game-investigative then 
+                    (printout t "se ti interessa questa meccanica di gioco" crlf )) 
+                
+                (case game-bidding then 
+                    (printout t "se ti interessa questa meccanica di gioco" crlf ))
+                
+                (case game-bluff then
+                    (printout t "se ti interessa questa meccanica di gioco" crlf ))
+                 (case game-greece then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-roman then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-western then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-horror then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-gothic then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-lovecraft then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-war then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-abstract then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-fantasy then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-farms then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-futuristic then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-merchants then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-indians then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-fireworks then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-survival then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-forests then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-industry then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-numbers then 
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-castles then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-vampyric then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-renaissance-court then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-pirates then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-witchcraft then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-oriental then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-glass then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                   (case game-chemistry then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-lord-of-the-rings then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-tale then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-crime then
+                    (printout t "se ti interessa questa ambientazione" crlf))
+                (case game-restaurants then
+                    (printout t "se ti interessa questa ambientazione" crlf ))
+                (case game-mafia then
+                    (printout t "se ti interessa questa ambientazione" crlf ))
+                (case game-politics then
+                    (printout t "se ti interessa questa ambientazione" crlf ))
+
         (default
                 (printout t "CLIPS-Exception!!! - Why Question"))
         )
@@ -567,6 +663,10 @@
                      (printout t "gioco con le carte" crlf))
                 (case game-wargame then
                      (printout t "giochi simulativi di guerra" crlf))
+
+                (case game-thematic then
+                    (printout t "giochi tematici che contengono un tema forte che guida l'esperienza di gioco complessiva, creando una storia drammatica ("narrativa") simile a un libro o un film d'azione"))
+               
                 (default  
                     (printout t "CLIPS-Exception!!! - Help Question"))       
         )

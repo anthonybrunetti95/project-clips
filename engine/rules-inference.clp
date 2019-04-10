@@ -20,7 +20,6 @@
         (retract ?f1)
 )
 
-
 ;;====================================================;;
 
 (defrule inferred-create-list
@@ -133,8 +132,6 @@
 )
 
 
-
-
 (defrule inferred-cardgame
         (declare (salience ?*highest-priority*))
         (info (feature game-cardgame) (value  "yes")) 
@@ -152,7 +149,7 @@
         (assert (infering (feature war) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) wargame)
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) war)
-
+        
 )
 
 (defrule inferred-family 
@@ -164,7 +161,6 @@
         (assert (infering(feature family) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) family)
 )
-
 
 (defrule inferred-party 
         (declare (salience ?*highest-priority*))
@@ -178,8 +174,6 @@
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) party)
 )    
 
-
-
 (defrule inferred-filler
         (declare (salience ?*highest-priority*))
         (info (feature game-time) (value "<60"))
@@ -191,13 +185,27 @@
         (assert (infering(feature filler) (value T))) 
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) filler)
 )
-(defrule inferred-german
+(defrule inferred-german-1
         (declare (salience ?*highest-priority*))
         (info (feature game-wtdplacement) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (result (feature coop-comp) (value comp))
         (not (result (feature filler) (value T)))
+        (not (inferred (feature german)))
        
+        =>
+        (assert (infering(feature german) (value T)))
+        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) german)
+
+)
+
+(defrule inferred-german-2
+        (declare (salience ?*highest-priority*))
+        (info (feature game-wtdplacement) (value "yes"))
+        (info (feature game-strategy) (value "yes"))
+        (info (feature game-players) (value "1"))
+        (not (result (feature filler) (value T)))
+        (not (inferred (feature german)))
         =>
         (assert (infering(feature german) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) german)
@@ -215,8 +223,6 @@
         (not (inferred (feature bidding) (value T)))
         (not (inferred (feature strategy) (value T)))
  
- 
-
         =>
         (assert (infering (feature american) (value T)))
        (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) american)
@@ -267,7 +273,6 @@
         (assert (infering (feature challenging) (value T)))
          (slot-insert$ [gsk]  secondary-kind (+ (length$ (send [gsk] get-secondary-kind)) 1) challenging)
 )
-
 
 (defrule inferred-explorative
         (declare (salience ?*high-priority*))
@@ -339,7 +344,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) roman)
 
 )
-(defrule  inferred-western
+(defrule inferred-western
         (declare (salience ?*highest-priority*))
         (info (feature game-western) (value "yes"))
         
@@ -347,7 +352,7 @@
         (assert (infering (feature greece) (value T))) 
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) western)
 )
-(defrule  inferred-horror
+(defrule inferred-horror
         (declare (salience ?*highest-priority*))
         (info (feature game-horror) (value "yes"))
         
@@ -356,7 +361,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) horror)
 
 )
-(defrule  inferred-gothic
+(defrule inferred-gothic
         (declare (salience ?*highest-priority*))
         (info (feature game-gothic) (value "yes"))
         
@@ -366,14 +371,14 @@
 
 )
 
-(defrule   inferred-lovecraft
+(defrule inferred-lovecraft
         (declare (salience ?*highest-priority*))
         (info (feature game-lovecraft) (value "yes"))
          =>
         (assert (infering (feature lovecraft) (value T))) 
        (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) lovecraft)
 )
-(defrule  inferred-war
+(defrule inferred-war
         (declare (salience ?*highest-priority*))
         (info (feature game-war) (value "yes"))
          =>
@@ -381,14 +386,14 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) war)
 
 )
-(defrule  inferred-abstract
+(defrule inferred-abstract
         (declare (salience ?*highest-priority*))
         (info (feature game-abstract) (value "yes"))
          =>
         (assert (infering (feature abstract) (value T))) 
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) abstract)
 )
-(defrule  inferred-fantasy
+(defrule inferred-fantasy
         (declare (salience ?*highest-priority*))
         (info (feature game-fantasy) (value "yes"))
          =>
@@ -396,7 +401,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) fantasy)
 
 )
-(defrule  inferred-farms
+(defrule inferred-farms
         (declare (salience ?*highest-priority*))
         (info (feature game-farms) (value "yes"))
      
@@ -405,14 +410,14 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) famrs)
 )
 
-(defrule  inferred-futuristic
+(defrule inferred-futuristic
         (declare (salience ?*highest-priority*))
         (info (feature game-futuristic) (value "yes"))
          =>
         (assert (infering (feature futuristic) (value T))) 
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) futuristic)
 )
-(defrule  inferred-merchants
+(defrule inferred-merchants
         (declare (salience ?*highest-priority*))
         (info (feature game-merchants) (value "yes"))
          =>
@@ -420,7 +425,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) merchants)
 
 )
-(defrule  inferred-indians
+(defrule inferred-indians
         (declare (salience ?*highest-priority*))
         (info (feature game-indians) (value "yes"))
          =>
@@ -428,7 +433,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) indians)
 
 )
-(defrule  inferred-fireworks
+(defrule inferred-fireworks
         (declare (salience ?*highest-priority*))
         (info (feature game-fireworks) (value "yes"))
        
@@ -437,14 +442,14 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) fireworks)        
 
 )
-(defrule  inferred-survival
+(defrule inferred-survival
         (declare (salience ?*highest-priority*))
         (info (feature game-survival) (value "yes"))
          =>
         (assert (infering (feature survival) (value T)))
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) survival)
 )
-(defrule  inferred-forests
+(defrule inferred-forests
         (declare (salience ?*highest-priority*))
         (info (feature game-forests) (value "yes"))
          =>
@@ -452,7 +457,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) forests)
 
 )
-(defrule  inferred-industry
+(defrule inferred-industry
         (declare (salience ?*highest-priority*))
         (info (feature game-industry) (value "yes"))
          =>
@@ -460,7 +465,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) industry)
 
 )
-(defrule  inferred-numbers
+(defrule inferred-numbers
         (declare (salience ?*highest-priority*))
         (info (feature game-numbers) (value "yes"))
          =>
@@ -469,7 +474,7 @@
 
 )
 
-(defrule  inferred-castles
+(defrule inferred-castles
         (declare (salience ?*highest-priority*))
         (info (feature game-castles) (value "yes"))
          =>
@@ -478,7 +483,7 @@
 
 )
 
-(defrule  inferred-vampyric
+(defrule inferred-vampyric
         (declare (salience ?*highest-priority*))
         (info (feature game-vampyric) (value "yes"))
          =>
@@ -486,7 +491,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) vampyric)
 )
 
-(defrule  inferred-renaissance-court
+(defrule inferred-renaissance-court
         (declare (salience ?*highest-priority*))
         (info (feature game-renaissance-court) (value "yes"))
           =>
@@ -494,7 +499,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) renaissance-court)
 
 )
-(defrule  inferred-pirates
+(defrule inferred-pirates
         (declare (salience ?*highest-priority*))
         (info (feature game-pirates) (value "yes"))    
           =>
@@ -502,7 +507,7 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) pirates)
 )
 
-(defrule  inferred-witchcraft
+(defrule inferred-witchcraft
         (declare (salience ?*highest-priority*))
         (info (feature game-witchcraft) (value "yes"))
           =>
@@ -548,7 +553,6 @@
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) lord-of-the-rings)
 
 )
-
 
 (defrule inferred-tale
         (declare (salience ?*highest-priority*))

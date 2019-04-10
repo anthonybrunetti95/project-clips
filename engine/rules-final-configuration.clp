@@ -2,7 +2,6 @@
 ;;;;;;;;;;;;;;;      REGOLE DI INFERENZA DEL GDT FINALE          ;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 (defrule find-hypotetical-final-board-game
         (declare (salience ?*sub-normal-priority*))
         (not (result (feature 1players) (value T)))
@@ -28,13 +27,13 @@
         (object (secondary-kind $?secondary-kind&:(subsetp ?secondary-kind-feature ?secondary-kind )))
         (test (printout t "si5 " ?label crlf))     
         (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
-        (object (thematic-environment $?thematic-environment&:(> (length$ ?thematic-environment) 0)))
+        (object (thematic-environment $?thematic-environment&:(>= (length$ ?thematic-environment) 0)))
         (test (printout t "si6 " ?label  ?thematic-environment crlf))
         (object (thematic-environment $?thematic-environment&:(subsetp ?thematic-environment-feature ?thematic-environment)))
         (test (printout t "si6 " ?label  ?thematic-environment crlf))
         =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label" (what board-game) "  crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what budget)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label" (what budget) "  crlf))
         
 )
 
@@ -42,7 +41,7 @@
         (declare (salience ?*sub-normal-priority*))
         (result (feature 1players) (value T))
         (result (feature weight) (value ?weight))
-        (board-game (label ?label) (name ?name) (length ?length)  (age ?age) (players $?players))
+        (board-game (label ?label) (name ?name) (length ?length) (age ?age) (players $?players))
         (game-players (player ?player))
         (user-age (min-age ?min))
         (game-time (time ?time))
@@ -62,13 +61,13 @@
         (object (secondary-kind $?secondary-kind&:(subsetp ?secondary-kind-feature ?secondary-kind )))
         (test (printout t "si5 " ?label crlf))     
         (thematic-environment (label ?label) (thematic-environment $?thematic-environment-feature))
-        (object (thematic-environment $?thematic-environment&:(> (length$ ?thematic-environment) 0)))
+        (object (thematic-environment $?thematic-environment&:(>= (length$ ?thematic-environment) 0)))
         (test (printout t "si6 " ?label  ?thematic-environment crlf))
         (object (thematic-environment $?thematic-environment&:(subsetp ?thematic-environment-feature ?thematic-environment)))
         (test (printout t "si6 " ?label  ?thematic-environment crlf))
         =>
-        (assert (hypotetical-final-board-game (label ?label) (what board-game)))
-        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label" (what board-game-1players) "  crlf))
+        (assert (hypotetical-final-board-game (label ?label) (what  budget)))
+        (if (eq ?*debug-mode* TRUE) then (printout t crlf " ->  Final board-game:  " ?label" (what budget) "  crlf))
         
 )
 

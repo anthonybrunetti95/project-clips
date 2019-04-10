@@ -24,7 +24,7 @@
 
 (defrule result-1players
          (declare (salience ?*highest-priority*))
-         (inferred (feature 1players) (value T))
+         (info (feature game-players) (value "1"))
          =>
          (assert (infering-result (feature 1players) (value T)))
 )
@@ -58,19 +58,5 @@
         (info (feature game-comp) (value "yes"))
         =>
         (assert (infering-result (feature coop-comp) (value coop\comp)))
-)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-(defrule result-thematic-environment 
-    (declare (salience ?*highest-priority*))
-    (inferred (feature instance) (value T))
-    (object (thematic-environment ?x)) ; &:(member grece $?x)))
-    
-      =>
-    (assert (infering-result (feature thematic-environment) (value T)))
-    (printout  t ?x crlf)
 )
 

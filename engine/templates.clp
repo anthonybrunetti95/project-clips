@@ -87,9 +87,6 @@
 )
 
 
-
-
-
 ;;====================================================;;
 ; TEMPLATE PER I FATTI CHE VENGONO UTILIZZATI PER INFERIRE IL board-game MIGLIORE PER L'UTENTE
 (deftemplate hypotetical-final-board-game
@@ -97,9 +94,6 @@
         (multislot what         (type SYMBOL))
 )
 
-(deftemplate removing-detail
-        (slot detail            (type SYMBOL))
-)
 
 (deftemplate final-board-game
         (slot label             (type SYMBOL))
