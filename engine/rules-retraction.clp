@@ -137,7 +137,6 @@
                     (if (> (length$ ?gsk) 0) then (slot-delete$ [gsk] secondary-kind 1 (length$ ?gsk)))
                     (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
                     (bind ?*flag_retract_inference*  FALSE)
-                (printout t "eliminato ggk" crlf crlf)
                 else  
                 (if (not (eq (member$ ?value $?gsk) FALSE))
                     then 
@@ -145,20 +144,18 @@
                         (send [gsk] print)
                         (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
                         (bind ?*flag_retract_inference*  FALSE)
-                    (printout t "eliminato gsk" crlf crlf)
                     else
                         (if (not (eq (member$ ?value $?gte) FALSE))
                         then
                             (slot-delete$ [gte] thematic-environment (member$ ?value $?gte) (length$ ?gte))
                             (send [gte] print)
                             (bind ?*flag_retract_inference*  FALSE)
-                            (printout t "eliminato gte" crlf crlf)
                         else
                             (if (> (length$ ?ggk) 0) then (slot-delete$ [ggk] general-kind 1  (length$ ?ggk)))
                             (if (> (length$ ?gsk) 0) then (slot-delete$ [gsk] secondary-kind 1 (length$ ?gsk)))
                             (if (> (length$ ?gte) 0) then (slot-delete$ [gte] thematic-environment 1  (length$ ?gte)))
                             (bind ?*flag_retract_inference*  FALSE)
-                            (printout t "tutti e tre " crlf crlf)
+                          
                 )
             )
         )

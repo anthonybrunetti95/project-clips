@@ -663,9 +663,134 @@
                      (printout t "gioco con le carte" crlf))
                 (case game-wargame then
                      (printout t "giochi simulativi di guerra" crlf))
+                
                 (case game-thematic then
                     (printout t "giochi tematici che contengono un tema forte che guida l'esperienza di gioco complessiva, creando una storia drammatica ("narrativa") simile a un libro o un film d'azione"))
                
+                (case game-comp then
+                    (printout t "giochi da tavolo di tipo coompetitivo dove il giocatore deve sfidare gli altri giocatori, per vincere. " crlf))
+                
+                (case game-coop then
+                    (printout t "giochi da tavolo di tipo cooperativo dove tutti i giocatori uniscono le forze per sconfiggere il gioco stesso. " crlf))
+                
+                (case game-strategy then
+                    (printout t "giochi di strategia in cui le decisioni dei giocatori determinano il risultato della partita e dove la fortuna non ha un peso rilevante." crlf))
+                
+                (case game-challenging then 
+                    (printout t "giochi di sfida in cui per vincere devi superare delle sfide e ostacoli nel gioco" crlf))
+                
+                (case game-explorative then
+                    (printout t "giochi esplorativi in cui il giocatore può esplorale gli scenari  del gioco senza seguire una propria linearità di trama " crlf ))
+                
+                (case game-wtdplacement then
+                    (printout t "giochi wtd placement in cui il Il giocatore deve posizionare una pedina(lavoratori) e/o dadi e/o tessere per svolgere l’azione innescata dal suo piazzamento nel presente o nel futuro. " crlf ))
+                
+                (case game-hmovement then
+                    (printout t "giochi hmoement in cui un giocatore deve definire la propria strategia (mediante carte, segnalini, dadi, etc), da usare come prossima azione o in futuro, in maniera nascosta. " crlf ))
+                
+                (case game-investigative then 
+                    (printout t "giochi investigativi in cui il giocatore deve investigare nel gioco e risolvere il caso per vincere" crlf )) 
+                
+                (case game-bidding then 
+                    (printout t "giochi con meccanica bidding si basa su un mercato dove una data risorsa viene acquisita dal maggiore offerente " crlf ))
+                
+                (case game-bluff then
+                    (printout t "I giochi di bluff incoraggiano i giocatori a usare l'inganno per raggiungere i loro obiettivi. Tutti i giochi di Bluffing hanno in sé un elemento di informazione nascosta." crlf ))
+                 
+                                 (case game-greece then 
+                    (printout t "l'ambientazione del gioco più adatta " crlf))
+                
+                (case game-roman then 
+                    (printout t "l'ambientazione del gioco più adatta " crlf))
+                
+                (case game-western then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-horror then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-gothic then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-lovecraft then 
+                     (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-war then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-abstract then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-fantasy then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-farms then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                (case game-futuristic then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-merchants then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-indians then 
+                    (printout t " l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-fireworks then 
+                    (printout t "l'ambientazione del gioco più adatta" crlf))
+                
+                (case game-survival then 
+                    (printout t "l'ambientazione del gioco più adatta "  crlf))
+                
+                (case game-forests then 
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-industry then 
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-numbers then 
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-castles then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-vampyric then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-renaissance-court then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-pirates then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-witchcraft then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-oriental then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-glass then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-chemistry then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-lord-of-the-rings then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-tale then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-crime then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf))
+                
+                (case game-restaurants then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf ))
+                
+                (case game-mafia then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf ))
+                
+                (case game-politics then
+                    (printout t "l'ambientazione del gioco più adatta"  crlf ))
                 (default  
                     (printout t "CLIPS-Exception!!! - Help Question"))       
         )

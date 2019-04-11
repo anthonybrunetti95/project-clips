@@ -354,7 +354,7 @@
                      (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HORROR YES")) else
                 (if (eq ?answer n) 
                     then (assert (info (feature game-horror) (value "no") (question game-HORROR)))
-                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-WESTERN NO")))))
+                        (if (eq ?*debug-mode* TRUE) then (printout t crlf " -> Info: GAME-HORROR NO")))))
 
             (case game-gothic  then
                   (if (eq ?answer s) 

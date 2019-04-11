@@ -351,7 +351,7 @@
         (info (feature game-western) (value "yes"))
         
          =>
-        (assert (infering (feature greece) (value T))) 
+        (assert (infering (feature western) (value T))) 
         (slot-insert$ [gte]  thematic-environment (+ (length$ (send [gte] get-thematic-environment)) 1) western)
 )
 (defrule inferred-horror
