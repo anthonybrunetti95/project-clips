@@ -1,7 +1,7 @@
 (general-kind (label board-game-1) (general-kind filler))
 (general-kind (label board-game-2) (general-kind family))
 (general-kind (label board-game-3) (general-kind filler))
-(general-kind (label board-game-4) (general-kind  party))
+(general-kind (label board-game-4) (general-kind party))
 (general-kind (label board-game-5) (general-kind family))
 (general-kind (label board-game-6) (general-kind party))
 (general-kind (label board-game-7) (general-kind cardgame ))

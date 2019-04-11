@@ -132,7 +132,8 @@
         (not (retraction))
         (not (inferred (feature family | wargame | filler | american | german ) (value T)))
         (not (info (feature game-players) (value "6" |"6+")))
-        (inferred (feature weight) (value leggero | medio))         
+        (inferred (feature weight) (value facile | medio))
+        (inferred (feature challenging) (value T))        
         =>
         (assert (asking-question (question game-cardgame) (answers s n)))
 
@@ -291,7 +292,7 @@
         (not (inferred (feature wargame) (value T)))
         (result (feature coop-comp) (value coop))
         (info (feature game-thematic) (value "yes"))
-        (inferred (feature american | filler | cardgame | family) (value T))
+        (not (info (feature game-german ) (value "yes")))
         (not (info (feature game-wtdplacement | game-hmovement |  game-bidding | game-bluff ) (value "yes")))
         (not (info (feature game-challenging)))
         =>
@@ -353,7 +354,8 @@
 (defrule ask-game-wtdplacement-1
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        (not (info (feature game-wargame) (value "yes")))
+
+        (not (info (feature game-wargame | game-cardgame) (value "yes")))
         (info (feature game-players) (value "1"))
         (not (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
         (not (info (feature game-wtdplacement)))
@@ -364,7 +366,7 @@
 (defrule ask-game-wtdplacement-2
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        (not (info (feature game-wargame) (value "yes")))
+        (not (info (feature game-wargame | game-cardgame) (value "yes")))
         (result (feature coop-comp) (value comp))
         (not (inferred (feature party) (value T)))
         (not (info (feature game-challenging | game-explorative | game-hmovement | game-investigative | game-bluff) (value "yes")))
@@ -376,7 +378,7 @@
 (defrule ask-game-hmvoment
         (declare(salience ?*zero-priority*))
         (not (retraction))
-        (not (info (feature game-wargame) (value "yes")))
+        (not (info (feature game-wargame | game-cardgame) (value "yes")))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-bluff) (value "yes"))
@@ -392,7 +394,7 @@
 (defrule ask-game-investigative-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        (not(inferred (feature wargame) (value T)))
+        (not(inferred (feature wargame | game-cardgame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-players) (value "1"))
@@ -405,7 +407,7 @@
 (defrule ask-game-investigative-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        (not(inferred (feature wargame) (value T)))
+        (not(inferred (feature wargame | game-cardgame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (info (feature game-challenging) (value "yes"))
         (info (feature game-bluff) (value "yes"))
@@ -422,7 +424,7 @@
 (defrule ask-game-investigative-3
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        (not(inferred (feature wargame) (value T)))
+        (not(inferred (feature wargame | game-cardgame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (not (inferred (feature cardgame ) (value T)))
         (info (feature game-challenging) (value "yes"))
@@ -438,7 +440,7 @@
 (defrule ask-game-investigative-4
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        (not(inferred (feature wargame) (value T)))
+        (not(inferred (feature wargame | game-cardgame) (value T)))
         (info (feature game-thematic) (value "yes"))
         (not (info (feature game-strategy |  game-wtdplacement | game-bidding ) (value "yes")))
         (result (feature coop-comp) (value coop\comp))    
@@ -453,7 +455,7 @@
         (declare (salience ?*zero-priority*))
         (not (retraction))
         
-        (not(inferred (feature wargame) (value T)))
+        (not(inferred (feature wargame | game-cardgame) (value T)))
         (not (info (feature game-players) (value "6+")))
         (result (feature weight) (value medio | difficile))
         (info (feature game-strategy) (value "yes"))
@@ -468,7 +470,7 @@
 (defrule ask-game-bluff-1
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        (not (info (feature game-wargame) (value "yes")))
+        (not (info (feature game-wargame | game-cardgame) (value "yes")))
         (not (info (feature game-explorative | game-wtdplacement | game-hmovement) (value "yes")))
         (result  (feature coop-comp) (value comp))
         (not (inferred (feature game-german) (value T)))
@@ -480,8 +482,8 @@
 (defrule ask-game-bluff-2
         (declare (salience ?*zero-priority*))
         (not (retraction))
-        
-        (result  (feature coop-comp) (value coop\comp))
+        (not (info (feature game-wargame | game-cardgame) (value "yes")))
+        (result (feature coop-comp) (value coop\comp))
         (not (info (feature game-strategy | game-explorative | game-wtdplacement | game-bidding) (value "yes")))
         (not (info (feature game-bluff)))
         =>
@@ -532,6 +534,7 @@
         =>
         (assert (asking-question (question game-greece) (answers s n)))
 )
+
 
 (defrule ask-game-roman 
         (declare (salience ?*sub-normal-priority*))
@@ -718,7 +721,7 @@
         (info (feature game-thematic) (value "yes"))
         (info (feature game-strategy) (value "yes"))
         (info (feature game-challenging) (value "yes"))
-        (not (info (feature game-explorative | game-wtdplacement | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
+        (not (info (feature game-explorative | game-hmovement | game-investigative | game-bidding | game-bluff) (value "yes")))
         (not (info (feature game-greece | game-abstract | game-merchants | game-indians | game-horror | game-survival | game-castles | game-jewelry | game-lord-of-the-rings | game-politics | game-crime) (value "yes")))
         (not (info (feature game-lovecraft)))
 

@@ -54,7 +54,7 @@
                 (case game-greece then 
                     (printout t "Ti piace il periodo storico della civiltà greca ?" crlf crlf))
                 (case game-roman then 
-                    (printout t "Ti piace il periodo storico della civiltà romana?"))
+                    (printout t "Ti piace il periodo storico della civiltà romana?" crlf crlf))
                 (case game-western then 
                     (printout t "Sei interessato al tema Western?" crlf crlf))
                 (case game-horror then 
@@ -86,7 +86,7 @@
                 (case game-industry then 
                     (printout t "Ti piacciono i giochi che hanno  come ambientazione l’industria? " crlf crlf))
                 (case game-numbers then 
-                    (printout t "Ti potrebbero interessare i giochi con i numeri? " crlf crlf))
+                    (printout t "Ti potrebbero interessare i giochi basati sui numeri? " crlf crlf))
                 (case game-castles then
                     (printout t "Sei interessato a ambientazione di castelli? " crlf crlf))
                 (case game-vampyric then
@@ -257,7 +257,7 @@
                             (if(eq ?answer 3)
                                 then (printout t " (3) In tre persone " crlf) else
                             (if(eq ?answer 4)
-                                then (printout t " (4) In quatro persone " crlf) else
+                                then (printout t " (4) In quattro persone " crlf) else
                             (if(eq ?answer 5)
                                 then (printout t " (5) In cinque persone " crlf) else
                             (if(eq ?answer 6)
@@ -663,7 +663,6 @@
                      (printout t "gioco con le carte" crlf))
                 (case game-wargame then
                      (printout t "giochi simulativi di guerra" crlf))
-
                 (case game-thematic then
                     (printout t "giochi tematici che contengono un tema forte che guida l'esperienza di gioco complessiva, creando una storia drammatica ("narrativa") simile a un libro o un film d'azione"))
                

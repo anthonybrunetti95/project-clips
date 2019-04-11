@@ -134,7 +134,8 @@
 
 (defrule inferred-cardgame
         (declare (salience ?*highest-priority*))
-        (info (feature game-cardgame) (value  "yes")) 
+        (info (feature game-cardgame) (value  "yes"))
+
         =>
         (assert (infering(feature cardgame) (value T)))
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) cardgame)
@@ -180,7 +181,8 @@
         (result (feature weight) (value facile))
         (info (feature user-budget) (value "<18" | "19<33" | "34<44"))
         (not (info (feature game-explorative) (value "yes")))
-        
+        (not (inferred (feature cardgame) (value T)))
+        (result (feature coop-comp) (value comp))
         =>
         (assert (infering(feature filler) (value T))) 
         (slot-insert$ [ggk] general-kind (+ (length$ (send [ggk] get-general-kind)) 1) filler)
