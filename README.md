@@ -3,11 +3,7 @@
 
 ## Prerequisiti
 
-Per eseguire il sistema esperto è necessario scaricare [CLIPS 6.30] (https://sourceforge.net/projects/clipsrules/files/CLIPS/6.30/) per il proprio sistema operativo.
-
-## Prerequisites
-
-To run the expert system you must download [CLIPS 6.30](https://sourceforge.net/projects/clipsrules/files/CLIPS/6.30/) for your operating system.
+Per eseguire il sistema esperto è necessario scaricare [CLIPS 6.30](https://sourceforge.net/projects/clipsrules/files/CLIPS/6.30/) per il proprio sistema operativo.
 
 
 ## Contesto
